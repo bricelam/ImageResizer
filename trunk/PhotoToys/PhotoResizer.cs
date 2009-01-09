@@ -1,104 +1,124 @@
-﻿#region Common Public License Copyright Notice
-/**************************************************************************\
-* PhotoToys Clone                                                          *
-*                                                                          *
-* Copyright © Brice Lambson. All rights reserved.                          *
-*                                                                          *
-* The use and distribution terms for this software are covered by the      *
-* Common Public License 1.0 (http://opensource.org/licenses/cpl1.0.php)    *
-* which can be found in the file CPL.txt at the root of this distribution. *
-* By using this software in any fashion, you are agreeing to be bound by   *
-* the terms of this license.                                               *
-*                                                                          *
-* You must not remove this notice, or any other, from this software.       *
-\**************************************************************************/
-#endregion
-
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Forms;
-using System.IO;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Drawing.Drawing2D;
-using System.Runtime.InteropServices;
+﻿//------------------------------------------------------------------------------
+// <copyright file="PhotoResizer.cs" company="Brice Lambson">
+//     PhotoToys Clone
+//
+//     Copyright © Brice Lambson. All rights reserved.
+//
+//     The use and distribution terms for this software are covered by the
+//     Common Public License 1.0 (http://opensource.org/licenses/cpl1.0.php)
+//     which can be found in the file CPL.txt at the root of this distribution.
+//     By using this software in any fashion, you are agreeing to be bound by
+//     the terms of this license.
+//
+//     You must not remove this notice, or any other, from this software.
+// </copyright>
+//------------------------------------------------------------------------------
 
 namespace PhotoToys
 {
-	public static class PhotoResizer
-	{
-		private static string GetNewFileName(string filePath, string directoryName, string fileNameAppendage)
-		{
-			if (String.IsNullOrEmpty(fileNameAppendage))
-			{
-				return filePath;
-			}
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+    using System.Windows.Forms;
+    using System.IO;
+    using System.Drawing;
+    using System.Drawing.Imaging;
+    using System.Drawing.Drawing2D;
+    using System.Runtime.InteropServices;
 
-			string fileName = Path.GetFileNameWithoutExtension(filePath);
-			string extension = Path.GetExtension(filePath);
+    /// <summary>
+    /// Utility class used to resize images.
+    /// </summary>
+    public static class PhotoResizer
+    {
+        /// <summary>
+        /// Resizes an image.
+        /// </summary>
+        /// <param name="sourceFile">The file name of the image to resize</param>
+        /// <param name="destinationDirectoryName">The output directory.</param>
+        /// <param name="fileNameAppendage">A value to append to the output file name.</param>
+        /// <param name="width">The new image's target width.</param>
+        /// <param name="height">The new image's target height.</param>
+        /// <param name="smallerOnly">A value indicating weather the image should only be made smaller.</param>
+        public static void ResizePhoto(string sourceFile, string destinationDirectoryName, string fileNameAppendage, int width, int height, bool smallerOnly)
+        {
+            string destinationFile = GetNewFileName(sourceFile, destinationDirectoryName, fileNameAppendage);
+            Image image = Image.FromFile(sourceFile);
 
-			string path;
-			int count = 1;
+            int sourceWidth = image.Width;
+            int sourceHeight = image.Height;
+            double widthRatio = width / (double)sourceWidth;
+            double heightRatio = height / (double)sourceHeight;
 
-			do
-			{
-				path = Path.ChangeExtension(Path.Combine(directoryName, fileName + fileNameAppendage + ((count == 1) ? String.Empty : (" (" + count + ")"))), extension);
-				++count;
-			} while (File.Exists(path));
+            if (widthRatio > heightRatio)
+            {
+                width = (int)(heightRatio * sourceWidth);
+            }
+            else
+            {
+                height = (int)(widthRatio * sourceHeight);
+            }
 
-			return path;
-		}
+            if (width == sourceWidth || height == sourceHeight || (smallerOnly && (width > sourceWidth || height > sourceHeight)))
+            {
+                image.Dispose();
+                image = null;
 
-		public static void ResizePhoto(string sourceFile, string destinationDirectoryName, string fileNameAppendage, int width, int height, bool smallerOnly)
-		{
-			string destinationFile = GetNewFileName(sourceFile, destinationDirectoryName, fileNameAppendage);
-			Image image = Image.FromFile(sourceFile);
+                if (sourceFile != destinationFile)
+                {
+                    File.Copy(sourceFile, destinationFile);
+                }
+            }
+            else
+            {
+                Bitmap resizedImage = new Bitmap(image, width, height);
 
-			int sourceWidth = image.Width;
-			int sourceHeight = image.Height;
-			double widthRatio = width / (double)sourceWidth;
-			double heightRatio = height / (double)sourceHeight;
+                foreach (PropertyItem propertyItem in image.PropertyItems)
+                {
+                    resizedImage.SetPropertyItem(propertyItem);
+                }
 
-			if (widthRatio > heightRatio)
-			{
-				width = (int)(heightRatio * sourceWidth);
-			}
-			else
-			{
-				height = (int)(widthRatio * sourceHeight);
-			}
+                ImageFormat format = image.RawFormat;
 
-			if (width == sourceWidth || height == sourceHeight || (smallerOnly && (width > sourceWidth || height > sourceHeight)))
-			{
-				image.Dispose();
-				image = null;
+                image.Dispose();
+                image = null;
 
-				if (sourceFile != destinationFile)
-				{
-					File.Copy(sourceFile, destinationFile);
-				}
-			}
-			else
-			{
-				Bitmap resizedImage = new Bitmap(image, width, height);
+                // TODO: The extention and type may get out of sync here.
+                resizedImage.Save(destinationFile, format);
 
-				foreach (PropertyItem propertyItem in image.PropertyItems)
-				{
-					resizedImage.SetPropertyItem(propertyItem);
-				}
+                resizedImage.Dispose();
+                resizedImage = null;
+            }
+        }
 
-				ImageFormat format = image.RawFormat;
+        /// <summary>
+        /// Compiles a new file name.
+        /// </summary>
+        /// <param name="filePath">The original file path.</param>
+        /// <param name="directoryName">The new directory name.</param>
+        /// <param name="fileNameAppendage">A value to append to the new file name.</param>
+        /// <returns>The compiled file name.</returns>
+        private static string GetNewFileName(string filePath, string directoryName, string fileNameAppendage)
+        {
+            if (String.IsNullOrEmpty(fileNameAppendage))
+            {
+                return filePath;
+            }
 
-				image.Dispose();
-				image = null;
+            string fileName = Path.GetFileNameWithoutExtension(filePath);
+            string extension = Path.GetExtension(filePath);
 
-				// TODO: The extention and type may get out of sync here.
-				resizedImage.Save(destinationFile, format);
+            string path;
+            int count = 1;
 
-				resizedImage.Dispose();
-				resizedImage = null;
-			}
-		}
-	}
+            do
+            {
+                path = Path.ChangeExtension(Path.Combine(directoryName, fileName + fileNameAppendage + ((count == 1) ? String.Empty : (" (" + count + ")"))), extension);
+                ++count;
+            }
+            while (File.Exists(path));
+
+            return path;
+        }
+    }
 }

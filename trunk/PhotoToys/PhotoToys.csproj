@@ -52,6 +52,7 @@
     </Compile>
     <Compile Include="PhotoResizeForm.Designer.cs">
       <DependentUpon>PhotoResizeForm.cs</DependentUpon>
+      <ExcludeFromSourceAnalysis>true</ExcludeFromSourceAnalysis>
     </Compile>
     <Compile Include="PhotoResizer.cs" />
     <Compile Include="PhotoResizeShellExtension.cs" />
@@ -70,14 +71,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\SourceAnalysis\v4.2\Microsoft.SourceAnalysis.Targets"/>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
-  <Target Name="AfterBuild">
-  </Target>
   -->
-  <PropertyGroup>
-    <PostBuildEvent>"%25ProgramFiles%25\Microsoft FxCop 1.36\FxCopCmd.exe" /f:"$(TargetPath)" /d:"$(TargetDir)." /c /dic:"$(SolutionDir)CustomDictionary.xml" /iit /gac /igc</PostBuildEvent>
-  </PropertyGroup>
+  <Target Name="AfterBuild">
+    <Exec Command="&quot;$(ProgramFiles)\Microsoft FxCop 1.36\FxCopCmd.exe&quot; /f:&quot;$(TargetPath)&quot; /o:CodeAnalysisViolations.xml /d:&quot;$(TargetDir).&quot; /c /dic:&quot;$(SolutionDir)CustomDictionary.xml&quot; /iit /gac /igc" />
+  </Target>
 </Project>
