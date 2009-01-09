@@ -15,6 +15,24 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_4729590FFB0443269300A4C2F9E25FAA"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C5A0D9BC7BE9441B97927421A10CD3E8"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F346F3B1C9344D899405DDC02DBFB27D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_F9AB16C2F47C497DA6182384C1FC0002"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -130,6 +148,66 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4729590FFB0443269300A4C2F9E25FAA"
+            {
+            "SourcePath" = "8:..\\AUTHORS.txt"
+            "TargetName" = "8:AUTHORS.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_D264E39CC65B4435A9A38233D6A2EDED"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C5A0D9BC7BE9441B97927421A10CD3E8"
+            {
+            "SourcePath" = "8:..\\LICENSE.txt"
+            "TargetName" = "8:LICENSE.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_D264E39CC65B4435A9A38233D6A2EDED"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F346F3B1C9344D899405DDC02DBFB27D"
+            {
+            "SourcePath" = "8:..\\CPL.txt"
+            "TargetName" = "8:CPL.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_D264E39CC65B4435A9A38233D6A2EDED"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -821,7 +899,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_F9AB16C2F47C497DA6182384C1FC0002"
             {
-            "SourcePath" = "8:..\\PhotoToys\\obj\\Release\\PhotoToys.dll"
+            "SourcePath" = "8:..\\PhotoToys\\obj\\Debug\\PhotoToys.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D264E39CC65B4435A9A38233D6A2EDED"
