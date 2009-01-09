@@ -18,6 +18,7 @@ namespace PhotoToys
 {
     using System;
     using System.Drawing;
+    using System.Drawing.Drawing2D;
     using System.Drawing.Imaging;
     using System.IO;
 
@@ -66,7 +67,15 @@ namespace PhotoToys
             }
             else
             {
-                Bitmap resizedImage = new Bitmap(image, width, height);
+                Image resizedImage = new Bitmap(width, height);
+
+                using (Graphics graphics = Graphics.FromImage(resizedImage))
+                {
+                    graphics.CompositingQuality = CompositingQuality.HighQuality;
+                    graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    graphics.Clear(Color.Transparent);
+                    graphics.DrawImage(image, 0, 0, width, height);
+                }
 
                 foreach (PropertyItem propertyItem in image.PropertyItems)
                 {

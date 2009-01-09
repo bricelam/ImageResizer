@@ -222,7 +222,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:PhotoToys, Version=1.0.3143.40300, Culture=neutral, PublicKeyToken=aba36e23d344678b, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:PhotoToys, Version=1.0.3232.21010, Culture=neutral, PublicKeyToken=aba36e23d344678b, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_4C336038ADEC342A52E2CAB627F21608"
@@ -356,14 +356,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Image Resizer Powertoy Clone for Windows"
-        "ProductCode" = "8:{B8E81960-100E-4DEE-9E46-C82FF03F5550}"
-        "PackageCode" = "8:{C6753A3F-0F36-463A-A06D-FF559AA39F43}"
+        "ProductCode" = "8:{7105E3B5-68B3-4DB7-811D-6CE7E9609E0B}"
+        "PackageCode" = "8:{085634C3-93D6-4414-8356-C23ADB21529A}"
         "UpgradeCode" = "8:{3B99DB84-50D2-4542-80D4-7DF395C91F16}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.1.0"
         "Manufacturer" = "8:Brice Lambson"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
