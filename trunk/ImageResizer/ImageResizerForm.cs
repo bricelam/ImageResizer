@@ -17,14 +17,9 @@
 namespace ImageResizer
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
     using System.Drawing;
-    using System.Text;
-    using System.Windows.Forms;
     using System.IO;
-    using Microsoft.Win32;
+    using System.Windows.Forms;
     using PhotoToys;
 
     /// <summary>
@@ -38,7 +33,7 @@ namespace ImageResizer
         private PhotoResizeForm photoResizeForm;
 
         /// <summary>
-        /// No argument constructor.
+        /// Initializes a new instance of the ImageResizerForm class.
         /// </summary>
         public ImageResizerForm()
         {

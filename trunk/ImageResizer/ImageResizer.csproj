@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30428</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{69397463-44E5-4F00-8E69-47DA7E57BDB5}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -15,13 +15,16 @@
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>../PhotoToys.snk</AssemblyOriginatorKeyFile>
     <ApplicationIcon>ImageResizer.ico</ApplicationIcon>
+    <StyleCopTargetsPath>$(MSBuildExtensionsPath)\Microsoft\StyleCop\v4.3\Microsoft.StyleCop.Targets</StyleCopTargetsPath>
+    <StyleCopOverrideSettingsFile>$(SolutionDir)Settings.StyleCop</StyleCopOverrideSettingsFile>
+    <FxCopCmdPath>$(ProgramFiles)\Microsoft FxCop 1.36\FxCopCmd.exe</FxCopCmdPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -89,13 +92,13 @@
     <Content Include="ImageResizer.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath)\Microsoft\SourceAnalysis\v4.2\Microsoft.SourceAnalysis.Targets"/>
+  <Import Condition="Exists('$(StyleCopTargetsPath)')" Project="$(StyleCopTargetsPath)" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
   -->
   <Target Name="AfterBuild">
-    <Exec Command="&quot;$(ProgramFiles)\Microsoft FxCop 1.36\FxCopCmd.exe&quot; /f:&quot;$(TargetPath)&quot; /o:CodeAnalysisViolations.xml /d:&quot;$(TargetDir).&quot; /c /dic:&quot;$(SolutionDir)CustomDictionary.xml&quot; /iit /gac /igc" />
+    <Exec Condition="Exists('$(FxCopCmdPath)')" Command="&quot;$(FxCopCmdPath)&quot; /f:&quot;$(TargetPath)&quot; /o:&quot;$(IntermediateOutputPath)FxCopViolations.xml&quot; /d:&quot;$(TargetDir).&quot; /c /fo /dic:&quot;$(SolutionDir)CustomDictionary.xml&quot; /gac /igc" />
   </Target>
 </Project>

@@ -54,7 +54,7 @@ namespace PhotoToys
         private string workingDirectory;
 
         /// <summary>
-        /// No argument constructor.
+        /// Initializes a new instance of the ShowDialogState class.
         /// </summary>
         public ShowDialogState()
         {

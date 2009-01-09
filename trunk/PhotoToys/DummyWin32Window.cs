@@ -32,14 +32,14 @@ namespace PhotoToys
         private IntPtr handle;
 
         /// <summary>
-        /// Public no argument constructor.
+        /// Initializes a new instance of the DummyWin32Window class.
         /// </summary>
         public DummyWin32Window()
         {
         }
 
         /// <summary>
-        /// Constructor used to initialize the handle.
+        /// Initializes a new instance of the DummyWin32Window class with the given handle.
         /// </summary>
         /// <param name="handle">The handle to the window.</param>
         public DummyWin32Window(IntPtr handle)

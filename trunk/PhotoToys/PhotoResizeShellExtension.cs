@@ -17,15 +17,12 @@
 namespace PhotoToys
 {
     using System;
-    using System.Collections.Generic;
-    using System.Text;
+    using System.Diagnostics.CodeAnalysis;
     using System.Runtime.InteropServices;
     using System.Runtime.InteropServices.ComTypes;
+    using System.Text;
     using Microsoft.Win32;
     using DialogResult = System.Windows.Forms.DialogResult;
-    using System.Diagnostics;
-    using System.IO;
-    using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
     /// The Resize Pictures shortcut menu extension.
@@ -209,6 +206,7 @@ namespace PhotoToys
         /// </summary>
         /// <param name="type">The type of the COM object to register</param>
         [ComRegisterFunction]
+        [SuppressMessage("Microsoft.Usage", "CA1801", Justification = "The parameter is required by the ComRegisterFunction attribute.")]
         private static void ComRegister(Type type)
         {
             using (RegistryKey photoResizeRegistryKey = Registry.ClassesRoot.CreateSubKey(@"SystemFileAssociations\image\ShellEx\ContextMenuHandlers\PhotoResize"))
@@ -227,6 +225,7 @@ namespace PhotoToys
         /// </summary>
         /// <param name="type">The type of the COM object to unregister</param>
         [ComUnregisterFunction]
+        [SuppressMessage("Microsoft.Usage", "CA1801", Justification = "The parameter is required by the ComUnregisterFunction attribute.")]
         private static void ComUnregister(Type type)
         {
             Registry.ClassesRoot.DeleteSubKey(@"SystemFileAssociations\image\ShellEx\ContextMenuHandlers\PhotoResize", false);

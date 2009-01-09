@@ -37,7 +37,7 @@ namespace PhotoToys
         private bool isAdvanced;
 
         /// <summary>
-        /// No-argument constructor.
+        /// Initializes a new instance of the PhotoResizeForm class.
         /// </summary>
         public PhotoResizeForm()
         {
