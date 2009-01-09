@@ -1,6 +1,6 @@
 ﻿#region Common Public License Copyright Notice
 /**************************************************************************\
-* PhotoToys Clone                                                                   *
+* PhotoToys Clone                                                          *
 *                                                                          *
 * Copyright © Brice Lambson. All rights reserved.                          *
 *                                                                          *
@@ -24,7 +24,7 @@ namespace PhotoToys
 	/// <summary>
 	/// Contains information needed by IContextMenu.InvokeCommand() to invoke a shortcut menu command.
 	/// </summary>
-	public struct CMINVOKECOMMANDINFO
+	struct CMINVOKECOMMANDINFO
 	{
 		/// <summary>
 		/// The size of this structure, in bytes.

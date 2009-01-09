@@ -1,6 +1,6 @@
 ﻿#region Common Public License Copyright Notice
 /**************************************************************************\
-* PhotoToys Clone                                                                   *
+* PhotoToys Clone                                                          *
 *                                                                          *
 * Copyright © Brice Lambson. All rights reserved.                          *
 *                                                                          *

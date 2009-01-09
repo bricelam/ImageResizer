@@ -1,6 +1,6 @@
 ﻿#region Common Public License Copyright Notice
 /**************************************************************************\
-* PhotoToys Clone                                                                   *
+* PhotoToys Clone                                                          *
 *                                                                          *
 * Copyright © Brice Lambson. All rights reserved.                          *
 *                                                                          *
@@ -36,6 +36,7 @@ namespace PhotoToys
 		private PhotoResizeForm photoResizeForm;
 		private string[] imageFiles;
 		private ShowDialogDelegate showDialogDelegate;
+		private string workingDirectory;
 
 		/// <summary>
 		/// The form that was shown on the asynchronous call.
@@ -62,6 +63,15 @@ namespace PhotoToys
 		{
 			get { return showDialogDelegate; }
 			set { showDialogDelegate = value; }
+		}
+
+		/// <summary>
+		/// Direcotry in which to put resized images.
+		/// </summary>
+		public string WorkingDirectory
+		{
+			get { return workingDirectory; }
+			set { workingDirectory = value; }
 		}
 
 		/// <summary>

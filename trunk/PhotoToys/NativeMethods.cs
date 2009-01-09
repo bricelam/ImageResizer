@@ -1,6 +1,6 @@
 ﻿#region Common Public License Copyright Notice
 /**************************************************************************\
-* PhotoToys Clone                                                                   *
+* PhotoToys Clone                                                          *
 *                                                                          *
 * Copyright © Brice Lambson. All rights reserved.                          *
 *                                                                          *
@@ -24,7 +24,7 @@ namespace PhotoToys
 	/// <summary>
 	/// This class acts as a facad to the WIN32 API.
 	/// </summary>
-	static class Win32Api
+	static class NativeMethods
 	{
 		public const short CF_HDROP = 0xF;
 		public const uint CMF_DEFAULTONLY = 1;
@@ -43,7 +43,7 @@ namespace PhotoToys
 		/// <param name="uIDNewItem">Specifies either the identifier of the new menu item or, if the uFlags parameter has the MF_POPUP flag set, a handle to the drop-down menu or submenu.</param>
 		/// <param name="lpNewItem">Specifies the content of the new menu item.</param>
 		/// <returns>If the function succeeds, the return value is nonzero.</returns>
-		[DllImport("user32.dll")]
+		[DllImport("user32.dll", CharSet = CharSet.Auto, BestFitMapping = false)]
 		public extern static int InsertMenu(IntPtr hMenu, uint uPosition, uint uFlags, IntPtr uIDNewItem, string lpNewItem);
 
 		/// <summary>

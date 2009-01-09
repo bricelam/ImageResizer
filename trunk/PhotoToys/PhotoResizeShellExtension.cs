@@ -1,6 +1,6 @@
 ﻿#region Common Public License Copyright Notice
 /**************************************************************************\
-* PhotoToys Clone                                                                   *
+* PhotoToys Clone                                                          *
 *                                                                          *
 * Copyright © Brice Lambson. All rights reserved.                          *
 *                                                                          *
@@ -20,12 +20,15 @@ using System.Text;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
 using Microsoft.Win32;
+using DialogResult = System.Windows.Forms.DialogResult;
+using System.Diagnostics;
+using System.IO;
 
 namespace PhotoToys
 {
 	[ComVisible(true)]
 	[Guid("4CF20B46-D006-4B90-a64b-DBAA9470EFBE")]
-	public class PhotoResizeShellExtention : IShellExtInit, IContextMenu
+	public class PhotoResizeShellExtension : IShellExtInit, IContextMenu
 	{
 		string[] imageFiles = new string[0];
 
@@ -34,7 +37,7 @@ namespace PhotoToys
 			if (pdtobj != null)
 			{
 				FORMATETC format = new FORMATETC();
-				format.cfFormat = Win32Api.CF_HDROP;
+				format.cfFormat = NativeMethods.CF_HDROP;
 				format.ptd = IntPtr.Zero;
 				format.dwAspect = DVASPECT.DVASPECT_CONTENT;
 				format.lindex = -1;
@@ -44,18 +47,18 @@ namespace PhotoToys
 
 				pdtobj.GetData(ref format, out medium);
 
-				uint fileCount = Win32Api.DragQueryFile(medium.unionmember, 0xFFFFFFFF, IntPtr.Zero, 0);
+				uint fileCount = NativeMethods.DragQueryFile(medium.unionmember, 0xFFFFFFFF, IntPtr.Zero, 0);
 
 				imageFiles = new string[fileCount];
 
 				for (uint i = 0; i < fileCount; i++)
 				{
-					uint bufferSize = Win32Api.DragQueryFile(medium.unionmember, i, IntPtr.Zero, 0) + 1;
+					uint bufferSize = NativeMethods.DragQueryFile(medium.unionmember, i, IntPtr.Zero, 0) + 1;
 
 					IntPtr file = Marshal.AllocHGlobal((int)bufferSize);
-					Win32Api.DragQueryFile(medium.unionmember, i, file, bufferSize);
+					uint length = NativeMethods.DragQueryFile(medium.unionmember, i, file, bufferSize);
 
-					imageFiles[i] = Marshal.PtrToStringAnsi(file);
+					imageFiles[i] = Marshal.PtrToStringAnsi(file, (int)length);
 
 					Marshal.FreeHGlobal(file);
 				}
@@ -63,14 +66,15 @@ namespace PhotoToys
 
 		}
 
+		[CLSCompliant(false)]
 		public int QueryContextMenu(IntPtr hmenu, uint indexMenu, uint idCmdFirst, uint idCmdLast, uint uFlags)
 		{
 			int count = 0;
 
-			if ((uFlags & Win32Api.CMF_DEFAULTONLY) == 0)
+			if ((uFlags & NativeMethods.CMF_DEFAULTONLY) == 0)
 			{
 				// Add our item to the menu.
-				if (Win32Api.InsertMenu(hmenu, indexMenu, (Win32Api.MF_STRING | Win32Api.MF_BYPOSITION), (IntPtr)(idCmdFirst + (count++)), "Resize Pictures") == 0) return Marshal.GetHRForLastWin32Error();
+				if (NativeMethods.InsertMenu(hmenu, indexMenu, (NativeMethods.MF_STRING | NativeMethods.MF_BYPOSITION), (IntPtr)(idCmdFirst + (count++)), "Resize Pictures") == 0) return Marshal.GetHRForLastWin32Error();
 			}
 
 			return count;
@@ -86,7 +90,7 @@ namespace PhotoToys
 
 			if (ici.cbSize == 64)
 			{
-				if ((ici.fMask & Win32Api.CMIC_MASK_UNICODE) != 0)
+				if ((ici.fMask & NativeMethods.CMIC_MASK_UNICODE) != 0)
 				{
 					isUnicode = true;
 
@@ -115,40 +119,42 @@ namespace PhotoToys
 				showDialogState.PhotoResizeForm = photoResizeForm;
 				showDialogState.ImageFiles = imageFiles;
 				showDialogState.ShowDialogDelegate = showDialogDelegate;
+				showDialogState.WorkingDirectory = ici.lpDirectory;
 
 				// Show the Resize Pictures form.
-				showDialogDelegate.BeginInvoke(new DummyWin32Window(ici.hwnd), PhotoResizer.ShowDialogCallback, showDialogState);
+				showDialogDelegate.BeginInvoke(new DummyWin32Window(ici.hwnd), ShowDialogCallback, showDialogState);
 			}
 			else
 			{
-				throw new ArgumentException();
+				throw new ArgumentException("The specified command does not exist.", "pici");
 			}
 		}
 
+		[CLSCompliant(false)]
 		public void GetCommandString(uint idCmd, uint uType, uint pReserved, IntPtr pszName, uint cchMax)
 		{
 			string name = null;
 
 			if (idCmd == 0)
 			{
-				if ((uType & ~(Win32Api.GCS_UNICODE)) == Win32Api.GCS_VERB)
+				if ((uType & ~(NativeMethods.GCS_UNICODE)) == NativeMethods.GCS_VERB)
 				{
 					name = "PhotoResize";
 				}
 			}
 			else
 			{
-				throw new ArgumentException();
+				throw new ArgumentException("The specified command does not exist.", "idCmd");
 			}
 
 			if (name != null)
 			{
 				byte[] bytes;
 
-				name = name.Substring(0, Math.Min(name.Length, (int)cchMax - 1));
+				name = name.Substring(0, Math.Min(name.Length, checked((int)cchMax - 1)));
 				name += Char.ConvertFromUtf32(0);
 
-				if ((uType & Win32Api.GCS_UNICODE) != 0)
+				if ((uType & NativeMethods.GCS_UNICODE) != 0)
 				{
 					bytes = Encoding.Unicode.GetBytes(name);
 				}
@@ -159,6 +165,32 @@ namespace PhotoToys
 
 				Marshal.Copy(bytes, 0, pszName, bytes.Length);
 			}
+		}
+
+		private void ShowDialogCallback(IAsyncResult result)
+		{
+			ShowDialogState showDialogState = (ShowDialogState)result.AsyncState;
+
+			ShowDialogDelegate showDialogDelegate = showDialogState.ShowDialogDelegate;
+			string[] imageFiles = showDialogState.ImageFiles;
+			PhotoResizeForm photoResizeForm = showDialogState.PhotoResizeForm;
+
+			if (showDialogDelegate.EndInvoke(result) != DialogResult.Cancel)
+			{
+				string outputPath = showDialogState.WorkingDirectory;
+				string fileNameAppendage = photoResizeForm.FileNameAppendage;
+				int photoWidth = photoResizeForm.PhotoWidth;
+				int photoHeight = photoResizeForm.PhotoHeight;
+				bool smallerOnly = photoResizeForm.SmallerOnly;
+
+				foreach (string imageFile in imageFiles)
+				{
+					PhotoResizer.ResizePhoto(imageFile, outputPath, fileNameAppendage, photoWidth, photoHeight, smallerOnly);
+				}
+			}
+
+			photoResizeForm.Dispose();
+			photoResizeForm = null;
 		}
 
 #if DEBUG

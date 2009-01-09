@@ -1,6 +1,6 @@
 ﻿#region Common Public License Copyright Notice
 /**************************************************************************\
-* PhotoToys Clone                                                                   *
+* PhotoToys Clone                                                          *
 *                                                                          *
 * Copyright © Brice Lambson. All rights reserved.                          *
 *                                                                          *
@@ -24,7 +24,7 @@ namespace PhotoToys
 	/// <summary>
 	/// This structure defines the x- and y-coordinates of a point.
 	/// </summary>
-	public struct POINT
+	struct POINT
 	{
 		/// <summary>
 		/// Specifies the x-coordinate of the point.
@@ -40,7 +40,7 @@ namespace PhotoToys
 	/// <summary>
 	/// Contains extended information about a shortcut menu command.
 	/// </summary>
-	public struct CMINVOKECOMMANDINFOEX
+	struct CMINVOKECOMMANDINFOEX
 	{
 		/// <summary>
 		/// The size of this structure, in bytes.

@@ -1,6 +1,6 @@
 ﻿#region Common Public License Copyright Notice
 /**************************************************************************\
-* PhotoToys Clone                                                                   *
+* PhotoToys Clone                                                          *
 *                                                                          *
 * Copyright © Brice Lambson. All rights reserved.                          *
 *                                                                          *
@@ -22,44 +22,19 @@ using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
+using System.Runtime.InteropServices;
 
 namespace PhotoToys
 {
-	static class PhotoResizer
+	public static class PhotoResizer
 	{
-		public static void ShowDialogCallback(IAsyncResult result)
+		private static string GetNewFileName(string filePath, string directoryName, string fileNameAppendage)
 		{
-			ShowDialogState showDialogState = (ShowDialogState)result.AsyncState;
-
-			ShowDialogDelegate showDialogDelegate = showDialogState.ShowDialogDelegate;
-			string[] imageFiles = showDialogState.ImageFiles;
-			PhotoResizeForm photoResizeForm = showDialogState.PhotoResizeForm;
-
-			if (showDialogDelegate.EndInvoke(result) != DialogResult.Cancel)
-			{
-				foreach (string imageFile in imageFiles)
-				{
-					string destinationFile = GetNewFileName(imageFile, photoResizeForm.FileNameAppendage);
-					int width = photoResizeForm.PhotoWidth;
-					int height = photoResizeForm.PhotoHeight;
-					bool smallerOnly = photoResizeForm.SmallerOnly;
-
-					ResizePhoto(imageFile, destinationFile, width, height, smallerOnly);
-				}
-			}
-
-			photoResizeForm.Dispose();
-			photoResizeForm = null;
-		}
-
-		private static string GetNewFileName(string filePath, string fileNameAppendage)
-		{
-			if (fileNameAppendage == String.Empty)
+			if (String.IsNullOrEmpty(fileNameAppendage))
 			{
 				return filePath;
 			}
 
-			string directoryName = Path.GetDirectoryName(filePath);
 			string fileName = Path.GetFileNameWithoutExtension(filePath);
 			string extension = Path.GetExtension(filePath);
 
@@ -68,33 +43,33 @@ namespace PhotoToys
 
 			do
 			{
-				path = BuildPath(directoryName, fileName + fileNameAppendage + ((count == 1) ? String.Empty : (" (" + count + ")")), extension);
+				path = Path.ChangeExtension(Path.Combine(directoryName, fileName + fileNameAppendage + ((count == 1) ? String.Empty : (" (" + count + ")"))), extension);
 				++count;
 			} while (File.Exists(path));
 
 			return path;
 		}
 
-		private static string BuildPath(string directoryName, string fileName, string extension)
+		public static void ResizePhoto(string sourceFile, string destinationDirectoryName, string fileNameAppendage, int width, int height, bool smallerOnly)
 		{
-			return Path.ChangeExtension(Path.Combine(directoryName, fileName), extension);
-		}
-
-		// TODO: This method could use better exception handling.
-		private static void ResizePhoto(string sourceFile, string destinationFile, int width, int height, bool smallerOnly)
-		{
+			string destinationFile = GetNewFileName(sourceFile, destinationDirectoryName, fileNameAppendage);
 			Image image = Image.FromFile(sourceFile);
 
-			if (width / (double)image.Width > height / (double)image.Height)
+			int sourceWidth = image.Width;
+			int sourceHeight = image.Height;
+			double widthRatio = width / (double)sourceWidth;
+			double heightRatio = height / (double)sourceHeight;
+
+			if (widthRatio > heightRatio)
 			{
-				width = height * image.Width / image.Height;
+				width = (int)(heightRatio * sourceWidth);
 			}
 			else
 			{
-				height = width * image.Height / image.Width;
+				height = (int)(widthRatio * sourceHeight);
 			}
 
-			if (width == image.Width || height == image.Height || (smallerOnly && (width > image.Width || height > image.Height)))
+			if (width == sourceWidth || height == sourceHeight || (smallerOnly && (width > sourceWidth || height > sourceHeight)))
 			{
 				image.Dispose();
 				image = null;
@@ -106,23 +81,19 @@ namespace PhotoToys
 			}
 			else
 			{
+				Bitmap resizedImage = new Bitmap(image, width, height);
+
+				foreach (PropertyItem propertyItem in image.PropertyItems)
+				{
+					resizedImage.SetPropertyItem(propertyItem);
+				}
+
 				ImageFormat format = image.RawFormat;
-
-				Bitmap resizedImage = new Bitmap(width, height, PixelFormat.Format24bppRgb);
-				resizedImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
-				
-				Graphics graphics = Graphics.FromImage(resizedImage);
-				graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-
-				Rectangle destRect = new Rectangle(0, 0, width, height);
-				Rectangle srcRect = new Rectangle(0, 0, image.Width, image.Height);
-
-				graphics.DrawImage(image, destRect, srcRect, GraphicsUnit.Pixel);
 
 				image.Dispose();
 				image = null;
 
-				// TODO: The extention and type may get out of synch here.
+				// TODO: The extention and type may get out of sync here.
 				resizedImage.Save(destinationFile, format);
 
 				resizedImage.Dispose();

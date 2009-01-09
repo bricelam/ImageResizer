@@ -1,6 +1,6 @@
 ﻿#region Common Public License Copyright Notice
 /**************************************************************************\
-* PhotoToys Clone                                                                   *
+* PhotoToys Clone                                                          *
 *                                                                          *
 * Copyright © Brice Lambson. All rights reserved.                          *
 *                                                                          *
@@ -19,6 +19,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
@@ -52,7 +54,7 @@ namespace PhotoToys
 					return 240;
 				}
 
-				return Convert.ToInt32(customWidthTextBox.Text);
+				return Convert.ToInt32(customWidthTextBox.Text, CultureInfo.InvariantCulture);
 			}
 		}
 
@@ -80,7 +82,7 @@ namespace PhotoToys
 					return 320;
 				}
 
-				return Convert.ToInt32(customHeightTextBox.Text);
+				return Convert.ToInt32(customHeightTextBox.Text, CultureInfo.InvariantCulture);
 			}
 		}
 
@@ -125,8 +127,6 @@ namespace PhotoToys
 		public PhotoResizeForm()
 		{
 			InitializeComponent();
-
-			isAdvanced = false;
 		}
 
 		private void customRadioButton_CheckedChanged(object sender, EventArgs e)
@@ -179,7 +179,15 @@ namespace PhotoToys
 
 			if (DialogResult != DialogResult.Cancel && customRadioButton.Checked && !(Int32.TryParse(customWidthTextBox.Text, out dummy) && Int32.TryParse(customHeightTextBox.Text, out dummy)))
 			{
-				MessageBox.Show("The custom size dimmensions must be numbers.\r\nPlease check that those text fields are numbers and try again.", "Picture Resizer");
+				MessageBoxOptions options = 0;
+
+				if (RightToLeft == RightToLeft.Yes)
+				{
+					options = MessageBoxOptions.RightAlign | MessageBoxOptions.RtlReading;
+				}
+
+				MessageBox.Show("The custom size dimmensions must be numbers.\r\nPlease check that those text fields are numbers and try again.", "Picture Resizer", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, options);
+
 				e.Cancel = true;
 			}
 		}

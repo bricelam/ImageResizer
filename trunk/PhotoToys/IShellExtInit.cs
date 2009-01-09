@@ -1,6 +1,6 @@
 ﻿#region Common Public License Copyright Notice
 /**************************************************************************\
-* PhotoToys Clone                                                                   *
+* PhotoToys Clone                                                          *
 *                                                                          *
 * Copyright © Brice Lambson. All rights reserved.                          *
 *                                                                          *
@@ -28,7 +28,7 @@ namespace PhotoToys
 	[ComImport]
 	[Guid("000214E8-0000-0000-C000-000000000046")]
 	[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-	public interface IShellExtInit
+	interface IShellExtInit
 	{
 		/// <summary>
 		/// Initializes a shortcut menu extension.
