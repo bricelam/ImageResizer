@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Product Id="*" Name="Image Resizer Powertoy Clone for Windows" Language="1033" Version="2.0.0.0" Manufacturer="Brice Lambson" UpgradeCode="70761553-CFB6-4150-8FDC-75B5769774CF">
 <?if $(var.Platform) = x64 ?>
-    <Package InstallerVersion="200" Compressed="yes" />
-<?else?>
     <Package InstallerVersion="200" Compressed="yes" Platform="x64" />
+<?else?>
+    <Package InstallerVersion="200" Compressed="yes" />
 <?endif?>
     <Media Id="1" EmbedCab="yes" Cabinet="Setup.cab" />    
     <Directory Id="TARGETDIR" Name="SourceDir">
