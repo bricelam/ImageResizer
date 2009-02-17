@@ -2,9 +2,9 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Product Id="*" Name="Image Resizer Powertoy Clone for Windows" Language="1033" Version="2.0.0.0" Manufacturer="Brice Lambson" UpgradeCode="70761553-CFB6-4150-8FDC-75B5769774CF">
 <?if $(var.Platform) = x64 ?>
-    <Package InstallerVersion="200" Compressed="yes" Platform="x64" />
+    <Package InstallerVersion="300" Compressed="yes" Platform="x64" />
 <?else?>
-    <Package InstallerVersion="200" Compressed="yes" />
+    <Package InstallerVersion="300" Compressed="yes" />
 <?endif?>
     <Media Id="1" EmbedCab="yes" Cabinet="Setup.cab" />    
     <Directory Id="TARGETDIR" Name="SourceDir">
@@ -29,12 +29,25 @@
           </Directory>
         </Directory>
       </Directory>
+      <Merge Id="AtlMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\Microsoft_VC90_ATL_x86_x64.msm" />
+      <Merge Id="CrtMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\Microsoft_VC90_CRT_x86_x64.msm" />
+      <Merge Id="MfcMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\Microsoft_VC90_MFC_x86_x64.msm" />
+      <Merge Id="AtlPolicyMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\policy_9_0_Microsoft_VC90_ATL_x86_x64.msm" />
+      <Merge Id="CrtPolicyMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\policy_9_0_Microsoft_VC90_CRT_x86_x64.msm" />
+      <Merge Id="MfcPolicyMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\policy_9_0_Microsoft_VC90_MFC_x86_x64.msm" />
+<?else?>
+      <Merge Id="AtlMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\Microsoft_VC90_ATL_x86.msm" />
+      <Merge Id="CrtMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\Microsoft_VC90_CRT_x86.msm" />
+      <Merge Id="MfcMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\Microsoft_VC90_MFC_x86.msm" />
+      <Merge Id="AtlPolicyMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\policy_9_0_Microsoft_VC90_ATL_x86.msm" />
+      <Merge Id="CrtPolicyMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\policy_9_0_Microsoft_VC90_CRT_x86.msm" />
+      <Merge Id="MfcPolicyMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\policy_9_0_Microsoft_VC90_MFC_x86.msm" />
 <?endif?>
       <Directory Id="ProgramFilesFolder" Name="Program Files (x86)">
         <Directory Id="BriceLambsonDirectory" Name="Brice Lambson">
           <Directory Id="INSTALLDIR" Name="PhotoToysClone">
             <Component Id="PhotoToysCloneComponent" Guid="07C1522E-16DB-4272-8120-33E894D664D2" Win64="no">
-              <File Id="PhotoToysClone" Name="PhotoToysClone.dll" Source="$(var.SolutionDir)PhotoToysClone\$(var.Configuration)\PhotoToysClone.dll" />  
+              <File Id="PhotoToysClone" Name="PhotoToysClone.dll" Source="$(var.SolutionDir)PhotoToysClone\$(var.Configuration)\PhotoToysClone.dll" />
               <RegistryKey Root="HKCR" Key="CLSID\{4CF20B46-D006-4B90-A64B-DBAA9470EFBE}\InProcServer32">
                 <RegistryValue Type="string" Value="[INSTALLDIR]PhotoToysClone.dll" />
                 <RegistryValue Type="string" Name="ThreadingModel" Value="Apartment" />
@@ -55,6 +68,12 @@
 <?if $(var.Platform) = x64 ?>
       <ComponentRef Id="PhotoToysClone64Component" />
 <?endif?>
+      <MergeRef Id="AtlMergeModule" />
+      <MergeRef Id="CrtMergeModule" />
+      <MergeRef Id="MfcMergeModule" />
+      <MergeRef Id="AtlPolicyMergeModule" />
+      <MergeRef Id="CrtPolicyMergeModule" />
+      <MergeRef Id="MfcPolicyMergeModule" />
       <ComponentRef Id="PhotoToysCloneComponent" />
       <!-- TODO: A README file might be nice to have. -->
     </Feature>
