@@ -1,21 +1,13 @@
-PhotoToys Clone
-Copyright © Brice Lambson All rights reserved.
-Homepage: http://phototoysclone.sourceforge.net
+PhotoToysClone
+Copyright (c) 2008, 2009 Brice Lambson. All rights reserved.
 
-For licensing terms, see the adjacent LICENSE.txt file.
-
-
-Several third-party components are required to build or compile this software.
-These components and the locations from which they can be obtained are as
-follows:
-
-Microsoft FxCop
- Homepage: http://code.msdn.microsoft.com/codeanalysis/
-
-Microsoft StyleCop
- Homepage: http://code.msdn.microsoft.com/sourceanalysis/
+This program and the accompanying materials are made available under the terms
+of the Eclipse Public License v1.0 which accompanies this distribution, and is
+available at http://www.eclipse.org/legal/epl-v10.html
 
 
-In order to Debug, this project registers itself for COM interop and also
-writes keys and values to the regitry.  Because of this, Administrative
-privleges are required.
+One third-party component is required to successfully build this software.  This
+component and the location from which it can be obtained is as follows:
+
+    Windows Installer XML (WiX) toolset
+        Homepage: http://wix.sourceforge.net/

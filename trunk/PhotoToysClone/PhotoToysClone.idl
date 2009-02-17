@@ -1,0 +1,16 @@
+[uuid(204306FD-15A9-40AB-A450-3E355EDDDA75)]
+[version(2.0)]
+[helpstring("PhotoToysClone 2.0 Type Library")]
+library PhotoToysCloneLib
+{
+	import "shobjidl.idl";
+
+	[uuid(4CF20B46-D006-4B90-A64B-DBAA9470EFBE)]
+	[helpstring("PhotoToysShellExtension Class")]
+	coclass PhotoToysShellExtension
+	{
+		[default]
+		interface IShellExtInit;
+		interface IContextMenu;
+	};
+};

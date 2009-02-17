@@ -1,0 +1,60 @@
+HKCR
+{
+	PhotoToysClone.PhotoToysShellExtension.2 = s 'PhotoToysShellExtension Class'
+	{
+		CLSID = s '{4CF20B46-D006-4B90-A64B-DBAA9470EFBE}'
+	}
+	PhotoToysClone.PhotoToysShellExtension = s 'PhotoToysShellExtension Class'
+	{
+		CLSID = s '{4CF20B46-D006-4B90-A64B-DBAA9470EFBE}'
+		CurVer = s 'PhotoToysClone.PhotoToysShellExtension.2'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {4CF20B46-D006-4B90-A64B-DBAA9470EFBE} = s 'PhotoToysShellExtension Class'
+		{
+			ProgID = s 'PhotoToysClone.PhotoToysShellExtension.2'
+			VersionIndependentProgID = s 'PhotoToysClone.PhotoToysShellExtension'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{204306FD-15A9-40AB-A450-3E355EDDDA75}'
+		}
+	}
+	NoRemove SystemFileAssociations
+	{
+		NoRemove image
+		{
+			NoRemove ShellEx
+			{
+				NoRemove ContextMenuHandlers
+				{
+					ForceRemove PhotoResizeClone = s '{4CF20B46-D006-4B90-A64B-DBAA9470EFBE}'
+				}
+			}
+		}
+	}
+}
+HKLM
+{
+	NoRemove SOFTWARE
+	{
+		NoRemove Microsoft
+		{
+			NoRemove Windows
+			{
+				NoRemove CurrentVersion
+				{
+					NoRemove 'Shell Extensions'
+					{
+						NoRemove Approved
+						{
+							val {4CF20B46-D006-4B90-A64B-DBAA9470EFBE} = s 'PhotoToysClone'
+						}
+					}
+				}
+			}			
+		}
+	}
+}
