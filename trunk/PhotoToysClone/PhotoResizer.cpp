@@ -82,7 +82,6 @@ void CPhotoResizer::ResizePhoto(CString filename, CString dstFilename, UINT widt
         delete image;
 
         // TODO: The extention and type may get out of sync here.
-		// TODO: Possibly use the encoderParams of image.
         dstImage->Save(dstFilename, &clsidEncoder);
 
         delete dstImage;
@@ -94,7 +93,7 @@ void CPhotoResizer::GetImageEncoderClsid(Image *image, CLSID *clsidEncoder)
 	CLSID format;
 	image->GetRawFormat(&format);
 
-	CLSID clsidEncoderBMP;
+	CLSID clsidDefaultEncoder;
 	BOOL found = FALSE;
 
 	for (UINT i = 0; i < m_numEncoders && !found; i++)
@@ -107,15 +106,15 @@ void CPhotoResizer::GetImageEncoderClsid(Image *image, CLSID *clsidEncoder)
 
 			found = TRUE;
 		}
+		// TODO: This default may not be ideal.
 		else if (encoder.FormatID == ImageFormatBMP)
 		{
-			clsidEncoderBMP = encoder.Clsid;
+			clsidDefaultEncoder = encoder.Clsid;
 		}
 	}
 
 	if (!found)
 	{
-		// TODO: This default may not be ideal.
-		*clsidEncoder = clsidEncoderBMP;
+		*clsidEncoder = clsidDefaultEncoder;
 	}
 }

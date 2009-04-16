@@ -46,12 +46,7 @@ HRESULT CPhotoToysShellExtension::QueryContextMenu(HMENU hmenu, UINT indexMenu, 
 {
 	if (!(uFlags & CMF_DEFAULTONLY))
 	{
-		CMenu *pMenu = CMenu::FromHandle(hmenu);
-
-		pMenu->InsertMenu(indexMenu, MF_STRING | MF_BYPOSITION, idCmdFirst + IDM_PHOTORESIZE, _T("Resize Pictures"));
-
-		// UNDONE: "Sometimes the hardest thing and the right thing are the same." --The Fray, "All At Once"
-		//delete pMenu;
+		InsertMenu(hmenu, indexMenu, MF_STRING | MF_BYPOSITION, idCmdFirst + IDM_PHOTORESIZE, _T("Resize Pictures"));
 	}
 
 	return MAKE_HRESULT(SEVERITY_SUCCESS, 0, IDM_PHOTORESIZE + 1);
@@ -84,8 +79,6 @@ HRESULT CPhotoToysShellExtension::GetCommandString(UINT_PTR idCmd, UINT uFlags, 
 
 HRESULT CPhotoToysShellExtension::InvokeCommand(LPCMINVOKECOMMANDINFO pici)
 {
-	AFX_MANAGE_STATE(AfxGetStaticModuleState())
-
 	BOOL fEx = FALSE;
 	BOOL fUnicode = FALSE;
 
@@ -126,10 +119,10 @@ HRESULT CPhotoToysShellExtension::InvokeCommand(LPCMINVOKECOMMANDINFO pici)
 
 HRESULT CPhotoToysShellExtension::OnPhotoResize(LPCMINVOKECOMMANDINFO pici)
 {	
-	CResizePicturesDialog resizePicturesDialog(CWnd::FromHandle(pici->hwnd));
+	CResizePicturesDialog resizePicturesDialog;
 
 	// TODO: This maybe ought to be executed on a new thread.
-	if (resizePicturesDialog.DoModal() == IDOK)
+	if (resizePicturesDialog.DoModal(pici->hwnd) == IDOK)
 	{
 		CPath sourceFile;
 		CPath destinationFile;

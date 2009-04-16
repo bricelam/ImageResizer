@@ -31,17 +31,13 @@
       </Directory>
       <Merge Id="AtlMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\Microsoft_VC90_ATL_x86_x64.msm" />
       <Merge Id="CrtMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\Microsoft_VC90_CRT_x86_x64.msm" />
-      <Merge Id="MfcMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\Microsoft_VC90_MFC_x86_x64.msm" />
       <Merge Id="AtlPolicyMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\policy_9_0_Microsoft_VC90_ATL_x86_x64.msm" />
       <Merge Id="CrtPolicyMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\policy_9_0_Microsoft_VC90_CRT_x86_x64.msm" />
-      <Merge Id="MfcPolicyMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\policy_9_0_Microsoft_VC90_MFC_x86_x64.msm" />
 <?else?>
       <Merge Id="AtlMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\Microsoft_VC90_ATL_x86.msm" />
       <Merge Id="CrtMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\Microsoft_VC90_CRT_x86.msm" />
-      <Merge Id="MfcMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\Microsoft_VC90_MFC_x86.msm" />
       <Merge Id="AtlPolicyMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\policy_9_0_Microsoft_VC90_ATL_x86.msm" />
       <Merge Id="CrtPolicyMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\policy_9_0_Microsoft_VC90_CRT_x86.msm" />
-      <Merge Id="MfcPolicyMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\policy_9_0_Microsoft_VC90_MFC_x86.msm" />
 <?endif?>
       <Directory Id="ProgramFilesFolder" Name="Program Files (x86)">
         <Directory Id="BriceLambsonDirectory" Name="Brice Lambson">
@@ -70,10 +66,8 @@
 <?endif?>
       <MergeRef Id="AtlMergeModule" />
       <MergeRef Id="CrtMergeModule" />
-      <MergeRef Id="MfcMergeModule" />
       <MergeRef Id="AtlPolicyMergeModule" />
       <MergeRef Id="CrtPolicyMergeModule" />
-      <MergeRef Id="MfcPolicyMergeModule" />
       <ComponentRef Id="PhotoToysCloneComponent" />
       <!-- TODO: A README file might be nice to have. -->
     </Feature>

@@ -5,9 +5,7 @@
 
 STDAPI DllCanUnloadNow()
 {
-    AFX_MANAGE_STATE(AfxGetStaticModuleState());
-
-	if (AfxDllCanUnloadNow() != S_OK || _AtlModule.GetLockCount() != 0)
+	if (_AtlModule.GetLockCount() != 0)
 	{
 		return S_FALSE;
 	}

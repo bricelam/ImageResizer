@@ -2,8 +2,7 @@
 #include "ResizePicturesDialog.h"
 #include "Resource.h"
 
-CResizePicturesDialog::CResizePicturesDialog(CWnd *pParentWnd)
-	: CDialog(IDD_RESIZEPICTURES, pParentWnd)
+CResizePicturesDialog::CResizePicturesDialog()
 {
 	m_imageWidth = 0;
 	m_imageHeight = 0;
@@ -34,193 +33,80 @@ BOOL CResizePicturesDialog::GetSmallerOnly()
 	return m_smallerOnly;
 }
 
-BOOL CResizePicturesDialog::OnInitDialog()
+LRESULT CResizePicturesDialog::OnInitDialog(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHandled)
 {
 	ResizeToBasic();
 
-	GetSmallRadioButton()->SetCheck(BST_CHECKED);
+	CheckDlgButton(IDC_SMALL, BST_CHECKED);
 
-	GetCustomLabel1()->EnableWindow(FALSE);
-	GetWidthTextBox()->EnableWindow(FALSE);
-	GetCustomLabel2()->EnableWindow(FALSE);
-	GetHeightTextBox()->EnableWindow(FALSE);
-	GetCustomLabel3()->EnableWindow(FALSE);
+	GetDlgItem(IDC_CUSTOM1).EnableWindow(FALSE);
+	GetDlgItem(IDC_WIDTH).EnableWindow(FALSE);
+	GetDlgItem(IDC_CUSTOM2).EnableWindow(FALSE);
+	GetDlgItem(IDC_HEIGHT).EnableWindow(FALSE);
+	GetDlgItem(IDC_CUSTOM3).EnableWindow(FALSE);
 
-	GetWidthTextBox()->SetWindowText(_T("1200"));
-	GetHeightTextBox()->SetWindowText(_T("1024"));
+	SetDlgItemText(IDC_WIDTH, _T("1200"));
+	SetDlgItemText(IDC_HEIGHT, _T("1024"));
 
-	return TRUE;
+	return 1;
 }
 
-void CResizePicturesDialog::OnOK()
+LRESULT CResizePicturesDialog::OnOK(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled)
 {
-	m_original = (GetOriginalCheckBox()->GetCheck() == BST_CHECKED);
+	m_original = (IsDlgButtonChecked(IDC_ORIGINAL) == BST_CHECKED);
 
-	// TODO: Resourcify these.
-	if (GetSmallRadioButton()->GetCheck() == BST_CHECKED)
+	// TODO: Resourcify appendages.
+	if (IsDlgButtonChecked(IDC_SMALL) == BST_CHECKED)
 	{
 		m_fileNameAppendage = _T(" (Small)");
-	}
-	else if (GetMediumRadioButton()->GetCheck() == BST_CHECKED)
-	{
-		m_fileNameAppendage = _T(" (Medium)");
-	}
-	else if (GetLargeRadioButton()->GetCheck() == BST_CHECKED)
-	{
-		m_fileNameAppendage = _T(" (Large)");
-	}
-	else if (GetWinCERadioButton()->GetCheck() == BST_CHECKED)
-	{
-		m_fileNameAppendage = _T(" (WinCE)");
-	}
-	else
-	{
-		m_fileNameAppendage = _T(" (Custom)");
-	}
-
-	if (GetSmallRadioButton()->GetCheck() == BST_CHECKED)
-	{
 		m_imageWidth = 640;
-	}
-	else if (GetMediumRadioButton()->GetCheck() == BST_CHECKED)
-	{
-		m_imageWidth = 800;
-	}
-	else if (GetLargeRadioButton()->GetCheck() == BST_CHECKED)
-	{
-		m_imageWidth = 1024;
-	}
-	else if (GetWinCERadioButton()->GetCheck() == BST_CHECKED)
-	{
-		m_imageWidth = 240;
-	}
-	else
-	{
-		CString width;
-		GetWidthTextBox()->GetWindowText(width);
-
-		// TODO: Validate.
-		m_imageWidth = _ttoi((LPCTSTR)width);
-	}
-
-	if (GetSmallRadioButton()->GetCheck() == BST_CHECKED)
-	{
 		m_imageHeight = 480;
 	}
-	else if (GetMediumRadioButton()->GetCheck() == BST_CHECKED)
+	else if (IsDlgButtonChecked(IDC_MEDIUM) == BST_CHECKED)
 	{
+		m_fileNameAppendage = _T(" (Medium)");
+		m_imageWidth = 800;
 		m_imageHeight = 600;
 	}
-	else if (GetLargeRadioButton()->GetCheck() == BST_CHECKED)
+	else if (IsDlgButtonChecked(IDC_LARGE) == BST_CHECKED)
 	{
+		m_fileNameAppendage = _T(" (Large)");
+		m_imageWidth = 1024;
 		m_imageHeight = 768;
 	}
-	else if (GetWinCERadioButton()->GetCheck() == BST_CHECKED)
+	else if (IsDlgButtonChecked(IDC_WINCE) == BST_CHECKED)
 	{
+		m_fileNameAppendage = _T(" (WinCE)");
+		m_imageWidth = 240;
 		m_imageHeight = 320;
 	}
 	else
 	{
+		CString width;
 		CString height;
-		GetHeightTextBox()->GetWindowText(height);
+
+		m_fileNameAppendage = _T(" (Custom)");
+
+		GetDlgItemText(IDC_WIDTH, width);
+		GetDlgItemText(IDC_HEIGHT, height);
 
 		// TODO: Validate.
+		m_imageWidth = _ttoi((LPCTSTR)width);
 		m_imageHeight = _ttoi((LPCTSTR)height);
 	}
 
-	m_smallerOnly = (GetSmallerCheckBox()->GetCheck() == BST_CHECKED);
+	m_smallerOnly = (IsDlgButtonChecked(IDC_SMALLER) == BST_CHECKED);
 
-	CDialog::OnOK();
+	EndDialog(IDOK);
+
+	return 1;
 }
 
-CButton *CResizePicturesDialog::GetSmallRadioButton()
+LRESULT CResizePicturesDialog::OnCancel(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled)
 {
-	return (CButton *)GetDlgItem(IDC_SMALL);
-}
+	EndDialog(IDCANCEL);
 
-CButton *CResizePicturesDialog::GetMediumRadioButton()
-{
-	return (CButton *)GetDlgItem(IDC_MEDIUM);
-}
-
-CButton *CResizePicturesDialog::GetLargeRadioButton()
-{
-	return (CButton *)GetDlgItem(IDC_LARGE);
-}
-
-CButton *CResizePicturesDialog::GetWinCERadioButton()
-{
-	return (CButton *)GetDlgItem(IDC_WINCE);
-}
-
-CButton *CResizePicturesDialog::GetAdvancedButton()
-{
-	return (CButton *)GetDlgItem(IDC_ADVANCED);
-}
-
-CButton *CResizePicturesDialog::GetOKButton()
-{
-	return (CButton *)GetDlgItem(IDOK);
-}
-
-CButton *CResizePicturesDialog::GetCancelButton()
-{
-	return (CButton *)GetDlgItem(IDCANCEL);
-}
-
-CButton *CResizePicturesDialog::GetCustomRadioButton()
-{
-	return (CButton *)GetDlgItem(IDC_CUSTOM);
-}
-
-CStatic *CResizePicturesDialog::GetCustomLabel1()
-{
-	return (CStatic *)GetDlgItem(IDC_CUSTOM1);
-}
-
-CEdit *CResizePicturesDialog::GetWidthTextBox()
-{
-	return (CEdit *)GetDlgItem(IDC_WIDTH);
-}
-
-CStatic *CResizePicturesDialog::GetCustomLabel2()
-{
-	return (CStatic *)GetDlgItem(IDC_CUSTOM2);
-}
-
-CEdit *CResizePicturesDialog::GetHeightTextBox()
-{
-	return (CEdit *)GetDlgItem(IDC_HEIGHT);
-}
-
-CStatic *CResizePicturesDialog::GetCustomLabel3()
-{
-	return (CStatic *)GetDlgItem(IDC_CUSTOM3);
-}
-
-CButton *CResizePicturesDialog::GetSmallerCheckBox()
-{
-	return (CButton *)GetDlgItem(IDC_SMALLER);
-}
-
-CButton *CResizePicturesDialog::GetOriginalCheckBox()
-{
-	return (CButton *)GetDlgItem(IDC_ORIGINAL);
-}
-
-CButton *CResizePicturesDialog::GetBasicButton()
-{
-	return (CButton *)GetDlgItem(IDC_BASIC);
-}
-
-CButton *CResizePicturesDialog::GetOKButton2()
-{
-	return (CButton *)GetDlgItem(IDC_OK);
-}
-
-CButton *CResizePicturesDialog::GetCancelButton2()
-{
-	return (CButton *)GetDlgItem(IDC_CANCEL);
+	return 1;
 }
 
 void CResizePicturesDialog::ResizeToBasic()
@@ -228,7 +114,7 @@ void CResizePicturesDialog::ResizeToBasic()
 	CRect rect = new CRect(0, 0, 276, 121);
 
 	MapDialogRect(rect);
-	CalcWindowRect(rect);
+	AdjustWindowRect(rect, GetStyle(), GetMenu() != NULL);
 
 	SetWindowPos(NULL, rect.left, rect.top, rect.Width(), rect.Height(), SWP_NOMOVE | SWP_NOZORDER);
 }
@@ -238,7 +124,7 @@ void CResizePicturesDialog::ResizeToAdvanced()
 	CRect rect = new CRect(0, 0, 276, 167);
 
 	MapDialogRect(rect);
-	CalcWindowRect(rect);
+	AdjustWindowRect(rect, GetStyle(), GetMenu() != NULL);
 
 	SetWindowPos(NULL, rect.left, rect.top, rect.Width(), rect.Height(), SWP_NOMOVE | SWP_NOZORDER);
 }
@@ -271,87 +157,81 @@ CPath CResizePicturesDialog::GetDestinationFile(CPath sourceFile, CPath direcotr
 	return path;
 }
 
-IMPLEMENT_DYNAMIC(CResizePicturesDialog, CDialog)
-
-BEGIN_MESSAGE_MAP(CResizePicturesDialog, CDialog)
-	ON_BN_CLICKED(IDC_ADVANCED, &CResizePicturesDialog::OnBnClickedAdvancedButton)
-	ON_BN_CLICKED(IDC_BASIC, &CResizePicturesDialog::OnBnClickedBasicButton)
-	ON_BN_CLICKED(IDC_OK, &CDialog::OnOK)
-	ON_BN_CLICKED(IDC_CANCEL, &CDialog::OnCancel)
-	ON_BN_CLICKED(IDC_CUSTOM, &CResizePicturesDialog::OnBnClickedCustomRadioButton)
-	ON_BN_CLICKED(IDC_SMALL, &CResizePicturesDialog::OnBnClickedNonCustomRadioButton)
-	ON_BN_CLICKED(IDC_MEDIUM, &CResizePicturesDialog::OnBnClickedNonCustomRadioButton)
-	ON_BN_CLICKED(IDC_LARGE, &CResizePicturesDialog::OnBnClickedNonCustomRadioButton)
-	ON_BN_CLICKED(IDC_WINCE, &CResizePicturesDialog::OnBnClickedNonCustomRadioButton)
-END_MESSAGE_MAP()
-
-void CResizePicturesDialog::OnBnClickedAdvancedButton()
+LRESULT CResizePicturesDialog::OnBnClickedAdvancedButton(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled)
 {
 	ResizeToAdvanced();
 
-	GetAdvancedButton()->ShowWindow(SW_HIDE);
-	GetOKButton()->ShowWindow(SW_HIDE);
-	GetCancelButton()->ShowWindow(SW_HIDE);
+	GetDlgItem(IDC_ADVANCED).ShowWindow(SW_HIDE);
+	GetDlgItem(IDOK).ShowWindow(SW_HIDE);
+	GetDlgItem(IDCANCEL).ShowWindow(SW_HIDE);
 
-	GetCustomRadioButton()->ShowWindow(SW_SHOW);
-	GetCustomLabel1()->ShowWindow(SW_SHOW);
-	GetWidthTextBox()->ShowWindow(SW_SHOW);
-	GetCustomLabel2()->ShowWindow(SW_SHOW);
-	GetHeightTextBox()->ShowWindow(SW_SHOW);
-	GetCustomLabel3()->ShowWindow(SW_SHOW);
-	GetSmallerCheckBox()->ShowWindow(SW_SHOW);
-	GetOriginalCheckBox()->ShowWindow(SW_SHOW);
-	GetBasicButton()->ShowWindow(SW_SHOW);
-	GetOKButton2()->ShowWindow(SW_SHOW);
-	GetCancelButton2()->ShowWindow(SW_SHOW);
+	GetDlgItem(IDC_CUSTOM).ShowWindow(SW_SHOW);
+	GetDlgItem(IDC_CUSTOM1).ShowWindow(SW_SHOW);
+	GetDlgItem(IDC_WIDTH).ShowWindow(SW_SHOW);
+	GetDlgItem(IDC_CUSTOM2).ShowWindow(SW_SHOW);
+	GetDlgItem(IDC_HEIGHT).ShowWindow(SW_SHOW);
+	GetDlgItem(IDC_CUSTOM3).ShowWindow(SW_SHOW);
+	GetDlgItem(IDC_SMALLER).ShowWindow(SW_SHOW);
+	GetDlgItem(IDC_ORIGINAL).ShowWindow(SW_SHOW);
+	GetDlgItem(IDC_BASIC).ShowWindow(SW_SHOW);
+	GetDlgItem(IDC_OK).ShowWindow(SW_SHOW);
+	GetDlgItem(IDC_CANCEL).ShowWindow(SW_SHOW);
+
+	return 1;
 }
 
-void CResizePicturesDialog::OnBnClickedBasicButton()
+LRESULT CResizePicturesDialog::OnBnClickedBasicButton(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled)
 {
 	ResizeToBasic();
 
-	GetAdvancedButton()->ShowWindow(SW_SHOW);
-	GetOKButton()->ShowWindow(SW_SHOW);
-	GetCancelButton()->ShowWindow(SW_SHOW);
+	GetDlgItem(IDC_ADVANCED).ShowWindow(SW_SHOW);
+	GetDlgItem(IDOK).ShowWindow(SW_SHOW);
+	GetDlgItem(IDCANCEL).ShowWindow(SW_SHOW);
 
-	GetCustomRadioButton()->ShowWindow(SW_HIDE);
-	GetCustomLabel1()->ShowWindow(SW_HIDE);
-	GetWidthTextBox()->ShowWindow(SW_HIDE);
-	GetCustomLabel2()->ShowWindow(SW_HIDE);
-	GetHeightTextBox()->ShowWindow(SW_HIDE);
-	GetCustomLabel3()->ShowWindow(SW_HIDE);
-	GetSmallerCheckBox()->ShowWindow(SW_HIDE);
-	GetOriginalCheckBox()->ShowWindow(SW_HIDE);
-	GetBasicButton()->ShowWindow(SW_HIDE);
-	GetOKButton2()->ShowWindow(SW_HIDE);
-	GetCancelButton2()->ShowWindow(SW_HIDE);
+	GetDlgItem(IDC_CUSTOM).ShowWindow(SW_HIDE);
+	GetDlgItem(IDC_CUSTOM1).ShowWindow(SW_HIDE);
+	GetDlgItem(IDC_WIDTH).ShowWindow(SW_HIDE);
+	GetDlgItem(IDC_CUSTOM2).ShowWindow(SW_HIDE);
+	GetDlgItem(IDC_HEIGHT).ShowWindow(SW_HIDE);
+	GetDlgItem(IDC_CUSTOM3).ShowWindow(SW_HIDE);
+	GetDlgItem(IDC_SMALLER).ShowWindow(SW_HIDE);
+	GetDlgItem(IDC_ORIGINAL).ShowWindow(SW_HIDE);
+	GetDlgItem(IDC_BASIC).ShowWindow(SW_HIDE);
+	GetDlgItem(IDC_OK).ShowWindow(SW_HIDE);
+	GetDlgItem(IDC_CANCEL).ShowWindow(SW_HIDE);
 
-	if (GetCustomRadioButton()->GetCheck() == BST_CHECKED)
+	if (IsDlgButtonChecked(IDC_CUSTOM) == BST_CHECKED)
 	{
-		GetSmallRadioButton()->SetCheck(BST_CHECKED);
+		CheckDlgButton(IDC_SMALL, BST_CHECKED);
 
-		GetCustomRadioButton()->SetCheck(BST_UNCHECKED);		
-		OnBnClickedNonCustomRadioButton();
+		CheckDlgButton(IDC_CUSTOM, BST_UNCHECKED);		
+		OnBnClickedNonCustomRadioButton(wNotifyCode, wID, hWndCtl, bHandled);
 	}
 
-	GetSmallerCheckBox()->SetCheck(BST_UNCHECKED);
-	GetOriginalCheckBox()->SetCheck(BST_UNCHECKED);
+	CheckDlgButton(IDC_SMALLER, BST_UNCHECKED);
+	CheckDlgButton(IDC_ORIGINAL, BST_UNCHECKED);
+
+	return 1;
 }
 
-void CResizePicturesDialog::OnBnClickedCustomRadioButton()
+LRESULT CResizePicturesDialog::OnBnClickedCustomRadioButton(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled)
 {
-	GetCustomLabel1()->EnableWindow();
-	GetWidthTextBox()->EnableWindow();
-	GetCustomLabel2()->EnableWindow();
-	GetHeightTextBox()->EnableWindow();
-	GetCustomLabel3()->EnableWindow();
+	GetDlgItem(IDC_CUSTOM1).EnableWindow();
+	GetDlgItem(IDC_WIDTH).EnableWindow();
+	GetDlgItem(IDC_CUSTOM2).EnableWindow();
+	GetDlgItem(IDC_HEIGHT).EnableWindow();
+	GetDlgItem(IDC_CUSTOM3).EnableWindow();
+
+	return 1;
 }
 
-void CResizePicturesDialog::OnBnClickedNonCustomRadioButton()
+LRESULT CResizePicturesDialog::OnBnClickedNonCustomRadioButton(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled)
 {
-	GetCustomLabel1()->EnableWindow(FALSE);
-	GetWidthTextBox()->EnableWindow(FALSE);
-	GetCustomLabel2()->EnableWindow(FALSE);
-	GetHeightTextBox()->EnableWindow(FALSE);
-	GetCustomLabel3()->EnableWindow(FALSE);
+	GetDlgItem(IDC_CUSTOM1).EnableWindow(FALSE);
+	GetDlgItem(IDC_WIDTH).EnableWindow(FALSE);
+	GetDlgItem(IDC_CUSTOM2).EnableWindow(FALSE);
+	GetDlgItem(IDC_HEIGHT).EnableWindow(FALSE);
+	GetDlgItem(IDC_CUSTOM3).EnableWindow(FALSE);
+
+	return 1;
 }
