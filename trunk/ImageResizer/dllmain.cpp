@@ -1,6 +1,13 @@
 #include "stdafx.h"
 #include "Resource.h"
-#include "PhotoToysClone_i.h"
+#include "ImageResizer_i.h"
 #include "dllmain.h"
 
-CPhotoToysCloneModule _AtlModule;
+CImageResizerModule _AtlModule;
+
+extern "C" BOOL WINAPI DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID lpReserved)
+{
+	hInstance;
+
+	return _AtlModule.DllMain(dwReason, lpReserved); 
+}

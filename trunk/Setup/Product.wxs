@@ -1,77 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
+<?include Config.wxi?>
+
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Id="*" Name="Image Resizer Powertoy Clone for Windows" Language="1033" Version="2.0.0.0" Manufacturer="Brice Lambson" UpgradeCode="70761553-CFB6-4150-8FDC-75B5769774CF">
-<?if $(var.Platform) = x64 ?>
-    <Package InstallerVersion="300" Compressed="yes" Platform="x64" />
-<?else?>
-    <Package InstallerVersion="300" Compressed="yes" />
-<?endif?>
-    <Media Id="1" EmbedCab="yes" Cabinet="Setup.cab" />    
+  <Product Id="*" Language="!(loc.Language)" Manufacturer="$(var.Manufacturer)" Name="$(var.ProductName)" UpgradeCode="$(var.UpgradeCode)" Version="$(var.Version)">
+    <Package Compressed="yes" InstallerVersion="300" />
+    <Media Id="1" Cabinet="Setup.cab" EmbedCab="yes" />
+<?if $(var.Platform) = x86 ?>
+    <Condition Message="!(loc.BitIgnorantUserWarning)">
+      <![CDATA[%PROCESSOR_ARCHITECTURE = "x86" AND NOT %PROCESSOR_ARCHITEW6432]]>
+    </Condition>
+<?endif ?>
     <Directory Id="TARGETDIR" Name="SourceDir">
-<?if $(var.Platform) = x64 ?>
-      <Directory Id="ProgramFiles64Folder" Name="Program Files">
-        <Directory Id="BriceLambson64Directory" Name="Brice Lambson">
-          <Directory Id="INSTALLDIR64" Name="PhotoToysClone">
-            <Component Id="PhotoToysClone64Component" Guid="CB600C68-C397-4C72-9554-BD201B55BEB7" Win64="yes">
-              <File Id="PhotoToysClone64" Name="PhotoToysClone.dll" Source="$(var.SolutionDir)PhotoToysClone\x64\$(var.Configuration)\PhotoToysClone.dll" />
-              <RegistryKey Root="HKCR" Key="CLSID\{4CF20B46-D006-4B90-A64B-DBAA9470EFBE}\InProcServer32">
-                <RegistryValue Type="string" Value="[INSTALLDIR64]PhotoToysClone.dll" />
-                <RegistryValue Type="string" Name="ThreadingModel" Value="Apartment" />
-              </RegistryKey>
-              <!-- TODO: Add support for versions of Windows prior to Windows XP. -->
-              <RegistryKey Root="HKCR" Key="SystemFileAssociations\image\ShellEx\ContextMenuHandlers\PhotoResizeClone">
-                <RegistryValue Type="string" Value="{4CF20B46-D006-4B90-A64B-DBAA9470EFBE}" />
-              </RegistryKey>
-              <RegistryKey Root="HKLM" Key="SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Approved" Action="create">
-                <RegistryValue Type="string" Name="{4CF20B46-D006-4B90-A64B-DBAA9470EFBE}" Value="PhotoToysClone" />
-              </RegistryKey>
-            </Component>
-          </Directory>
-        </Directory>
+      <Directory Id="$(var.ProgramFilesFolder)" Name="Program Files">
+        <Directory Id="APPLICATIONFOLDER" Name="[ApplicationFolderName]" FileSource="$(var.SolutionDir)" />
       </Directory>
-      <Merge Id="AtlMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\Microsoft_VC90_ATL_x86_x64.msm" />
-      <Merge Id="CrtMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\Microsoft_VC90_CRT_x86_x64.msm" />
-      <Merge Id="AtlPolicyMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\policy_9_0_Microsoft_VC90_ATL_x86_x64.msm" />
-      <Merge Id="CrtPolicyMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\policy_9_0_Microsoft_VC90_CRT_x86_x64.msm" />
-<?else?>
-      <Merge Id="AtlMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\Microsoft_VC90_ATL_x86.msm" />
-      <Merge Id="CrtMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\Microsoft_VC90_CRT_x86.msm" />
-      <Merge Id="AtlPolicyMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\policy_9_0_Microsoft_VC90_ATL_x86.msm" />
-      <Merge Id="CrtPolicyMergeModule" DiskId="1" Language="0" SourceFile="$(env.CommonProgramFiles)\Merge Modules\policy_9_0_Microsoft_VC90_CRT_x86.msm" />
-<?endif?>
-      <Directory Id="ProgramFilesFolder" Name="Program Files (x86)">
-        <Directory Id="BriceLambsonDirectory" Name="Brice Lambson">
-          <Directory Id="INSTALLDIR" Name="PhotoToysClone">
-            <Component Id="PhotoToysCloneComponent" Guid="07C1522E-16DB-4272-8120-33E894D664D2" Win64="no">
-              <File Id="PhotoToysClone" Name="PhotoToysClone.dll" Source="$(var.SolutionDir)PhotoToysClone\$(var.Configuration)\PhotoToysClone.dll" />
-              <RegistryKey Root="HKCR" Key="CLSID\{4CF20B46-D006-4B90-A64B-DBAA9470EFBE}\InProcServer32">
-                <RegistryValue Type="string" Value="[INSTALLDIR]PhotoToysClone.dll" />
-                <RegistryValue Type="string" Name="ThreadingModel" Value="Apartment" />
-              </RegistryKey>
-              <!-- TODO: Add support for versions of Windows prior to Windows XP. -->
-              <RegistryKey Root="HKCR" Key="SystemFileAssociations\image\ShellEx\ContextMenuHandlers\PhotoResizeClone">
-                <RegistryValue Type="string" Value="{4CF20B46-D006-4B90-A64B-DBAA9470EFBE}" />
-              </RegistryKey>
-              <RegistryKey Root="HKLM" Key="SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Approved" Action="create">
-                <RegistryValue Type="string" Name="{4CF20B46-D006-4B90-A64B-DBAA9470EFBE}" Value="PhotoToysClone" />
-              </RegistryKey>
-            </Component>
-          </Directory>
-        </Directory>
-      </Directory>
-    </Directory>    
-    <Feature Id="PhotoToysCloneFeature" Title="Image Resizer Powertoy Clone for Windows" Description="Allows you to right click on multiple image files in Windows Explorer to resize them." Level="1">
-<?if $(var.Platform) = x64 ?>
-      <ComponentRef Id="PhotoToysClone64Component" />
-<?endif?>
-      <MergeRef Id="AtlMergeModule" />
-      <MergeRef Id="CrtMergeModule" />
-      <MergeRef Id="AtlPolicyMergeModule" />
-      <MergeRef Id="CrtPolicyMergeModule" />
-      <ComponentRef Id="PhotoToysCloneComponent" />
-      <!-- TODO: A README file might be nice to have. -->
-    </Feature>
-    <WixVariable Id="WixUILicenseRtf" Value="epl-v10.rtf" />
-    <UIRef Id="WixUI_Minimal" />
+    </Directory>
+    <FeatureRef Id="ImageResizerFeature" />
+    <WixVariable Id="WixUILicenseRtf" Value="Content\epl-v10.rtf" />
+    <Property Id="ApplicationFolderName" Value="$(var.Product)" />
+    <Property Id="WixAppFolder" Value="WixPerMachineFolder" />
+    <UIRef Id="WixUI_Advanced" />
   </Product>
 </Wix>

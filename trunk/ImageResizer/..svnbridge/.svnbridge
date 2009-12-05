@@ -7,4 +7,12 @@ Release
 bin
 obj
 x64
+</Value></Property><Property><Name>svn:ignore</Name><Value>*.user
+Debug
+Release
+bin
+obj
+x64
+ImageResizer_i.c
+ImageResizer_i.h
 </Value></Property></Properties></ItemProperties>

@@ -5,10 +5,6 @@
 	Name="ImageResizer"
 	ProjectGUID="{8B910FC0-18BD-4C79-B4CD-5D54EBB594D7}"
 	RootNamespace="ImageResizer"
-	SccProjectName="SAK"
-	SccAuxPath="SAK"
-	SccLocalPath="SAK"
-	SccProvider="SAK"
 	Keyword="AtlProj"
 	TargetFrameworkVersion="196613"
 	>

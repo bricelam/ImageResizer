@@ -1,120 +1,158 @@
 #include "stdafx.h"
-#include "PhotoResizer.h"
+#include "ImageHelper.h"
 
-using namespace Gdiplus;
-
-CPhotoResizer::CPhotoResizer()
+ImageHelper::ImageHelper()
 {
 	GdiplusStartupInput input;
 	GdiplusStartup(&m_token, &input, NULL);
 
+	// Load the list of encoders.
 	UINT size;
-	GetImageEncodersSize(&m_numEncoders, &size);
+	UINT numEncoders;
+	GetImageEncodersSize(&numEncoders, &size);
 
-	m_encoders = (ImageCodecInfo *)malloc(size);
-	GetImageEncoders(m_numEncoders, size, m_encoders);
+	ImageCodecInfo *encoders = (ImageCodecInfo *)malloc(size);
+	GetImageEncoders(numEncoders, size, encoders);
+
+	for (UINT i = 0; i < numEncoders; i++)
+	{
+		ImageCodecInfo encoder = encoders[i];
+
+		m_aEncoders.Add(encoder);
+
+		// Find a default encoder to use.
+		if (encoder.FormatID == ImageFormatPNG)
+		{
+			m_defaultEncoder = encoder;
+		}
+	}
+
+	free(encoders);	
 }
 
-CPhotoResizer::~CPhotoResizer()
+ImageHelper::~ImageHelper()
 {
-	free(m_encoders);
-
 	GdiplusShutdown(m_token);
 }
 
-void CPhotoResizer::ResizePhoto(CString filename, CString dstFilename, UINT width, UINT height, BOOL smallerOnly)
+void ImageHelper::Resize(const CPath &pathSource, const CPath &pathDirectory, IMAGE_SIZE size, UINT nWidth, UINT nHeight, BOOL fSmaller, BOOL fOriginal)
 {
-	Image *image = Image::FromFile(filename);
+	CPath pathDestination = GetDestinationPath(pathSource, pathDirectory, size, fOriginal);
+	Image *pImage = Image::FromFile(CT2W(pathSource));
 
-	UINT srcWidth = image->GetWidth();
-    UINT srcHeight = image->GetHeight();
-    FLOAT widthRatio = width / (FLOAT)srcWidth;
-    FLOAT heightRatio = height / (FLOAT)srcHeight;
+	UINT srcWidth = pImage->GetWidth();
+	UINT srcHeight = pImage->GetHeight();
+	FLOAT widthRatio = nWidth / (FLOAT)srcWidth;
+	FLOAT heightRatio = nHeight / (FLOAT)srcHeight;
 
 	if (widthRatio > heightRatio)
-    {
-        width = (UINT)(heightRatio * srcWidth);
-    }
-    else
-    {
-        height = (UINT)(widthRatio * srcHeight);
-    }
-
-	if (width == srcWidth || height == srcHeight || (smallerOnly && (width > srcWidth || height > srcHeight)))
-    {
-        delete image;
-
-		if (filename.CompareNoCase(dstFilename) != 0)
-        {
-			CopyFile(filename, dstFilename, TRUE);
-        }
-    }
+	{
+		nWidth = (UINT)(heightRatio * srcWidth);
+	}
 	else
-    {
-        Image *dstImage = new Bitmap(width, height);
+	{
+		nHeight = (UINT)(widthRatio * srcHeight);
+	}
 
-		Graphics *graphics = Graphics::FromImage(dstImage);
-        
-		graphics->SetCompositingQuality(CompositingQualityHighQuality);
-		graphics->SetInterpolationMode(InterpolationModeHighQualityBicubic);
-		graphics->Clear(Color::Transparent);
-        graphics->DrawImage(image, 0, 0, width, height);
-        
-		delete graphics;
+	if (nWidth == srcWidth || nHeight == srcHeight || (fSmaller && (nWidth > srcWidth || nHeight > srcHeight)))
+	{
+		delete pImage;
+
+		if (!fOriginal)
+		{
+			CopyFile(pathSource, pathDestination, TRUE);
+		}
+	}
+	else
+	{
+		Image *pImage2 = new Bitmap(nWidth, nHeight);
+
+		Graphics *pGraphics = Graphics::FromImage(pImage2);
+
+		pGraphics->SetCompositingQuality(CompositingQualityHighQuality);
+		pGraphics->SetInterpolationMode(InterpolationModeHighQualityBicubic);
+		pGraphics->Clear(Color::Transparent);
+		pGraphics->DrawImage(pImage, 0, 0, nWidth, nHeight);
+
+		delete pGraphics;
 
 		UINT totalBufferSize;
 		UINT numProperties;
-		image->GetPropertySize(&totalBufferSize, &numProperties);
+		pImage->GetPropertySize(&totalBufferSize, &numProperties);
 
 		PropertyItem *allItems = (PropertyItem *)malloc(totalBufferSize);
-		image->GetAllPropertyItems(totalBufferSize, numProperties, allItems);
+		pImage->GetAllPropertyItems(totalBufferSize, numProperties, allItems);
 
 		for (UINT i = 0; i < numProperties; i++)
 		{
-			dstImage->SetPropertyItem(allItems + i);
+			pImage2->SetPropertyItem(allItems + i);
 		}
 
 		free(allItems);
 
-		CLSID clsidEncoder;
-		GetImageEncoderClsid(image, &clsidEncoder);
+		const ImageCodecInfo *pEncoder = GetEncoderForImage(pImage);
 
-        delete image;
+		delete pImage;
 
-        // TODO: The extention and type may get out of sync here.
-        dstImage->Save(dstFilename, &clsidEncoder);
+		if (!pEncoder)
+		{
+			pEncoder = &m_defaultEncoder;
+			pathDestination.RenameExtension(_T(".png"));
+		}
 
-        delete dstImage;
-    }
+		pImage2->Save(CT2W(pathDestination), &pEncoder->Clsid);
+
+		delete pImage2;
+	}
 }
 
-void CPhotoResizer::GetImageEncoderClsid(Image *image, CLSID *clsidEncoder)
+CPath ImageHelper::GetDestinationPath(const CPath &pathSource, const CPath &pathDirecotry, IMAGE_SIZE size, BOOL fOriginal)
 {
-	CLSID format;
-	image->GetRawFormat(&format);
-
-	CLSID clsidDefaultEncoder;
-	BOOL found = FALSE;
-
-	for (UINT i = 0; i < m_numEncoders && !found; i++)
+	if (fOriginal)
 	{
-		ImageCodecInfo encoder = m_encoders[i];
+		return pathSource;
+	}
 
-		if (encoder.FormatID == format)
-		{
-			*clsidEncoder = encoder.Clsid;
+	CString strAppendage = SettingsHelper::GetAppendageForSize(size);
+	
+	int iFileName = pathSource.FindFileName();
+	int iExtension = pathSource.FindExtension();
 
-			found = TRUE;
-		}
-		// TODO: This default may not be ideal.
-		else if (encoder.FormatID == ImageFormatBMP)
+	CString strFileName = CString(pathSource).Mid(iFileName, iExtension - iFileName);
+	CString strExtension = CString(pathSource).Mid(iExtension);
+	
+	CPath path;
+	UINT count = 1;
+	
+	// TODO: Resourcify.
+	do
+	{
+		CString strCount;
+		strCount.Format(_T(" (%d)"), count);
+
+		path.Combine(pathDirecotry, strFileName + _T(" (") + strAppendage + _T(")") + (count == 1 ? _T("") : strCount));
+		path.RenameExtension(strExtension);
+
+		count++;
+	} while (path.FileExists());
+
+	return path;
+}
+
+const ImageCodecInfo *ImageHelper::GetEncoderForImage(Image *pImage)
+{
+	GUID format;
+	pImage->GetRawFormat(&format);
+
+	size_t numEncoders = m_aEncoders.GetCount();
+
+	for (UINT i = 0; i < numEncoders; i++)
+	{
+		if (m_aEncoders[i].FormatID == format)
 		{
-			clsidDefaultEncoder = encoder.Clsid;
+			return &m_aEncoders[i];
 		}
 	}
 
-	if (!found)
-	{
-		*clsidEncoder = clsidDefaultEncoder;
-	}
+	return NULL;
 }

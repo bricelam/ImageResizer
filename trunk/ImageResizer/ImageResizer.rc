@@ -46,7 +46,7 @@ END
 
 3 TEXTINCLUDE 
 BEGIN
-    "1 TYPELIB ""PhotoToysClone.tlb""\r\n"
+    "1 TYPELIB ""ImageResizer.tlb""\r\n"
     "\0"
 END
 
@@ -77,9 +77,9 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "Brice Lambson"
             VALUE "FileVersion", "2.0.0.0"
-            VALUE "InternalName", "PhotoToysClone.dll"
+            VALUE "InternalName", "ImageResizer.dll"
             VALUE "LegalCopyright", "Copyright (c) 2008, 2009 Brice Lambson. All rights reserved."
-            VALUE "OriginalFilename", "PhotoToysClone.dll"
+            VALUE "OriginalFilename", "ImageResizer.dll"
             VALUE "ProductName", "Image Resizer Powertoy Clone for Windows"
             VALUE "ProductVersion", "2.0.0.0"
         END
@@ -96,24 +96,24 @@ END
 // REGISTRY
 //
 
-IDR_PHOTOTOYSCLONE      REGISTRY                "PhotoToysClone.rgs"
-IDR_PHOTOTOYSSHELLEXTENSION REGISTRY                "PhotoToysShellExtension.rgs"
+IDR_IMAGERESIZER        REGISTRY                "ImageResizer.rgs"
+IDR_CONTEXTMENUHANDLER  REGISTRY                "ContextMenuHandler.rgs"
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Dialog
 //
 
-IDD_RESIZEPICTURES DIALOGEX 0, 0, 276, 175
+IDD_PHOTORESIZEDLG DIALOGEX 0, 0, 276, 175
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Resize Pictures"
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
     LTEXT           "You can create resized copies of one or more selected pictures and store them in the current folder.\n\nSelect a size:",IDC_STATIC,7,7,262,51
-    CONTROL         "&Small (fits a 640 x 480 screen)",IDC_SMALL,"Button",BS_AUTORADIOBUTTON,12,43,200,10
-    CONTROL         "&Medium (fits a 800 x 600 screen)",IDC_MEDIUM,"Button",BS_AUTORADIOBUTTON,12,57,200,10
-    CONTROL         "&Large (fits a 1024 x 768 screen)",IDC_LARGE,"Button",BS_AUTORADIOBUTTON,12,71,200,10
-    CONTROL         "&Handheld PC (fits a 240 x 320 screen)",IDC_WINCE,
+    CONTROL         "&Small (fits a 854 x 480 screen)",IDC_SMALL,"Button",BS_AUTORADIOBUTTON,12,43,200,10
+    CONTROL         "&Medium (fits a 1366 x 768 screen)",IDC_MEDIUM,"Button",BS_AUTORADIOBUTTON,12,57,200,10
+    CONTROL         "&Large (fits a 1920 x 1080 screen)",IDC_LARGE,"Button",BS_AUTORADIOBUTTON,12,71,200,10
+    CONTROL         "&Mobile Device (fits a 320 x 480 screen)",IDC_MOBILE,
                     "Button",BS_AUTORADIOBUTTON,12,85,200,10
     CONTROL         "&Custom",IDC_CUSTOM,"Button",BS_AUTORADIOBUTTON | NOT WS_VISIBLE,12,99,38,10
     LTEXT           "(fits a ",IDC_CUSTOM1,51,99,20,10,NOT WS_VISIBLE
@@ -142,7 +142,7 @@ END
 #ifdef APSTUDIO_INVOKED
 GUIDELINES DESIGNINFO 
 BEGIN
-    IDD_RESIZEPICTURES, DIALOG
+    IDD_PHOTORESIZEDLG, DIALOG
     BEGIN
         LEFTMARGIN, 7
         RIGHTMARGIN, 269
@@ -160,7 +160,7 @@ END
 
 STRINGTABLE 
 BEGIN
-    IDS_PROJNAME            "PhotoToysClone"
+    IDS_PROJNAME            "ImageResizer"
 END
 
 #endif    // English (U.S.) resources
@@ -173,7 +173,7 @@ END
 //
 // Generated from the TEXTINCLUDE 3 resource.
 //
-1 TYPELIB "PhotoToysClone.tlb"
+1 TYPELIB "ImageResizer.tlb"
 
 /////////////////////////////////////////////////////////////////////////////
 #endif    // not APSTUDIO_INVOKED

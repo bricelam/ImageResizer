@@ -1,4 +1,4 @@
-LIBRARY "PhotoToysClone.DLL"
+LIBRARY "ImageResizer.DLL"
 
 EXPORTS
 	DllCanUnloadNow		PRIVATE

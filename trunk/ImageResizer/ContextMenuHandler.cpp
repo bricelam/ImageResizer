@@ -1,107 +1,101 @@
 #include "stdafx.h"
-#include "PhotoToysShellExtension.h"
-#include "ResizePicturesDialog.h"
-#include "PhotoResizer.h"
+#include "ContextMenuHandler.h"
+#include "PhotoResizeDlg.h"
+#include "ImageHelper.h"
 
 #define IDM_PHOTORESIZE 0
+#define VERB_PHOTORESIZE _T("PhotoResize")
 
-CPhotoToysShellExtension::CPhotoToysShellExtension()
+HRESULT CContextMenuHandler::Initialize(PCIDLIST_ABSOLUTE pidlFolder, IDataObject *pdtobj, HKEY hkeyProgID)
 {
-	m_files = NULL;
-	m_lpVerbA = "PhotoResize";
-	m_lpVerbW = _T("PhotoResize");
-}
+	// ATL-ify parameters.
+	CString strFolder;
 
-HRESULT CPhotoToysShellExtension::Initialize(PCIDLIST_ABSOLUTE pidlFolder, IDataObject *pdtobj, HKEY hkeyProgID)
-{
-	if (pdtobj != NULL)
+	SHGetPathFromIDList(pidlFolder, strFolder.GetBuffer(MAX_PATH));
+	strFolder.ReleaseBuffer();
+
+	// Set drop folder.
+	m_pathFolder.m_strPath = strFolder;
+
+	// Get selected files.
+	STGMEDIUM medium;
+	FORMATETC formatetc;
+	
+	formatetc.cfFormat = CF_HDROP;
+	formatetc.ptd = NULL;
+	formatetc.dwAspect = DVASPECT_CONTENT;
+	formatetc.lindex = -1;
+	formatetc.tymed = TYMED_HGLOBAL;
+
+	pdtobj->GetData(&formatetc, &medium);
+
+	UINT numFiles = DragQueryFile((HDROP)medium.hGlobal, 0xFFFFFFFF, NULL, 0);
+
+	for (UINT i = 0; i < numFiles; i++)
 	{
-		STGMEDIUM medium;
+		CString strFile;
 
-		FORMATETC formatetc;
-		formatetc.cfFormat = CF_HDROP;
-		formatetc.ptd = NULL;
-		formatetc.dwAspect = DVASPECT_CONTENT;
-		formatetc.lindex = -1;
-		formatetc.tymed = TYMED_HGLOBAL;
+		DragQueryFile((HDROP)medium.hGlobal, i, strFile.GetBuffer(MAX_PATH), MAX_PATH);
+		strFile.ReleaseBuffer();
 
-		pdtobj->GetData(&formatetc, &medium);
-
-		m_numFiles = DragQueryFile((HDROP)medium.hGlobal, 0xFFFFFFFF, NULL, 0);
-		m_files = new PTCHAR[m_numFiles];
-
-		for (UINT i = 0; i < m_numFiles; i++)
-		{
-			m_files[i] = new TCHAR[MAX_PATH];
-			DragQueryFile((HDROP)medium.hGlobal, i, m_files[i], MAX_PATH);
-		}
-
-		ReleaseStgMedium(&medium);
+		m_aFiles.Add(CPath(strFile));
 	}
+
+	// Cleanup.
+	ReleaseStgMedium(&medium);
 
 	return S_OK;
 }
 
-HRESULT CPhotoToysShellExtension::QueryContextMenu(HMENU hmenu, UINT indexMenu, UINT idCmdFirst, UINT idCmdLast, UINT uFlags)
+HRESULT CContextMenuHandler::QueryContextMenu(HMENU hmenu, UINT indexMenu, UINT idCmdFirst, UINT idCmdLast, UINT uFlags)
 {
 	if (!(uFlags & CMF_DEFAULTONLY))
 	{
 		InsertMenu(hmenu, indexMenu, MF_STRING | MF_BYPOSITION, idCmdFirst + IDM_PHOTORESIZE, _T("Resize Pictures"));
 	}
 
-	return MAKE_HRESULT(SEVERITY_SUCCESS, 0, IDM_PHOTORESIZE + 1);
+	return MAKE_HRESULT(SEVERITY_SUCCESS, 0, idCmdFirst + IDM_PHOTORESIZE + 1);
 }
 
-HRESULT CPhotoToysShellExtension::GetCommandString(UINT_PTR idCmd, UINT uFlags, UINT *pwReserved, LPSTR pszName, UINT cchMax)
+HRESULT CContextMenuHandler::GetCommandString(UINT_PTR idCmd, UINT uFlags, UINT *pwReserved, LPSTR pszName, UINT cchMax)
 {
-	HRESULT hResult = E_INVALIDARG;
-
-	if (idCmd == 0)
+	if (uFlags == GCS_VERBA)
 	{
-		switch (uFlags)
+		if (idCmd == IDM_PHOTORESIZE)
 		{
-		case GCS_VERBA:
-			hResult = StringCchCopyNA(pszName, 12, m_lpVerbA, cchMax);
-			break;
+			CStringA::CopyChars(pszName, cchMax, CT2CA(VERB_PHOTORESIZE), CString(VERB_PHOTORESIZE).GetLength());
+			
+			return S_OK;
+		}
+	}
+	else if (uFlags == GCS_VERBW)
+	{
+		if (idCmd == IDM_PHOTORESIZE)
+		{
+			CStringW::CopyChars((LPWSTR)pszName, cchMax, CT2CW(VERB_PHOTORESIZE), CString(VERB_PHOTORESIZE).GetLength());
 
-		case GCS_VERBW:
-			hResult = StringCchCopyNW((LPWSTR)pszName, 12, m_lpVerbW, cchMax);
-			break;
-
-		default:
-			hResult = S_OK;
-			break;
+			return S_OK;
 		}
 	}
 
-	return hResult;
+	return E_INVALIDARG;
 }
 
-HRESULT CPhotoToysShellExtension::InvokeCommand(LPCMINVOKECOMMANDINFO pici)
+HRESULT CContextMenuHandler::InvokeCommand(LPCMINVOKECOMMANDINFO pici)
 {
-	BOOL fEx = FALSE;
-	BOOL fUnicode = FALSE;
-
-	if (pici->cbSize == sizeof(CMINVOKECOMMANDINFOEX))
-	{
-		fEx = TRUE;
-
-		if (pici->fMask & CMIC_MASK_UNICODE)
-		{
-			fUnicode = TRUE;
-		}
-	}
+	BOOL fUnicode = pici->cbSize == sizeof(CMINVOKECOMMANDINFOEX) &&
+					pici->fMask & CMIC_MASK_UNICODE;
 
 	if (!fUnicode && HIWORD(pici->lpVerb))
 	{
-		if (StrCmpIA(pici->lpVerb, m_lpVerbA) == 0)
+		if (CString(pici->lpVerb).CompareNoCase(VERB_PHOTORESIZE) == 0)
 		{
 			return OnPhotoResize(pici);
 		}
 	}
-	else if (fUnicode && HIWORD(((CMINVOKECOMMANDINFOEX *)pici)->lpVerbW))
+	else if (fUnicode && HIWORD(((LPCMINVOKECOMMANDINFOEX)pici)->lpVerbW))
 	{
-		if (StrCmpIW(((CMINVOKECOMMANDINFOEX *)pici)->lpVerbW, m_lpVerbW) == 0)
+		if (CString(((LPCMINVOKECOMMANDINFOEX)pici)->lpVerbW).CompareNoCase(VERB_PHOTORESIZE) == 0)
 		{
 			return OnPhotoResize(pici);
 		}
@@ -117,27 +111,41 @@ HRESULT CPhotoToysShellExtension::InvokeCommand(LPCMINVOKECOMMANDINFO pici)
 	return E_FAIL;
 }
 
-HRESULT CPhotoToysShellExtension::OnPhotoResize(LPCMINVOKECOMMANDINFO pici)
-{	
-	CResizePicturesDialog resizePicturesDialog;
+HRESULT CContextMenuHandler::OnPhotoResize(LPCMINVOKECOMMANDINFO pici)
+{
+	CPhotoResizeDlg dlgPhotoResize;
 
-	// TODO: This maybe ought to be executed on a new thread.
-	if (resizePicturesDialog.DoModal(pici->hwnd) == IDOK)
+	// TODO: Don't block.
+	if (dlgPhotoResize.DoModal(pici->hwnd) == IDOK)
 	{
-		CPath sourceFile;
-		CPath destinationFile;
-		UINT width = resizePicturesDialog.GetImageWidth();
-		UINT height = resizePicturesDialog.GetImageHeight();
-		BOOL smallerOnly = resizePicturesDialog.GetSmallerOnly();
+		CPath pathSource;
+		ImageHelper imageHelper;
+		size_t numFiles = m_aFiles.GetCount();
+		CPath pathDirectory;
 
-		CPhotoResizer photoResizer;
-		
-		for (UINT i = 0; i < m_numFiles; i++)
+		IMAGE_SIZE size = dlgPhotoResize.GetSize();
+		UINT nWidth = dlgPhotoResize.GetWidth();
+		UINT nHeight = dlgPhotoResize.GetHeight();
+		BOOL fSmaller = dlgPhotoResize.IsSmaller();
+		BOOL fOriginal = dlgPhotoResize.IsOriginal();
+
+		if (!CString(m_pathFolder).IsEmpty())
 		{
-			sourceFile = m_files[i];
-			destinationFile = resizePicturesDialog.GetDestinationFile((CPath)sourceFile);
+			pathDirectory = m_pathFolder;
+		}
+
+		// TODO: Multi-thread.
+		for (UINT i = 0; i < numFiles; i++)
+		{
+			pathSource = m_aFiles[i];
 			
-			photoResizer.ResizePhoto(sourceFile, destinationFile, width, height, smallerOnly);
+			if (CString(m_pathFolder).IsEmpty())
+			{
+				pathDirectory = pathSource;
+				pathDirectory.RemoveFileSpec();
+			}
+
+			imageHelper.Resize(pathSource, pathDirectory, size, nWidth, nHeight, fSmaller, fOriginal);
 		}
 	}
 

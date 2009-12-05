@@ -1,15 +1,15 @@
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
-// Used by PhotoToysClone.rc
+// Used by ImageResizer.rc
 //
 #define IDS_PROJNAME                    100
-#define IDR_PHOTOTOYSCLONE              101
-#define IDD_RESIZEPICTURES              104
+#define IDR_IMAGERESIZER                101
+#define IDD_PHOTORESIZEDLG              104
 #define IDC_SMALL                       201
-#define IDR_PHOTOTOYSSHELLEXTENSION     202
+#define IDR_CONTEXTMENUHANDLER          202
 #define IDC_MEDIUM                      202
 #define IDC_LARGE                       203
-#define IDC_WINCE                       204
+#define IDC_MOBILE                      204
 #define IDC_CUSTOM                      205
 #define IDC_WIDTH                       206
 #define IDC_HEIGHT                      207

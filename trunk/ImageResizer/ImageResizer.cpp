@@ -1,21 +1,18 @@
 #include "stdafx.h"
 #include "Resource.h"
-#include "PhotoToysClone_i.h"
+#include "ImageResizer_i.h"
 #include "dllmain.h"
+
+using namespace ATL;
 
 STDAPI DllCanUnloadNow()
 {
-	if (_AtlModule.GetLockCount() != 0)
-	{
-		return S_FALSE;
-	}
-
-	return S_OK;
+	return _AtlModule.DllCanUnloadNow();
 }
 
-STDAPI DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID *ppv)
+STDAPI DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID* ppv)
 {
-    return _AtlModule.DllGetClassObject(rclsid, riid, ppv);
+	return _AtlModule.DllGetClassObject(rclsid, riid, ppv);
 }
 
 STDAPI DllRegisterServer()
@@ -27,32 +24,33 @@ STDAPI DllUnregisterServer()
 {
 	return _AtlModule.DllUnregisterServer();
 }
-	
+
 STDAPI DllInstall(BOOL bInstall, LPCWSTR pszCmdLine)
 {
-    HRESULT hr = E_FAIL;
-    static const wchar_t szUserSwitch[] = _T("user");
+	HRESULT hr = E_FAIL;
+	static const wchar_t szUserSwitch[] = L"user";
 
-    if (pszCmdLine != NULL)
-    {
-    	if (_wcsnicmp(pszCmdLine, szUserSwitch, _countof(szUserSwitch)) == 0)
-    	{
-    		AtlSetPerUserRegistration(true);
-    	}
-    }
+	if (pszCmdLine != NULL)
+	{
+		if (_wcsnicmp(pszCmdLine, szUserSwitch, _countof(szUserSwitch)) == 0)
+		{
+			AtlSetPerUserRegistration(true);
+		}
+	}
 
-    if (bInstall)
-    {	
-    	hr = DllRegisterServer();
-    	if (FAILED(hr))
-    	{	
-    		DllUnregisterServer();
-    	}
-    }
-    else
-    {
-    	hr = DllUnregisterServer();
-    }
+	if (bInstall)
+	{	
+		hr = DllRegisterServer();
 
-    return hr;
+		if (FAILED(hr))
+		{
+			DllUnregisterServer();
+		}
+	}
+	else
+	{
+		hr = DllUnregisterServer();
+	}
+
+	return hr;
 }

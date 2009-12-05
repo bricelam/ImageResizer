@@ -1,237 +1,258 @@
 #include "stdafx.h"
-#include "ResizePicturesDialog.h"
+#include "PhotoResizeDlg.h"
 #include "Resource.h"
 
-CResizePicturesDialog::CResizePicturesDialog()
+IMAGE_SIZE CPhotoResizeDlg::GetSize() const
 {
-	m_imageWidth = 0;
-	m_imageHeight = 0;
-	m_smallerOnly = FALSE;
-	m_original = FALSE;
+	return m_size;
 }
 
-CPath CResizePicturesDialog::GetDestinationFile(CPath sourceFile)
+UINT CPhotoResizeDlg::GetHeight() const
 {
-	CPath directoryName = sourceFile;
-	directoryName.RemoveFileSpec();	
-	
-	return GetDestinationFile(sourceFile, directoryName);
+	return m_nHeight;
 }
 
-UINT CResizePicturesDialog::GetImageWidth()
+UINT CPhotoResizeDlg::GetWidth() const
 {
-	return m_imageWidth;
+	return m_nWidth;
 }
 
-UINT CResizePicturesDialog::GetImageHeight()
+BOOL CPhotoResizeDlg::IsSmaller() const
 {
-	return m_imageHeight;
+	return m_fSmaller;
 }
 
-BOOL CResizePicturesDialog::GetSmallerOnly()
-{	
-	return m_smallerOnly;
+BOOL CPhotoResizeDlg::IsOriginal() const
+{
+	return m_fOriginal;
 }
 
-LRESULT CResizePicturesDialog::OnInitDialog(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHandled)
+LRESULT CPhotoResizeDlg::OnInitDialog(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHandled)
 {
-	ResizeToBasic();
+	IMAGE_SIZE size = IMGSZ_SMALL;
+	UINT nCustomWidth = 1280;
+	UINT nCustomHeight = 720;
+	BOOL fSmaller = FALSE;
+	BOOL fOriginal = FALSE;
 
-	CheckDlgButton(IDC_SMALL, BST_CHECKED);
+	SettingsHelper::LoadSettings(&size, &nCustomWidth, &nCustomHeight, &fSmaller, &fOriginal);
 
-	GetDlgItem(IDC_CUSTOM1).EnableWindow(FALSE);
-	GetDlgItem(IDC_WIDTH).EnableWindow(FALSE);
-	GetDlgItem(IDC_CUSTOM2).EnableWindow(FALSE);
-	GetDlgItem(IDC_HEIGHT).EnableWindow(FALSE);
-	GetDlgItem(IDC_CUSTOM3).EnableWindow(FALSE);
-
-	SetDlgItemText(IDC_WIDTH, _T("1200"));
-	SetDlgItemText(IDC_HEIGHT, _T("1024"));
-
-	return 1;
-}
-
-LRESULT CResizePicturesDialog::OnOK(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled)
-{
-	m_original = (IsDlgButtonChecked(IDC_ORIGINAL) == BST_CHECKED);
-
-	// TODO: Resourcify appendages.
-	if (IsDlgButtonChecked(IDC_SMALL) == BST_CHECKED)
+	switch (size)
 	{
-		m_fileNameAppendage = _T(" (Small)");
-		m_imageWidth = 640;
-		m_imageHeight = 480;
+	case IMGSZ_SMALL:
+		CheckDlgButton(IDC_SMALL, BST_CHECKED);
+		break;
+		
+	case IMGSZ_MEDIUM:
+		CheckDlgButton(IDC_MEDIUM, BST_CHECKED);
+		break;
+		
+	case IMGSZ_LARGE:
+		CheckDlgButton(IDC_LARGE, BST_CHECKED);
+		break;
+		
+	case IMGSZ_MOBILE:
+		CheckDlgButton(IDC_MOBILE, BST_CHECKED);
+		break;
+		
+	case IMGSZ_CUSTOM:
+		CheckDlgButton(IDC_CUSTOM, BST_CHECKED);
+		break;
 	}
-	else if (IsDlgButtonChecked(IDC_MEDIUM) == BST_CHECKED)
+
+	LPTSTR pszWidth = new TCHAR[33];
+	_itot_s(nCustomWidth, pszWidth, 33, 10);
+	SetDlgItemText(IDC_WIDTH, pszWidth);
+	delete pszWidth;
+
+	LPTSTR pszHeight = new TCHAR[33];
+	_itot_s(nCustomHeight, pszHeight, 33, 10);
+	SetDlgItemText(IDC_HEIGHT, pszHeight);
+	delete pszHeight;
+
+	if (size != IMGSZ_CUSTOM)
 	{
-		m_fileNameAppendage = _T(" (Medium)");
-		m_imageWidth = 800;
-		m_imageHeight = 600;
+		EnableCustom(FALSE);
 	}
-	else if (IsDlgButtonChecked(IDC_LARGE) == BST_CHECKED)
+
+	if (fSmaller)
 	{
-		m_fileNameAppendage = _T(" (Large)");
-		m_imageWidth = 1024;
-		m_imageHeight = 768;
+		CheckDlgButton(IDC_SMALLER, BST_CHECKED);
 	}
-	else if (IsDlgButtonChecked(IDC_WINCE) == BST_CHECKED)
+
+	if (fOriginal)
 	{
-		m_fileNameAppendage = _T(" (WinCE)");
-		m_imageWidth = 240;
-		m_imageHeight = 320;
+		CheckDlgButton(IDC_ORIGINAL, BST_CHECKED);
+	}
+
+	if (size == IMGSZ_CUSTOM ||
+		fSmaller ||
+		fOriginal)
+	{
+		ShowAdvanced();
 	}
 	else
 	{
-		CString width;
-		CString height;
-
-		m_fileNameAppendage = _T(" (Custom)");
-
-		GetDlgItemText(IDC_WIDTH, width);
-		GetDlgItemText(IDC_HEIGHT, height);
-
-		// TODO: Validate.
-		m_imageWidth = _ttoi((LPCTSTR)width);
-		m_imageHeight = _ttoi((LPCTSTR)height);
+		ShowAdvanced(FALSE);
 	}
 
-	m_smallerOnly = (IsDlgButtonChecked(IDC_SMALLER) == BST_CHECKED);
+	return TRUE;
+}
+
+LRESULT CPhotoResizeDlg::OnOK(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled)
+{
+	IMAGE_SIZE size;
+	UINT nWidth;
+	UINT nHeight;
+	BOOL fSmaller = IsDlgButtonChecked(IDC_SMALLER) == BST_CHECKED;
+	BOOL fOriginal = IsDlgButtonChecked(IDC_ORIGINAL) == BST_CHECKED;
+
+	if (IsDlgButtonChecked(IDC_SMALL) == BST_CHECKED)
+	{
+		size = IMGSZ_SMALL;
+	}
+	else if (IsDlgButtonChecked(IDC_MEDIUM) == BST_CHECKED)
+	{
+		size = IMGSZ_MEDIUM;
+	}
+	else if (IsDlgButtonChecked(IDC_LARGE) == BST_CHECKED)
+	{
+		size = IMGSZ_LARGE;
+	}
+	else if (IsDlgButtonChecked(IDC_MOBILE) == BST_CHECKED)
+	{
+		size = IMGSZ_MOBILE;
+	}
+	else
+	{
+		size = IMGSZ_CUSTOM;
+	}
+
+	if (size == IMGSZ_CUSTOM)
+	{
+		CString strWidth;
+		CString strHeight;
+		LPTSTR pszWidthStop;
+		LPTSTR pszHeightStop;
+
+		GetDlgItemText(IDC_WIDTH, strWidth);
+		GetDlgItemText(IDC_HEIGHT, strHeight);
+
+		nWidth = _tcstol(strWidth, &pszWidthStop, 10);
+		nHeight = _tcstol(strHeight, &pszHeightStop, 10);
+
+		if (_tcslen(pszWidthStop) > 0 || _tcslen(pszHeightStop) > 0 || nWidth < 1 || nHeight < 1)
+		{
+			// TODO: Resourcify.
+			MessageBox(_T("The custom size dimensions must be positive integers.\r\nPlease check that those text fields are positive integers and try again."), _T("Image Resizer"));
+
+			return 1;
+		}
+	}
+	else
+	{
+		SettingsHelper::GetDimmensionsForSize(size, nWidth, nHeight);
+	}
+
+	SettingsHelper::SaveSettings(size, nHeight, nWidth, fSmaller, fOriginal);
+
+	m_size = size;
+	m_nWidth = nWidth;
+	m_nHeight = nHeight;
+	m_fSmaller = fSmaller;
+	m_fOriginal = fOriginal;
 
 	EndDialog(IDOK);
 
-	return 1;
+	return 0;
 }
 
-LRESULT CResizePicturesDialog::OnCancel(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled)
+LRESULT CPhotoResizeDlg::OnCancel(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled)
 {
 	EndDialog(IDCANCEL);
 
-	return 1;
+	return 0;
 }
 
-void CResizePicturesDialog::ResizeToBasic()
+void CPhotoResizeDlg::ShowAdvanced(BOOL fShow)
 {
-	CRect rect = new CRect(0, 0, 276, 121);
+	CRect rect;
+	rect.left = 0;
+	rect.top = 0;
+	rect.right = 276;
+	rect.bottom = fShow ? 167 : 121;
 
 	MapDialogRect(rect);
 	AdjustWindowRect(rect, GetStyle(), GetMenu() != NULL);
 
 	SetWindowPos(NULL, rect.left, rect.top, rect.Width(), rect.Height(), SWP_NOMOVE | SWP_NOZORDER);
-}
 
-void CResizePicturesDialog::ResizeToAdvanced()
-{
-	CRect rect = new CRect(0, 0, 276, 167);
+	int nBasicShow = fShow ? SW_HIDE : SW_SHOW;
 
-	MapDialogRect(rect);
-	AdjustWindowRect(rect, GetStyle(), GetMenu() != NULL);
+	GetDlgItem(IDC_ADVANCED).ShowWindow(nBasicShow);
+	GetDlgItem(IDOK).ShowWindow(nBasicShow);
+	GetDlgItem(IDCANCEL).ShowWindow(nBasicShow);
 
-	SetWindowPos(NULL, rect.left, rect.top, rect.Width(), rect.Height(), SWP_NOMOVE | SWP_NOZORDER);
-}
+	int nAdvancedShow = fShow ? SW_SHOW : SW_HIDE;
 
-CPath CResizePicturesDialog::GetDestinationFile(CPath sourceFile, CPath direcotryName)
-{
-	if (m_original)
+	GetDlgItem(IDC_CUSTOM).ShowWindow(nAdvancedShow);
+	GetDlgItem(IDC_CUSTOM1).ShowWindow(nAdvancedShow);
+	GetDlgItem(IDC_WIDTH).ShowWindow(nAdvancedShow);
+	GetDlgItem(IDC_CUSTOM2).ShowWindow(nAdvancedShow);
+	GetDlgItem(IDC_HEIGHT).ShowWindow(nAdvancedShow);
+	GetDlgItem(IDC_CUSTOM3).ShowWindow(nAdvancedShow);
+	GetDlgItem(IDC_SMALLER).ShowWindow(nAdvancedShow);
+	GetDlgItem(IDC_ORIGINAL).ShowWindow(nAdvancedShow);
+	GetDlgItem(IDC_BASIC).ShowWindow(nAdvancedShow);
+	GetDlgItem(IDC_OK).ShowWindow(nAdvancedShow);
+	GetDlgItem(IDC_CANCEL).ShowWindow(nAdvancedShow);
+
+	if (!fShow)
 	{
-		return sourceFile;
+		if (IsDlgButtonChecked(IDC_CUSTOM) == BST_CHECKED)
+		{
+			CheckRadioButton(IDC_SMALL, IDC_CUSTOM, IDC_MOBILE);
+			EnableCustom(FALSE);
+		}
+
+		CheckDlgButton(IDC_SMALLER, BST_UNCHECKED);
+		CheckDlgButton(IDC_ORIGINAL, BST_UNCHECKED);
 	}
-	
-	CPath fileName = sourceFile.m_strPath.Mid(sourceFile.FindFileName());
-	fileName.RemoveExtension();
-	CString extension = sourceFile.m_strPath.Mid(sourceFile.FindExtension());
-	
-	CPath path;
-	UINT count = 1;
-	
-	do
-	{
-		CString countString;
-		countString.Format(_T(" (%d)"), count);
-
-		path.Combine(direcotryName, fileName.m_strPath + m_fileNameAppendage + (count == 1 ? _T("") : countString));
-		path.RenameExtension(extension);
-
-		count++;
-	} while (path.FileExists());
-
-	return path;
 }
 
-LRESULT CResizePicturesDialog::OnBnClickedAdvancedButton(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled)
+void CPhotoResizeDlg::EnableCustom(BOOL fEnable)
 {
-	ResizeToAdvanced();
-
-	GetDlgItem(IDC_ADVANCED).ShowWindow(SW_HIDE);
-	GetDlgItem(IDOK).ShowWindow(SW_HIDE);
-	GetDlgItem(IDCANCEL).ShowWindow(SW_HIDE);
-
-	GetDlgItem(IDC_CUSTOM).ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_CUSTOM1).ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_WIDTH).ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_CUSTOM2).ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_HEIGHT).ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_CUSTOM3).ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_SMALLER).ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_ORIGINAL).ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_BASIC).ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_OK).ShowWindow(SW_SHOW);
-	GetDlgItem(IDC_CANCEL).ShowWindow(SW_SHOW);
-
-	return 1;
+	GetDlgItem(IDC_CUSTOM1).EnableWindow(fEnable);
+	GetDlgItem(IDC_WIDTH).EnableWindow(fEnable);
+	GetDlgItem(IDC_CUSTOM2).EnableWindow(fEnable);
+	GetDlgItem(IDC_HEIGHT).EnableWindow(fEnable);
+	GetDlgItem(IDC_CUSTOM3).EnableWindow(fEnable);
 }
 
-LRESULT CResizePicturesDialog::OnBnClickedBasicButton(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled)
+LRESULT CPhotoResizeDlg::OnClickedAdvanced(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled)
 {
-	ResizeToBasic();
+	ShowAdvanced();
 
-	GetDlgItem(IDC_ADVANCED).ShowWindow(SW_SHOW);
-	GetDlgItem(IDOK).ShowWindow(SW_SHOW);
-	GetDlgItem(IDCANCEL).ShowWindow(SW_SHOW);
-
-	GetDlgItem(IDC_CUSTOM).ShowWindow(SW_HIDE);
-	GetDlgItem(IDC_CUSTOM1).ShowWindow(SW_HIDE);
-	GetDlgItem(IDC_WIDTH).ShowWindow(SW_HIDE);
-	GetDlgItem(IDC_CUSTOM2).ShowWindow(SW_HIDE);
-	GetDlgItem(IDC_HEIGHT).ShowWindow(SW_HIDE);
-	GetDlgItem(IDC_CUSTOM3).ShowWindow(SW_HIDE);
-	GetDlgItem(IDC_SMALLER).ShowWindow(SW_HIDE);
-	GetDlgItem(IDC_ORIGINAL).ShowWindow(SW_HIDE);
-	GetDlgItem(IDC_BASIC).ShowWindow(SW_HIDE);
-	GetDlgItem(IDC_OK).ShowWindow(SW_HIDE);
-	GetDlgItem(IDC_CANCEL).ShowWindow(SW_HIDE);
-
-	if (IsDlgButtonChecked(IDC_CUSTOM) == BST_CHECKED)
-	{
-		CheckDlgButton(IDC_SMALL, BST_CHECKED);
-
-		CheckDlgButton(IDC_CUSTOM, BST_UNCHECKED);		
-		OnBnClickedNonCustomRadioButton(wNotifyCode, wID, hWndCtl, bHandled);
-	}
-
-	CheckDlgButton(IDC_SMALLER, BST_UNCHECKED);
-	CheckDlgButton(IDC_ORIGINAL, BST_UNCHECKED);
-
-	return 1;
+	return 0;
 }
 
-LRESULT CResizePicturesDialog::OnBnClickedCustomRadioButton(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled)
+LRESULT CPhotoResizeDlg::OnClickedBasic(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled)
 {
-	GetDlgItem(IDC_CUSTOM1).EnableWindow();
-	GetDlgItem(IDC_WIDTH).EnableWindow();
-	GetDlgItem(IDC_CUSTOM2).EnableWindow();
-	GetDlgItem(IDC_HEIGHT).EnableWindow();
-	GetDlgItem(IDC_CUSTOM3).EnableWindow();
+	ShowAdvanced(FALSE);
 
-	return 1;
+	return 0;
 }
 
-LRESULT CResizePicturesDialog::OnBnClickedNonCustomRadioButton(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled)
+LRESULT CPhotoResizeDlg::OnClickedCustom(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled)
 {
-	GetDlgItem(IDC_CUSTOM1).EnableWindow(FALSE);
-	GetDlgItem(IDC_WIDTH).EnableWindow(FALSE);
-	GetDlgItem(IDC_CUSTOM2).EnableWindow(FALSE);
-	GetDlgItem(IDC_HEIGHT).EnableWindow(FALSE);
-	GetDlgItem(IDC_CUSTOM3).EnableWindow(FALSE);
+	EnableCustom();
 
-	return 1;
+	return 0;
+}
+
+LRESULT CPhotoResizeDlg::OnClickedOther(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bHandled)
+{
+	EnableCustom(FALSE);
+
+	return 0;
 }

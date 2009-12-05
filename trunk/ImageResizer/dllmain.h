@@ -1,8 +1,9 @@
-class CPhotoToysCloneModule : public CAtlDllModuleT<CPhotoToysCloneModule>
+class CImageResizerModule :
+	public ATL::CAtlDllModuleT<CImageResizerModule>
 {
-public:
-	DECLARE_LIBID(LIBID_PhotoToysCloneLib)
-	DECLARE_REGISTRY_APPID_RESOURCEID(IDR_PHOTOTOYSCLONE, "{27927C24-3BB6-43CB-AE8E-336DE3EAAE90}")
+public :
+	DECLARE_LIBID(LIBID_ImageResizerLib)
+	DECLARE_REGISTRY_APPID_RESOURCEID(IDR_IMAGERESIZER, "{204306FD-15A9-40AB-A450-3E355EDDDA75}")
 };
 
-extern class CPhotoToysCloneModule _AtlModule;
+extern class CImageResizerModule _AtlModule;

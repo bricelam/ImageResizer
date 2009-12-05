@@ -2,8 +2,8 @@ HKCR
 {
 	NoRemove AppID
 	{
-		'%APPID%' = s 'PhotoToysClone'
-		'PhotoToysClone.DLL'
+		'%APPID%' = s 'ImageResizer'
+		'ImageResizer.DLL'
 		{
 			val AppID = s '%APPID%'
 		}

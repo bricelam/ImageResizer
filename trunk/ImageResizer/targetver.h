@@ -1,17 +1,7 @@
 #pragma once
 
-#ifndef WINVER
-#define WINVER 0x0400
-#endif
+// The minimum supported operating system for this software is Windows 2000.
+#define _WIN32_WINNT _WIN32_WINNT_WIN2K
 
-#ifndef _WIN32_WINNT
-#define _WIN32_WINNT 0x0400
-#endif
-
-#ifndef _WIN32_WINDOWS
-#define _WIN32_WINDOWS 0x0400
-#endif
-
-#ifndef _WIN32_IE
-#define _WIN32_IE 0x0400
-#endif
+#include <WinSDKVer.h>
+#include <SDKDDKVer.h>
