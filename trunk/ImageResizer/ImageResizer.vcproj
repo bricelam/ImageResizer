@@ -2,9 +2,13 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="PhotoToysClone"
+	Name="ImageResizer"
 	ProjectGUID="{8B910FC0-18BD-4C79-B4CD-5D54EBB594D7}"
-	RootNamespace="PhotoToysClone"
+	RootNamespace="ImageResizer"
+	SccProjectName="SAK"
+	SccAuxPath="SAK"
+	SccLocalPath="SAK"
+	SccProvider="SAK"
 	Keyword="AtlProj"
 	TargetFrameworkVersion="196613"
 	>
@@ -25,7 +29,7 @@
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="2"
 			UseOfMFC="0"
-			UseOfATL="2"
+			UseOfATL="1"
 			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="1"
 			>
@@ -47,11 +51,11 @@
 				MkTypLibCompatible="false"
 				TargetEnvironment="1"
 				GenerateStublessProxies="true"
-				TypeLibraryName="$(IntDir)/PhotoToysClone.tlb"
-				HeaderFileName="PhotoToysClone_i.h"
+				TypeLibraryName="$(IntDir)/ImageResizer.tlb"
+				HeaderFileName="ImageResizer_i.h"
 				DLLDataFileName=""
-				InterfaceIdentifierFileName="PhotoToysClone_i.c"
-				ProxyFileName="PhotoToysClone_p.c"
+				InterfaceIdentifierFileName="ImageResizer_i.c"
+				ProxyFileName="ImageResizer_p.c"
 				ValidateParameters="true"
 			/>
 			<Tool
@@ -60,7 +64,7 @@
 				PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG;_USRDLL"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="3"
+				RuntimeLibrary="1"
 				UsePrecompiledHeader="2"
 				WarningLevel="3"
 				DebugInformationFormat="4"
@@ -83,7 +87,7 @@
 				IgnoreImportLibrary="true"
 				AdditionalDependencies="gdiplus.lib"
 				LinkIncremental="2"
-				ModuleDefinitionFile=".\PhotoToysClone.def"
+				ModuleDefinitionFile=".\ImageResizer.def"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				TargetMachine="1"
@@ -116,7 +120,7 @@
 			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
 			ConfigurationType="2"
 			UseOfMFC="0"
-			UseOfATL="2"
+			UseOfATL="1"
 			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="1"
 			>
@@ -138,11 +142,11 @@
 				MkTypLibCompatible="false"
 				TargetEnvironment="3"
 				GenerateStublessProxies="true"
-				TypeLibraryName="$(IntDir)/PhotoToysClone.tlb"
-				HeaderFileName="PhotoToysClone_i.h"
+				TypeLibraryName="$(IntDir)/ImageResizer.tlb"
+				HeaderFileName="ImageResizer_i.h"
 				DLLDataFileName=""
-				InterfaceIdentifierFileName="PhotoToysClone_i.c"
-				ProxyFileName="PhotoToysClone_p.c"
+				InterfaceIdentifierFileName="ImageResizer_i.c"
+				ProxyFileName="ImageResizer_p.c"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
@@ -150,7 +154,7 @@
 				PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG;_USRDLL"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="3"
+				RuntimeLibrary="1"
 				UsePrecompiledHeader="2"
 				WarningLevel="3"
 				DebugInformationFormat="3"
@@ -173,7 +177,7 @@
 				IgnoreImportLibrary="true"
 				AdditionalDependencies="gdiplus.lib"
 				LinkIncremental="2"
-				ModuleDefinitionFile=".\PhotoToysClone.def"
+				ModuleDefinitionFile=".\ImageResizer.def"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				TargetMachine="17"
@@ -206,7 +210,7 @@
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="2"
 			UseOfMFC="0"
-			UseOfATL="2"
+			UseOfATL="1"
 			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="1"
 			>
@@ -228,18 +232,18 @@
 				MkTypLibCompatible="false"
 				TargetEnvironment="1"
 				GenerateStublessProxies="true"
-				TypeLibraryName="$(IntDir)/PhotoToysClone.tlb"
-				HeaderFileName="PhotoToysClone_i.h"
+				TypeLibraryName="$(IntDir)/ImageResizer.tlb"
+				HeaderFileName="ImageResizer_i.h"
 				DLLDataFileName=""
-				InterfaceIdentifierFileName="PhotoToysClone_i.c"
-				ProxyFileName="PhotoToysClone_p.c"
+				InterfaceIdentifierFileName="ImageResizer_i.c"
+				ProxyFileName="ImageResizer_p.c"
 				ValidateParameters="true"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;_USRDLL"
-				RuntimeLibrary="2"
+				RuntimeLibrary="0"
 				UsePrecompiledHeader="2"
 				WarningLevel="3"
 				DebugInformationFormat="3"
@@ -262,7 +266,7 @@
 				IgnoreImportLibrary="true"
 				AdditionalDependencies="gdiplus.lib"
 				LinkIncremental="1"
-				ModuleDefinitionFile=".\PhotoToysClone.def"
+				ModuleDefinitionFile=".\ImageResizer.def"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"
@@ -297,7 +301,7 @@
 			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
 			ConfigurationType="2"
 			UseOfMFC="0"
-			UseOfATL="2"
+			UseOfATL="1"
 			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="1"
 			>
@@ -319,17 +323,17 @@
 				MkTypLibCompatible="false"
 				TargetEnvironment="3"
 				GenerateStublessProxies="true"
-				TypeLibraryName="$(IntDir)/PhotoToysClone.tlb"
-				HeaderFileName="PhotoToysClone_i.h"
+				TypeLibraryName="$(IntDir)/ImageResizer.tlb"
+				HeaderFileName="ImageResizer_i.h"
 				DLLDataFileName=""
-				InterfaceIdentifierFileName="PhotoToysClone_i.c"
-				ProxyFileName="PhotoToysClone_p.c"
+				InterfaceIdentifierFileName="ImageResizer_i.c"
+				ProxyFileName="ImageResizer_p.c"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;_USRDLL"
-				RuntimeLibrary="2"
+				RuntimeLibrary="0"
 				UsePrecompiledHeader="2"
 				WarningLevel="3"
 				DebugInformationFormat="3"
@@ -352,7 +356,7 @@
 				IgnoreImportLibrary="true"
 				AdditionalDependencies="gdiplus.lib"
 				LinkIncremental="1"
-				ModuleDefinitionFile=".\PhotoToysClone.def"
+				ModuleDefinitionFile=".\ImageResizer.def"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"
@@ -391,31 +395,35 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath=".\ContextMenuHandler.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\dllmain.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\PhotoResizer.cpp"
+				RelativePath=".\ImageHelper.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\PhotoToysClone.cpp"
+				RelativePath=".\ImageResizer.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\PhotoToysClone.def"
+				RelativePath=".\ImageResizer.def"
 				>
 			</File>
 			<File
-				RelativePath=".\PhotoToysClone.idl"
+				RelativePath=".\ImageResizer.idl"
 				>
 			</File>
 			<File
-				RelativePath=".\PhotoToysShellExtension.cpp"
+				RelativePath=".\PhotoResizeDlg.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ResizePicturesDialog.cpp"
+				RelativePath=".\SettingsHelper.cpp"
 				>
 			</File>
 			<File
@@ -461,23 +469,27 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
+				RelativePath=".\ContextMenuHandler.h"
+				>
+			</File>
+			<File
 				RelativePath=".\dllmain.h"
 				>
 			</File>
 			<File
-				RelativePath=".\PhotoResizer.h"
+				RelativePath=".\ImageHelper.h"
 				>
 			</File>
 			<File
-				RelativePath=".\PhotoToysShellExtension.h"
-				>
-			</File>
-			<File
-				RelativePath=".\ResizePicturesDialog.h"
+				RelativePath=".\PhotoResizeDlg.h"
 				>
 			</File>
 			<File
 				RelativePath=".\Resource.h"
+				>
+			</File>
+			<File
+				RelativePath=".\SettingsHelper.h"
 				>
 			</File>
 			<File
@@ -495,15 +507,15 @@
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
 			<File
-				RelativePath=".\PhotoToysClone.rc"
+				RelativePath=".\ContextMenuHandler.rgs"
 				>
 			</File>
 			<File
-				RelativePath=".\PhotoToysClone.rgs"
+				RelativePath=".\ImageResizer.rc"
 				>
 			</File>
 			<File
-				RelativePath=".\PhotoToysShellExtension.rgs"
+				RelativePath=".\ImageResizer.rgs"
 				>
 			</File>
 		</Filter>
@@ -512,7 +524,7 @@
 			SourceControlFiles="false"
 			>
 			<File
-				RelativePath=".\PhotoToysClone_i.c"
+				RelativePath=".\ImageResizer_i.c"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -552,7 +564,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\PhotoToysClone_i.h"
+				RelativePath=".\ImageResizer_i.h"
 				>
 			</File>
 		</Filter>
@@ -560,7 +572,7 @@
 	<Globals>
 		<Global
 			Name="RESOURCE_FILE"
-			Value="PhotoToysClone.rc"
+			Value="ImageResizer.rc"
 		/>
 	</Globals>
 </VisualStudioProject>
