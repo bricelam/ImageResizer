@@ -3,4 +3,7 @@
 *.ncb
 </Value></Property><Property><Name>svn:ignore</Name><Value>*.ncb
 *.suo
-</Value></Property></Properties></ItemProperties>
+</Value></Property><Property><Name>svn:ignore</Name><Value>*.ncb
+*.suo
+</Value></Property><Property><Name>bugtraq:url</Name><Value>http://imageresizer.codeplex.com/WorkItem/View.aspx?WorkItemId=%BUGID%</Value></Property><Property><Name>bugtraq:message</Name><Value>Work Item: %BUGID%</Value></Property><Property><Name>bugtraq:logregex</Name><Value>[Ww][Oo][Rr][Kk] ?[Ii][Tt][Ee][Mm][Ss]?: .+
+-?\d+</Value></Property></Properties></ItemProperties>
