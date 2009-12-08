@@ -143,8 +143,13 @@ LRESULT CPhotoResizeDlg::OnOK(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bH
 
 		if (_tcslen(pszWidthStop) > 0 || _tcslen(pszHeightStop) > 0 || nWidth < 1 || nHeight < 1)
 		{
-			// TODO: Resourcify.
-			MessageBox(_T("The custom size dimensions must be positive integers.\r\nPlease check that those text fields are positive integers and try again."), _T("Image Resizer"));
+			CString strError;
+			CString strCaption;
+
+			strError.LoadString(IDS_INPUTERROR);
+			GetWindowText(strCaption);
+
+			MessageBox(strError, strCaption);
 
 			return 1;
 		}
@@ -154,7 +159,7 @@ LRESULT CPhotoResizeDlg::OnOK(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bH
 		SettingsHelper::GetDimmensionsForSize(size, nWidth, nHeight);
 	}
 
-	SettingsHelper::SaveSettings(size, nHeight, nWidth, fSmaller, fOriginal);
+	SettingsHelper::SaveSettings(size, nWidth, nHeight, fSmaller, fOriginal);
 
 	m_size = size;
 	m_nWidth = nWidth;

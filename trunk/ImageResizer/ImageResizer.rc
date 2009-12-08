@@ -59,8 +59,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 2,0,0,0
- PRODUCTVERSION 2,0,0,0
+ FILEVERSION 2,1,0,0
+ PRODUCTVERSION 2,1,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -76,12 +76,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "Brice Lambson"
-            VALUE "FileVersion", "2.0.0.0"
+            VALUE "FileVersion", "2.1.0.0"
             VALUE "InternalName", "ImageResizer.dll"
             VALUE "LegalCopyright", "Copyright (c) 2008, 2009 Brice Lambson. All rights reserved."
             VALUE "OriginalFilename", "ImageResizer.dll"
             VALUE "ProductName", "Image Resizer Powertoy Clone for Windows"
-            VALUE "ProductVersion", "2.0.0.0"
+            VALUE "ProductVersion", "2.1.0.0"
         END
     END
     BLOCK "VarFileInfo"
@@ -160,7 +160,14 @@ END
 
 STRINGTABLE 
 BEGIN
-    IDS_PROJNAME            "ImageResizer"
+    IDS_SMALL               "Small"
+    IDS_MEDIUM              "Medium"
+    IDS_LARGE               "Large"
+    IDS_MOBILE              "Mobile"
+    IDS_CUSTOM              "Custom"
+    IDS_FILENAME            "%1 (%2)"
+    IDS_FILENAMEEX          "%1 (%2) (%3!d!)"
+    IDS_INPUTERROR          "The custom size dimensions must be positive integers.\r\nPlease check that those text fields are positive integers and try again."
 END
 
 #endif    // English (U.S.) resources

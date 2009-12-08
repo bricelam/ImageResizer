@@ -17,5 +17,6 @@ private:
 	CAtlArray<ImageCodecInfo> m_aEncoders;
 	ImageCodecInfo m_defaultEncoder;
 	CPath GetDestinationPath(const CPath &pathSource, const CPath &pathDirecotry, IMAGE_SIZE size, BOOL fOriginal);
+	void AdjustSize(UINT &nWidth, UINT &nHeight, UINT srcWidth, UINT srcHeight, BOOL fSmaller);
 	const ImageCodecInfo *GetEncoderForImage(Image *pImage);
 };

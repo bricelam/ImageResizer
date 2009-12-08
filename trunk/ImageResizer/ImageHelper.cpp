@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "ImageHelper.h"
+#include "Resource.h"
 
 ImageHelper::ImageHelper()
 {
@@ -40,70 +41,48 @@ void ImageHelper::Resize(const CPath &pathSource, const CPath &pathDirectory, IM
 	CPath pathDestination = GetDestinationPath(pathSource, pathDirectory, size, fOriginal);
 	Image *pImage = Image::FromFile(CT2W(pathSource));
 
-	UINT srcWidth = pImage->GetWidth();
-	UINT srcHeight = pImage->GetHeight();
-	FLOAT widthRatio = nWidth / (FLOAT)srcWidth;
-	FLOAT heightRatio = nHeight / (FLOAT)srcHeight;
+	AdjustSize(nWidth, nHeight, pImage->GetWidth(), pImage->GetHeight(), fSmaller);
 
-	if (widthRatio > heightRatio)
+	Image *pImage2 = new Bitmap(nWidth, nHeight);
+	Graphics *pGraphics = Graphics::FromImage(pImage2);
+
+	// Draw new image.
+	pGraphics->SetCompositingQuality(CompositingQualityHighQuality);
+	pGraphics->SetInterpolationMode(InterpolationModeHighQualityBicubic);
+	pGraphics->Clear(Color::Transparent);
+	pGraphics->DrawImage(pImage, 0, 0, nWidth, nHeight);
+
+	delete pGraphics;
+
+	// Copy metadata.
+	UINT totalBufferSize;
+	UINT numProperties;
+	pImage->GetPropertySize(&totalBufferSize, &numProperties);
+
+	PropertyItem *allItems = (PropertyItem *)malloc(totalBufferSize);
+	pImage->GetAllPropertyItems(totalBufferSize, numProperties, allItems);
+
+	for (UINT i = 0; i < numProperties; i++)
 	{
-		nWidth = (UINT)(heightRatio * srcWidth);
+		pImage2->SetPropertyItem(allItems + i);
 	}
-	else
+
+	free(allItems);
+
+	const ImageCodecInfo *pEncoder = GetEncoderForImage(pImage);
+
+	delete pImage;
+
+	if (!pEncoder)
 	{
-		nHeight = (UINT)(widthRatio * srcHeight);
+		pEncoder = &m_defaultEncoder;
+		pathDestination.RenameExtension(_T(".png"));
 	}
 
-	if (nWidth == srcWidth || nHeight == srcHeight || (fSmaller && (nWidth > srcWidth || nHeight > srcHeight)))
-	{
-		delete pImage;
+	// Write new image.
+	pImage2->Save(CT2W(pathDestination), &pEncoder->Clsid);
 
-		if (!fOriginal)
-		{
-			CopyFile(pathSource, pathDestination, TRUE);
-		}
-	}
-	else
-	{
-		Image *pImage2 = new Bitmap(nWidth, nHeight);
-
-		Graphics *pGraphics = Graphics::FromImage(pImage2);
-
-		pGraphics->SetCompositingQuality(CompositingQualityHighQuality);
-		pGraphics->SetInterpolationMode(InterpolationModeHighQualityBicubic);
-		pGraphics->Clear(Color::Transparent);
-		pGraphics->DrawImage(pImage, 0, 0, nWidth, nHeight);
-
-		delete pGraphics;
-
-		UINT totalBufferSize;
-		UINT numProperties;
-		pImage->GetPropertySize(&totalBufferSize, &numProperties);
-
-		PropertyItem *allItems = (PropertyItem *)malloc(totalBufferSize);
-		pImage->GetAllPropertyItems(totalBufferSize, numProperties, allItems);
-
-		for (UINT i = 0; i < numProperties; i++)
-		{
-			pImage2->SetPropertyItem(allItems + i);
-		}
-
-		free(allItems);
-
-		const ImageCodecInfo *pEncoder = GetEncoderForImage(pImage);
-
-		delete pImage;
-
-		if (!pEncoder)
-		{
-			pEncoder = &m_defaultEncoder;
-			pathDestination.RenameExtension(_T(".png"));
-		}
-
-		pImage2->Save(CT2W(pathDestination), &pEncoder->Clsid);
-
-		delete pImage2;
-	}
+	delete pImage2;
 }
 
 CPath ImageHelper::GetDestinationPath(const CPath &pathSource, const CPath &pathDirecotry, IMAGE_SIZE size, BOOL fOriginal)
@@ -124,19 +103,47 @@ CPath ImageHelper::GetDestinationPath(const CPath &pathSource, const CPath &path
 	CPath path;
 	UINT count = 1;
 	
-	// TODO: Resourcify.
 	do
 	{
-		CString strCount;
-		strCount.Format(_T(" (%d)"), count);
+		CString strNewFileName;
 
-		path.Combine(pathDirecotry, strFileName + _T(" (") + strAppendage + _T(")") + (count == 1 ? _T("") : strCount));
+		if (count == 1)
+		{
+			strNewFileName.FormatMessage(IDS_FILENAME, strFileName, strAppendage);
+		}
+		else
+		{
+			strNewFileName.FormatMessage(IDS_FILENAMEEX, strFileName, strAppendage, count);
+		}
+
+		path.Combine(pathDirecotry, strNewFileName);
 		path.RenameExtension(strExtension);
 
 		count++;
 	} while (path.FileExists());
 
 	return path;
+}
+
+void ImageHelper::AdjustSize(UINT &nWidth, UINT &nHeight, UINT srcWidth, UINT srcHeight, BOOL fSmaller)
+{
+	FLOAT widthRatio = nWidth / (FLOAT)srcWidth;
+	FLOAT heightRatio = nHeight / (FLOAT)srcHeight;
+
+	if (widthRatio > heightRatio)
+	{
+		nWidth = (UINT)(heightRatio * srcWidth);
+	}
+	else
+	{
+		nHeight = (UINT)(widthRatio * srcHeight);
+	}
+
+	if (nWidth == srcWidth || nHeight == srcHeight || (fSmaller && (nWidth > srcWidth || nHeight > srcHeight)))
+	{
+		nWidth = srcWidth;
+		nHeight = srcHeight;
+	}
 }
 
 const ImageCodecInfo *ImageHelper::GetEncoderForImage(Image *pImage)

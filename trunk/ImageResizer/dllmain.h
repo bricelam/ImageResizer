@@ -1,5 +1,7 @@
+using namespace ATL;
+
 class CImageResizerModule :
-	public ATL::CAtlDllModuleT<CImageResizerModule>
+	public CAtlDllModuleT<CImageResizerModule>
 {
 public :
 	DECLARE_LIBID(LIBID_ImageResizerLib)

@@ -1,27 +1,37 @@
 #include "StdAfx.h"
 #include "SettingsHelper.h"
+#include "Resource.h"
 
 using namespace ATL;
 
 CString SettingsHelper::GetAppendageForSize(IMAGE_SIZE size)
 {
-	// TODO: Resourcify.
+	CString strAppendage;
+
 	switch (size)
 	{
 	case IMGSZ_SMALL:
-		return _T("Small");
+		strAppendage.LoadString(IDS_SMALL);
+		break;
 
 	case IMGSZ_MEDIUM:
-		return _T("Medium");
+		strAppendage.LoadString(IDS_MEDIUM);
+		break;
 
 	case IMGSZ_LARGE:
-		return _T("Large");
+		strAppendage.LoadString(IDS_LARGE);
+		break;
 
 	case IMGSZ_MOBILE:
-		return _T("Mobile");
+		strAppendage.LoadString(IDS_MOBILE);
+		break;
+
+	default:
+		strAppendage.LoadString(IDS_CUSTOM);
+		break;
 	}
 
-	return _T("Custom");;
+	return strAppendage;
 }
 
 void SettingsHelper::GetDimmensionsForSize(IMAGE_SIZE size, UINT &nWidth, UINT &nHeight)
