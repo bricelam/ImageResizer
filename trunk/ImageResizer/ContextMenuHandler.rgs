@@ -1,42 +1,48 @@
-HKCR
+HKCU
 {
-	ImageResizer.ContextMenuHandler.2 = s 'ContextMenuHandler Class'
+	NoRemove Software
 	{
-		CLSID = s '{4CF20B46-D006-4B90-A64B-DBAA9470EFBE}'
-	}
-	ImageResizer.ContextMenuHandler = s 'ContextMenuHandler Class'
-	{
-		CLSID = s '{4CF20B46-D006-4B90-A64B-DBAA9470EFBE}'
-		CurVer = s 'ImageResizer.ContextMenuHandler.2'
-	}
-	NoRemove CLSID
-	{
-		ForceRemove {4CF20B46-D006-4B90-A64B-DBAA9470EFBE} = s 'ContextMenuHandler Class'
+		NoRemove Classes
 		{
-			ProgID = s 'ImageResizer.ContextMenuHandler.2'
-			VersionIndependentProgID = s 'ImageResizer.ContextMenuHandler'
-			InprocServer32 = s '%MODULE%'
+			ImageResizer.ContextMenuHandler.2 = s 'ContextMenuHandler Class'
 			{
-				val ThreadingModel = s 'Apartment'
+				CLSID = s '{4CF20B46-D006-4B90-A64B-DBAA9470EFBE}'
 			}
-			TypeLib = s '{204306FD-15A9-40AB-A450-3E355EDDDA75}'
-		}
-	}
-	NoRemove SystemFileAssociations
-	{
-		NoRemove image
-		{
-			NoRemove ShellEx
+			ImageResizer.ContextMenuHandler = s 'ContextMenuHandler Class'
 			{
-				NoRemove ContextMenuHandlers
+				CLSID = s '{4CF20B46-D006-4B90-A64B-DBAA9470EFBE}'
+				CurVer = s 'ImageResizer.ContextMenuHandler.2'
+			}
+			NoRemove CLSID
+			{
+				ForceRemove {4CF20B46-D006-4B90-A64B-DBAA9470EFBE} = s 'ContextMenuHandler Class'
 				{
-					ForceRemove PhotoResize = s '{4CF20B46-D006-4B90-A64B-DBAA9470EFBE}'
+					ProgID = s 'ImageResizer.ContextMenuHandler.2'
+					VersionIndependentProgID = s 'ImageResizer.ContextMenuHandler'
+					InprocServer32 = s '%MODULE%'
+					{
+						val ThreadingModel = s 'Apartment'
+					}
+					TypeLib = s '{204306FD-15A9-40AB-A450-3E355EDDDA75}'
+				}
+			}
+			NoRemove SystemFileAssociations
+			{
+				NoRemove image
+				{
+					NoRemove ShellEx
+					{
+						NoRemove ContextMenuHandlers
+						{
+							ForceRemove PhotoResize = s '{4CF20B46-D006-4B90-A64B-DBAA9470EFBE}'
+						}
+					}
 				}
 			}
 		}
 	}
 }
-HKLM
+HKCU
 {
 	NoRemove SOFTWARE
 	{

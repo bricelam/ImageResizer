@@ -1,11 +1,17 @@
-HKCR
+HKCU
 {
-	NoRemove AppID
+	NoRemove Software
 	{
-		'%APPID%' = s 'ImageResizer'
-		'ImageResizer.DLL'
+		NoRemove Classes
 		{
-			val AppID = s '%APPID%'
+			NoRemove AppID
+			{
+				'%APPID%' = s 'ImageResizer'
+				'ImageResizer.DLL'
+				{
+					val AppID = s '%APPID%'
+				}
+			}
 		}
 	}
 }
