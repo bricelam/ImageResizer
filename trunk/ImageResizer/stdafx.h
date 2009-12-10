@@ -13,7 +13,7 @@
 #include "Resource.h"
 
 // WIN32
-#include <shlobj.h>
+#include <ShlObj.h>
 
 // ATL
 #include <atlcoll.h>
@@ -23,4 +23,4 @@
 #include <atlwin.h>
 
 // GDI+
-#include <gdiplus.h>
+#include <GdiPlus.h>

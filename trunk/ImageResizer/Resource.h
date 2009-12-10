@@ -20,8 +20,8 @@
 #define IDC_CUSTOM                      204
 #define IDC_WIDTH                       205
 #define IDC_HEIGHT                      206
-#define IDC_SMALLER                     207
-#define IDC_ORIGINAL                    208
+#define IDC_SMALLERONLY                 207
+#define IDC_OVERWRITEORIGINAL           208
 #define IDC_ADVANCED                    209
 #define IDC_BASIC                       210
 #define IDC_OK                          211

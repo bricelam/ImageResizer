@@ -12,7 +12,7 @@
 <?endif ?>
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="$(var.ProgramFilesFolder)" Name="Program Files">
-        <Directory Id="APPLICATIONFOLDER" Name="[ApplicationFolderName]" FileSource="$(var.SolutionDir)" />
+        <Directory Id="APPLICATIONFOLDER" Name="[ApplicationFolderName]" />
       </Directory>
     </Directory>
     <FeatureRef Id="ImageResizerFeature" />

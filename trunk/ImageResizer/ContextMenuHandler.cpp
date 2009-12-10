@@ -126,8 +126,8 @@ HRESULT CContextMenuHandler::OnPhotoResize(LPCMINVOKECOMMANDINFO pici)
 		IMAGE_SIZE size = dlgPhotoResize.GetSize();
 		UINT nWidth = dlgPhotoResize.GetWidth();
 		UINT nHeight = dlgPhotoResize.GetHeight();
-		BOOL fSmaller = dlgPhotoResize.IsSmaller();
-		BOOL fOriginal = dlgPhotoResize.IsOriginal();
+		BOOL fSmallerOnly = dlgPhotoResize.IsSmallerOnly();
+		BOOL fOverwriteOriginal = dlgPhotoResize.IsOverwriteOriginal();
 
 		if (!CString(m_pathFolder).IsEmpty())
 		{
@@ -145,7 +145,7 @@ HRESULT CContextMenuHandler::OnPhotoResize(LPCMINVOKECOMMANDINFO pici)
 				pathDirectory.RemoveFileSpec();
 			}
 
-			imageHelper.Resize(pathSource, pathDirectory, size, nWidth, nHeight, fSmaller, fOriginal);
+			imageHelper.Resize(pathSource, pathDirectory, size, nWidth, nHeight, fSmallerOnly, fOverwriteOriginal);
 		}
 	}
 

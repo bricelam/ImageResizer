@@ -5,7 +5,7 @@
   <Fragment>
     <DirectoryRef Id="APPLICATIONFOLDER">
       <Component Id="ImageResizer64Component" Guid="*" Win64="yes">
-        <File Id="ImageResizer64.dll" Name="ImageResizer64.dll" Source="ImageResizer\x64\$(var.Configuration)\ImageResizer.dll" />
+        <File Id="ImageResizer64.dll" Name="ImageResizer64.dll" Source="$(var.SolutionDir)ImageResizer\x64\$(var.Configuration)\ImageResizer.dll" />
       </Component>
     </DirectoryRef>
     <DirectoryRef Id="TARGETDIR">

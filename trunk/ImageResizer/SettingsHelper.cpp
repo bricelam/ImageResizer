@@ -1,4 +1,4 @@
-#include "StdAfx.h"
+#include "stdafx.h"
 #include "SettingsHelper.h"
 #include "Resource.h"
 
@@ -60,7 +60,7 @@ void SettingsHelper::GetDimmensionsForSize(IMAGE_SIZE size, UINT &nWidth, UINT &
 	}
 }
 
-void SettingsHelper::LoadSettings(IMAGE_SIZE *pSize, UINT *pCustomWidth, UINT *pCustomHeight, BOOL *pSmaller, BOOL *pOriginal)
+void SettingsHelper::LoadSettings(IMAGE_SIZE *pSize, UINT *pCustomWidth, UINT *pCustomHeight, BOOL *pSmallerOnly, BOOL *pOverwriteOriginal)
 {
 	CRegKey key;
 	DWORD type;
@@ -82,24 +82,24 @@ void SettingsHelper::LoadSettings(IMAGE_SIZE *pSize, UINT *pCustomWidth, UINT *p
 
 	type = REG_DWORD;
 	bytes = sizeof(BOOL);
-	key.QueryValue(_T("Smaller"), &type, pSmaller, &bytes);
+	key.QueryValue(_T("SmallerOnly"), &type, pSmallerOnly, &bytes);
 
 	type = REG_DWORD;
 	bytes = sizeof(BOOL);
-	key.QueryValue(_T("Original"), &type, pOriginal, &bytes);
+	key.QueryValue(_T("OverwriteOriginal"), &type, pOverwriteOriginal, &bytes);
 
 	key.Close();
 }
 
-void SettingsHelper::SaveSettings(IMAGE_SIZE size, UINT nWidth, UINT nHeight, BOOL fSmaller, BOOL fOriginal)
+void SettingsHelper::SaveSettings(IMAGE_SIZE size, UINT nWidth, UINT nHeight, BOOL fSmallerOnly, BOOL fOverwriteOriginal)
 {
 	CRegKey key;
 
 	key.Create(HKEY_CURRENT_USER, _T("Software\\Brice Lambson\\Image Resizer"));
 
 	key.SetValue(_T("Size"), REG_DWORD, &size, sizeof(IMAGE_SIZE));
-	key.SetValue(_T("Smaller"), REG_DWORD, &fSmaller, sizeof(BOOL));
-	key.SetValue(_T("Original"), REG_DWORD, &fOriginal, sizeof(BOOL));
+	key.SetValue(_T("SmallerOnly"), REG_DWORD, &fSmallerOnly, sizeof(BOOL));
+	key.SetValue(_T("OverwriteOriginal"), REG_DWORD, &fOverwriteOriginal, sizeof(BOOL));
 	
 	// Only save the last USED custom Width and Height.
 	if (size == IMGSZ_CUSTOM)

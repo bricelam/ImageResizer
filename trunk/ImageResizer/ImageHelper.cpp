@@ -36,12 +36,12 @@ ImageHelper::~ImageHelper()
 	GdiplusShutdown(m_token);
 }
 
-void ImageHelper::Resize(const CPath &pathSource, const CPath &pathDirectory, IMAGE_SIZE size, UINT nWidth, UINT nHeight, BOOL fSmaller, BOOL fOriginal)
+void ImageHelper::Resize(const CPath &pathSource, const CPath &pathDirectory, IMAGE_SIZE size, UINT nWidth, UINT nHeight, BOOL fSmallerOnly, BOOL fOverwriteOriginal)
 {
-	CPath pathDestination = GetDestinationPath(pathSource, pathDirectory, size, fOriginal);
+	CPath pathDestination = GetDestinationPath(pathSource, pathDirectory, size, fOverwriteOriginal);
 	Image *pImage = Image::FromFile(CT2W(pathSource));
 
-	AdjustSize(nWidth, nHeight, pImage->GetWidth(), pImage->GetHeight(), fSmaller);
+	AdjustSize(nWidth, nHeight, pImage->GetWidth(), pImage->GetHeight(), fSmallerOnly);
 
 	Image *pImage2 = new Bitmap(nWidth, nHeight);
 	Graphics *pGraphics = Graphics::FromImage(pImage2);
@@ -85,9 +85,9 @@ void ImageHelper::Resize(const CPath &pathSource, const CPath &pathDirectory, IM
 	delete pImage2;
 }
 
-CPath ImageHelper::GetDestinationPath(const CPath &pathSource, const CPath &pathDirecotry, IMAGE_SIZE size, BOOL fOriginal)
+CPath ImageHelper::GetDestinationPath(const CPath &pathSource, const CPath &pathDirecotry, IMAGE_SIZE size, BOOL fOverwriteOriginal)
 {
-	if (fOriginal)
+	if (fOverwriteOriginal)
 	{
 		return pathSource;
 	}
@@ -125,8 +125,17 @@ CPath ImageHelper::GetDestinationPath(const CPath &pathSource, const CPath &path
 	return path;
 }
 
-void ImageHelper::AdjustSize(UINT &nWidth, UINT &nHeight, UINT srcWidth, UINT srcHeight, BOOL fSmaller)
+void ImageHelper::AdjustSize(UINT &nWidth, UINT &nHeight, UINT srcWidth, UINT srcHeight, BOOL fSmallerOnly)
 {
+	if (nHeight == 0)
+	{
+		nHeight = srcWidth * srcHeight / nWidth;
+	}
+	else if (nWidth == 0)
+	{
+		nWidth = srcHeight * srcWidth / nHeight;
+	}
+
 	FLOAT widthRatio = nWidth / (FLOAT)srcWidth;
 	FLOAT heightRatio = nHeight / (FLOAT)srcHeight;
 
@@ -139,7 +148,7 @@ void ImageHelper::AdjustSize(UINT &nWidth, UINT &nHeight, UINT srcWidth, UINT sr
 		nHeight = (UINT)(widthRatio * srcHeight);
 	}
 
-	if (nWidth == srcWidth || nHeight == srcHeight || (fSmaller && (nWidth > srcWidth || nHeight > srcHeight)))
+	if (nWidth == srcWidth || nHeight == srcHeight || (fSmallerOnly && (nWidth > srcWidth || nHeight > srcHeight)))
 	{
 		nWidth = srcWidth;
 		nHeight = srcHeight;

@@ -121,9 +121,9 @@ BEGIN
     LTEXT           "by",IDC_CUSTOM2,110,99,10,10,NOT WS_VISIBLE
     EDITTEXT        IDC_HEIGHT,120,98,35,11,ES_AUTOHSCROLL | NOT WS_VISIBLE
     LTEXT           "screen)",IDC_CUSTOM3,158,99,50,10,NOT WS_VISIBLE
-    CONTROL         "Ma&ke pictures smaller but not larger",IDC_SMALLER,
+    CONTROL         "Ma&ke pictures smaller but not larger",IDC_SMALLERONLY,
                     "Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,7,114,200,10
-    CONTROL         "&Resize the original pictures (don't create copies)",IDC_ORIGINAL,
+    CONTROL         "&Resize the original pictures (don't create copies)",IDC_OVERWRITEORIGINAL,
                     "Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,7,128,200,10
     PUSHBUTTON      "&Advanced >>",IDC_ADVANCED,7,100,50,14
     DEFPUSHBUTTON   "OK",IDOK,165,100,50,14
@@ -167,7 +167,7 @@ BEGIN
     IDS_CUSTOM              "Custom"
     IDS_FILENAME            "%1 (%2)"
     IDS_FILENAMEEX          "%1 (%2) (%3!d!)"
-    IDS_INPUTERROR          "The custom size dimensions must be positive integers.\r\nPlease check that those text fields are positive integers and try again."
+    IDS_INPUTERROR          "You must specify at least one custom size dimmension, and those\r\ndimensions must be positive integers.  Please check the text fields,\r\nand try again when the problem has been corrected."
 END
 
 #endif    // English (U.S.) resources

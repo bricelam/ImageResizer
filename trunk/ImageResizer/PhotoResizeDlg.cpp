@@ -17,14 +17,14 @@ UINT CPhotoResizeDlg::GetWidth() const
 	return m_nWidth;
 }
 
-BOOL CPhotoResizeDlg::IsSmaller() const
+BOOL CPhotoResizeDlg::IsSmallerOnly() const
 {
-	return m_fSmaller;
+	return m_fSmallerOnly;
 }
 
-BOOL CPhotoResizeDlg::IsOriginal() const
+BOOL CPhotoResizeDlg::IsOverwriteOriginal() const
 {
-	return m_fOriginal;
+	return m_fOverwriteOriginal;
 }
 
 LRESULT CPhotoResizeDlg::OnInitDialog(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHandled)
@@ -32,10 +32,10 @@ LRESULT CPhotoResizeDlg::OnInitDialog(UINT uMsg, WPARAM wParam, LPARAM lParam, B
 	IMAGE_SIZE size = IMGSZ_SMALL;
 	UINT nCustomWidth = 1280;
 	UINT nCustomHeight = 720;
-	BOOL fSmaller = FALSE;
-	BOOL fOriginal = FALSE;
+	BOOL fSmallerOnly = FALSE;
+	BOOL fOverwriteOriginal = FALSE;
 
-	SettingsHelper::LoadSettings(&size, &nCustomWidth, &nCustomHeight, &fSmaller, &fOriginal);
+	SettingsHelper::LoadSettings(&size, &nCustomWidth, &nCustomHeight, &fSmallerOnly, &fOverwriteOriginal);
 
 	switch (size)
 	{
@@ -60,34 +60,40 @@ LRESULT CPhotoResizeDlg::OnInitDialog(UINT uMsg, WPARAM wParam, LPARAM lParam, B
 		break;
 	}
 
-	LPTSTR pszWidth = new TCHAR[33];
-	_itot_s(nCustomWidth, pszWidth, 33, 10);
-	SetDlgItemText(IDC_WIDTH, pszWidth);
-	delete pszWidth;
+	if (nCustomWidth != 0)
+	{
+		LPTSTR pszWidth = new TCHAR[33];
+		_itot_s(nCustomWidth, pszWidth, 33, 10);
+		SetDlgItemText(IDC_WIDTH, pszWidth);
+		delete pszWidth;
+	}
 
-	LPTSTR pszHeight = new TCHAR[33];
-	_itot_s(nCustomHeight, pszHeight, 33, 10);
-	SetDlgItemText(IDC_HEIGHT, pszHeight);
-	delete pszHeight;
+	if (nCustomHeight != 0)
+	{
+		LPTSTR pszHeight = new TCHAR[33];
+		_itot_s(nCustomHeight, pszHeight, 33, 10);
+		SetDlgItemText(IDC_HEIGHT, pszHeight);
+		delete pszHeight;
+	}
 
 	if (size != IMGSZ_CUSTOM)
 	{
 		EnableCustom(FALSE);
 	}
 
-	if (fSmaller)
+	if (fSmallerOnly)
 	{
-		CheckDlgButton(IDC_SMALLER, BST_CHECKED);
+		CheckDlgButton(IDC_SMALLERONLY, BST_CHECKED);
 	}
 
-	if (fOriginal)
+	if (fOverwriteOriginal)
 	{
-		CheckDlgButton(IDC_ORIGINAL, BST_CHECKED);
+		CheckDlgButton(IDC_OVERWRITEORIGINAL, BST_CHECKED);
 	}
 
 	if (size == IMGSZ_CUSTOM ||
-		fSmaller ||
-		fOriginal)
+		fSmallerOnly ||
+		fOverwriteOriginal)
 	{
 		ShowAdvanced();
 	}
@@ -104,8 +110,8 @@ LRESULT CPhotoResizeDlg::OnOK(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bH
 	IMAGE_SIZE size;
 	UINT nWidth;
 	UINT nHeight;
-	BOOL fSmaller = IsDlgButtonChecked(IDC_SMALLER) == BST_CHECKED;
-	BOOL fOriginal = IsDlgButtonChecked(IDC_ORIGINAL) == BST_CHECKED;
+	BOOL fSmallerOnly = IsDlgButtonChecked(IDC_SMALLERONLY) == BST_CHECKED;
+	BOOL fOverwriteOriginal = IsDlgButtonChecked(IDC_OVERWRITEORIGINAL) == BST_CHECKED;
 
 	if (IsDlgButtonChecked(IDC_SMALL) == BST_CHECKED)
 	{
@@ -138,10 +144,10 @@ LRESULT CPhotoResizeDlg::OnOK(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bH
 		GetDlgItemText(IDC_WIDTH, strWidth);
 		GetDlgItemText(IDC_HEIGHT, strHeight);
 
-		nWidth = _tcstol(strWidth, &pszWidthStop, 10);
-		nHeight = _tcstol(strHeight, &pszHeightStop, 10);
+		long lWidth = _tcstol(strWidth, &pszWidthStop, 10);
+		long lHeight = _tcstol(strHeight, &pszHeightStop, 10);
 
-		if (_tcslen(pszWidthStop) > 0 || _tcslen(pszHeightStop) > 0 || nWidth < 1 || nHeight < 1)
+		if (_tcslen(pszWidthStop) > 0 || _tcslen(pszHeightStop) > 0 || lWidth < 0 || lHeight < 0 || (lWidth == 0 && lHeight == 0))
 		{
 			CString strError;
 			CString strCaption;
@@ -149,23 +155,26 @@ LRESULT CPhotoResizeDlg::OnOK(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL &bH
 			strError.LoadString(IDS_INPUTERROR);
 			GetWindowText(strCaption);
 
-			MessageBox(strError, strCaption);
+			MessageBox(strError, strCaption, MB_ICONERROR);
 
 			return 1;
 		}
+
+		nWidth = lWidth;
+		nHeight = lHeight;
 	}
 	else
 	{
 		SettingsHelper::GetDimmensionsForSize(size, nWidth, nHeight);
 	}
 
-	SettingsHelper::SaveSettings(size, nWidth, nHeight, fSmaller, fOriginal);
+	SettingsHelper::SaveSettings(size, nWidth, nHeight, fSmallerOnly, fOverwriteOriginal);
 
 	m_size = size;
 	m_nWidth = nWidth;
 	m_nHeight = nHeight;
-	m_fSmaller = fSmaller;
-	m_fOriginal = fOriginal;
+	m_fSmallerOnly = fSmallerOnly;
+	m_fOverwriteOriginal = fOverwriteOriginal;
 
 	EndDialog(IDOK);
 
@@ -206,8 +215,8 @@ void CPhotoResizeDlg::ShowAdvanced(BOOL fShow)
 	GetDlgItem(IDC_CUSTOM2).ShowWindow(nAdvancedShow);
 	GetDlgItem(IDC_HEIGHT).ShowWindow(nAdvancedShow);
 	GetDlgItem(IDC_CUSTOM3).ShowWindow(nAdvancedShow);
-	GetDlgItem(IDC_SMALLER).ShowWindow(nAdvancedShow);
-	GetDlgItem(IDC_ORIGINAL).ShowWindow(nAdvancedShow);
+	GetDlgItem(IDC_SMALLERONLY).ShowWindow(nAdvancedShow);
+	GetDlgItem(IDC_OVERWRITEORIGINAL).ShowWindow(nAdvancedShow);
 	GetDlgItem(IDC_BASIC).ShowWindow(nAdvancedShow);
 	GetDlgItem(IDC_OK).ShowWindow(nAdvancedShow);
 	GetDlgItem(IDC_CANCEL).ShowWindow(nAdvancedShow);
@@ -220,8 +229,8 @@ void CPhotoResizeDlg::ShowAdvanced(BOOL fShow)
 			EnableCustom(FALSE);
 		}
 
-		CheckDlgButton(IDC_SMALLER, BST_UNCHECKED);
-		CheckDlgButton(IDC_ORIGINAL, BST_UNCHECKED);
+		CheckDlgButton(IDC_SMALLERONLY, BST_UNCHECKED);
+		CheckDlgButton(IDC_OVERWRITEORIGINAL, BST_UNCHECKED);
 	}
 }
 

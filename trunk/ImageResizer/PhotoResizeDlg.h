@@ -12,8 +12,8 @@ public:
 	IMAGE_SIZE GetSize() const;
 	UINT GetHeight() const;
 	UINT GetWidth() const;
-	BOOL IsSmaller() const;
-	BOOL IsOriginal() const;
+	BOOL IsSmallerOnly() const;
+	BOOL IsOverwriteOriginal() const;
 	BEGIN_MSG_MAP(CPhotoResizeDlg)
 		MESSAGE_HANDLER(WM_INITDIALOG, OnInitDialog)
 		COMMAND_HANDLER(IDOK, BN_CLICKED, OnOK)
@@ -33,8 +33,8 @@ private:
 	IMAGE_SIZE m_size;
 	UINT m_nHeight;
 	UINT m_nWidth;
-	BOOL m_fSmaller;
-	BOOL m_fOriginal;
+	BOOL m_fSmallerOnly;
+	BOOL m_fOverwriteOriginal;
 	void ShowAdvanced(BOOL fShow = TRUE);
 	void EnableCustom(BOOL fEnable = TRUE);
 	LRESULT OnInitDialog(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &bHandled);

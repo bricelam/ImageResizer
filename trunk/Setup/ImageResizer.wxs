@@ -11,7 +11,7 @@
         <Condition>
           <![CDATA[Version9X OR VersionNT < 501]]>
         </Condition>
-        <File Name="gdiplus.dll" Source="Content\gdiplus.dll" />
+        <File Name="gdiplus.dll" Source="$(var.SolutionDir)Setup\Content\gdiplus.dll" />
         <RegistryKey Root="HKCR" Key="Paint.Picture">
           <?include ShellEx.wxi ?>
         </RegistryKey>
@@ -47,7 +47,7 @@
         </RegistryKey>
       </Component>
       <Component Id="LicenseComponent" Guid="*">
-        <File Name="epl-v10.rtf" Source="Content\epl-v10.rtf" />
+        <File Name="epl-v10.rtf" Source="$(var.SolutionDir)Setup\Content\epl-v10.rtf" />
       </Component>
       <!-- TODO: Documentation. -->
     </DirectoryRef>
@@ -117,7 +117,7 @@
       </Component>
       <!-- TODO: Shortcuts. -->
     </DirectoryRef>
-    <Feature Id="ImageResizerFeature" Level="1">
+    <Feature Id="ImageResizerFeature" Title="$(var.ProductName)" Description="!(loc.ProductDescription)" Absent="disallow" Level="1">
       <ComponentRef Id="ImageResizerComponent" />
       <ComponentRef Id="PreXPComponent" />
       <ComponentRef Id="LicenseComponent" />
