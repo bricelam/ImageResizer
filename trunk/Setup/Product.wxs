@@ -12,13 +12,17 @@
 <?endif ?>
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="$(var.ProgramFilesFolder)" Name="Program Files">
-        <Directory Id="APPLICATIONFOLDER" Name="[ApplicationFolderName]" />
+        <Directory Id="APPLICATIONFOLDER" Name="$(var.Product)" />
       </Directory>
     </Directory>
     <FeatureRef Id="ImageResizerFeature" />
+<?if $(var.Platform) = x64 ?>
+    <FeatureRef Id="ImageResizer64Feature" />
+<?endif ?>
     <WixVariable Id="WixUILicenseRtf" Value="Content\epl-v10.rtf" />
     <Property Id="ApplicationFolderName" Value="$(var.Product)" />
     <Property Id="WixAppFolder" Value="WixPerMachineFolder" />
+    <Property Id="ALLUSERS" Value="1" />
     <UIRef Id="WixUI_Advanced" />
   </Product>
 </Wix>

@@ -51,10 +51,13 @@ HRESULT CContextMenuHandler::QueryContextMenu(HMENU hmenu, UINT indexMenu, UINT 
 {
 	if (!(uFlags & CMF_DEFAULTONLY))
 	{
-		InsertMenu(hmenu, indexMenu, MF_STRING | MF_BYPOSITION, idCmdFirst + IDM_PHOTORESIZE, _T("Resize Pictures"));
+		CString strResizeItem;
+		strResizeItem.LoadString(IDS_RESIZEITEM);
+		
+		InsertMenu(hmenu, indexMenu, MF_STRING | MF_BYPOSITION, idCmdFirst + IDM_PHOTORESIZE, strResizeItem);
 	}
 
-	return MAKE_HRESULT(SEVERITY_SUCCESS, 0, idCmdFirst + IDM_PHOTORESIZE + 1);
+	return MAKE_HRESULT(SEVERITY_SUCCESS, 0, IDM_PHOTORESIZE + 1);
 }
 
 HRESULT CContextMenuHandler::GetCommandString(UINT_PTR idCmd, UINT uFlags, UINT *pwReserved, LPSTR pszName, UINT cchMax)

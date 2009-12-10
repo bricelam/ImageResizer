@@ -168,6 +168,7 @@ BEGIN
     IDS_FILENAME            "%1 (%2)"
     IDS_FILENAMEEX          "%1 (%2) (%3!d!)"
     IDS_INPUTERROR          "You must specify at least one custom size dimmension, and those\r\ndimensions must be positive integers.  Please check the text fields,\r\nand try again when the problem has been corrected."
+    IDS_RESIZEITEM          "Resize Pictures"
 END
 
 #endif    // English (U.S.) resources

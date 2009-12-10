@@ -86,7 +86,7 @@
               <RegistryValue Type="string" Value="ImageResizer.ContextMenuHandler" />
             </RegistryKey>
             <RegistryKey Key="InprocServer32" Action="create">
-              <RegistryValue Type="string" Value="[INSTALLDIR]ImageResizer.dll" />
+              <RegistryValue Type="string" Value="[APPLICATIONFOLDER]ImageResizer.dll" />
               <RegistryValue Name="ThreadingModel" Type="string" Value="Apartment" />
             </RegistryKey>
             <RegistryKey Key="TypeLib" Action="create">
@@ -117,7 +117,7 @@
       </Component>
       <!-- TODO: Shortcuts. -->
     </DirectoryRef>
-    <Feature Id="ImageResizerFeature" Title="$(var.ProductName)" Description="!(loc.ProductDescription)" Absent="disallow" Level="1">
+    <Feature Id="ImageResizerFeature" Title="!(loc.ProductName)" Description="!(loc.ProductDescription)" Absent="disallow" Level="1">
       <ComponentRef Id="ImageResizerComponent" />
       <ComponentRef Id="PreXPComponent" />
       <ComponentRef Id="LicenseComponent" />

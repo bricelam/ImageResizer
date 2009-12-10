@@ -28,11 +28,6 @@
             </RegistryKey>
           </RegistryKey>
         </RegistryKey>
-        <RegistryKey Root="HKCR" Key="SystemFileAssociations">
-          <RegistryKey Key="image">
-            <?include ShellEx.wxi ?>
-          </RegistryKey>
-        </RegistryKey>
       </Component>
       <Component Id="Approve64Component" Guid="*" Win64="yes">
         <RegistryKey Root="HKMU" Key="SOFTWARE">
@@ -50,10 +45,10 @@
         </RegistryKey>
       </Component>
     </DirectoryRef>
-    <FeatureRef Id="ImageResizerFeature">
+    <Feature Id="ImageResizer64Feature" Title="!(loc.ProductName64)" Description="!(loc.ProductDescription64)" Absent="disallow" Level="1">
       <ComponentRef Id="Register64Component" />
       <ComponentRef Id="ImageResizer64Component" />
       <ComponentRef Id="Approve64Component" />
-    </FeatureRef>
+    </Feature>
   </Fragment>
 </Wix>

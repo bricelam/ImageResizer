@@ -4,5 +4,6 @@
   <String Id="ProductName">Image Resizer Powertoy Clone for Windows</String>
   <String Id="ProductName64">Image Resizer Powertoy Clone for Windows (64 bit)</String>
   <String Id="ProductDescription">Allows you to right click on multiple image files in Windows Explorer to resize them.</String>
+  <String Id="ProductDescription64">Allows you to right click on multiple image files in Windows Explorer (64 bit) to resize them.</String>
   <String Id="BitIgnorantUserWarning">You are attempting to install the 32-bit version on Windows 64-bit.  Please try again with the 64-bit version (available on the Downloads page).</String>
 </WixLocalization>
