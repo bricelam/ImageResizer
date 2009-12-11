@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Resource.h"
 #include "SettingsHelper.h"
 
 using namespace ATL;

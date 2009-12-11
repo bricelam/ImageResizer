@@ -1,5 +1,4 @@
 #include "stdafx.h"
-#include "Resource.h"
 #include "ImageResizer_i.h"
 #include "dllmain.h"
 

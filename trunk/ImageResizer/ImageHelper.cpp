@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "ImageHelper.h"
-#include "Resource.h"
 
 ImageHelper::ImageHelper()
 {

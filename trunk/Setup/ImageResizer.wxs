@@ -7,6 +7,7 @@
       <Component Id="ImageResizerComponent" Guid="*">
         <File Name="ImageResizer.dll" Source="$(var.SolutionDir)ImageResizer\$(var.Configuration)\ImageResizer.dll" />
       </Component>
+<?if $(var.Platform) = x86 ?>
       <Component Id="PreXPComponent" Guid="*">
         <Condition>
           <![CDATA[Version9X OR VersionNT < 501]]>
@@ -46,6 +47,7 @@
           <?include ShellEx.wxi ?>
         </RegistryKey>
       </Component>
+<?endif ?>
       <Component Id="LicenseComponent" Guid="*">
         <File Name="epl-v10.rtf" Source="$(var.SolutionDir)Setup\Content\epl-v10.rtf" />
       </Component>
@@ -119,7 +121,9 @@
     </DirectoryRef>
     <Feature Id="ImageResizerFeature" Title="!(loc.ProductName)" Description="!(loc.ProductDescription)" Absent="disallow" Level="1">
       <ComponentRef Id="ImageResizerComponent" />
+<?if $(var.Platform) = x86 ?>
       <ComponentRef Id="PreXPComponent" />
+<?endif ?>
       <ComponentRef Id="LicenseComponent" />
       <ComponentRef Id="RegisterComponent" />
       <ComponentRef Id="ApproveComponent" />

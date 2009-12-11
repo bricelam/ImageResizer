@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "SettingsHelper.h"
-#include "Resource.h"
 
 using namespace ATL;
 

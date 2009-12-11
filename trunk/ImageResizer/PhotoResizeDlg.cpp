@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "PhotoResizeDlg.h"
-#include "Resource.h"
 
 IMAGE_SIZE CPhotoResizeDlg::GetSize() const
 {
