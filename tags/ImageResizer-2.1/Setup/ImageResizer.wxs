@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?include Config.wxi ?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <DirectoryRef Id="APPLICATIONFOLDER">
+      <Component Id="ImageResizerComponent" Guid="*">
+        <File Name="ImageResizer.dll" Source="$(var.SolutionDir)ImageResizer\$(var.Configuration)\ImageResizer.dll" />
+      </Component>
+<?if $(var.Platform) = x86 ?>
+      <Component Id="PreXPComponent" Guid="*">
+        <Condition>
+          <![CDATA[Version9X OR VersionNT < 501]]>
+        </Condition>
+        <File Name="gdiplus.dll" Source="$(var.SolutionDir)Setup\Content\gdiplus.dll" />
+        <RegistryKey Root="HKCR" Key="Paint.Picture">
+          <?include ShellEx.wxi ?>
+        </RegistryKey>
+        <RegistryKey Root="HKCR" Key="emffile">
+          <?include ShellEx.wxi ?>
+        </RegistryKey>
+        <RegistryKey Root="HKCR" Key="giffile">
+          <?include ShellEx.wxi ?>
+        </RegistryKey>
+        <RegistryKey Root="HKCR" Key="icofile">
+          <?include ShellEx.wxi ?>
+        </RegistryKey>
+        <RegistryKey Root="HKCR" Key="pjpegfile">
+          <?include ShellEx.wxi ?>
+        </RegistryKey>
+        <RegistryKey Root="HKCR" Key="jpegfile">
+          <?include ShellEx.wxi ?>
+        </RegistryKey>
+        <RegistryKey Root="HKCR" Key="pngfile">
+          <?include ShellEx.wxi ?>
+        </RegistryKey>
+        <RegistryKey Root="HKCR" Key="rlefile">
+          <?include ShellEx.wxi ?>
+        </RegistryKey>
+        <RegistryKey Root="HKCR" Key="TIFImage.Document">
+          <?include ShellEx.wxi ?>
+        </RegistryKey>
+        <RegistryKey Root="HKCR" Key="wdpfile">
+          <?include ShellEx.wxi ?>
+        </RegistryKey>
+        <RegistryKey Root="HKCR" Key="wmffile">
+          <?include ShellEx.wxi ?>
+        </RegistryKey>
+      </Component>
+<?endif ?>
+      <Component Id="LicenseComponent" Guid="*">
+        <File Name="epl-v10.rtf" Source="$(var.SolutionDir)Setup\Content\epl-v10.rtf" />
+      </Component>
+      <!-- TODO: Documentation. -->
+    </DirectoryRef>
+    <DirectoryRef Id="TARGETDIR">
+      <Component Id="RegisterComponent" Guid="*" Win64="no">
+        <RegistryKey Root="HKCR" Key="AppID">
+          <RegistryKey Key="$(var.LIBID)" Action="createAndRemoveOnUninstall">
+            <RegistryValue Type="string" Value="ImageResizer" />
+          </RegistryKey>
+          <RegistryKey Key="ImageResizer.DLL" Action="createAndRemoveOnUninstall">
+            <RegistryValue Name="AppID" Type="string" Value="$(var.LIBID)" />
+          </RegistryKey>
+        </RegistryKey>
+        <RegistryKey Root="HKCR" Key="ImageResizer.ContextMenuHandler" Action="createAndRemoveOnUninstall">
+          <RegistryValue Type="string" Value="ContextMenuHandler Class" />
+          <RegistryKey Key="CLSID" Action="create">
+            <RegistryValue Type="string" Value="$(var.CLSID)" />
+          </RegistryKey>
+          <RegistryKey Key="CurVer" Action="create">
+            <RegistryValue Type="string" Value="ImageResizer.ContextMenuHandler.2" />
+          </RegistryKey>
+        </RegistryKey>
+        <RegistryKey Root="HKCR" Key="ImageResizer.ContextMenuHandler.2" Action="createAndRemoveOnUninstall">
+          <RegistryValue Type="string" Value="ContextMenuHandler Class" />
+          <RegistryKey Key="CLSID" Action="create">
+            <RegistryValue Type="string" Value="$(var.CLSID)" />
+          </RegistryKey>
+        </RegistryKey>
+        <RegistryKey Root="HKCR" Key="CLSID">
+          <RegistryKey Key="$(var.CLSID)" Action="createAndRemoveOnUninstall">
+            <RegistryValue Type="string" Value="ContextMenuHandler Class" />
+            <RegistryKey Key="ProgID" Action="create">
+              <RegistryValue Type="string" Value="ImageResizer.ContextMenuHandler.2" />
+            </RegistryKey>
+            <RegistryKey Key="VersionIndependentProgID" Action="create">
+              <RegistryValue Type="string" Value="ImageResizer.ContextMenuHandler" />
+            </RegistryKey>
+            <RegistryKey Key="InprocServer32" Action="create">
+              <RegistryValue Type="string" Value="[APPLICATIONFOLDER]ImageResizer.dll" />
+              <RegistryValue Name="ThreadingModel" Type="string" Value="Apartment" />
+            </RegistryKey>
+            <RegistryKey Key="TypeLib" Action="create">
+              <RegistryValue Type="string" Value="$(var.LIBID)" />
+            </RegistryKey>
+          </RegistryKey>
+        </RegistryKey>
+        <RegistryKey Root="HKCR" Key="SystemFileAssociations">
+          <RegistryKey Key="image">
+            <?include ShellEx.wxi ?>
+          </RegistryKey>
+        </RegistryKey>
+      </Component>
+      <Component Id="ApproveComponent" Guid="*" Win64="no">
+        <RegistryKey Root="HKMU" Key="SOFTWARE">
+          <RegistryKey Key="Microsoft">
+            <RegistryKey Key="Windows">
+              <RegistryKey Key="CurrentVersion">
+                <RegistryKey Key="Shell Extensions">
+                  <RegistryKey Key="Approved">
+                    <RegistryValue Name="$(var.CLSID)" Type="string" Value="ImageResizer" />
+                  </RegistryKey>
+                </RegistryKey>
+              </RegistryKey>
+            </RegistryKey>
+          </RegistryKey>
+        </RegistryKey>
+      </Component>
+      <!-- TODO: Shortcuts. -->
+    </DirectoryRef>
+    <Feature Id="ImageResizerFeature" Title="!(loc.ProductName)" Description="!(loc.ProductDescription)" Absent="disallow" Level="1">
+      <ComponentRef Id="ImageResizerComponent" />
+<?if $(var.Platform) = x86 ?>
+      <ComponentRef Id="PreXPComponent" />
+<?endif ?>
+      <ComponentRef Id="LicenseComponent" />
+      <ComponentRef Id="RegisterComponent" />
+      <ComponentRef Id="ApproveComponent" />
+    </Feature>
+  </Fragment>
+</Wix>

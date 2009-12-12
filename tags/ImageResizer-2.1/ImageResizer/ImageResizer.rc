@@ -1,0 +1,188 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "1 TYPELIB ""ImageResizer.tlb""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 2,1,0,0
+ PRODUCTVERSION 2,1,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "Brice Lambson"
+            VALUE "FileVersion", "2.1.0.0"
+            VALUE "InternalName", "ImageResizer.dll"
+            VALUE "LegalCopyright", "Copyright (c) 2008, 2009 Brice Lambson. All rights reserved."
+            VALUE "OriginalFilename", "ImageResizer.dll"
+            VALUE "ProductName", "Image Resizer Powertoy Clone for Windows"
+            VALUE "ProductVersion", "2.1.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+IDR_IMAGERESIZER        REGISTRY                "ImageResizer.rgs"
+IDR_CONTEXTMENUHANDLER  REGISTRY                "ContextMenuHandler.rgs"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_PHOTORESIZEDLG DIALOGEX 0, 0, 276, 175
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Resize Pictures"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    LTEXT           "You can create resized copies of one or more selected pictures and store them in the current folder.\n\nSelect a size:",IDC_STATIC,7,7,262,51
+    CONTROL         "&Small (fits a 854 x 480 screen)",IDC_SMALL,"Button",BS_AUTORADIOBUTTON,12,43,200,10
+    CONTROL         "&Medium (fits a 1366 x 768 screen)",IDC_MEDIUM,"Button",BS_AUTORADIOBUTTON,12,57,200,10
+    CONTROL         "&Large (fits a 1920 x 1080 screen)",IDC_LARGE,"Button",BS_AUTORADIOBUTTON,12,71,200,10
+    CONTROL         "&Mobile Device (fits a 320 x 480 screen)",IDC_MOBILE,
+                    "Button",BS_AUTORADIOBUTTON,12,85,200,10
+    CONTROL         "&Custom",IDC_CUSTOM,"Button",BS_AUTORADIOBUTTON | NOT WS_VISIBLE,12,99,38,10
+    LTEXT           "(fits a ",IDC_CUSTOM1,51,99,20,10,NOT WS_VISIBLE
+    EDITTEXT        IDC_WIDTH,72,98,35,11,ES_AUTOHSCROLL | NOT WS_VISIBLE
+    LTEXT           "by",IDC_CUSTOM2,110,99,10,10,NOT WS_VISIBLE
+    EDITTEXT        IDC_HEIGHT,120,98,35,11,ES_AUTOHSCROLL | NOT WS_VISIBLE
+    LTEXT           "screen)",IDC_CUSTOM3,158,99,50,10,NOT WS_VISIBLE
+    CONTROL         "Ma&ke pictures smaller but not larger",IDC_SMALLERONLY,
+                    "Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,7,114,200,10
+    CONTROL         "&Resize the original pictures (don't create copies)",IDC_OVERWRITEORIGINAL,
+                    "Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,7,128,200,10
+    PUSHBUTTON      "&Advanced >>",IDC_ADVANCED,7,100,50,14
+    DEFPUSHBUTTON   "OK",IDOK,165,100,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,219,100,50,14
+    PUSHBUTTON      "<< &Basic",IDC_BASIC,7,146,50,14,NOT WS_VISIBLE
+    PUSHBUTTON      "OK",IDC_OK,165,146,50,14,NOT WS_VISIBLE
+    PUSHBUTTON      "Cancel",IDC_CANCEL,219,146,50,14,NOT WS_VISIBLE
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_PHOTORESIZEDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 269
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 168
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_SMALL               "Small"
+    IDS_MEDIUM              "Medium"
+    IDS_LARGE               "Large"
+    IDS_MOBILE              "Mobile"
+    IDS_CUSTOM              "Custom"
+    IDS_FILENAME            "%1 (%2)"
+    IDS_FILENAMEEX          "%1 (%2) (%3!d!)"
+    IDS_INPUTERROR          "You must specify at least one custom size dimmension, and those\r\ndimensions must be positive integers.  Please check the text fields,\r\nand try again when the problem has been corrected."
+    IDS_RESIZEITEM          "Resize Pictures"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1 TYPELIB "ImageResizer.tlb"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
