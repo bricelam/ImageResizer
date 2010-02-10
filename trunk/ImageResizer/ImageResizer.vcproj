@@ -419,6 +419,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ResizeThread.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\SettingsHelper.cpp"
 				>
 			</File>
@@ -478,6 +482,10 @@
 			</File>
 			<File
 				RelativePath=".\PhotoResizeDlg.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ResizeThread.h"
 				>
 			</File>
 			<File

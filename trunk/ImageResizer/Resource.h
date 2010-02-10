@@ -14,6 +14,8 @@
 #define IDS_FILENAMEEX                  206
 #define IDS_INPUTERROR                  207
 #define IDS_RESIZEITEM                  208
+#define IDS_RESIZING                    209
+#define IDS_CANCELING                   210
 #define IDC_SMALL                       300
 #define IDC_MEDIUM                      301
 #define IDC_LARGE                       302

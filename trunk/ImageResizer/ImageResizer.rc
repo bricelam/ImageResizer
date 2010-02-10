@@ -16,6 +16,93 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_PHOTORESIZEDLG DIALOGEX 0, 0, 276, 175
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Bildgröße ändern"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    LTEXT           "Sie können die Größe von einem oder mehrerer markierter Bilder ändern und in dem aktuellen Ordner speichern.\n\nWählen Sie eine Größe:",IDC_STATIC,7,7,262,51
+    CONTROL         "&Klein (854 x 480 Bildschirm)",IDC_SMALL,"Button",BS_AUTORADIOBUTTON,12,43,200,10
+    CONTROL         "&Mittel (1366 x 768 Bildschirm)",IDC_MEDIUM,"Button",BS_AUTORADIOBUTTON,12,57,200,10
+    CONTROL         "&Groß (1920 x 1080 Bildschirm)",IDC_LARGE,"Button",BS_AUTORADIOBUTTON,12,71,200,10
+    CONTROL         "Mobiles Ge&rät (320 x 480 Bildschirm)",IDC_MOBILE,
+                    "Button",BS_AUTORADIOBUTTON,12,85,200,10
+    CONTROL         "&Benutzerdefiniert",IDC_CUSTOM,"Button",BS_AUTORADIOBUTTON | NOT WS_VISIBLE,12,99,67,10
+    LTEXT           "(passt in einen",IDC_CUSTOM1,85,99,50,10,NOT WS_VISIBLE
+    EDITTEXT        IDC_WIDTH,135,98,35,11,ES_AUTOHSCROLL | NOT WS_VISIBLE
+    LTEXT           "x",IDC_CUSTOM2,173,99,10,10,NOT WS_VISIBLE
+    EDITTEXT        IDC_HEIGHT,183,98,35,11,ES_AUTOHSCROLL | NOT WS_VISIBLE
+    LTEXT           "Bildschirm)",IDC_CUSTOM3,222,99,47,10,NOT WS_VISIBLE
+    CONTROL         "Bilder &nur verkleinern aber nicht vergrößern",IDC_SMALLERONLY,
+                    "Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,7,114,200,10
+    CONTROL         "&Originale Bilder überschreiben (keine Kopien erstellen)",IDC_OVERWRITEORIGINAL,
+                    "Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,7,128,200,10
+    PUSHBUTTON      "&Erweitert >>",IDC_ADVANCED,7,100,50,14
+    DEFPUSHBUTTON   "OK",IDOK,165,100,50,14
+    PUSHBUTTON      "Abbrechen",IDCANCEL,219,100,50,14
+    PUSHBUTTON      "<< &Einfach",IDC_BASIC,7,146,50,14,NOT WS_VISIBLE
+    PUSHBUTTON      "OK",IDC_OK,165,146,50,14,NOT WS_VISIBLE
+    PUSHBUTTON      "Abbrechen",IDC_CANCEL,219,146,50,14,NOT WS_VISIBLE
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_PHOTORESIZEDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 269
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 168
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_SMALL               "Klein"
+    IDS_MEDIUM              "Mittel"
+    IDS_LARGE               "Groß"
+    IDS_MOBILE              "Mobil"
+    IDS_CUSTOM              "Individuell"
+    IDS_FILENAME            "%1 (%2)"
+    IDS_FILENAMEEX          "%1 (%2) (%3!d!)"
+    IDS_INPUTERROR          "Sie müssen wenigstens eine individuelle Größe eingeben, und\r\ndiese Größenangaben müssen positive Ganzzahlen sein. Bitte korrigieren\r\nSie Ihre Eingabe."
+    IDS_RESIZEITEM          "Bildgröße ändern"
+    IDS_RESIZING            "Bildgröße ändern..."
+    IDS_CANCELING           "Breche Vorgang ab..."
+END
+
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
 // English (U.S.) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
@@ -169,6 +256,8 @@ BEGIN
     IDS_FILENAMEEX          "%1 (%2) (%3!d!)"
     IDS_INPUTERROR          "You must specify at least one custom size dimmension, and those\r\ndimensions must be positive integers.  Please check the text fields,\r\nand try again when the problem has been corrected."
     IDS_RESIZEITEM          "Resize Pictures"
+    IDS_RESIZING            "Resizing Pictures..."
+    IDS_CANCELING           "Canceling..."
 END
 
 #endif    // English (U.S.) resources

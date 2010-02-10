@@ -1,7 +1,20 @@
+/*******************************************************************************
+ * Copyright (c) 2008, 2010 Brice Lambson and others. All rights reserved.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Brice Lambson - initial API and implementation
+ *    Thomas Bluemel - progress dialog
+ ******************************************************************************/
+
 #include "stdafx.h"
 #include "ContextMenuHandler.h"
 #include "PhotoResizeDlg.h"
 #include "ImageHelper.h"
+#include "ResizeThread.h"
 
 #define IDM_PHOTORESIZE 0
 #define VERB_PHOTORESIZE _T("PhotoResize")
@@ -137,7 +150,24 @@ HRESULT CContextMenuHandler::OnPhotoResize(LPCMINVOKECOMMANDINFO pici)
 			pathDirectory = m_pathFolder;
 		}
 
-		// TODO: Multi-thread.
+		IProgressDialog *pProgressDialog = NULL;
+		CoCreateInstance(CLSID_ProgressDialog, NULL,CLSCTX_ALL,
+			IID_IProgressDialog, (LPVOID*)&pProgressDialog);
+
+		if (pProgressDialog != NULL)
+		{
+			CString strTitle, strCancel;
+
+			strTitle.LoadString(IDS_RESIZING);
+			strCancel.LoadString(IDS_CANCELING);
+			pProgressDialog->SetTitle(strTitle.GetBuffer());
+			pProgressDialog->SetCancelMsg(strCancel.GetBuffer(), NULL);
+			
+			pProgressDialog->SetLine(1, strTitle.GetBuffer(), FALSE, NULL);
+			
+			pProgressDialog->StartProgressDialog(pici->hwnd, NULL, PROGDLG_NORMAL | PROGDLG_AUTOTIME, NULL);
+		}
+
 		for (UINT i = 0; i < numFiles; i++)
 		{
 			pathSource = m_aFiles[i];
@@ -148,7 +178,29 @@ HRESULT CContextMenuHandler::OnPhotoResize(LPCMINVOKECOMMANDINFO pici)
 				pathDirectory.RemoveFileSpec();
 			}
 
-			imageHelper.Resize(pathSource, pathDirectory, size, nWidth, nHeight, fSmallerOnly, fOverwriteOriginal);
+			if (pProgressDialog != NULL)
+			{
+				pProgressDialog->SetLine(2, pathSource.m_strPath.GetBuffer(0), TRUE, NULL);
+				pProgressDialog->SetProgress64(i, numFiles);
+			}
+
+			ResizeThread *resizeThread = new ResizeThread(&imageHelper, pathSource, 
+				pathDirectory, size, nWidth, nHeight, fSmallerOnly, fOverwriteOriginal);
+
+
+			if (resizeThread->Run())
+				resizeThread->Wait();
+
+			delete resizeThread;
+
+			if (pProgressDialog != NULL && pProgressDialog->HasUserCancelled())
+				break;
+		}
+
+		if (pProgressDialog != NULL)
+		{
+			pProgressDialog->StopProgressDialog();
+			pProgressDialog->Release();
 		}
 	}
 
