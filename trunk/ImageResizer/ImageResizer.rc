@@ -19,8 +19,10 @@
 // German (Germany) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
 LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
 #pragma code_page(1252)
+#endif //_WIN32
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -63,7 +65,7 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO
+GUIDELINES DESIGNINFO 
 BEGIN
     IDD_PHOTORESIZEDLG, DIALOG
     BEGIN
@@ -81,7 +83,7 @@ END
 // String Table
 //
 
-STRINGTABLE
+STRINGTABLE 
 BEGIN
     IDS_SMALL               "Klein"
     IDS_MEDIUM              "Mittel"
@@ -91,6 +93,10 @@ BEGIN
     IDS_FILENAME            "%1 (%2)"
     IDS_FILENAMEEX          "%1 (%2) (%3!d!)"
     IDS_INPUTERROR          "Sie müssen wenigstens eine individuelle Größe eingeben, und\r\ndiese Größenangaben müssen positive Ganzzahlen sein. Bitte korrigieren\r\nSie Ihre Eingabe."
+END
+
+STRINGTABLE 
+BEGIN
     IDS_RESIZEITEM          "Bildgröße ändern"
     IDS_RESIZING            "Bildgröße ändern..."
     IDS_CANCELING           "Breche Vorgang ab..."
@@ -101,86 +107,13 @@ END
 
 
 /////////////////////////////////////////////////////////////////////////////
-// English (United States) resources
+// English (U.S.) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 #pragma code_page(1252)
-
-#ifdef APSTUDIO_INVOKED
-/////////////////////////////////////////////////////////////////////////////
-//
-// TEXTINCLUDE
-//
-
-1 TEXTINCLUDE 
-BEGIN
-    "resource.h\0"
-END
-
-2 TEXTINCLUDE 
-BEGIN
-    "#ifndef APSTUDIO_INVOKED\r\n"
-    "#include ""targetver.h""\r\n"
-    "#endif\r\n"
-    "#include ""afxres.h""\r\n"
-    "\0"
-END
-
-3 TEXTINCLUDE 
-BEGIN
-    "1 TYPELIB ""ImageResizer.tlb""\r\n"
-    "\0"
-END
-
-#endif    // APSTUDIO_INVOKED
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Version
-//
-
-VS_VERSION_INFO VERSIONINFO
- FILEVERSION 2,1,1,0
- PRODUCTVERSION 2,1,1,0
- FILEFLAGSMASK 0x3fL
-#ifdef _DEBUG
- FILEFLAGS 0x1L
-#else
- FILEFLAGS 0x0L
-#endif
- FILEOS 0x4L
- FILETYPE 0x2L
- FILESUBTYPE 0x0L
-BEGIN
-    BLOCK "StringFileInfo"
-    BEGIN
-        BLOCK "040904e4"
-        BEGIN
-            VALUE "CompanyName", "Brice Lambson"
-            VALUE "FileVersion", "2.1.1.0"
-            VALUE "InternalName", "ImageResizer.dll"
-            VALUE "LegalCopyright", "Copyright (c) 2008, 2010 Brice Lambson. All rights reserved."
-            VALUE "OriginalFilename", "ImageResizer.dll"
-            VALUE "ProductName", "Image Resizer Powertoy Clone for Windows"
-            VALUE "ProductVersion", "2.1.1.0"
-        END
-    END
-    BLOCK "VarFileInfo"
-    BEGIN
-        VALUE "Translation", 0x409, 1252
-    END
-END
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// REGISTRY
-//
-
-IDR_IMAGERESIZER        REGISTRY                "ImageResizer.rgs"
-IDR_CONTEXTMENUHANDLER  REGISTRY                "ContextMenuHandler.rgs"
+#endif //_WIN32
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -223,7 +156,7 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO
+GUIDELINES DESIGNINFO 
 BEGIN
     IDD_PHOTORESIZEDLG, DIALOG
     BEGIN
@@ -236,12 +169,87 @@ END
 #endif    // APSTUDIO_INVOKED
 
 
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "1 TYPELIB ""ImageResizer.tlb""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 2,1,2,0
+ PRODUCTVERSION 2,1,2,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "Brice Lambson"
+            VALUE "FileVersion", "2.1.2.0"
+            VALUE "InternalName", "ImageResizer.dll"
+            VALUE "LegalCopyright", "Copyright (c) 2008, 2010 Brice Lambson. All rights reserved."
+            VALUE "OriginalFilename", "ImageResizer.dll"
+            VALUE "ProductName", "Image Resizer Powertoy Clone for Windows"
+            VALUE "ProductVersion", "2.1.2.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+IDR_IMAGERESIZER        REGISTRY                "ImageResizer.rgs"
+IDR_CONTEXTMENUHANDLER  REGISTRY                "ContextMenuHandler.rgs"
+
 /////////////////////////////////////////////////////////////////////////////
 //
 // String Table
 //
 
-STRINGTABLE
+STRINGTABLE 
 BEGIN
     IDS_SMALL               "Small"
     IDS_MEDIUM              "Medium"
@@ -251,12 +259,16 @@ BEGIN
     IDS_FILENAME            "%1 (%2)"
     IDS_FILENAMEEX          "%1 (%2) (%3!d!)"
     IDS_INPUTERROR          "You must specify at least one custom size dimmension, and those\r\ndimensions must be positive integers.  Please check the text fields,\r\nand try again when the problem has been corrected."
+END
+
+STRINGTABLE 
+BEGIN
     IDS_RESIZEITEM          "Resize Pictures"
     IDS_RESIZING            "Resizing Pictures..."
     IDS_CANCELING           "Canceling..."
 END
 
-#endif    // English (United States) resources
+#endif    // English (U.S.) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
@@ -264,8 +276,10 @@ END
 // French (France) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_FRA)
+#ifdef _WIN32
 LANGUAGE LANG_FRENCH, SUBLANG_FRENCH
 #pragma code_page(1252)
+#endif //_WIN32
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -308,7 +322,7 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO
+GUIDELINES DESIGNINFO 
 BEGIN
     IDD_PHOTORESIZEDLG, DIALOG
     BEGIN
@@ -326,7 +340,7 @@ END
 // String Table
 //
 
-STRINGTABLE
+STRINGTABLE 
 BEGIN
     IDS_SMALL               "Petit"
     IDS_MEDIUM              "Moyen"
@@ -336,6 +350,10 @@ BEGIN
     IDS_FILENAME            "%1 (%2)"
     IDS_FILENAMEEX          "%1 (%2) (%3!d!)"
     IDS_INPUTERROR          "Vous devez spécifier au moins une dimension de format personnalisé, et ces\r\ndimensions doivent être des entiers positifs. Veuillez vérifier les dimensions,\r\net ré-essayez lorsque le problème a été corrigé."
+END
+
+STRINGTABLE 
+BEGIN
     IDS_RESIZEITEM          "Redimensionner les images"
     IDS_RESIZING            "Redimensionnement des images..."
     IDS_CANCELING           "Annulation..."

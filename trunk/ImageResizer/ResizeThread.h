@@ -9,34 +9,20 @@
  *    Thomas Bluemel - initial API and implementation
  ******************************************************************************/
 
-#pragma once
+// this class is now just used as a parameter for the thread pool tasks.
+// probably should refactor this to a more meaningful name.
 
-#include "ImageHelper.h"
+#pragma once
 
 using namespace ATL;
 
-class ResizeThread sealed
+class ResizeThread
 {
-private:
-	CPath &m_PathSource;
-	CPath &m_PathDirectory;
-	IMAGE_SIZE m_Size;
-	UINT m_Width;
-	UINT m_Height;
-	BOOL m_SmallerOnly;
-	BOOL m_OverwriteOriginal;
-	ImageHelper *m_pImageHelper;
-	HANDLE m_Thread;
-
-	static DWORD WINAPI ThreadStart(LPVOID lpParameter);
-	void Resize();
-
 public:
-	ResizeThread(ImageHelper *pImageHelper, CPath &pathSource, 
-		CPath &pathDirectory, IMAGE_SIZE size, UINT width, UINT height, 
-		BOOL smallerOnly, BOOL overwriteOriginal);
-	~ResizeThread();
-
-	bool Run();
-	void Wait();
+	ResizeThread(CPath pathSource, CPath pathDirectory, LONG * counter, LONG * shutdown);
+	~ResizeThread();	
+	CPath m_PathSource;
+	CPath m_PathDirectory;	
+	LONG * m_interlockedCounter;
+	LONG * m_interlockedShutdown;
 };

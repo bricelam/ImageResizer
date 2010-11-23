@@ -8,6 +8,14 @@
 
 using namespace ATL;
 
+class CThreadInfo
+{
+public:
+	HWND m_hwnd;
+	CAtlArray<CPath> m_aFiles;
+	CPath m_pathFolder;
+};
+
 class ATL_NO_VTABLE CContextMenuHandler :
 	public CComObjectRootEx<CComSingleThreadModel>,
 	public CComCoClass<CContextMenuHandler, &CLSID_ContextMenuHandler>,

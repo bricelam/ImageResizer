@@ -21,6 +21,7 @@
 #include <atlpath.h>
 #include <atltypes.h>
 #include <atlwin.h>
+#include <atlutil.h>
 
-// GDI+
-#include <GdiPlus.h>
+// Windows Imaging Component
+#include <Wincodecsdk.h>

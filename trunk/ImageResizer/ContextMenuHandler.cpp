@@ -15,6 +15,7 @@
 #include "PhotoResizeDlg.h"
 #include "ImageHelper.h"
 #include "ResizeThread.h"
+#include "Worker.h"
 
 #define IDM_PHOTORESIZE 0
 #define VERB_PHOTORESIZE _T("PhotoResize")
@@ -127,82 +128,164 @@ HRESULT CContextMenuHandler::InvokeCommand(LPCMINVOKECOMMANDINFO pici)
 	return E_FAIL;
 }
 
-HRESULT CContextMenuHandler::OnPhotoResize(LPCMINVOKECOMMANDINFO pici)
-{
-	CPhotoResizeDlg dlgPhotoResize;
 
-	// TODO: Don't block.
-	if (dlgPhotoResize.DoModal(pici->hwnd) == IDOK)
+DWORD WINAPI DlgThread(LPVOID lpParameter ); 
+
+DWORD WINAPI DlgThread(LPVOID lpParameter)
+{
+	UINT i;
+    int ret = 0;
+	CPhotoResizeDlg waitDlg;
+	CThreadInfo * threadInfo = (CThreadInfo *)lpParameter;
+	CAtlArray<ResizeThread *> taskArray;
+
+	::CoInitialize(NULL);
+
+    if(IDOK == waitDlg.DoModal(threadInfo->m_hwnd))
 	{
 		CPath pathSource;
-		ImageHelper imageHelper;
-		size_t numFiles = m_aFiles.GetCount();
 		CPath pathDirectory;
+		CString strTitle, strCancel;
+		size_t numFiles = threadInfo->m_aFiles.GetCount();
+		CThreadPool<CWorker> m_threadPool;
+		LONG interlockedCounter = 0;
+		LONG interlockedShutdown = 0;
+		ResizeThread *resizeThread;
+		ImageHelperParam * pImageHelperParam;
+		SYSTEM_INFO sysinfo;
 
-		IMAGE_SIZE size = dlgPhotoResize.GetSize();
-		UINT nWidth = dlgPhotoResize.GetWidth();
-		UINT nHeight = dlgPhotoResize.GetHeight();
-		BOOL fSmallerOnly = dlgPhotoResize.IsSmallerOnly();
-		BOOL fOverwriteOriginal = dlgPhotoResize.IsOverwriteOriginal();
 
-		if (!CString(m_pathFolder).IsEmpty())
-		{
-			pathDirectory = m_pathFolder;
-		}
-
-		IProgressDialog *pProgressDialog = NULL;
-		CoCreateInstance(CLSID_ProgressDialog, NULL,CLSCTX_ALL,
-			IID_IProgressDialog, (LPVOID*)&pProgressDialog);
+		// create the progress dialog
+		CComPtr<IProgressDialog> pProgressDialog;		
+		pProgressDialog.CoCreateInstance(CLSID_ProgressDialog);			
 
 		if (pProgressDialog != NULL)
 		{
-			CString strTitle, strCancel;
-
 			strTitle.LoadString(IDS_RESIZING);
 			strCancel.LoadString(IDS_CANCELING);
+
 			pProgressDialog->SetTitle(strTitle.GetBuffer());
-			pProgressDialog->SetCancelMsg(strCancel.GetBuffer(), NULL);
+			// 0x020 is PROGDLG_MARQUEEPROGRESS, vc2008 couldn't find the definition
+			// prog dlg doesn't list file names anymore since work is overlapped.
+			pProgressDialog->StartProgressDialog(threadInfo->m_hwnd, NULL, 0x00000020, NULL);
 			
-			pProgressDialog->SetLine(1, strTitle.GetBuffer(), FALSE, NULL);
-			
-			pProgressDialog->StartProgressDialog(pici->hwnd, NULL, PROGDLG_NORMAL | PROGDLG_AUTOTIME, NULL);
+			pProgressDialog->SetCancelMsg(strCancel.GetBuffer(), NULL);			
+			pProgressDialog->SetLine(1, strTitle.GetBuffer(), FALSE, NULL);						
 		}
 
-		for (UINT i = 0; i < numFiles; i++)
+		pImageHelperParam = new ImageHelperParam();
+		pImageHelperParam->m_size = waitDlg.GetSize();
+		pImageHelperParam->m_width = waitDlg.GetWidth();
+		pImageHelperParam->m_height = waitDlg.GetHeight();
+		pImageHelperParam->m_smallerOnly = waitDlg.IsSmallerOnly();
+		pImageHelperParam->m_overwriteOriginal = waitDlg.IsOverwriteOriginal();
+	
+		// get number of cores/cpus on system. 
+		// max number of threads is either number of cores or number of files
+		GetSystemInfo(&sysinfo);		
+		if(numFiles > sysinfo.dwNumberOfProcessors)
 		{
-			pathSource = m_aFiles[i];
-			
-			if (CString(m_pathFolder).IsEmpty())
+			m_threadPool.Initialize((void *)pImageHelperParam, sysinfo.dwNumberOfProcessors);			
+		}
+		else
+		{
+			m_threadPool.Initialize((void *)pImageHelperParam, numFiles);
+		}	
+
+		// queue tasks to thread pool
+		for (i = 0; i < numFiles; i++)
+		{		
+			pathSource = threadInfo->m_aFiles[i];
+
+			if (CString(threadInfo->m_pathFolder).IsEmpty())
 			{
 				pathDirectory = pathSource;
 				pathDirectory.RemoveFileSpec();
-			}
-
-			if (pProgressDialog != NULL)
-			{
-				pProgressDialog->SetLine(2, pathSource.m_strPath.GetBuffer(0), TRUE, NULL);
-				pProgressDialog->SetProgress64(i, numFiles);
-			}
-
-			ResizeThread *resizeThread = new ResizeThread(&imageHelper, pathSource, 
-				pathDirectory, size, nWidth, nHeight, fSmallerOnly, fOverwriteOriginal);
-
-
-			if (resizeThread->Run())
-				resizeThread->Wait();
-
-			delete resizeThread;
-
-			if (pProgressDialog != NULL && pProgressDialog->HasUserCancelled())
-				break;
+			}	
+													
+			resizeThread = new ResizeThread(pathSource, pathDirectory, &interlockedCounter, &interlockedShutdown);
+			taskArray.Add(resizeThread);
+			
+			m_threadPool.QueueRequest((CWorker::RequestType)resizeThread);
+			
+			// increment counter for each task
+			InterlockedIncrement(&interlockedCounter);
 		}
 
+		// worker threads decrement counter for each task they complete,
+		// when the counter reaches zero, we're done.
+		while(interlockedCounter > 0)
+		{
+			if(pProgressDialog != NULL && pProgressDialog->HasUserCancelled())
+			{	
+				// will cause worker thread to skip the actual resize tasks and just
+				// mark themselves as completed.
+				InterlockedExchange(&interlockedShutdown, 1);
+				// wait for task count to go to zero
+				while(interlockedCounter > 0)
+				{
+					Sleep(50);
+				}
+				m_threadPool.Shutdown(5 * 1000); // give it 5 seconds to shutdown, but all tasks should be done by now		
+				// bug in cthreadpool, will throw an assertion in debug mode if tasks still exist after the timeout
+				// http://groups.google.com/group/microsoft.public.vc.atl/browse_thread/thread/c3d77f272fde2816/93b94461766ded0f?lnk=st&amp;q=CThreadPool&amp;rnum=1#93b94461766ded0f
+				// so, we don't want any current tasks when the shutdown times out
+				// otherwise we could have resource/handle leaks
+				// really should implement a thread pool that shuts down properly
+				break;
+			}
+			Sleep(100); // wait a bit
+		}				
+		
 		if (pProgressDialog != NULL)
 		{
 			pProgressDialog->StopProgressDialog();
-			pProgressDialog->Release();
+			pProgressDialog.Release();
 		}
+
+		if(NULL != pImageHelperParam)
+		{
+			delete pImageHelperParam;
+		}
+
+		// delete tasks
+		for(i = 0; i < taskArray.GetCount(); i++)
+		{
+			resizeThread = taskArray[i];
+			if(NULL != resizeThread)
+			{
+				delete resizeThread;
+			}
+		}
+		taskArray.RemoveAll();
+
+		m_threadPool.Release();
 	}
+
+	if(NULL != threadInfo)
+	{
+		delete threadInfo;
+		threadInfo = NULL;
+	}
+
+	::CoUninitialize();
+
+    return ret;
+}
+
+HRESULT CContextMenuHandler::OnPhotoResize(LPCMINVOKECOMMANDINFO pici)
+{
+	DWORD threadId;	
+	CThreadInfo * threadInfo;
+	
+	// params to thread
+	threadInfo = new CThreadInfo();
+	threadInfo->m_hwnd = pici->hwnd;
+	threadInfo->m_aFiles.Copy(m_aFiles);
+	threadInfo->m_pathFolder = m_pathFolder;
+
+	// start thread for dialog so we don't block the ui.
+	::CreateThread(NULL, 0, &DlgThread, (LPVOID)threadInfo, 0, &threadId);
 
 	return S_OK;
 }
