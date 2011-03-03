@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?include Config.wxi ?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <DirectoryRef Id="APPLICATIONFOLDER">
+      <Component Id="ImageResizer64Component" Guid="*" Win64="yes">
+        <File Id="ImageResizer64.dll" Name="ImageResizer64.dll" Source="$(var.SolutionDir)ImageResizer\x64\$(var.Configuration)\ImageResizer.dll" />
+      </Component>
+    </DirectoryRef>
+    <DirectoryRef Id="TARGETDIR">
+      <Component Id="Register64Component" Guid="*" Win64="yes">
+        <RegistryKey Root="HKCR" Key="CLSID">
+          <RegistryKey Key="$(var.CLSID)" Action="createAndRemoveOnUninstall">
+            <RegistryValue Type="string" Value="ContextMenuHandler Class" />
+            <RegistryKey Key="ProgID" Action="create">
+              <RegistryValue Type="string" Value="ImageResizer.ContextMenuHandler.2" />
+            </RegistryKey>
+            <RegistryKey Key="VersionIndependentProgID" Action="create">
+              <RegistryValue Type="string" Value="ImageResizer.ContextMenuHandler" />
+            </RegistryKey>
+            <RegistryKey Key="InprocServer32" Action="create">
+              <RegistryValue Type="string" Value="[APPLICATIONFOLDER]ImageResizer64.dll" />
+              <RegistryValue Name="ThreadingModel" Type="string" Value="Apartment" />
+            </RegistryKey>
+            <RegistryKey Key="TypeLib" Action="create">
+              <RegistryValue Type="string" Value="$(var.LIBID)" />
+            </RegistryKey>
+          </RegistryKey>
+        </RegistryKey>
+      </Component>
+      <Component Id="Approve64Component" Guid="*" Win64="yes">
+        <RegistryKey Root="HKMU" Key="SOFTWARE">
+          <RegistryKey Key="Microsoft">
+            <RegistryKey Key="Windows">
+              <RegistryKey Key="CurrentVersion">
+                <RegistryKey Key="Shell Extensions">
+                  <RegistryKey Key="Approved">
+                    <RegistryValue Name="$(var.CLSID)" Type="string" Value="ImageResizer" />
+                  </RegistryKey>
+                </RegistryKey>
+              </RegistryKey>
+            </RegistryKey>
+          </RegistryKey>
+        </RegistryKey>
+      </Component>
+    </DirectoryRef>
+    <Feature Id="ImageResizer64Feature" Title="!(loc.ProductName64)" Description="!(loc.ProductDescription64)" Absent="disallow" Level="1">
+      <ComponentRef Id="Register64Component" />
+      <ComponentRef Id="ImageResizer64Component" />
+      <ComponentRef Id="Approve64Component" />
+    </Feature>
+  </Fragment>
+</Wix>
