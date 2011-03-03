@@ -1,0 +1,59 @@
+<Settings>
+  <ErrorsAsWarnings>
+    <Test Id="XmlException" />
+    <Test Id="UnauthorizedAccessException" />
+    <Test Id="DeclarationEncodingWrong" />
+    <Test Id="DeclarationMissing" />
+    <Test Id="WhitespacePrecedingCDATAWrong" />
+    <Test Id="WhitespacePrecedingNodeWrong" />
+    <Test Id="NotEmptyElement" />
+    <Test Id="WhitespaceFollowingCDATAWrong" />
+    <Test Id="WhitespacePrecedingEndElementWrong" />
+    <Test Id="XmlnsMissing" />
+    <Test Id="XmlnsValueWrong" />
+    <Test Id="CategoryAppDataEmpty" />
+    <Test Id="COMRegistrationTyper" />
+    <Test Id="UpgradeVersionRemoveFeaturesEmpty" />
+    <Test Id="FeatureFollowParentDeprecated" />
+    <Test Id="RadioButtonMissingValue" />
+    <Test Id="TypeLibDescriptionEmpty" />
+    <Test Id="ClassRelativePathMustBeAdvertised" />
+    <Test Id="ClassDescriptionEmpty" />
+    <Test Id="ServiceInstallLocalGroupEmpty" />
+    <Test Id="ServiceInstallPasswordEmpty" />
+    <Test Id="ShortcutWorkingDirectoryEmpty" />
+    <Test Id="IniFileValueEmpty" />
+    <Test Id="FileSearchNamesCombined" />
+    <Test Id="WebApplicationExtensionIdDeprecated" />
+    <Test Id="WebApplicationExtensionIdEmpty" />
+    <Test Id="PropertyValueEmpty" />
+    <Test Id="ControlCheckBoxValueEmpty" />
+    <Test Id="RadioGroupDeprecated" />
+    <Test Id="ProgressTextTemplateEmpty" />
+    <Test Id="RegistrySearchTypeRegistryDeprecated" />
+    <Test Id="WebFilterLoadOrderIncorrect" />
+    <Test Id="SrcIsDeprecated" />
+    <Test Id="RequireComponentGuid" />
+    <Test Id="LongNameDeprecated" />
+    <Test Id="RemoveFileNameRequired" />
+    <Test Id="DeprecatedLocalizationVariablePrefix" />
+    <Test Id="NamespaceChanged" />
+    <Test Id="UpgradeVersionPropertyAttributeRequired" />
+    <Test Id="UpgradePropertyChild" />
+    <Test Id="RegistryElementDeprecated" />
+    <Test Id="PatchSequenceSupersedeTypeChanged" />
+    <Test Id="PatchSequenceTargetDeprecated" />
+    <Test Id="VerbTargetDeprecated" />
+    <Test Id="ProgIdIconFormatted" />
+    <Test Id="IgnoreModularizationDeprecated" />
+    <Test Id="PackageCompressedIllegal" />
+    <Test Id="PackagePlatformsDeprecated" />
+    <Test Id="ModuleGuidDeprecated" />
+    <Test Id="GuidWildcardDeprecated" />
+    <Test Id="FragmentRefIllegal" />
+    <Test Id="FileRedundantNames" />
+  </ErrorsAsWarnings>
+  <ExemptFiles>
+    <File Name="Product.Generated.wxs" />
+  </ExemptFiles>
+</Settings>

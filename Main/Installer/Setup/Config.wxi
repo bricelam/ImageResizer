@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<?define Version = "3.0.0.0" ?>
+<?define CLSID_ContextMenuHandler = "{51B4D7E5-7568-4234-B4BB-47FB3C016A69}"?>
+
+<?if $(var.Platform) = x86 ?>
+  <?define ProductName = "Image Resizer for Windows" ?>
+  <?define Feature = "ImageResizer" ?>
+  <?define ProgramFilesFolder = "ProgramFilesFolder" ?>
+<?elseif $(var.Platform) = x64 ?>
+  <?define ProductName = "Image Resizer for Windows (64 bit)" ?>
+  <?define Feature = "ImageResizer64" ?>
+  <?define ProgramFilesFolder = "ProgramFiles64Folder" ?>
+<?endif ?>
+
+<Include />

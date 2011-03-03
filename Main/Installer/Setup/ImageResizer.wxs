@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?include Config.wxi ?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+  <Fragment>
+    <DirectoryRef Id="TARGETDIR">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="APPLICATIONFOLDER" Name="Image Resizer for Windows">
+          <Component Id="CommonServiceLocator" Win64="no">
+            <File Source="..\..\Source\ImageResizer\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll" />
+          </Component>
+          <Component Id="ImageResizer" Win64="no">
+            <File Id="ImageResizer" Source="$(var.ImageResizer.TargetPath)" />
+            <RegistryKey Root="HKLM" Key="Software">
+              <RegistryKey Key="BriceLambson">
+                <RegistryKey Key="ImageResizer" Action="create">
+                  <RegistryValue Type="string" Value="[#ImageResizer]" />
+                </RegistryKey>
+              </RegistryKey>
+            </RegistryKey>
+          </Component>
+          <Component Id="License" Win64="no">
+            <File Id="License" Source="..\..\Ms-PL.rtf" />
+          </Component>
+          <Component Id="Prism" Win64="no">
+            <File Source="..\..\Source\ImageResizer\packages\Prism.4.0.0.0\lib\NET40\Microsoft.Practices.Prism.dll" />
+          </Component>
+          <Component Id="PrismOnMef" Win64="no">
+            <File Source="..\..\Source\ImageResizer\packages\Prism.MEFExtensions.4.0.0.0\lib\NET40\Microsoft.Practices.Prism.MefExtensions.dll" />
+          </Component>
+          <Component Id="ShellExtensions" Win64="no">
+            <File Id="ShellExtensions" Source="$(var.SolutionDir)$(var.Configuration)\ShellExtensions.dll" />
+            <RegistryKey Root="HKCR" Key="CLSID">
+              <RegistryKey Key="$(var.CLSID_ContextMenuHandler)" Action="create">
+                <RegistryKey Key="InprocServer32" Action="create">
+                  <RegistryValue Type="string" Value="[#ShellExtensions]" />
+                  <RegistryValue Type="string" Name="ThreadingModel" Value="Apartment" />
+                </RegistryKey>
+              </RegistryKey>
+            </RegistryKey>
+            <RegistryKey Root="HKCR" Key="Directory">
+              <RegistryKey Key="ShellEx">
+                <RegistryKey Key="DragDropHandlers">
+                  <RegistryKey Key="Image Resizer" Action="create">
+                    <RegistryValue Type="string" Value="$(var.CLSID_ContextMenuHandler)" />
+                  </RegistryKey>
+                </RegistryKey>
+              </RegistryKey>
+            </RegistryKey>
+            <RegistryKey Root="HKCR" Key="SystemFileAssociations">
+              <RegistryKey Key="Image">
+                <RegistryKey Key="ShellEx">
+                  <RegistryKey Key="ContextMenuHandlers">
+                    <RegistryKey Key="Image Resizer" Action="create">
+                      <RegistryValue Type="string" Value="$(var.CLSID_ContextMenuHandler)" />
+                    </RegistryKey>
+                  </RegistryKey>
+                </RegistryKey>
+              </RegistryKey>
+            </RegistryKey>
+          </Component>
+        </Directory>
+      </Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="Image Resizer for Windows">
+          <Component Id="ProgramMenuShortcuts" Win64="no">
+            <util:InternetShortcut Id="Documentation" Name="Documentation" Target="http://imageresizer.codeplex.com/documentation" Type="url" />
+            <Shortcut Id="License" Name="License" Target="[#License]" />
+            <RegistryKey Root="HKCU" Key="Software">
+              <RegistryKey Key="BriceLambson">
+                <RegistryKey Key="ImageResizer" Action="create">
+                  <RegistryValue Type="string" Value="[#ImageResizer]" KeyPath="yes" />
+                </RegistryKey>
+              </RegistryKey>
+            </RegistryKey>
+            <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall" />
+          </Component>
+        </Directory>
+      </Directory>
+    </DirectoryRef>
+    <Feature Id="ImageResizer" Level="1">
+      <ComponentRef Id="CommonServiceLocator" />
+      <ComponentRef Id="ImageResizer" />
+      <ComponentRef Id="License" />
+      <ComponentRef Id="Prism" />
+      <ComponentRef Id="PrismOnMef" />
+      <ComponentRef Id="ShellExtensions" />
+      <ComponentRef Id="ProgramMenuShortcuts" />
+    </Feature>
+  </Fragment>
+</Wix>
