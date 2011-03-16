@@ -1,11 +1,3 @@
 HKCR
 {
-	NoRemove AppID
-	{
-		'%APPID%' = s 'ImageResizer'
-		'ImageResizer.DLL'
-		{
-			val AppID = s '%APPID%'
-		}
-	}
 }

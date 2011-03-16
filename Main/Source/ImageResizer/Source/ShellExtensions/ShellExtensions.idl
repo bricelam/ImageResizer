@@ -1,15 +1,15 @@
-import "ShObjIdl.idl";
+import "shobjidl.idl";
 
 [
-	uuid(204306FD-15A9-40AB-A450-3E355EDDDA75),
-	version(2.1)
+	uuid(09082E28-A5CA-47A7-8571-A2236C411E91),
+	version(3.0)
 ]
-library ImageResizerLib
+library ShellExtensionsLib
 {
-	[uuid(4CF20B46-D006-4B90-A64B-DBAA9470EFBE)]
+	[uuid(51B4D7E5-7568-4234-B4BB-47FB3C016A69)]
 	coclass ContextMenuHandler
 	{
-		interface IShellExtInit;
+		[default] interface IShellExtInit;
 		interface IContextMenu;
 	};
 };

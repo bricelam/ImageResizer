@@ -1,4 +1,4 @@
-LIBRARY "ImageResizer.DLL"
+LIBRARY
 
 EXPORTS
 	DllCanUnloadNow		PRIVATE
