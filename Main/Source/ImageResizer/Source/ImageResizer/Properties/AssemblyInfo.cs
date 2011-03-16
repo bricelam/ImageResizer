@@ -18,7 +18,6 @@ using System.Windows;
 [assembly: AssemblyFileVersion("3.0.0.0")]
 [assembly: AssemblyProduct("Image Resizer for Windows")]
 [assembly: AssemblyTitle("Image Resizer")]
-[assembly: AssemblyVersion("3.0.0.0")]
 [assembly: CLSCompliant(true)]
 [assembly: ComVisible(false)]
 [assembly: NeutralResourcesLanguage("en")]

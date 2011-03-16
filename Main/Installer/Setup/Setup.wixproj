@@ -10,8 +10,7 @@
     <OutputType>Package</OutputType>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
-    <WixCopPath Condition=" '$(WixCopPath)' == '' AND '$(ProgramFiles(x86))' != '' ">$(ProgramFiles(x86))\Windows Installer XML v3.5\bin\WixCop.exe</WixCopPath>
-    <WixCopPath Condition=" '$(WixCopPath)' == '' ">$(ProgramFiles)\Windows Installer XML v3.5\bin\WixCop.exe</WixCopPath>
+    <WixCopPath Condition=" '$(WixCopPath)' == '' AND '$(WIX)' != '' ">$(WIX)bin\WixCop.exe</WixCopPath>
     <WixCopSettingsFile>Settings.WixCop</WixCopSettingsFile>
     <SccProjectName>SAK</SccProjectName>
     <SccProvider>SAK</SccProvider>
@@ -52,6 +51,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\Version\Version.wxi">
+      <Link>Version.wxi</Link>
+    </Content>
     <Content Include="Config.wxi" />
   </ItemGroup>
   <ItemGroup>
