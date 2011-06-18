@@ -5,9 +5,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageResizer", "ImageResize
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ShellExtensions", "ShellExtensions\ShellExtensions.vcxproj", "{A37D7C2E-2C39-4866-816A-6A44805B32B6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installer", "Installer", "{178534C8-34AE-49B0-8F87-8BA7D09DF013}"
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Setup", "Setup\Setup.wixproj", "{A04499B5-3E81-47DD-B699-14DF8FFC166D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A37D7C2E-2C39-4866-816A-6A44805B32B6} = {A37D7C2E-2C39-4866-816A-6A44805B32B6}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 2
+		SccNumberOfProjects = 3
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs09
 		SccProjectUniqueName0 = ImageResizer\\ImageResizer.csproj
@@ -20,6 +27,12 @@ Global
 		SccAuxPath1 = https://tfs.codeplex.com/tfs/tfs09
 		SccLocalPath1 = ShellExtensions
 		SccProvider1 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName2 = Setup\\Setup.wixproj
+		SccProjectTopLevelParentUniqueName2 = All.sln
+		SccProjectName2 = Setup
+		SccAuxPath2 = https://tfs.codeplex.com/tfs/tfs09
+		SccLocalPath2 = Setup
+		SccProvider2 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -44,8 +57,19 @@ Global
 		{A37D7C2E-2C39-4866-816A-6A44805B32B6}.Release|x64.Build.0 = Release|x64
 		{A37D7C2E-2C39-4866-816A-6A44805B32B6}.Release|x86.ActiveCfg = Release|Win32
 		{A37D7C2E-2C39-4866-816A-6A44805B32B6}.Release|x86.Build.0 = Release|Win32
+		{A04499B5-3E81-47DD-B699-14DF8FFC166D}.Debug|x64.ActiveCfg = Debug|x64
+		{A04499B5-3E81-47DD-B699-14DF8FFC166D}.Debug|x64.Build.0 = Debug|x64
+		{A04499B5-3E81-47DD-B699-14DF8FFC166D}.Debug|x86.ActiveCfg = Debug|x86
+		{A04499B5-3E81-47DD-B699-14DF8FFC166D}.Debug|x86.Build.0 = Debug|x86
+		{A04499B5-3E81-47DD-B699-14DF8FFC166D}.Release|x64.ActiveCfg = Release|x64
+		{A04499B5-3E81-47DD-B699-14DF8FFC166D}.Release|x64.Build.0 = Release|x64
+		{A04499B5-3E81-47DD-B699-14DF8FFC166D}.Release|x86.ActiveCfg = Release|x86
+		{A04499B5-3E81-47DD-B699-14DF8FFC166D}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A04499B5-3E81-47DD-B699-14DF8FFC166D} = {178534C8-34AE-49B0-8F87-8BA7D09DF013}
 	EndGlobalSection
 EndGlobal

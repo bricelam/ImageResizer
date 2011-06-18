@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?include Config.wxi ?>
+
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
      xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
   <Fragment>
@@ -7,7 +8,7 @@
       <Directory Id="ProgramFilesFolder">
         <Directory Id="APPLICATIONFOLDER" Name="Image Resizer for Windows">
           <Component Id="CommonServiceLocator" Win64="no">
-            <File Source="..\..\Source\ImageResizer\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll" />
+            <File Source="..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll" />
           </Component>
           <Component Id="ImageResizer" Win64="no">
             <File Id="ImageResizer" Source="$(var.ImageResizer.TargetPath)" />
@@ -20,13 +21,13 @@
             </RegistryKey>
           </Component>
           <Component Id="License" Win64="no">
-            <File Id="License" Source="..\..\Ms-PL.rtf" />
+            <File Id="License" Source="..\Ms-PL.rtf" />
           </Component>
           <Component Id="Prism" Win64="no">
-            <File Source="..\..\Source\ImageResizer\packages\Prism.4.0.0.0\lib\NET40\Microsoft.Practices.Prism.dll" />
+            <File Source="..\packages\Prism.4.0.0.0\lib\NET40\Microsoft.Practices.Prism.dll" />
           </Component>
           <Component Id="PrismOnMef" Win64="no">
-            <File Source="..\..\Source\ImageResizer\packages\Prism.MEFExtensions.4.0.0.0\lib\NET40\Microsoft.Practices.Prism.MefExtensions.dll" />
+            <File Source="..\packages\Prism.MEFExtensions.4.0.0.0\lib\NET40\Microsoft.Practices.Prism.MefExtensions.dll" />
           </Component>
           <Component Id="ShellExtensions" Win64="no">
             <File Id="ShellExtensions" Source="$(var.SolutionDir)$(var.Configuration)\ShellExtensions.dll" />

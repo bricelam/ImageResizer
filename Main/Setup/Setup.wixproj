@@ -41,7 +41,7 @@
     <Compile Include="Product.wxs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Source\ImageResizer\Source\ImageResizer\ImageResizer.csproj">
+    <ProjectReference Include="..\ImageResizer\ImageResizer.csproj">
       <Name>ImageResizer</Name>
       <Project>{41632c92-d683-4360-94b7-9bb2f3d65275}</Project>
       <Private>True</Private>
@@ -51,7 +51,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\Version\Version.wxi">
+    <Content Include="..\Version\Version.wxi">
       <Link>Version.wxi</Link>
     </Content>
     <Content Include="Config.wxi" />
@@ -68,11 +68,11 @@
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <!--
-	To modify your build process, add your task inside one of the targets below and uncomment it.
-	Other similar extension points exist, see Wix.targets.
-	<Target Name="BeforeBuild">
-	</Target>
-	-->
+  To modify your build process, add your task inside one of the targets below and uncomment it.
+  Other similar extension points exist, see Wix.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  -->
   <Target Name="AfterBuild">
     <Exec Condition="Exists('$(WixCopPath)') AND '$(WixCopEnabled)' != 'false'" Command="&quot;$(WixCopPath)&quot; -nologo -set1&quot;$(WixCopSettingsFile)&quot; -indent:2 @(Compile, ' ')" IgnoreExitCode="true" />
   </Target>

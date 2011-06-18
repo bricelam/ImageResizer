@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?include ..\..\Version\Version.wxi ?>
+<?include ..\Version\Version.wxi ?>
 
 <?define CLSID_ContextMenuHandler = "{51B4D7E5-7568-4234-B4BB-47FB3C016A69}"?>
 

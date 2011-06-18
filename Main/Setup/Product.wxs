@@ -13,6 +13,6 @@
     <FeatureRef Id="$(var.Feature)" />
     <Media Id="1" Cabinet="ImageResizer.cab" EmbedCab="yes" />
     <UIRef Id="WixUI_Minimal" />
-    <WixVariable Id="WixUILicenseRtf" Value="..\..\Ms-PL.rtf" />
+    <WixVariable Id="WixUILicenseRtf" Value="..\Ms-PL.rtf" />
   </Product>
 </Wix>
