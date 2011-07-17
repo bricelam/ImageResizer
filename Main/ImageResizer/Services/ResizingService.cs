@@ -32,6 +32,7 @@ namespace BriceLambson.ImageResizer.Services
 
         public void Resize(string sourcePath, string outputDirectory)
         {
+            bool encoderDefaulted = false;
             BitmapDecoder decoder;
 
             using (var sourceStream = File.OpenRead(sourcePath))
@@ -42,6 +43,18 @@ namespace BriceLambson.ImageResizer.Services
             }
 
             var encoder = BitmapEncoder.Create(decoder.CodecInfo.ContainerFormat);
+
+            try
+            {
+                // NOTE: This will throw if the codec dose not support encoding
+                var temp = encoder.CodecInfo;
+            }
+            catch (NotSupportedException)
+            {
+                // Fallback to JPEG encoder
+                encoder = new JpegBitmapEncoder();
+                encoderDefaulted = true;
+            }
 
             // TODO: Copy container-level metadata if codec supports it
             this.SetEncoderSettings(encoder);
@@ -67,6 +80,11 @@ namespace BriceLambson.ImageResizer.Services
                 // Set the destination path using the first frame
                 if (destinationPath == null)
                 {
+                    if (encoderDefaulted)
+                    {
+                        sourcePath = Path.ChangeExtension(sourcePath, ".jpg");
+                    }
+
                     if (this.settings.ReplaceOriginals)
                     {
                         destinationPath = sourcePath;

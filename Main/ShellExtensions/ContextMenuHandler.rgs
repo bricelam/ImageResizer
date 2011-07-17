@@ -22,16 +22,13 @@ HKCR
 			}
 		}
 	}
-	NoRemove SystemFileAssociations
+	NoRemove *
 	{
-		NoRemove Image
+		NoRemove ShellEx
 		{
-			NoRemove ShellEx
+			NoRemove ContextMenuHandlers
 			{
-				NoRemove ContextMenuHandlers
-				{
-					ForceRemove 'Image Resizer' = s '{51B4D7E5-7568-4234-B4BB-47FB3C016A69}'
-				}
+				ForceRemove 'Image Resizer' = s '{51B4D7E5-7568-4234-B4BB-47FB3C016A69}'
 			}
 		}
 	}

@@ -48,13 +48,11 @@
                 </RegistryKey>
               </RegistryKey>
             </RegistryKey>
-            <RegistryKey Root="HKCR" Key="SystemFileAssociations">
-              <RegistryKey Key="Image">
-                <RegistryKey Key="ShellEx">
-                  <RegistryKey Key="ContextMenuHandlers">
-                    <RegistryKey Key="Image Resizer" Action="create">
-                      <RegistryValue Type="string" Value="$(var.CLSID_ContextMenuHandler)" />
-                    </RegistryKey>
+            <RegistryKey Root="HKCR" Key="*">
+              <RegistryKey Key="ShellEx">
+                <RegistryKey Key="ContextMenuHandlers">
+                  <RegistryKey Key="Image Resizer" Action="create">
+                    <RegistryValue Type="string" Value="$(var.CLSID_ContextMenuHandler)" />
                   </RegistryKey>
                 </RegistryKey>
               </RegistryKey>

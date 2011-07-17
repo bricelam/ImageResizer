@@ -52,58 +52,40 @@ HRESULT CContextMenuHandler::QueryContextMenu(HMENU hmenu, UINT indexMenu, UINT 
 	}
 
 	INT idCmdMax = -1;
+	
+	HDropIterator i(m_pdtobj);
+	i.First();
 
-	// If handling drag-and-drop...
-	if (m_pidlFolder)
-	{
-		BOOL fFound = FALSE;
+	PERCEIVED type;
+	PERCEIVEDFLAG flag;
+	LPTSTR pszPath = i.CurrentItem();
+	LPTSTR pszExt = PathFindExtension(pszPath);
 
-		// TODO: Would this be sufficient on just the first one?
-		HDropIterator i(m_pdtobj);
+	AssocGetPerceivedType(pszExt, &type, &flag, NULL);
 
-		// For each selected file...
-		for (i.First(); !i.IsDone(); i.Next())
-		{
-			PERCEIVED type;
-			PERCEIVEDFLAG flag;
-			LPTSTR pszPath = i.CurrentItem();
-			LPTSTR pszExt = PathFindExtension(pszPath);
+	free(pszPath);
 
-			AssocGetPerceivedType(pszExt, &type, &flag, NULL);
-
-			free(pszPath);
-
-			// If current file is an image...
-			if (type == PERCEIVED_TYPE_IMAGE)
-			{
-				// Flag that an image was found
-				fFound = TRUE;
-
-				// Stop looping
-				break;
-			}
-		}
-
-		// If any selected file was an image...
-		if (fFound)
-		{
-			CString strResizePicturesHere;
-			strResizePicturesHere.LoadString(IDS_RESIZE_PICTURES_HERE);
-
-			// Add 'Resize pictures here' item
-			InsertMenu(hmenu, indexMenu, MF_BYPOSITION, idCmdFirst + ID_RESIZE_PICTURES, strResizePicturesHere);
-			idCmdMax = ID_RESIZE_PICTURES;
-		}
-	}
-	else
-	{
+	// If selected file is an image...
+	if (type == PERCEIVED_TYPE_IMAGE)
+	{		
 		CString strResizePictures;
-		strResizePictures.LoadString(IDS_RESIZE_PICTURES);
 
-		// Add 'Resize pictures' item
+		// If handling drag-and-drop...
+		if (m_pidlFolder)
+		{			
+			// Load 'Resize pictures here' string
+			strResizePictures.LoadString(IDS_RESIZE_PICTURES_HERE);
+		}
+		else
+		{
+			// Load 'Resize pictures' string
+			strResizePictures.LoadString(IDS_RESIZE_PICTURES);
+		}
+
+		// Add menu item
 		InsertMenu(hmenu, indexMenu, MF_BYPOSITION, idCmdFirst + ID_RESIZE_PICTURES, strResizePictures);
 		idCmdMax = ID_RESIZE_PICTURES;
-	}
+	}	
 
 	return MAKE_HRESULT(SEVERITY_SUCCESS, 0, idCmdMax + 1);
 }
