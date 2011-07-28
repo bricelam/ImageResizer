@@ -20,6 +20,9 @@
               </RegistryKey>
             </RegistryKey>
           </Component>
+          <Component Id="Configuration" Win64="no">
+            <File Source="$(var.ImageResizer.TargetDir)$(var.ImageResizer.TargetFileName).config" />
+          </Component>
           <Component Id="License" Win64="no">
             <File Id="License" Source="..\Ms-PL.rtf" />
           </Component>
@@ -80,6 +83,7 @@
     <Feature Id="ImageResizer" Level="1">
       <ComponentRef Id="CommonServiceLocator" />
       <ComponentRef Id="ImageResizer" />
+      <ComponentRef Id="Configuration" />
       <ComponentRef Id="License" />
       <ComponentRef Id="Prism" />
       <ComponentRef Id="PrismOnMef" />
