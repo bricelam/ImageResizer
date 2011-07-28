@@ -86,6 +86,7 @@
     </Compile>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Model\CustomSize.cs" />
+    <Compile Include="Model\ISettings.cs" />
     <Compile Include="Model\Mode.cs" />
     <Compile Include="Model\Parameters.cs" />
     <Compile Include="Model\ResizeSize.cs" />
@@ -194,4 +195,8 @@
     <Exec Condition=" '$(registry:HKEY_LOCAL_MACHINE\Software\BriceLambson\ImageResizer)' != '$(TargetPath)' " Command="REG ADD HKLM\Software\BriceLambson\ImageResizer /ve /d &quot;$(TargetPath)&quot; /f" />
     <Exec Condition=" Exists('$(FxCopCmdPath)') AND '$(FxCopEnabled)' != 'false' " Command="&quot;$(FxCopCmdPath)&quot; /f:&quot;$(TargetPath)&quot; /c /dic:&quot;$(FxCopDictionary)&quot; /q /gac /igc /cul:en-US" IgnoreExitCode="true" />
   </Target>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
 </Project>

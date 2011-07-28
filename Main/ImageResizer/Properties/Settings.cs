@@ -12,7 +12,7 @@ namespace BriceLambson.ImageResizer.Properties
     using BriceLambson.ImageResizer.Model;
 
     // TODO: Can this be partitioned into interfaces?
-    internal sealed partial class Settings
+    internal sealed partial class Settings : ISettings
     {
         public ResizeSize SelectedSize
         {

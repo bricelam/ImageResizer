@@ -10,17 +10,16 @@
 namespace BriceLambson.ImageResizer.Services
 {
     using System;
-    using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
     using System.IO;
     using System.Windows.Media.Imaging;
-    using BriceLambson.ImageResizer.Properties;
+    using BriceLambson.ImageResizer.Model;
 
     internal class RenamingService
     {
-        private Settings settings;
+        private ISettings settings;
 
-        public RenamingService(Settings settings)
+        public RenamingService(ISettings settings)
         {
             // TODO: This makes reuse difficult
             this.settings = settings;

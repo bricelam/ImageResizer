@@ -15,22 +15,21 @@ namespace BriceLambson.ImageResizer.Services
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
     using BriceLambson.ImageResizer.Model;
-    using BriceLambson.ImageResizer.Properties;
     using Microsoft.VisualBasic.FileIO;
 
     internal class ResizingService
     {
-        private Settings settings;
+        private ISettings settings;
         private Lazy<RenamingService> lazyRenamer;
 
-        public ResizingService(Settings settings)
+        public ResizingService(ISettings settings)
         {
             // NOTE: This is lazy because it has the potential of never being used
             this.lazyRenamer = new Lazy<RenamingService>(() => new RenamingService(settings));
             this.settings = settings;
         }
 
-        public void Resize(string sourcePath, string outputDirectory)
+        public string Resize(string sourcePath, string outputDirectory)
         {
             bool encoderDefaulted = false;
             BitmapDecoder decoder;
@@ -108,6 +107,8 @@ namespace BriceLambson.ImageResizer.Services
                 // Save the final image
                 encoder.Save(destinationStream);
             }
+
+            return destinationPath;
         }
 
         private void SetEncoderSettings(BitmapEncoder encoder)
