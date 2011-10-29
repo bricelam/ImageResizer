@@ -9,40 +9,49 @@
 
 namespace BriceLambson.ImageResizer.ViewModels
 {
+    using System;
     using System.Diagnostics;
-    using System.Linq;
-    using System.ServiceModel.Syndication;
+    using System.Diagnostics.Contracts;
     using System.Windows.Input;
+    using BriceLambson.ImageResizer.Models;
     using BriceLambson.ImageResizer.Properties;
     using Microsoft.Practices.Prism.Commands;
 
     internal class UpdateAvailableViewModel
     {
-        private Settings settings;
-        private SyndicationItem item;
+        private readonly Update _update;
+        private readonly ICommand _downloadCommand;
+        private readonly ICommand _closeCommand;
 
-        public UpdateAvailableViewModel(Settings settings, SyndicationItem item)
+        public UpdateAvailableViewModel(Update update)
         {
-            this.settings = settings;
-            this.item = item;
+            Contract.Requires(update != null);
 
-            this.DownloadCommand = new DelegateCommand(this.Download);
-            this.CloseCommand = new DelegateCommand(this.Close);
+            _downloadCommand = new DelegateCommand(Download);
+            _closeCommand = new DelegateCommand(Close);
+
+            _update = update;
         }
 
-        public ICommand DownloadCommand { get; set; }
+        public ICommand DownloadCommand
+        {
+            get { return _downloadCommand; }
+        }
 
-        public ICommand CloseCommand { get; set; }
+        public ICommand CloseCommand
+        {
+            get { return _closeCommand; }
+        }
 
         public bool DontCheckForUpdates
         {
-            get { return !this.settings.CheckForUpdates; }
-            set { this.settings.CheckForUpdates = !value; }
+            get { return !AdvancedSettings.Default.CheckForUpdates; }
+            set { AdvancedSettings.Default.CheckForUpdates = !value; }
         }
 
         private void Download()
         {
-            var downloadUrl = this.item.Links.Single().Uri.ToString();
+            var downloadUrl = _update.Url.ToString();
 
             // Open with the default browser
             Process.Start(downloadUrl);
@@ -50,7 +59,7 @@ namespace BriceLambson.ImageResizer.ViewModels
 
         private void Close()
         {
-            this.settings.Save();
+            AdvancedSettings.Default.Save();
         }
     }
 }

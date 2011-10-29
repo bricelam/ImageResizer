@@ -11,34 +11,42 @@ namespace BriceLambson.ImageResizer.ViewModels
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.Contracts;
     using System.Windows.Input;
     using Microsoft.Practices.Prism.Commands;
 
-    // TODO: Finish implementing this
     internal class ResultsPageViewModel
     {
-        public ResultsPageViewModel()
+        private readonly ICommand _closeCommand;
+        private readonly IDictionary<string, Exception> _errors;
+
+        public ResultsPageViewModel(IDictionary<string, Exception> errors)
         {
-            this.CloseCommand = new DelegateCommand(this.Close);
+            Contract.Requires(errors != null);
+
+            _closeCommand = new DelegateCommand(Close);
+
+            _errors = errors;
         }
 
         public event EventHandler<EventArgs> Completed;
 
-        public ICommand CloseCommand { get; set; }
-
-        public IDictionary<string, Exception> Errors { get; set; }
-
-        private void OnCompleted()
+        public ICommand CloseCommand
         {
-            if (this.Completed != null)
-            {
-                this.Completed(this, EventArgs.Empty);
-            }
+            get { return _closeCommand; }
+        }
+
+        public IDictionary<string, Exception> Errors
+        {
+            get { return _errors; }
         }
 
         private void Close()
         {
-            this.OnCompleted();
+            if (Completed != null)
+            {
+                Completed(this, EventArgs.Empty);
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 // <copyright file="ResizingService.cs" company="Brice Lambson">
 //     Copyright (c) 2011 Brice Lambson. All rights reserved.
 //
@@ -10,28 +10,43 @@
 namespace BriceLambson.ImageResizer.Services
 {
     using System;
+    using System.Diagnostics.Contracts;
     using System.Globalization;
     using System.IO;
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
-    using BriceLambson.ImageResizer.Model;
+    using BriceLambson.ImageResizer.Helpers;
+    using BriceLambson.ImageResizer.Models;
     using Microsoft.VisualBasic.FileIO;
 
     internal class ResizingService
     {
-        private ISettings settings;
-        private Lazy<RenamingService> lazyRenamer;
+        private const string DefaultEncoderExtension = ".jpg";
+        private static readonly Type DefaultEncoderType = typeof(JpegBitmapEncoder);
 
-        public ResizingService(ISettings settings)
+        private readonly int _qualityLevel;
+        private readonly bool _shrinkOnly;
+        private readonly ResizeSize _size;
+        private readonly RenamingService _renamer;
+
+        public ResizingService(int qualityLevel, bool shrinkOnly, ResizeSize size, RenamingService renamer)
         {
-            // NOTE: This is lazy because it has the potential of never being used
-            this.lazyRenamer = new Lazy<RenamingService>(() => new RenamingService(settings));
-            this.settings = settings;
+            Contract.Requires(qualityLevel >= 1 && qualityLevel <= 100);
+            Contract.Requires(size != null);
+            Contract.Requires(renamer != null);
+
+            _qualityLevel = qualityLevel;
+            _shrinkOnly = shrinkOnly;
+            _size = size;
+            _renamer = renamer;
         }
 
-        public string Resize(string sourcePath, string outputDirectory)
+        public string Resize(string sourcePath)
         {
-            bool encoderDefaulted = false;
+            Contract.Requires(!String.IsNullOrWhiteSpace(sourcePath));
+            Contract.Ensures(!String.IsNullOrWhiteSpace(Contract.Result<string>()));
+
+            var encoderDefaulted = false;
             BitmapDecoder decoder;
 
             using (var sourceStream = File.OpenRead(sourcePath))
@@ -46,17 +61,17 @@ namespace BriceLambson.ImageResizer.Services
             try
             {
                 // NOTE: This will throw if the codec dose not support encoding
-                var temp = encoder.CodecInfo;
+                var _ = encoder.CodecInfo;
             }
             catch (NotSupportedException)
             {
                 // Fallback to JPEG encoder
-                encoder = new JpegBitmapEncoder();
+                encoder = (BitmapEncoder)Activator.CreateInstance(DefaultEncoderType);
                 encoderDefaulted = true;
             }
 
             // TODO: Copy container-level metadata if codec supports it
-            this.SetEncoderSettings(encoder);
+            SetEncoderSettings(encoder);
 
             string destinationPath = null;
 
@@ -64,7 +79,7 @@ namespace BriceLambson.ImageResizer.Services
             foreach (var sourceFrame in decoder.Frames)
             {
                 // Apply the transform
-                var transform = this.GetTransform(sourceFrame);
+                var transform = GetTransform(sourceFrame);
                 var transformedBitmap = new TransformedBitmap(sourceFrame, transform);
 
                 // TODO: Optionally copy metadata
@@ -81,17 +96,10 @@ namespace BriceLambson.ImageResizer.Services
                 {
                     if (encoderDefaulted)
                     {
-                        sourcePath = Path.ChangeExtension(sourcePath, ".jpg");
+                        sourcePath = Path.ChangeExtension(sourcePath, DefaultEncoderExtension);
                     }
 
-                    if (this.settings.ReplaceOriginals)
-                    {
-                        destinationPath = sourcePath;
-                    }
-                    else
-                    {
-                        destinationPath = this.lazyRenamer.Value.Rename(sourcePath, outputDirectory, destinationFrame);
-                    }
+                    destinationPath = _renamer.Rename(sourcePath);
                 }
             }
 
@@ -113,11 +121,13 @@ namespace BriceLambson.ImageResizer.Services
 
         private void SetEncoderSettings(BitmapEncoder encoder)
         {
+            Contract.Requires(encoder != null);
+
             var jpegEncoder = encoder as JpegBitmapEncoder;
 
             if (jpegEncoder != null)
             {
-                jpegEncoder.QualityLevel = this.settings.QualityLevel;
+                jpegEncoder.QualityLevel = _qualityLevel;
             }
         }
 
@@ -125,23 +135,24 @@ namespace BriceLambson.ImageResizer.Services
         //       combination of transforms to be performed on the image
         private Transform GetTransform(BitmapSource source)
         {
-            var size = this.settings.SelectedSize;
-            var scaleX = UnitHelper.ConvertToScale(size.Width, size.Unit, source.PixelWidth, source.DpiX);
-            var scaleY = UnitHelper.ConvertToScale(size.Height, size.Unit, source.PixelHeight, source.DpiY);
+            Contract.Requires(source != null);
 
-            if (size.Mode == Mode.Scale)
+            var scaleX = UnitHelper.ConvertToScale(_size.Width, _size.Unit, source.PixelWidth, source.DpiX);
+            var scaleY = UnitHelper.ConvertToScale(_size.Height, _size.Unit, source.PixelHeight, source.DpiY);
+
+            if (_size.Mode == Mode.Scale)
             {
                 var minScale = Math.Min(scaleX, scaleY);
 
                 scaleX = minScale;
                 scaleY = minScale;
             }
-            else if (size.Mode != Mode.Stretch)
+            else if (_size.Mode != Mode.Stretch)
             {
-                throw new NotSupportedException(String.Format(CultureInfo.InvariantCulture, "The mode '{0}' is not yet supported.", size.Mode));
+                throw new NotSupportedException(String.Format(CultureInfo.InvariantCulture, "The mode '{0}' is not yet supported.", _size.Mode));
             }
 
-            if (this.settings.ShrinkOnly)
+            if (_shrinkOnly)
             {
                 var maxScale = Math.Max(scaleX, scaleY);
 

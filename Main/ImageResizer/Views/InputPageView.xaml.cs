@@ -11,14 +11,11 @@ namespace BriceLambson.ImageResizer.Views
 {
     using System.Windows.Controls;
 
-    /// <summary>
-    /// Interaction logic for InputPageView.xaml
-    /// </summary>
     public partial class InputPageView : UserControl
     {
         public InputPageView()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
     }
 }

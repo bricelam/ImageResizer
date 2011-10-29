@@ -11,145 +11,171 @@ namespace BriceLambson.ImageResizer.ViewModels
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
+    using System.Diagnostics.Contracts;
     using System.IO;
+    using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
     using System.Windows.Input;
+    using BriceLambson.ImageResizer.Helpers;
+    using BriceLambson.ImageResizer.Models;
     using BriceLambson.ImageResizer.Properties;
     using BriceLambson.ImageResizer.Services;
     using Microsoft.Practices.Prism.Commands;
 
-    internal class ProgressPageViewModel : INotifyPropertyChanged, IDisposable
+    internal class ProgressPageViewModel : NotifyPropertyChangedBase, IDisposable
     {
-        private Settings settings;
-        private ParameterService parameterService;
-        private BackgroundWorker backgroundWorker;
-        private double progress;
-        private IDictionary<string, Exception> errors;
+        private readonly object _detailsSync = new Object();
+        private readonly object _progressSync = new Object();
+        private readonly IDictionary<string, Exception> _errors = new Dictionary<string, Exception>();
+        private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
+        private readonly Parameters _parameters;
+        private readonly ICommand _stopCommand;
 
-        public ProgressPageViewModel(Settings settings, ParameterService parameterService)
+        private double _progress;
+        private string _currentImage;
+
+        public ProgressPageViewModel(Parameters parameters)
         {
-            this.settings = settings;
-            this.parameterService = parameterService;
+            Contract.Requires(parameters != null);
 
-            // TODO: This will need to be thread-safe
-            this.errors = new Dictionary<string, Exception>();
+            _stopCommand = new DelegateCommand(Stop);
 
-            this.backgroundWorker = new BackgroundWorker
-            {
-                WorkerSupportsCancellation = true
-            };
-            this.backgroundWorker.DoWork += (_, e) => e.Cancel = this.Resize();
-            this.backgroundWorker.RunWorkerCompleted += (_, e) => this.OnCompleted(this.errors);
-
-            this.StopCommand = new DelegateCommand(this.Stop);
+            _parameters = parameters;
         }
 
         ~ProgressPageViewModel()
         {
-            this.Dispose(false);
+            Dispose(false);
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public event EventHandler<ProgressPageCompletedEventArgs> Completed;
 
-        public ICommand StopCommand { get; set; }
-
-        public string CurrentImage { get; set; }
-
-        public double Progress
+        public ICommand StopCommand
         {
-            get
-            {
-                return this.progress;
-            }
+            get { return _stopCommand; }
+        }
 
+        public string CurrentImage
+        {
+            get { return _currentImage; }
             set
             {
-                if (this.progress != value)
+                if (_currentImage != value)
                 {
-                    this.progress = value;
+                    _currentImage = value;
 
-                    // TODO: Extract this from a lambda for compile-time checking
-                    this.OnPropertyChanged("Progress");
+                    OnPropertyChanged("CurrentImage");
                 }
             }
         }
 
-        public void ResizeAsync()
+        public double Progress
         {
-            if (!this.backgroundWorker.IsBusy)
+            get { return _progress; }
+            set
             {
-                this.backgroundWorker.RunWorkerAsync();
+                Contract.Requires(value >= 0 && value <= 100);
+
+                if (_progress != value)
+                {
+                    _progress = value;
+
+                    OnPropertyChanged("Progress");
+                }
             }
+        }
+
+        public async void ResizeAsync()
+        {
+            var imageCount = _parameters.SelectedFiles.Count();
+            var resizer
+                = new ResizingService(
+                    AdvancedSettings.Default.QualityLevel,
+                    Settings.Default.ShrinkOnly,
+                    Settings.Default.SelectedSize,
+                    new RenamingService(
+                        AdvancedSettings.Default.FileNameFormat,
+                        _parameters.OutputDirectory,
+                        Settings.Default.ReplaceOriginals,
+                        Settings.Default.SelectedSize));
+
+            try
+            {
+                await TaskEx.Run(
+                    () => Parallel.ForEach(
+                        _parameters.SelectedFiles,
+                        new ParallelOptions
+                        {
+                            CancellationToken = _cancellationTokenSource.Token,
+                            MaxDegreeOfParallelism = Environment.ProcessorCount
+                        },
+                        image =>
+                        {
+                            lock (_detailsSync)
+                            {
+                                // TODO: Show more details
+                                CurrentImage = Path.GetFileName(image);
+                            }
+
+                            try
+                            {
+                                resizer.Resize(image);
+                            }
+                            catch (Exception ex)
+                            {
+                                AddError(image, ex);
+                            }
+
+                            lock (_progressSync)
+                            {
+                                Progress += 100 / (double)imageCount;
+                            }
+                        }));
+            }
+            catch (OperationCanceledException)
+            {
+            }
+
+            OnCompleted();
         }
 
         public void Dispose()
         {
-            this.Dispose(true);
+            Dispose(true);
             GC.SuppressFinalize(this);
-        }
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            if (this.PropertyChanged != null)
-            {
-                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
         }
 
         protected virtual void Dispose(bool disposing)
         {
-            if (disposing && this.backgroundWorker != null)
+            if (disposing && _cancellationTokenSource != null)
             {
-                this.backgroundWorker.Dispose();
+                _cancellationTokenSource.Dispose();
             }
         }
 
-        private void OnCompleted(IDictionary<string, Exception> errors)
+        protected virtual void OnCompleted()
         {
-            if (this.Completed != null)
+            if (Completed != null)
             {
-                this.Completed(this, new ProgressPageCompletedEventArgs(errors));
+                Completed(this, new ProgressPageCompletedEventArgs(_errors));
             }
-        }
-
-        private bool Resize()
-        {
-            var parameters = this.parameterService.Parameters;
-            var cancelled = false;
-            var resizer = new ResizingService(this.settings);
-
-            var imageCount = parameters.SelectedFiles.Count;
-
-            // TODO: Multi-thread this
-            for (var i = 0; i < imageCount && !cancelled; i++)
-            {
-                var image = parameters.SelectedFiles[i];
-
-                this.CurrentImage = Path.GetFileName(image);
-
-                try
-                {
-                    resizer.Resize(image, parameters.OutputDirectory);
-                }
-                catch (Exception ex)
-                {
-                    this.errors[image] = ex;
-                }
-
-                // TODO: Estimate time remaining
-                this.Progress = (i + 1) / (double)imageCount * 100;
-
-                cancelled = this.backgroundWorker.CancellationPending;
-            }
-
-            return cancelled;
         }
 
         private void Stop()
         {
-            this.backgroundWorker.CancelAsync();
+            _cancellationTokenSource.Cancel();
+        }
+
+        private void AddError(string image, Exception ex)
+        {
+            Contract.Requires(!String.IsNullOrWhiteSpace(image));
+            Contract.Requires(ex != null);
+
+            lock (_errors)
+            {
+                _errors.Add(image, ex);
+            }
         }
     }
 }

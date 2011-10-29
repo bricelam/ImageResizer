@@ -9,34 +9,35 @@
 
 namespace BriceLambson.ImageResizer
 {
+    using System;
+    using System.Diagnostics.Contracts;
     using System.Windows;
-    using BriceLambson.ImageResizer.Services;
     using BriceLambson.ImageResizer.ViewModels;
     using BriceLambson.ImageResizer.Views;
     using Microsoft.Practices.Prism.MefExtensions;
 
     internal class Bootstrapper : MefBootstrapper
     {
-        private string[] args;
+        private readonly string[] _args;
 
         public Bootstrapper(string[] args)
         {
-            this.args = args;
+            Contract.Requires(args != null);
+
+            _args = args;
         }
 
         protected override DependencyObject CreateShell()
         {
-            var shell = new Shell
-            {
-                DataContext = new ShellViewModel(this.args)
-            };
-
-            return shell;
+            return new Shell
+                {
+                    DataContext = new ShellViewModel(_args)
+                };
         }
 
         protected override void InitializeShell()
         {
-            Application.Current.MainWindow = (Window)this.Shell;
+            Application.Current.MainWindow = (Window)Shell;
             Application.Current.MainWindow.Show();
         }
     }

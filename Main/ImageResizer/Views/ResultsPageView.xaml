@@ -11,7 +11,7 @@
             <!-- TODO: Error icon -->
             <TextBlock Margin="0,11,0,0">Image Resizer was unable to resize one or more pictures.</TextBlock>
             <!-- TODO: List filenames and problems -->
-            
+
         </StackPanel>
 
         <Border Background="{x:Static SystemColors.ControlBrush}" BorderBrush="{x:Static SystemColors.ControlLightBrush}" BorderThickness="0,1,0,0">
@@ -24,4 +24,3 @@
 
     </StackPanel>
 </UserControl>
-    

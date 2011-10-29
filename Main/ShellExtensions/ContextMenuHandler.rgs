@@ -33,22 +33,3 @@ HKCR
 		}
 	}
 }
-HKLM
-{
-	NoRemove SOFTWARE
-	{
-		NoRemove Microsoft
-		{
-			NoRemove CurrentVersion
-			{
-				NoRemove 'Shell Extensions'
-				{
-					NoRemove Approved
-					{
-						val {51B4D7E5-7568-4234-B4BB-47FB3C016A69} = s 'Image Resizer'
-					}
-				}
-			}
-		}
-	}
-}

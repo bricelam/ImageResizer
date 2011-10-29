@@ -12,72 +12,83 @@ namespace BriceLambson.ImageResizer.ViewModels
     using System;
     using System.Collections.Generic;
     using System.Windows.Input;
-    using BriceLambson.ImageResizer.Model;
+    using BriceLambson.ImageResizer.Models;
     using BriceLambson.ImageResizer.Properties;
     using Microsoft.Practices.Prism.Commands;
     using Microsoft.Practices.Prism.Events;
+    using Microsoft.Practices.ServiceLocation;
 
     internal class InputPageViewModel
     {
-        private IEventAggregator eventAggregator;
-        private List<ResizeSize> sizes;
+        private readonly List<ResizeSize> _sizes = new List<ResizeSize>();
+        private readonly ICommand _showAdvancedCommand;
+        private readonly ICommand _resizeCommand;
+        private readonly ICommand _cancelCommand;
 
-        public InputPageViewModel(Settings settings, IEventAggregator eventAggregator)
+        public InputPageViewModel()
         {
-            this.Settings = settings;
-            this.eventAggregator = eventAggregator;
-
             // Aggregate the sizes
-            this.sizes = new List<ResizeSize>();
-            this.sizes.AddRange(settings.DefaultSizes);
-            this.sizes.Add(settings.CustomSize);
+            Sizes.AddRange(AdvancedSettings.Default.DefaultSizes);
+            Sizes.Add(Settings.CustomSize);
 
-            this.ShowAdvancedCommand = new DelegateCommand(this.ShowAdvanced);
-            this.ResizeCommand = new DelegateCommand(this.Resize);
-            this.CancelCommand = new DelegateCommand(this.Cancel);
+            _showAdvancedCommand = new DelegateCommand(ShowAdvanced);
+            _resizeCommand = new DelegateCommand(Resize);
+            _cancelCommand = new DelegateCommand(Cancel);
         }
 
         public event EventHandler<InputPageCompletedEventArgs> Completed;
 
-        public Settings Settings { get; private set; }
+        public Settings Settings
+        {
+            get { return Settings.Default; }
+        }
 
         public List<ResizeSize> Sizes
         {
-            get { return this.sizes; }
+            get { return _sizes; }
         }
 
-        public ICommand ShowAdvancedCommand { get; set; }
-
-        public ICommand ResizeCommand { get; set; }
-
-        public ICommand CancelCommand { get; set; }
-
-        private void OnCompleted(bool cancelled)
+        public ICommand ShowAdvancedCommand
         {
-            if (this.Completed != null)
-            {
-                var e = new InputPageCompletedEventArgs(cancelled);
+            get { return _showAdvancedCommand; }
+        }
 
-                this.Completed(this, e);
+        public ICommand ResizeCommand
+        {
+            get { return _resizeCommand; }
+        }
+
+        public ICommand CancelCommand
+        {
+            get { return _cancelCommand; }
+        }
+
+        protected virtual void OnCompleted(bool cancelled)
+        {
+            if (Completed != null)
+            {
+                Completed(this, new InputPageCompletedEventArgs(cancelled));
             }
         }
 
         private void ShowAdvanced()
         {
-            this.eventAggregator.GetEvent<ShowAdvancedEvent>().Publish(null);
+            ServiceLocator.Current
+                .GetInstance<IEventAggregator>()
+                .GetEvent<ShowAdvancedEvent>()
+                .Publish(null);
         }
 
         private void Resize()
         {
-            // TODO: This may conflict with the Advanced settings
-            this.Settings.Save();
+            Settings.Default.Save();
 
-            this.OnCompleted(false);
+            OnCompleted(false);
         }
 
         private void Cancel()
         {
-            this.OnCompleted(true);
+            OnCompleted(true);
         }
     }
 }

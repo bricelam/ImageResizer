@@ -1,7 +1,7 @@
 ﻿<UserControl x:Class="BriceLambson.ImageResizer.Views.InputPageView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:m="clr-namespace:BriceLambson.ImageResizer.Model"
+             xmlns:m="clr-namespace:BriceLambson.ImageResizer.Models"
              Width="360">
     <StackPanel>
 
@@ -46,6 +46,8 @@
             </ListBox>
 
             <CheckBox Margin="0,11,0,0" IsChecked="{Binding Settings.ShrinkOnly}">Only shrink pictures</CheckBox>
+            
+            <!-- TODO: Hide this if resizing to a directory -->
             <CheckBox Margin="0,7,0,0" IsChecked="{Binding Settings.ReplaceOriginals}">Replace the originals</CheckBox>
 
         </StackPanel>

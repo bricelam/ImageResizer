@@ -7,6 +7,9 @@
     <DirectoryRef Id="TARGETDIR">
       <Directory Id="ProgramFilesFolder">
         <Directory Id="APPLICATIONFOLDER" Name="Image Resizer for Windows">
+          <Component Id="AsyncCtpLibrary" Win64="no">
+            <File Source="..\Reference Assemblies\AsyncCtpLibrary.dll" />
+          </Component>
           <Component Id="CommonServiceLocator" Win64="no">
             <File Source="..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll" />
           </Component>
@@ -81,6 +84,7 @@
       </Directory>
     </DirectoryRef>
     <Feature Id="ImageResizer" Level="1">
+      <ComponentRef Id="AsyncCtpLibrary" />
       <ComponentRef Id="CommonServiceLocator" />
       <ComponentRef Id="ImageResizer" />
       <ComponentRef Id="Configuration" />

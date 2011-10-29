@@ -1,5 +1,5 @@
 ﻿//------------------------------------------------------------------------------
-// <copyright file="ReleaseStatus.cs" company="Brice Lambson">
+// <copyright file="ShowAdvancedEvent.cs" company="Brice Lambson">
 //     Copyright (c) 2011 Brice Lambson. All rights reserved.
 //
 //     The use of this software is governed by the Microsoft Public License
@@ -7,12 +7,11 @@
 // </copyright>
 //------------------------------------------------------------------------------
 
-namespace BriceLambson.ImageResizer.Model
+namespace BriceLambson.ImageResizer.Models
 {
-    internal enum ReleaseStatus
+    using Microsoft.Practices.Prism.Events;
+
+    internal class ShowAdvancedEvent : CompositePresentationEvent<object>
     {
-        Stable = 1,
-        Beta = 2,
-        Alpha = 4
     }
 }

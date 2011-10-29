@@ -133,15 +133,29 @@ HRESULT CContextMenuHandler::ResizePictures(CMINVOKECOMMANDINFO *pici)
 	// Set the application path from the registry
 	LPTSTR lpApplicationName = new TCHAR[MAX_PATH];
 	ULONG nChars = MAX_PATH;
-
-	// NOTE: The location is always read from the 32-bit key
 	CRegKey regKey;
-	regKey.Open(HKEY_LOCAL_MACHINE, _T("Software\\BriceLambson\\ImageResizer"), KEY_READ | KEY_WOW64_32KEY);
+
+	// NOTE: The location is always read from a 32-bit key
+	if (!regKey.Open(HKEY_CURRENT_USER, _T("Software\\BriceLambson\\ImageResizer"), KEY_READ | KEY_WOW64_32KEY))
+	{		
+		regKey.Open(HKEY_LOCAL_MACHINE, _T("Software\\BriceLambson\\ImageResizer"), KEY_READ | KEY_WOW64_32KEY);
+	}
+
 	regKey.QueryStringValue(NULL, lpApplicationName, &nChars);
 	regKey.Close();
 
+	// Create an anonymous pipe to stream filenames
+	SECURITY_ATTRIBUTES sa;
+	HANDLE hReadPipe;
+	HANDLE hWritePipe;
+	sa.nLength = sizeof(SECURITY_ATTRIBUTES);
+	sa.lpSecurityDescriptor = NULL;
+	sa.bInheritHandle = TRUE;
+	CreatePipe(&hReadPipe, &hWritePipe, &sa, 0);
+	CAtlFile writePipe(hWritePipe);
+
 	CString commandLine;
-	commandLine.Format(_T("\"%s\""), lpApplicationName);
+	commandLine.Format(_T("\"%s\" /p %d"), lpApplicationName, hReadPipe);
 
 	// Set the output directory
 	if (m_pidlFolder)
@@ -150,15 +164,6 @@ HRESULT CContextMenuHandler::ResizePictures(CMINVOKECOMMANDINFO *pici)
 		SHGetPathFromIDList(m_pidlFolder, szFolder);
 
 		commandLine.AppendFormat(_T(" /d \"%s\""), szFolder);
-	}
-
-	// Set the input files
-	HDropIterator i(m_pdtobj);
-
-	for (i.First(); !i.IsDone(); i.Next())
-	{
-		// TODO: Since command line arguments are limited, send using an anonymous pipe
-		commandLine.AppendFormat(_T(" \"%s\""), i.CurrentItem());
 	}
 
 	LPTSTR lpszCommandLine = new TCHAR[commandLine.GetLength() + 1];
@@ -184,7 +189,23 @@ HRESULT CContextMenuHandler::ResizePictures(CMINVOKECOMMANDINFO *pici)
 		&startupInfo,
 		&processInformation);
 
+	// Stream the input files
+	HDropIterator i(m_pdtobj);
+
+	for (i.First(); !i.IsDone(); i.Next())
+	{
+		// NOTE: The protocol for this stream is extremely simple. Each file is written
+		//       on its own line, and the stream ends after a blank line is written
+		CString fileName(i.CurrentItem());
+		fileName.Append(_T("\r\n"));
+
+		writePipe.Write(fileName, fileName.GetLength() * sizeof(TCHAR));
+	}
+	
+	writePipe.Write(_T("\r\n"), 2 * sizeof(TCHAR));
+
 	// Cleanup
+	writePipe.Close();
 	CloseHandle(processInformation.hProcess);
 	CloseHandle(processInformation.hThread);
 	delete[] lpszCommandLine;

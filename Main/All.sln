@@ -14,7 +14,7 @@ Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Setup", "Setup\Setup.wixpro
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0A56A612-F89A-45B8-B37A-8ED56A601B24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageResizerTests", "ImageResizer.Test\ImageResizerTests.csproj", "{FE6A35FF-E9ED-495F-96BF-148208E74110}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageResizer.Test", "ImageResizer.Test\ImageResizer.Test.csproj", "{FE6A35FF-E9ED-495F-96BF-148208E74110}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
@@ -37,7 +37,7 @@ Global
 		SccAuxPath2 = https://tfs.codeplex.com/tfs/tfs09
 		SccLocalPath2 = Setup
 		SccProvider2 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName3 = ImageResizer.Test\\ImageResizerTests.csproj
+		SccProjectUniqueName3 = ImageResizer.Test\\ImageResizer.Test.csproj
 		SccProjectTopLevelParentUniqueName3 = All.sln
 		SccProjectName3 = ImageResizer.Test
 		SccAuxPath3 = https://tfs.codeplex.com/tfs/tfs09

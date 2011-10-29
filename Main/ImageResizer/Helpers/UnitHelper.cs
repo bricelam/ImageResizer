@@ -7,15 +7,22 @@
 // </copyright>
 //------------------------------------------------------------------------------
 
-namespace BriceLambson.ImageResizer.Model
+namespace BriceLambson.ImageResizer.Helpers
 {
     using System;
+    using System.Diagnostics.Contracts;
     using System.Globalization;
+    using BriceLambson.ImageResizer.Models;
+    using BriceLambson.ImageResizer.Properties;
 
     internal static class UnitHelper
     {
         public static double ConvertToScale(double value, Unit unit, int originalPixels, double dpi)
         {
+            Contract.Requires(originalPixels > 0);
+            Contract.Requires(dpi > 0);
+            Contract.Ensures(Contract.Result<double>() > 0);
+
             switch (unit)
             {
                 case Unit.Pixels:
@@ -29,11 +36,9 @@ namespace BriceLambson.ImageResizer.Model
 
                 case Unit.Centimeters:
                     return ConvertToScale(value * 50 / 127, Unit.Inches, originalPixels, dpi);
-
-                default:
-                    // TODO: Add message to the resource file
-                    throw new NotSupportedException(String.Format(CultureInfo.InvariantCulture, "The unit '{0}' is not yet supported.", unit));
             }
+
+            throw new NotSupportedException(String.Format(CultureInfo.InvariantCulture, Resources.UnitNotSupported, unit));
         }
     }
 }

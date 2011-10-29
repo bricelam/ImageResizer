@@ -10,24 +10,45 @@
 namespace BriceLambson.ImageResizer.Services
 {
     using System;
+    using System.Diagnostics.Contracts;
     using System.Globalization;
     using System.IO;
-    using System.Windows.Media.Imaging;
-    using BriceLambson.ImageResizer.Model;
+    using BriceLambson.ImageResizer.Models;
 
     internal class RenamingService
     {
-        private ISettings settings;
+        private const string UniqueFileNameFormat = "{0} ({1})";
 
-        public RenamingService(ISettings settings)
+        private readonly string _fileNameFormat;
+        private readonly string _outputDirectory;
+        private readonly bool _replaceOriginals;
+        private readonly ResizeSize _size;
+
+        public RenamingService(string fileNameFormat, string outputDirectory, bool replaceOriginals, ResizeSize size)
         {
-            // TODO: This makes reuse difficult
-            this.settings = settings;
+            Contract.Requires(!String.IsNullOrWhiteSpace(fileNameFormat));
+            Contract.Requires(fileNameFormat.Contains("{0}"));
+            Contract.Requires(size != null);
+
+            _fileNameFormat = fileNameFormat;
+            _outputDirectory = outputDirectory;
+            _replaceOriginals = replaceOriginals;
+            _size = size;
         }
 
-        public string Rename(string sourcePath, string outputDirectory, BitmapSource destination)
+        public string Rename(string sourcePath)
         {
-            var directoryName = outputDirectory ?? Path.GetDirectoryName(sourcePath);
+            Contract.Requires(!String.IsNullOrWhiteSpace(sourcePath));
+            Contract.Ensures(!String.IsNullOrWhiteSpace(Contract.Result<string>()));
+
+            if (_replaceOriginals)
+            {
+                return sourcePath;
+            }
+
+            var directoryName
+                = _outputDirectory
+                    ?? Path.GetDirectoryName(sourcePath);
             var fileName = Path.GetFileNameWithoutExtension(sourcePath);
             var extension = Path.GetExtension(sourcePath);
 
@@ -47,17 +68,17 @@ namespace BriceLambson.ImageResizer.Services
                 fileName,
 
                 // {1} = Selected size name
-                this.settings.SelectedSize.Name
+                _size.Name
             };
 
-            var destinationFileName = String.Format(CultureInfo.CurrentCulture, this.settings.FileNameFormat, replacementItems);
+            var destinationFileName = String.Format(CultureInfo.CurrentCulture, _fileNameFormat, replacementItems);
             var destinationPath = Path.Combine(directoryName, destinationFileName + extension);
             var i = 1;
 
             // Ensure the file name is unique
             while (File.Exists(destinationPath))
             {
-                var uniqueFileName = String.Format(CultureInfo.CurrentCulture, "{0} ({1})", destinationFileName, ++i);
+                var uniqueFileName = String.Format(CultureInfo.CurrentCulture, UniqueFileNameFormat, destinationFileName, ++i);
                 destinationPath = Path.Combine(directoryName, uniqueFileName + extension);
             }
 

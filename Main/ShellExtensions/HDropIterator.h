@@ -15,4 +15,3 @@ private:
 	STGMEDIUM m_medium;
 	UINT _current;
 };
-

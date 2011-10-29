@@ -1,5 +1,5 @@
 ﻿//------------------------------------------------------------------------------
-// <copyright file="UpdateAvailableEvent.cs" company="Brice Lambson">
+// <copyright file="Update.cs" company="Brice Lambson">
 //     Copyright (c) 2011 Brice Lambson. All rights reserved.
 //
 //     The use of this software is governed by the Microsoft Public License
@@ -7,12 +7,15 @@
 // </copyright>
 //------------------------------------------------------------------------------
 
-namespace BriceLambson.ImageResizer
+namespace BriceLambson.ImageResizer.Models
 {
-    using BriceLambson.ImageResizer.ViewModels;
-    using Microsoft.Practices.Prism.Events;
+    using System;
 
-    internal class UpdateAvailableEvent : CompositePresentationEvent<UpdateAvailableViewModel>
+    public class Update
     {
+        public Version Version { get; set; }
+        public DateTimeOffset LastUpdatedTime { get; set; }
+        public Uri Url { get; set; }
+        public ReleaseStatus ReleaseStatus { get; set; }
     }
 }

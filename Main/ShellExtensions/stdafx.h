@@ -14,6 +14,7 @@
 
 #include <atlbase.h>
 #include <atlcom.h>
+#include <atlfile.h>
 #include <atlstr.h>
 
 #include <ShlObj.h>

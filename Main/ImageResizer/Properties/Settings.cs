@@ -9,34 +9,36 @@
 
 namespace BriceLambson.ImageResizer.Properties
 {
-    using BriceLambson.ImageResizer.Model;
+    using BriceLambson.ImageResizer.Models;
 
-    // TODO: Can this be partitioned into interfaces?
-    internal sealed partial class Settings : ISettings
+    internal sealed partial class Settings
     {
         public ResizeSize SelectedSize
         {
             get
             {
-                if (this.SelectedIndex < 0 || this.SelectedIndex >= this.DefaultSizes.Count)
+                var defaultSizes = AdvancedSettings.Default.DefaultSizes;
+
+                if (SelectedIndex < 0 || SelectedIndex >= defaultSizes.Count)
                 {
-                    return this.CustomSize;
+                    return CustomSize;
                 }
 
-                return this.DefaultSizes[this.SelectedIndex];
+                return defaultSizes[SelectedIndex];
             }
 
             set
             {
-                var index = this.DefaultSizes.IndexOf(value);
+                var defaultSizes = AdvancedSettings.Default.DefaultSizes;
+                var index = defaultSizes.IndexOf(value);
 
                 if (index == -1)
                 {
-                    this.SelectedIndex = this.DefaultSizes.Count;
+                    SelectedIndex = defaultSizes.Count;
                 }
                 else
                 {
-                    this.SelectedIndex = index;
+                    SelectedIndex = index;
                 }
             }
         }

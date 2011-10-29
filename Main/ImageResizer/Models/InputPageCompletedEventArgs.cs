@@ -1,5 +1,5 @@
 ﻿//------------------------------------------------------------------------------
-// <copyright file="UpdateAvailableEventArgs.cs" company="Brice Lambson">
+// <copyright file="InputPageCompletedEventArgs.cs" company="Brice Lambson">
 //     Copyright (c) 2011 Brice Lambson. All rights reserved.
 //
 //     The use of this software is governed by the Microsoft Public License
@@ -7,19 +7,22 @@
 // </copyright>
 //------------------------------------------------------------------------------
 
-namespace BriceLambson.ImageResizer.Services
+namespace BriceLambson.ImageResizer.Models
 {
     using System;
-    using System.ServiceModel.Syndication;
 
-    internal class UpdateAvailableEventArgs : EventArgs
+    internal class InputPageCompletedEventArgs : EventArgs
     {
-        public UpdateAvailableEventArgs(SyndicationItem item)
+        private readonly bool _cancelled;
+
+        public InputPageCompletedEventArgs(bool cancelled)
         {
-            this.Item = item;
+            _cancelled = cancelled;
         }
 
-        // TODO: Probably ought to send a domain-specific object
-        public SyndicationItem Item { get; set; }
+        public bool Cancelled
+        {
+            get { return _cancelled; }
+        }
     }
 }

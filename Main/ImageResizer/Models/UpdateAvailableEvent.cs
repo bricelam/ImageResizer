@@ -1,5 +1,5 @@
 ﻿//------------------------------------------------------------------------------
-// <copyright file="InputPageCompletedEventArgs.cs" company="Brice Lambson">
+// <copyright file="UpdateAvailableEvent.cs" company="Brice Lambson">
 //     Copyright (c) 2011 Brice Lambson. All rights reserved.
 //
 //     The use of this software is governed by the Microsoft Public License
@@ -7,17 +7,12 @@
 // </copyright>
 //------------------------------------------------------------------------------
 
-namespace BriceLambson.ImageResizer.ViewModels
+namespace BriceLambson.ImageResizer.Models
 {
-    using System;
+    using BriceLambson.ImageResizer.ViewModels;
+    using Microsoft.Practices.Prism.Events;
 
-    internal class InputPageCompletedEventArgs : EventArgs
+    internal class UpdateAvailableEvent : CompositePresentationEvent<UpdateAvailableViewModel>
     {
-        public InputPageCompletedEventArgs(bool cancelled)
-        {
-            this.Cancelled = cancelled;
-        }
-
-        public bool Cancelled { get; set; }
     }
 }

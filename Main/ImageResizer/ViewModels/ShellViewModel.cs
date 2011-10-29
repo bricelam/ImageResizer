@@ -10,148 +10,120 @@
 namespace BriceLambson.ImageResizer.ViewModels
 {
     using System;
-    using System.ComponentModel;
+    using System.Diagnostics.Contracts;
     using System.Linq;
+    using System.Threading.Tasks;
+    using BriceLambson.ImageResizer.Helpers;
+    using BriceLambson.ImageResizer.Models;
     using BriceLambson.ImageResizer.Properties;
     using BriceLambson.ImageResizer.Services;
     using Microsoft.Practices.Prism.Events;
     using Microsoft.Practices.ServiceLocation;
 
-    internal class ShellViewModel : IDisposable, INotifyPropertyChanged
+    internal class ShellViewModel : NotifyPropertyChangedBase
     {
-        private Settings settings;
-        private IEventAggregator eventAggregator;
-        private InputPageViewModel inputPage;
-        private ProgressPageViewModel progressPage;
-        private ResultsPageViewModel resultsPage;
-        private UpdaterService updaterService;
-        private object currentPage;
+        private static readonly IEventAggregator _eventAggregator = ServiceLocator.Current.GetInstance<IEventAggregator>();
+
+        private object _currentPage;
+        private Task<Parameters> _parseArgsTask;
 
         public ShellViewModel(string[] args)
         {
-            this.settings = Settings.Default;
+            Contract.Requires(args != null);
 
-            this.eventAggregator = ServiceLocator.Current.GetInstance<IEventAggregator>();
+            if (AdvancedSettings.Default.CheckForUpdates)
+            {
+                CheckForUpdatesAsync();
+            }
 
-            this.inputPage = new InputPageViewModel(this.settings, this.eventAggregator);
-            this.inputPage.Completed += this.HandleInputPageCompleted;
+            var inputPage = new InputPageViewModel();
+            inputPage.Completed += HandleInputPageCompleted;
 
-            var parameterService = new ParameterService(args);
-            this.progressPage = new ProgressPageViewModel(this.settings, parameterService);
-            this.progressPage.Completed += this.HandleProgressPageCompleted;
+            _currentPage = inputPage;
 
-            // TODO: This may not always be needed
-            this.resultsPage = new ResultsPageViewModel();
-            this.resultsPage.Completed += this.HandleResultsPageCompleted;
-
-            this.updaterService = new UpdaterService(this.settings);
-            this.updaterService.UpdateAvailable += this.HandleUpdateAvailable;
-
-            // Kick-off updater
-            this.updaterService.CheckForUpdatesAsync();
-
-            this.currentPage = this.inputPage;
+            _parseArgsTask = ParametersHelper.ParseAsync(args);
         }
-
-        ~ShellViewModel()
-        {
-            this.Dispose(false);
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public object CurrentPage
         {
-            get
-            {
-                return this.currentPage;
-            }
-
+            get { return _currentPage; }
             set
             {
-                if (this.currentPage != value)
+                if (_currentPage != value)
                 {
-                    this.currentPage = value;
+                    _currentPage = value;
 
-                    // TODO: Extract this from a lambda for compile-time checking
-                    this.OnPropertyChanged("CurrentPage");
+                    OnPropertyChanged("CurrentPage");
                 }
             }
         }
 
-        public void Dispose()
+        private async void HandleInputPageCompleted(object sender, InputPageCompletedEventArgs e)
         {
-            this.Dispose(true);
-            GC.SuppressFinalize(this);
-        }
+            Contract.Requires(e != null);
 
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                if (this.progressPage != null)
-                {
-                    this.progressPage.Dispose();
-                }
-
-                if (this.updaterService != null)
-                {
-                    this.updaterService.Dispose();
-                }
-            }
-        }
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            if (this.PropertyChanged != null)
-            {
-                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
-
-        private void HandleInputPageCompleted(object sender, InputPageCompletedEventArgs e)
-        {
             if (e.Cancelled)
             {
-                this.Close();
+                Close();
                 return;
             }
 
-            this.CurrentPage = this.progressPage;
+            var parameters = await _parseArgsTask;
+            var progressPage = new ProgressPageViewModel(parameters);
+            progressPage.Completed += HandleProgressPageCompleted;
+
+            CurrentPage = progressPage;
 
             // Kick-off resizing
-            this.progressPage.ResizeAsync();
+            progressPage.ResizeAsync();
         }
 
         private void HandleProgressPageCompleted(object sender, ProgressPageCompletedEventArgs e)
         {
-            if (e.Errors.Any())
+            Contract.Requires(e != null);
+
+            if (!e.Errors.Any())
             {
-                this.resultsPage.Errors = e.Errors;
-                this.currentPage = this.resultsPage;
+                Close();
             }
-            else
-            {
-                this.Close();
-            }
+
+            var resultsPage = new ResultsPageViewModel(e.Errors);
+            resultsPage.Completed += HandleResultsPageCompleted;
+
+            CurrentPage = resultsPage;
         }
 
         private void HandleResultsPageCompleted(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
-        private void HandleUpdateAvailable(object sender, UpdateAvailableEventArgs e)
+        private async void CheckForUpdatesAsync()
         {
-            // TODO: Subscribe to this somewhere. Show notification?
-            var updateAvailableViewModel = new UpdateAvailableViewModel(this.settings, e.Item);
+            Update update = null;
 
-            this.eventAggregator.GetEvent<UpdateAvailableEvent>().Publish(updateAvailableViewModel);
+            try
+            {
+                update
+                    = await new UpdaterService().CheckForUpdatesAsync(
+                        AdvancedSettings.Default.UpdateUrl,
+                        AdvancedSettings.Default.UpdateFilter);
+            }
+            catch
+            {
+            }
+
+            if (update != null)
+            {
+                var updateAvailableViewModel = new UpdateAvailableViewModel(update);
+
+                _eventAggregator.GetEvent<UpdateAvailableEvent>().Publish(updateAvailableViewModel);
+            }
         }
 
         private void Close()
         {
-            this.eventAggregator.GetEvent<CloseShellEvent>().Publish(null);
+            _eventAggregator.GetEvent<CloseShellEvent>().Publish(null);
         }
     }
 }

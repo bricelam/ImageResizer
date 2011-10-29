@@ -5,9 +5,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageResizer", "ImageResize
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ShellExtensions", "ShellExtensions\ShellExtensions.vcxproj", "{A37D7C2E-2C39-4866-816A-6A44805B32B6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{8705D10B-41DD-4A56-AB8E-C84A68C3B213}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8705D10B-41DD-4A56-AB8E-C84A68C3B213}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageResizerTests", "ImageResizer.Test\ImageResizerTests.csproj", "{FE6A35FF-E9ED-495F-96BF-148208E74110}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageResizer.Test", "ImageResizer.Test\ImageResizer.Test.csproj", "{FE6A35FF-E9ED-495F-96BF-148208E74110}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
@@ -24,7 +24,7 @@ Global
 		SccAuxPath1 = https://tfs.codeplex.com/tfs/tfs09
 		SccLocalPath1 = ShellExtensions
 		SccProvider1 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName2 = ImageResizer.Test\\ImageResizerTests.csproj
+		SccProjectUniqueName2 = ImageResizer.Test\\ImageResizer.Test.csproj
 		SccProjectTopLevelParentUniqueName2 = ImageResizer.sln
 		SccProjectName2 = ImageResizer.Test
 		SccAuxPath2 = https://tfs.codeplex.com/tfs/tfs09

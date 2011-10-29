@@ -7,7 +7,7 @@
 // </copyright>
 //------------------------------------------------------------------------------
 
-namespace BriceLambson.ImageResizer.Model
+namespace BriceLambson.ImageResizer.Models
 {
     using System.Xml.Serialization;
     using BriceLambson.ImageResizer.Properties;
@@ -16,21 +16,16 @@ namespace BriceLambson.ImageResizer.Model
     {
         public CustomSize()
         {
-            this.Width = 1280;
-            this.Height = 720;
+            Width = 1280;
+            Height = 720;
         }
 
         [XmlIgnore]
         public override string Name
         {
-            get
-            {
-                return Resources.Custom;
-            }
-
+            get { return Resources.Custom; }
             set
             {
-                // Ignore
             }
         }
     }

@@ -7,18 +7,26 @@
 // </copyright>
 //------------------------------------------------------------------------------
 
-namespace BriceLambson.ImageResizer.ViewModels
+namespace BriceLambson.ImageResizer.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.Contracts;
 
     internal class ProgressPageCompletedEventArgs : EventArgs
     {
+        private readonly IDictionary<string, Exception> _errors;
+
         public ProgressPageCompletedEventArgs(IDictionary<string, Exception> errors)
         {
-            this.Errors = errors;
+            Contract.Requires(errors != null);
+
+            _errors = errors;
         }
 
-        public IDictionary<string, Exception> Errors { get; set; }
+        public IDictionary<string, Exception> Errors
+        {
+            get { return _errors; }
+        }
     }
 }

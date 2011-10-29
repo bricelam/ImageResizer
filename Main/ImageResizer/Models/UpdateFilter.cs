@@ -1,5 +1,5 @@
 ﻿//------------------------------------------------------------------------------
-// <copyright file="Mode.cs" company="Brice Lambson">
+// <copyright file="UpdateFilter.cs" company="Brice Lambson">
 //     Copyright (c) 2011 Brice Lambson. All rights reserved.
 //
 //     The use of this software is governed by the Microsoft Public License
@@ -7,11 +7,13 @@
 // </copyright>
 //------------------------------------------------------------------------------
 
-namespace BriceLambson.ImageResizer.Model
+namespace BriceLambson.ImageResizer.Models
 {
-    public enum Mode
+    public enum UpdateFilter
     {
-        Scale,
-        Stretch
+        None = 0,
+        Stable = ReleaseStatus.Stable,
+        Beta = Stable | ReleaseStatus.Beta,
+        Alpha = Beta | ReleaseStatus.Alpha
     }
 }

@@ -15,40 +15,32 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <FxCopCmdPath Condition=" '$(FxCopCmdPath)' == '' AND '$(ProgramFiles(x86))' != '' ">$(ProgramFiles(x86))\Microsoft Fxcop 10.0\FxCopCmd.exe</FxCopCmdPath>
-    <FxCopCmdPath Condition=" '$(FxCopCmdPath)' == '' ">$(ProgramFiles)\Microsoft Fxcop 10.0\FxCopCmd.exe</FxCopCmdPath>
-    <FxCopDictionary>CustomDictionary.xml</FxCopDictionary>
-    <StyleCopTargetsPath Condition=" '$(StyleCopTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\StyleCop\v4.4\Microsoft.StyleCop.Targets</StyleCopTargetsPath>
-    <StyleCopTargetsPath Condition=" '$(StyleCopTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\StyleCop\v4.4\Microsoft.StyleCop.Targets</StyleCopTargetsPath>
-    <StyleCopOverrideSettingsFile>.\Settings.StyleCop</StyleCopOverrideSettingsFile>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <StartArguments>..\..\..\ImageResizer.Test\Content\WP_000000.jpg /d .</StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
-    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
-    <CodeAnalysisFailOnMissingRules>true</CodeAnalysisFailOnMissingRules>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE;CODE_ANALYSIS</DefineConstants>
+    <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
-    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
-    <CodeAnalysisFailOnMissingRules>true</CodeAnalysisFailOnMissingRules>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AsyncCtpLibrary">
+      <HintPath>..\Reference Assemblies\AsyncCtpLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.Prism">
       <HintPath>..\packages\Prism.4.0.0.0\lib\NET40\Microsoft.Practices.Prism.dll</HintPath>
     </Reference>
@@ -81,31 +73,35 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="..\Version\Version.cs">
-      <Link>Properties\Version.cs</Link>
-    </Compile>
     <Compile Include="Bootstrapper.cs" />
-    <Compile Include="Model\CustomSize.cs" />
-    <Compile Include="Model\ISettings.cs" />
-    <Compile Include="Model\Mode.cs" />
-    <Compile Include="Model\Parameters.cs" />
-    <Compile Include="Model\ResizeSize.cs" />
-    <Compile Include="Model\ReleaseStatus.cs" />
-    <Compile Include="Model\Unit.cs" />
-    <Compile Include="Model\UpdateFilter.cs" />
-    <Compile Include="Services\CloseShellEvent.cs" />
-    <Compile Include="Services\ParameterService.cs" />
+    <Compile Include="Helpers\ParametersHelper.cs" />
+    <Compile Include="Helpers\UpdateHelper.cs" />
+    <Compile Include="Helpers\NotifyPropertyChangedBase.cs" />
+    <Compile Include="ArgumentNullOrWhiteSpaceException.cs" />
+    <Compile Include="Models\Update.cs" />
+    <Compile Include="Properties\AdvancedSettings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>AdvancedSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomSize.cs" />
+    <Compile Include="Models\Mode.cs" />
+    <Compile Include="Models\Parameters.cs" />
+    <Compile Include="Models\ResizeSize.cs" />
+    <Compile Include="Models\ReleaseStatus.cs" />
+    <Compile Include="Models\Unit.cs" />
+    <Compile Include="Models\UpdateFilter.cs" />
+    <Compile Include="Models\CloseShellEvent.cs" />
     <Compile Include="Services\RenamingService.cs" />
     <Compile Include="Services\ResizingService.cs" />
-    <Compile Include="Model\UnitHelper.cs" />
+    <Compile Include="Helpers\UnitHelper.cs" />
     <Compile Include="Properties\Settings.cs" />
-    <Compile Include="Services\ShowAdvancedEvent.cs" />
-    <Compile Include="Services\UpdateAvailableEvent.cs" />
-    <Compile Include="Services\UpdateAvailableEventArgs.cs" />
+    <Compile Include="Models\ShowAdvancedEvent.cs" />
+    <Compile Include="Models\UpdateAvailableEvent.cs" />
     <Compile Include="Services\UpdaterService.cs" />
     <Compile Include="ViewModels\InputPageViewModel.cs" />
-    <Compile Include="ViewModels\InputPageCompletedEventArgs.cs" />
-    <Compile Include="ViewModels\ProgressPageCompletedEventArgs.cs" />
+    <Compile Include="Models\InputPageCompletedEventArgs.cs" />
+    <Compile Include="Models\ProgressPageCompletedEventArgs.cs" />
     <Compile Include="ViewModels\ProgressPageViewModel.cs" />
     <Compile Include="ViewModels\ResultsPageViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
@@ -133,8 +129,6 @@
     <Compile Include="Views\UpdateAvailableView.xaml.cs">
       <DependentUpon>UpdateAvailableView.xaml</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -155,12 +149,15 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\AdvancedSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>AdvancedSettings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\InputPageView.xaml">
@@ -184,19 +181,13 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Condition="Exists('$(StyleCopTargetsPath)')" Project="$(StyleCopTargetsPath)" />
+  <Import Project="..\ImageResizer.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
   -->
   <Target Name="AfterBuild">
-    <Exec Condition=" '$(registry:HKEY_LOCAL_MACHINE\Software\BriceLambson\ImageResizer)' != '$(TargetPath)' " Command="REG ADD HKLM\Software\BriceLambson\ImageResizer /ve /d &quot;$(TargetPath)&quot; /f" />
-    <Exec Condition=" Exists('$(FxCopCmdPath)') AND '$(FxCopEnabled)' != 'false' " Command="&quot;$(FxCopCmdPath)&quot; /f:&quot;$(TargetPath)&quot; /c /dic:&quot;$(FxCopDictionary)&quot; /q /gac /igc /cul:en-US" IgnoreExitCode="true" />
+    <Exec Condition="'$(registry:HKEY_CURRENT_USER\Software\BriceLambson\ImageResizer)' != '$(TargetPath)'" Command="REG ADD HKCU\Software\BriceLambson\ImageResizer /ve /d &quot;$(TargetPath)&quot; /f" />
   </Target>
-  <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
-  </PropertyGroup>
 </Project>

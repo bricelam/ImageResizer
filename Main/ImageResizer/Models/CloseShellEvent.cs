@@ -1,5 +1,5 @@
 ﻿//------------------------------------------------------------------------------
-// <copyright file="Unit.cs" company="Brice Lambson">
+// <copyright file="CloseShellEvent.cs" company="Brice Lambson">
 //     Copyright (c) 2011 Brice Lambson. All rights reserved.
 //
 //     The use of this software is governed by the Microsoft Public License
@@ -7,13 +7,11 @@
 // </copyright>
 //------------------------------------------------------------------------------
 
-namespace BriceLambson.ImageResizer.Model
+namespace BriceLambson.ImageResizer.Models
 {
-    public enum Unit
+    using Microsoft.Practices.Prism.Events;
+
+    internal class CloseShellEvent : CompositePresentationEvent<object>
     {
-        Pixels,
-        Percent,
-        Inches,
-        Centimeters
     }
 }

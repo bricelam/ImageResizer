@@ -9,29 +9,29 @@
 
 namespace BriceLambson.ImageResizer.Views
 {
+    using System;
+    using System.Diagnostics.Contracts;
     using System.Windows;
+    using BriceLambson.ImageResizer.Models;
     using BriceLambson.ImageResizer.ViewModels;
     using Microsoft.Practices.Prism.Events;
     using Microsoft.Practices.ServiceLocation;
 
-    /// <summary>
-    /// Interaction logic for Shell.xaml
-    /// </summary>
     public partial class Shell : Window
     {
         public Shell()
         {
-            this.InitializeComponent();
+            InitializeComponent();
 
             var eventAggregator = ServiceLocator.Current.GetInstance<IEventAggregator>();
-            eventAggregator.GetEvent<CloseShellEvent>().Subscribe(this.HandleCloseShell, ThreadOption.UIThread);
-            eventAggregator.GetEvent<ShowAdvancedEvent>().Subscribe(this.HandleShowAdvanced, ThreadOption.UIThread);
-            eventAggregator.GetEvent<UpdateAvailableEvent>().Subscribe(this.HandleUpdateAvailable, ThreadOption.UIThread);
+            eventAggregator.GetEvent<CloseShellEvent>().Subscribe(HandleCloseShell, ThreadOption.UIThread);
+            eventAggregator.GetEvent<ShowAdvancedEvent>().Subscribe(HandleShowAdvanced, ThreadOption.UIThread);
+            eventAggregator.GetEvent<UpdateAvailableEvent>().Subscribe(HandleUpdateAvailable, ThreadOption.UIThread);
         }
 
         private void HandleCloseShell(object o)
         {
-            this.Close();
+            Close();
         }
 
         private void HandleShowAdvanced(object o)
@@ -48,13 +48,15 @@ namespace BriceLambson.ImageResizer.Views
 
         private void HandleUpdateAvailable(UpdateAvailableViewModel viewModel)
         {
+            Contract.Requires(viewModel != null);
+
             // TODO: Show a notification once per day for a total of three times that opens
             //       this dialog when clicked
             var updateAvailable = new UpdateAvailableView
             {
                 DataContext = viewModel
             };
-            
+
             updateAvailable.ShowDialog();
         }
     }

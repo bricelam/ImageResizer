@@ -11,15 +11,12 @@ namespace BriceLambson.ImageResizer.Views
 {
     using System.Windows.Controls;
 
-    /// <summary>
-    /// Interaction logic for ProgressPageView.xaml
-    /// </summary>
     public partial class ProgressPageView : UserControl
     {
         public ProgressPageView()
         {
             // TODO: Use Windows 7 taskbar progress reporting
-            this.InitializeComponent();
+            InitializeComponent();
         }
     }
 }

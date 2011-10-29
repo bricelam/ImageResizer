@@ -7,19 +7,20 @@
 // </copyright>
 //------------------------------------------------------------------------------
 
-namespace BriceLambson.ImageResizer.Model
+namespace BriceLambson.ImageResizer.Models
 {
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
 
     internal class Parameters
     {
-        public Parameters()
-        {
-            this.SelectedFiles = new List<string>();
-        }
+        private readonly ICollection<string> _selectedFiles = new Collection<string>();
 
         public string OutputDirectory { get; set; }
 
-        public IList<string> SelectedFiles { get; protected set; }
+        public ICollection<string> SelectedFiles
+        {
+            get { return _selectedFiles; }
+        }
     }
 }

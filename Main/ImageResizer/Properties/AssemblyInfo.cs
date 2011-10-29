@@ -24,4 +24,4 @@ using System.Windows;
 [assembly: NeutralResourcesLanguage("en")]
 [assembly: ThemeInfo(ResourceDictionaryLocation.None, ResourceDictionaryLocation.SourceAssembly)]
 
-[assembly: InternalsVisibleTo("ImageResizerTests")]
+[assembly: InternalsVisibleTo("ImageResizer.Test")]

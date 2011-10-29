@@ -11,16 +11,13 @@ namespace BriceLambson.ImageResizer.Views
 {
     using System.Windows;
 
-    /// <summary>
-    /// Interaction logic for UpdateAvailableView.xaml
-    /// </summary>
     public partial class UpdateAvailableView : Window
     {
         public UpdateAvailableView()
         {
-            this.InitializeComponent();
+            InitializeComponent();
 
-            this.CloseButton.Click += (_, e) => this.Close();
+            CloseButton.Click += (_, e) => Close();
         }
     }
 }

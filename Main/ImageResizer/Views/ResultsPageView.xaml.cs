@@ -11,14 +11,11 @@ namespace BriceLambson.ImageResizer.Views
 {
     using System.Windows.Controls;
 
-    /// <summary>
-    /// Interaction logic for ResultsPageView.xaml
-    /// </summary>
     public partial class ResultsPageView : UserControl
     {
         public ResultsPageView()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
     }
 }
