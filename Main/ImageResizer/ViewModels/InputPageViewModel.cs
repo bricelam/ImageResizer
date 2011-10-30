@@ -11,6 +11,7 @@ namespace BriceLambson.ImageResizer.ViewModels
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.Windows.Input;
     using BriceLambson.ImageResizer.Models;
     using BriceLambson.ImageResizer.Properties;
@@ -38,6 +39,7 @@ namespace BriceLambson.ImageResizer.ViewModels
 
         public event EventHandler<InputPageCompletedEventArgs> Completed;
 
+        [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic", Justification = "Participates in data binding")]
         public Settings Settings
         {
             get { return Settings.Default; }

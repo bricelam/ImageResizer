@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <WixCopPath Condition="'$(WIX)' != ''">$(WIX)bin\WixCop.exe</WixCopPath>
+    <WixCopSettingsFile>$(MSBuildThisFileDirectory)Settings.WixCop</WixCopSettingsFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <BuildDependsOn>WixCop;$(BuildDependsOn)</BuildDependsOn>
+  </PropertyGroup>
+  <Target Name="WixCop" Condition="'$(WixCopEnabled)' != 'false'">
+    <Exec Condition="Exists('$(WixCopPath)')" Command="&quot;$(WixCopPath)&quot; -nologo -set1&quot;$(WixCopSettingsFile)&quot; -indent:2 @(Compile, ' ')" IgnoreExitCode="true" />
+  </Target>
+</Project>

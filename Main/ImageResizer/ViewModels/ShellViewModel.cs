@@ -58,6 +58,11 @@ namespace BriceLambson.ImageResizer.ViewModels
             }
         }
 
+        private static void Close()
+        {
+            _eventAggregator.GetEvent<CloseShellEvent>().Publish(null);
+        }
+
         private async void HandleInputPageCompleted(object sender, InputPageCompletedEventArgs e)
         {
             Contract.Requires(e != null);
@@ -119,11 +124,6 @@ namespace BriceLambson.ImageResizer.ViewModels
 
                 _eventAggregator.GetEvent<UpdateAvailableEvent>().Publish(updateAvailableViewModel);
             }
-        }
-
-        private void Close()
-        {
-            _eventAggregator.GetEvent<CloseShellEvent>().Publish(null);
         }
     }
 }

@@ -3,16 +3,14 @@
 
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Product Id="*" Language="1033" Manufacturer="Brice Lambson" Name="$(var.ProductName)" UpgradeCode="{71EAB0D8-4D33-480F-ADA4-3BFBBB23E794}" Version="$(var.Version)">
-    <Package Compressed="yes" InstallerVersion="300" />
-<?if $(var.Platform) = x86 ?>
-    <Condition Message="You are attempting to install the 32 bit version on a 64 bit version of Windows. Please try again with the 64 bit installer (available on the Downloads page).">
-      <![CDATA[Installed OR (%PROCESSOR_ARCHITECTURE = "x86" AND NOT %PROCESSOR_ARCHITEW6432)]]>
+    <Package Compressed="yes" InstallerVersion="300" InstallScope="perMachine" />
+    <PropertyRef Id="NETFRAMEWORK40CLIENT" />
+    <Condition Message="This application requires .NET Framework 4.0. Please install the .NET Framework then run this installer again.">
+      <![CDATA[Installed OR NETFRAMEWORK40CLIENT]]>
     </Condition>
-<?endif ?>
+    <MajorUpgrade DowngradeErrorMessage="A later version of [ProductName] is already installed. Setup will now exit." />
     <Directory Id="TARGETDIR" Name="SourceDir" />
     <FeatureRef Id="$(var.Feature)" />
     <Media Id="1" Cabinet="ImageResizer.cab" EmbedCab="yes" />
-    <UIRef Id="WixUI_Minimal" />
-    <WixVariable Id="WixUILicenseRtf" Value="..\Ms-PL.rtf" />
   </Product>
 </Wix>

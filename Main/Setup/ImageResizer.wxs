@@ -17,7 +17,7 @@
             <File Id="ImageResizer" Source="$(var.ImageResizer.TargetPath)" />
             <RegistryKey Root="HKLM" Key="Software">
               <RegistryKey Key="BriceLambson">
-                <RegistryKey Key="ImageResizer" Action="create">
+                <RegistryKey Key="ImageResizer">
                   <RegistryValue Type="string" Value="[#ImageResizer]" />
                 </RegistryKey>
               </RegistryKey>
@@ -38,8 +38,8 @@
           <Component Id="ShellExtensions" Win64="no">
             <File Id="ShellExtensions" Source="$(var.SolutionDir)$(var.Configuration)\ShellExtensions.dll" />
             <RegistryKey Root="HKCR" Key="CLSID">
-              <RegistryKey Key="$(var.CLSID_ContextMenuHandler)" Action="create">
-                <RegistryKey Key="InprocServer32" Action="create">
+              <RegistryKey Key="$(var.CLSID_ContextMenuHandler)">
+                <RegistryKey Key="InprocServer32">
                   <RegistryValue Type="string" Value="[#ShellExtensions]" />
                   <RegistryValue Type="string" Name="ThreadingModel" Value="Apartment" />
                 </RegistryKey>
@@ -48,7 +48,7 @@
             <RegistryKey Root="HKCR" Key="Directory">
               <RegistryKey Key="ShellEx">
                 <RegistryKey Key="DragDropHandlers">
-                  <RegistryKey Key="Image Resizer" Action="create">
+                  <RegistryKey Key="Image Resizer">
                     <RegistryValue Type="string" Value="$(var.CLSID_ContextMenuHandler)" />
                   </RegistryKey>
                 </RegistryKey>
@@ -57,7 +57,7 @@
             <RegistryKey Root="HKCR" Key="*">
               <RegistryKey Key="ShellEx">
                 <RegistryKey Key="ContextMenuHandlers">
-                  <RegistryKey Key="Image Resizer" Action="create">
+                  <RegistryKey Key="Image Resizer">
                     <RegistryValue Type="string" Value="$(var.CLSID_ContextMenuHandler)" />
                   </RegistryKey>
                 </RegistryKey>
@@ -73,7 +73,7 @@
             <Shortcut Id="License" Name="License" Target="[#License]" />
             <RegistryKey Root="HKCU" Key="Software">
               <RegistryKey Key="BriceLambson">
-                <RegistryKey Key="ImageResizer" Action="create">
+                <RegistryKey Key="ImageResizer">
                   <RegistryValue Type="string" Value="[#ImageResizer]" KeyPath="yes" />
                 </RegistryKey>
               </RegistryKey>

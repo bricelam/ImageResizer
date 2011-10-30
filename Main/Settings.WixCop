@@ -1,13 +1,15 @@
 <Settings>
+  <IgnoreErrors>
+    <Test Id="WhitespacePrecedingCDATAWrong" />
+    <Test Id="WhitespaceFollowingCDATAWrong" />
+  </IgnoreErrors>
   <ErrorsAsWarnings>
     <Test Id="XmlException" />
     <Test Id="UnauthorizedAccessException" />
     <Test Id="DeclarationEncodingWrong" />
     <Test Id="DeclarationMissing" />
-    <Test Id="WhitespacePrecedingCDATAWrong" />
     <Test Id="WhitespacePrecedingNodeWrong" />
     <Test Id="NotEmptyElement" />
-    <Test Id="WhitespaceFollowingCDATAWrong" />
     <Test Id="WhitespacePrecedingEndElementWrong" />
     <Test Id="XmlnsMissing" />
     <Test Id="XmlnsValueWrong" />
@@ -53,7 +55,4 @@
     <Test Id="FragmentRefIllegal" />
     <Test Id="FileRedundantNames" />
   </ErrorsAsWarnings>
-  <ExemptFiles>
-    <File Name="Product.Generated.wxs" />
-  </ExemptFiles>
 </Settings>

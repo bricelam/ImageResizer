@@ -20,7 +20,7 @@ namespace BriceLambson.ImageResizer.Test
     public class ResizingServiceTests
     {
         [TestMethod]
-        public void Can_scale()
+        public void CanScale()
         {
             // Arrange
             var resizer
@@ -43,7 +43,7 @@ namespace BriceLambson.ImageResizer.Test
         }
 
         [TestMethod]
-        public void Can_stretch()
+        public void CanStretch()
         {
             // Arrange
             var resizer
@@ -66,7 +66,7 @@ namespace BriceLambson.ImageResizer.Test
         }
 
         [TestMethod]
-        public void Can_shrink_only()
+        public void CanShrinkOnly()
         {
             // Arrange
             var resizer
@@ -89,7 +89,7 @@ namespace BriceLambson.ImageResizer.Test
         }
 
         [TestMethod]
-        public void Can_set_quality_level()
+        public void CanSetQualityLevel()
         {
             // Arrange
             var size
@@ -113,7 +113,7 @@ namespace BriceLambson.ImageResizer.Test
             Assert.IsTrue(fileLength1 < fileLength2);
         }
 
-        private ResizingService CreateResizer(ResizeSize size, int qualityLevel = 75, bool shrinkOnly = false)
+        private static ResizingService CreateResizer(ResizeSize size, int qualityLevel = 75, bool shrinkOnly = false)
         {
             return new ResizingService(
                 qualityLevel,

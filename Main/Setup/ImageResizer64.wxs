@@ -9,8 +9,8 @@
           <Component Id="ShellExtensions64">
             <File Id="ShellExtensions64" Source="$(var.SolutionDir)x64\$(var.Configuration)\ShellExtensions.dll" />
             <RegistryKey Root="HKCR" Key="CLSID">
-              <RegistryKey Key="$(var.CLSID_ContextMenuHandler)" Action="create">
-                <RegistryKey Key="InprocServer32" Action="create">
+              <RegistryKey Key="$(var.CLSID_ContextMenuHandler)">
+                <RegistryKey Key="InprocServer32">
                   <RegistryValue Type="string" Value="[#ShellExtensions64]" />
                   <RegistryValue Type="string" Name="ThreadingModel" Value="Apartment" />
                 </RegistryKey>

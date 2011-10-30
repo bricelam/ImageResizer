@@ -9,8 +9,8 @@
 
 namespace BriceLambson.ImageResizer.ViewModels
 {
-    using System;
     using System.Diagnostics;
+    using System.Diagnostics.CodeAnalysis;
     using System.Diagnostics.Contracts;
     using System.Windows.Input;
     using BriceLambson.ImageResizer.Models;
@@ -43,6 +43,7 @@ namespace BriceLambson.ImageResizer.ViewModels
             get { return _closeCommand; }
         }
 
+        [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic", Justification = "Participates in data binding")]
         public bool DontCheckForUpdates
         {
             get { return !AdvancedSettings.Default.CheckForUpdates; }
