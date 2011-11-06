@@ -51,6 +51,9 @@
       <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="PreEmptive.Attributes">
+      <HintPath>..\Reference Assemblies\PreEmptive.Attributes.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
@@ -79,11 +82,6 @@
     <Compile Include="Helpers\NotifyPropertyChangedBase.cs" />
     <Compile Include="ArgumentNullOrWhiteSpaceException.cs" />
     <Compile Include="Models\Update.cs" />
-    <Compile Include="Properties\AdvancedSettings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>AdvancedSettings.settings</DependentUpon>
-    </Compile>
     <Compile Include="Models\CustomSize.cs" />
     <Compile Include="Models\Mode.cs" />
     <Compile Include="Models\Parameters.cs" />
@@ -92,6 +90,11 @@
     <Compile Include="Models\Unit.cs" />
     <Compile Include="Models\UpdateFilter.cs" />
     <Compile Include="Models\CloseShellEvent.cs" />
+    <Compile Include="Properties\AdvancedSettings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>AdvancedSettings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Services\RenamingService.cs" />
     <Compile Include="Services\ResizingService.cs" />
     <Compile Include="Helpers\UnitHelper.cs" />

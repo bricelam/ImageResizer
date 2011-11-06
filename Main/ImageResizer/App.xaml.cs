@@ -10,15 +10,32 @@
 namespace BriceLambson.ImageResizer
 {
     using System.Windows;
+    using BriceLambson.ImageResizer.Properties;
+    using PreEmptive.Attributes;
 
     public partial class App : Application
     {
+        private bool AllowAnalytics
+        {
+            get { return AdvancedSettings.Default.AllowAnalytics; }
+        }
+
+        [Setup(
+            CustomEndpoint = "so-s.info/PreEmptive.Web.Services.Messaging/MessagingServiceV2.asmx",
+            OptInSourceElement = SourceElements.Property,
+            OptInSourceName = "AllowAnalytics")]
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
 
             var bootstrapper = new Bootstrapper(e.Args);
             bootstrapper.Run();
+        }
+
+        [Teardown]
+        protected override void OnExit(ExitEventArgs e)
+        {
+            base.OnExit(e);
         }
     }
 }

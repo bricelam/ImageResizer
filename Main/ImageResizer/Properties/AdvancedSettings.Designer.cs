@@ -32,15 +32,6 @@ namespace BriceLambson.ImageResizer.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Alpha")]
-        public global::BriceLambson.ImageResizer.Models.UpdateFilter UpdateFilter {
-            get {
-                return ((global::BriceLambson.ImageResizer.Models.UpdateFilter)(this["UpdateFilter"]));
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
@@ -50,6 +41,18 @@ namespace BriceLambson.ImageResizer.Properties {
             }
             set {
                 this["CheckForUpdates"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AllowAnalytics {
+            get {
+                return ((bool)(this["AllowAnalytics"]));
+            }
+            set {
+                this["AllowAnalytics"] = value;
             }
         }
         
@@ -115,6 +118,15 @@ namespace BriceLambson.ImageResizer.Properties {
             }
             set {
                 this["QualityLevel"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Stable")]
+        public global::BriceLambson.ImageResizer.Models.UpdateFilter UpdateFilter {
+            get {
+                return ((global::BriceLambson.ImageResizer.Models.UpdateFilter)(this["UpdateFilter"]));
             }
         }
     }
