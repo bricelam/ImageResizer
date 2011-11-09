@@ -15,6 +15,18 @@ namespace BriceLambson.ImageResizer
 
     public partial class App : Application
     {
+        public App()
+        {
+            if (AdvancedSettings.Default.UpgradeRequired)
+            {
+                Settings.Default.Upgrade();
+                AdvancedSettings.Default.Upgrade();
+
+                AdvancedSettings.Default.UpgradeRequired = false;
+                AdvancedSettings.Default.Save();
+            }
+        }
+
         private bool AllowAnalytics
         {
             get { return AdvancedSettings.Default.AllowAnalytics; }

@@ -25,22 +25,19 @@ namespace BriceLambson.ImageResizer.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Stable")]
+        public global::BriceLambson.ImageResizer.Models.UpdateFilter UpdateFilter {
+            get {
+                return ((global::BriceLambson.ImageResizer.Models.UpdateFilter)(this["UpdateFilter"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("https://imageresizer.svn.codeplex.com/svn/releases.xml")]
         public string UpdateUrl {
             get {
                 return ((string)(this["UpdateUrl"]));
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool CheckForUpdates {
-            get {
-                return ((bool)(this["CheckForUpdates"]));
-            }
-            set {
-                this["CheckForUpdates"] = value;
             }
         }
         
@@ -53,6 +50,18 @@ namespace BriceLambson.ImageResizer.Properties {
             }
             set {
                 this["AllowAnalytics"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CheckForUpdates {
+            get {
+                return ((bool)(this["CheckForUpdates"]));
+            }
+            set {
+                this["CheckForUpdates"] = value;
             }
         }
         
@@ -121,12 +130,15 @@ namespace BriceLambson.ImageResizer.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Stable")]
-        public global::BriceLambson.ImageResizer.Models.UpdateFilter UpdateFilter {
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool UpgradeRequired {
             get {
-                return ((global::BriceLambson.ImageResizer.Models.UpdateFilter)(this["UpdateFilter"]));
+                return ((bool)(this["UpgradeRequired"]));
+            }
+            set {
+                this["UpgradeRequired"] = value;
             }
         }
     }
