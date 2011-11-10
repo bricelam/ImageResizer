@@ -46,9 +46,11 @@
             </ListBox>
 
             <CheckBox Margin="0,11,0,0" IsChecked="{Binding Settings.ShrinkOnly}">Only shrink pictures</CheckBox>
-            
+
             <!-- TODO: Hide this if resizing to a directory -->
             <CheckBox Margin="0,7,0,0" IsChecked="{Binding Settings.ReplaceOriginals}">Replace the originals</CheckBox>
+
+            <CheckBox Margin="0,7,0,0" IsChecked="{Binding Settings.IgnoreRotations}">Ignore picture rotations</CheckBox>
 
         </StackPanel>
 

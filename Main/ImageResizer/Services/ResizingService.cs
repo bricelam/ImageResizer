@@ -26,10 +26,11 @@ namespace BriceLambson.ImageResizer.Services
 
         private readonly int _qualityLevel;
         private readonly bool _shrinkOnly;
+        private readonly bool _ignoreRotations;
         private readonly ResizeSize _size;
         private readonly RenamingService _renamer;
 
-        public ResizingService(int qualityLevel, bool shrinkOnly, ResizeSize size, RenamingService renamer)
+        public ResizingService(int qualityLevel, bool shrinkOnly, bool ignoreRotations, ResizeSize size, RenamingService renamer)
         {
             Contract.Requires(qualityLevel >= 1 && qualityLevel <= 100);
             Contract.Requires(size != null);
@@ -37,6 +38,7 @@ namespace BriceLambson.ImageResizer.Services
 
             _qualityLevel = qualityLevel;
             _shrinkOnly = shrinkOnly;
+            _ignoreRotations = ignoreRotations;
             _size = size;
             _renamer = renamer;
         }
@@ -137,8 +139,21 @@ namespace BriceLambson.ImageResizer.Services
         {
             Contract.Requires(source != null);
 
-            var scaleX = UnitHelper.ConvertToScale(_size.Width, _size.Unit, source.PixelWidth, source.DpiX);
-            var scaleY = UnitHelper.ConvertToScale(_size.Height, _size.Unit, source.PixelHeight, source.DpiY);
+            var width = _size.Width;
+            var height = _size.Height;
+
+            if (_ignoreRotations)
+            {
+                if ((width > height) != (source.PixelWidth > source.PixelHeight))
+                {
+                    var temp = width;
+                    width = height;
+                    height = temp;
+                }
+            }
+
+            var scaleX = UnitHelper.ConvertToScale(width, _size.Unit, source.PixelWidth, source.DpiX);
+            var scaleY = UnitHelper.ConvertToScale(height, _size.Unit, source.PixelHeight, source.DpiY);
 
             if (_size.Mode == Mode.Scale)
             {
@@ -163,7 +178,6 @@ namespace BriceLambson.ImageResizer.Services
                 }
             }
 
-            // TODO: Ignore image rotations
             return new ScaleTransform(scaleX, scaleY);
         }
     }

@@ -93,6 +93,7 @@ namespace BriceLambson.ImageResizer.ViewModels
                 = new ResizingService(
                     AdvancedSettings.Default.QualityLevel,
                     Settings.Default.ShrinkOnly,
+                    Settings.Default.IgnoreRotations,
                     Settings.Default.SelectedSize,
                     new RenamingService(
                         AdvancedSettings.Default.FileNameFormat,

@@ -113,11 +113,59 @@ namespace BriceLambson.ImageResizer.Test
             Assert.IsTrue(fileLength1 < fileLength2);
         }
 
-        private static ResizingService CreateResizer(ResizeSize size, int qualityLevel = 75, bool shrinkOnly = false)
+        [TestMethod]
+        public void CanIgnoreRotations()
+        {
+            // Arrange
+            var resizer
+                = CreateResizer(
+                    new CustomSize
+                    {
+                        Width = 72,
+                        Height = 96,
+                        Mode = Mode.Scale
+                    });
+
+            // Act
+            var file = resizer.Resize("WP_000000.jpg");
+
+            // Assert
+            var image = ImageHelper.OpenFrame(file);
+
+            Assert.AreEqual(96, image.PixelWidth);
+            Assert.AreEqual(72, image.PixelHeight);
+        }
+
+        [TestMethod]
+        public void CanHonorRotations()
+        {
+            // Arrange
+            var resizer
+                = CreateResizer(
+                    new CustomSize
+                    {
+                        Width = 72,
+                        Height = 96,
+                        Mode = Mode.Scale
+                    },
+                    ignoreRotations: false);
+
+            // Act
+            var file = resizer.Resize("WP_000000.jpg");
+
+            // Assert
+            var image = ImageHelper.OpenFrame(file);
+
+            Assert.AreEqual(72, image.PixelWidth);
+            Assert.AreEqual(54, image.PixelHeight);
+        }
+
+        private static ResizingService CreateResizer(ResizeSize size, int qualityLevel = 75, bool shrinkOnly = false, bool ignoreRotations = true)
         {
             return new ResizingService(
                 qualityLevel,
                 shrinkOnly,
+                ignoreRotations,
                 size,
                 new RenamingService(
                     "{0} ({1})",

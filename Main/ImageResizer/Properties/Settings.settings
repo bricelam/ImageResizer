@@ -12,6 +12,9 @@
 </CustomSize>]]>
       </Value>
     </Setting>
+    <Setting Name="IgnoreRotations" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>    
     <Setting Name="ReplaceOriginals" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
