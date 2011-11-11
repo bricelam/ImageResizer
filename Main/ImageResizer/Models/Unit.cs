@@ -12,8 +12,8 @@ namespace BriceLambson.ImageResizer.Models
     public enum Unit
     {
         Pixels,
-        Percent,
+        Centimeters,
         Inches,
-        Centimeters
+        Percent
     }
 }

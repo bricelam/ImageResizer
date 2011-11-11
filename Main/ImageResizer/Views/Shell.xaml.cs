@@ -41,7 +41,8 @@ namespace BriceLambson.ImageResizer.Views
                           " * JPEG Quality Level\r\n" +
                           " * User-defined default sizes\r\n" +
                           " * User-defined filename format\r\n" +
-                          " * Optionally strip metadata";
+                          " * Optionally strip metadata\r\n" +
+                          " * Optionally keep modified date";
 
             MessageBox.Show(message, "Advanced Options", MessageBoxButton.OK, MessageBoxImage.Information);
         }

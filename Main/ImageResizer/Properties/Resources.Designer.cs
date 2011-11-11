@@ -70,11 +70,47 @@ namespace BriceLambson.ImageResizer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Centimeters.
+        /// </summary>
+        internal static string Centimeters {
+            get {
+                return ResourceManager.GetString("Centimeters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Custom.
         /// </summary>
         internal static string Custom {
             get {
                 return ResourceManager.GetString("Custom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inches.
+        /// </summary>
+        internal static string Inches {
+            get {
+                return ResourceManager.GetString("Inches", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Percent.
+        /// </summary>
+        internal static string Percent {
+            get {
+                return ResourceManager.GetString("Percent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pixels.
+        /// </summary>
+        internal static string Pixels {
+            get {
+                return ResourceManager.GetString("Pixels", resourceCulture);
             }
         }
         

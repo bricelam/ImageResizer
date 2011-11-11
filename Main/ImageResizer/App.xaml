@@ -1,6 +1,15 @@
 ﻿<Application x:Class="BriceLambson.ImageResizer.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:m="clr-namespace:BriceLambson.ImageResizer.Models" 
+             xmlns:v="clr-namespace:BriceLambson.ImageResizer.Views">
     <Application.Resources>
+        <ObjectDataProvider x:Key="unitValues" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="m:Unit" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <v:UnitValueLocalizer x:Key="unitValueLocalizer" />
     </Application.Resources>
 </Application>

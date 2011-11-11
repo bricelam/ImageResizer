@@ -30,7 +30,7 @@
                 </ListBox.ItemContainerStyle>
                 <ListBox.Resources>
                     <DataTemplate DataType="{x:Type m:ResizeSize}">
-                        <TextBlock><TextBlock Text="{Binding Name}" /> (scales to <TextBlock Text="{Binding Width}" /> × <TextBlock Text="{Binding Height}" /> pixels)</TextBlock>
+                        <TextBlock><TextBlock Text="{Binding Name}" /> (scales to <TextBlock Text="{Binding Width}" /> × <TextBlock Text="{Binding Height}" /> <TextBlock Text="{Binding Unit,Converter={StaticResource unitValueLocalizer},ConverterParameter=ToLower}" />)</TextBlock>
                     </DataTemplate>
                     <DataTemplate DataType="{x:Type m:CustomSize}">
                         <StackPanel Orientation="Horizontal">
@@ -39,7 +39,13 @@
                             <TextBox Margin="7,0,0,0" Width="46" Text="{Binding Width}" />
                             <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">×</TextBlock>
                             <TextBox Margin="3,0,0,0" Width="46" Text="{Binding Height}" />
-                            <TextBlock VerticalAlignment="Center" Margin="7,0,0,0">pixels</TextBlock>
+                            <ComboBox Margin="7,0,0,0" ItemsSource="{Binding Source={StaticResource unitValues}}" SelectedItem="{Binding Unit}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Converter={StaticResource unitValueLocalizer}}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.Resources>
