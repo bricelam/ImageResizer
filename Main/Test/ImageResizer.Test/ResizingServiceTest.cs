@@ -65,6 +65,30 @@ namespace BriceLambson.ImageResizer
         }
 
         [Fact]
+        public void CanStretchWhileIgnoringRotations()
+        {
+            // Arrange
+            var resizer
+                = CreateResizer(
+                    new CustomSize
+                    {
+                        Width = 72,
+                        Height = 96,
+                        Mode = Mode.Stretch
+                    },
+                    ignoreRotations: true);
+
+            // Act
+            var file = resizer.Resize("WP_000000.jpg");
+
+            // Assert
+            var image = LoadBitmap(file);
+
+            Assert.Equal(72, image.PixelWidth);
+            Assert.Equal(96, image.PixelHeight);
+        }
+
+        [Fact]
         public void CanShrinkOnly()
         {
             // Arrange

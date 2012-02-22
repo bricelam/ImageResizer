@@ -135,6 +135,18 @@
   <data name="Pixels" xml:space="preserve">
     <value>Pixels</value>
   </data>
+  <data name="Scale" xml:space="preserve">
+    <value>Scale to</value>
+  </data>
+  <data name="Scale_ToThirdPersonSingular" xml:space="preserve">
+    <value>scales to</value>
+  </data>
+  <data name="Stretch" xml:space="preserve">
+    <value>Stretch to</value>
+  </data>
+  <data name="Stretch_ToThirdPersonSingular" xml:space="preserve">
+    <value>stretches to</value>
+  </data>
   <data name="UnitNotSupported" xml:space="preserve">
     <value>The unit '{0}' is not yet supported.</value>
   </data>

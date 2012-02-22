@@ -41,7 +41,7 @@ namespace BriceLambson.ImageResizer.Services
             Contract.Requires(!String.IsNullOrWhiteSpace(sourcePath));
             Contract.Ensures(!String.IsNullOrWhiteSpace(Contract.Result<string>()));
 
-            if (_replaceOriginals)
+            if (_outputDirectory == null && _replaceOriginals)
             {
                 return sourcePath;
             }

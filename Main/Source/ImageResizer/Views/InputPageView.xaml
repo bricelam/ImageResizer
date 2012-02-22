@@ -30,12 +30,18 @@
                 </ListBox.ItemContainerStyle>
                 <ListBox.Resources>
                     <DataTemplate DataType="{x:Type m:ResizeSize}">
-                        <TextBlock><TextBlock Text="{Binding Name}" /> (scales to <TextBlock Text="{Binding Width}" /> × <TextBlock Text="{Binding Height}" /> <TextBlock Text="{Binding Unit,Converter={StaticResource unitValueLocalizer},ConverterParameter=ToLower}" />)</TextBlock>
+                        <TextBlock><TextBlock Text="{Binding Name}" /> (<TextBlock Text="{Binding Mode,Converter={StaticResource modeValueLocalizer},ConverterParameter=ToThirdPersonSingular}" /> <TextBlock Text="{Binding Width}" /> × <TextBlock Text="{Binding Height}" /> <TextBlock Text="{Binding Unit,Converter={StaticResource unitValueLocalizer},ConverterParameter=ToLower}" />)</TextBlock>
                     </DataTemplate>
                     <DataTemplate DataType="{x:Type m:CustomSize}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock VerticalAlignment="Center"><TextBlock Text="{Binding Name}" />:</TextBlock>
-                            <TextBlock VerticalAlignment="Center" Margin="5,0,0,0">Scale to</TextBlock>
+                            <ComboBox Margin="5,0,0,0" ItemsSource="{Binding Source={StaticResource modeValues}}" SelectedItem="{Binding Mode}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Converter={StaticResource modeValueLocalizer}}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
                             <TextBox Margin="7,0,0,0" Width="46" Text="{Binding Width}" />
                             <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">×</TextBlock>
                             <TextBox Margin="3,0,0,0" Width="46" Text="{Binding Height}" />
@@ -56,6 +62,7 @@
             <!-- TODO: Hide this if resizing to a directory -->
             <CheckBox Margin="0,7,0,0" IsChecked="{Binding Settings.ReplaceOriginals}">Replace the originals</CheckBox>
 
+            <!-- TODO: Disable this if stretching -->
             <CheckBox Margin="0,7,0,0" IsChecked="{Binding Settings.IgnoreRotations}">Ignore picture rotations</CheckBox>
 
         </StackPanel>

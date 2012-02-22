@@ -142,7 +142,7 @@ namespace BriceLambson.ImageResizer.Services
             var width = _size.Width;
             var height = _size.Height;
 
-            if (_ignoreRotations)
+            if (_ignoreRotations && _size.Mode == Mode.Scale)
             {
                 if ((width > height) != (source.PixelWidth > source.PixelHeight))
                 {

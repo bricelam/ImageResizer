@@ -11,5 +11,11 @@
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
         <v:UnitValueLocalizer x:Key="unitValueLocalizer" />
+        <ObjectDataProvider x:Key="modeValues" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="m:Mode" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <v:ModeValueLocalizer x:Key="modeValueLocalizer" />
     </Application.Resources>
 </Application>
