@@ -2,11 +2,6 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <DefineConstants>$(DefineConstants);CODE_ANALYSIS</DefineConstants>
-    <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
-    <CodeContractsEnableRuntimeChecking>true</CodeContractsEnableRuntimeChecking>
-    <CodeContractsReferenceAssembly>doNotBuild</CodeContractsReferenceAssembly>
-    <DotfuscatorPath>$(registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VisualStudio\10.0@InstallDir)..\..\PreEmptive Solutions\Dotfuscator Community Edition\dotfuscatorCLI.exe</DotfuscatorPath>
-    <DotfuscatorConfigFile>$(MSBuildThisFileDirectory)Dotfuscator.xml</DotfuscatorConfigFile>
     <FxCopCmdPath Condition="'$(ProgramFiles(x86))' != ''">$(ProgramFiles(x86))\Microsoft Fxcop 10.0\FxCopCmd.exe</FxCopCmdPath>
     <FxCopCmdPath Condition="'$(FxCopCmdPath)' == ''">$(ProgramFiles)\Microsoft Fxcop 10.0\FxCopCmd.exe</FxCopCmdPath>
     <FxCopDictionary>$(MSBuildThisFileDirectory)CustomDictionary.xml</FxCopDictionary>
@@ -14,29 +9,19 @@
     <StyleCopTargetsPath Condition="'$(MSBuildExtensionsPath32)' != ''">$(MSBuildExtensionsPath32)\StyleCop\v4.6\StyleCop.Targets</StyleCopTargetsPath>
     <StyleCopTargetsPath Condition="'$(StyleCopTargetsPath)' == ''">$(MSBuildExtensionsPath)\StyleCop\v4.6\StyleCop.Targets</StyleCopTargetsPath>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-    <DotfuscatorEnabled>false</DotfuscatorEnabled>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
-    <CodeContractsRuntimeOnlyPublicSurface>true</CodeContractsRuntimeOnlyPublicSurface>
-    <CodeContractsRuntimeCheckingLevel>ReleaseRequires</CodeContractsRuntimeCheckingLevel>
-  </PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Condition="Exists('$(StyleCopTargetsPath)')" Project="$(StyleCopTargetsPath)" />
   <PropertyGroup>
-    <BuildDependsOn>IncludeVersion;$(BuildDependsOn);FxCop;Dotfuscator</BuildDependsOn>
+    <BuildDependsOn>IncludeVersion;$(BuildDependsOn);FxCop</BuildDependsOn>
   </PropertyGroup>
   <Target Name="IncludeVersion">
     <ItemGroup>
-      <Compile Include="$(MSBuildThisFileDirectory)Version\Version.cs">
+      <Compile Include="$(MSBuildThisFileDirectory)Common\Version.cs">
         <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
       </Compile>
     </ItemGroup>
   </Target>
   <Target Name="FxCop" Condition="'$(FxCopEnabled)' != 'false'">
     <Exec Condition="Exists('$(FxCopCmdPath)')" Command="&quot;$(FxCopCmdPath)&quot; /f:&quot;$(TargetPath)&quot; /c /dic:&quot;$(FxCopDictionary)&quot; /q /gac /igc /cul:en-US" IgnoreExitCode="true" />
-  </Target>
-  <Target Name="Dotfuscator" Condition="'$(DotfuscatorEnabled)' != 'false'">
-    <Exec Condition="Exists('$(DotfuscatorPath)')" Command="&quot;$(DotfuscatorPath)&quot; /in:&quot;$(TargetPath)&quot; /out:&quot;$(TargetDir).&quot; /rename:off &quot;$(DotfuscatorConfigFile)&quot;" />
   </Target>
 </Project>

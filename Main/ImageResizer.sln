@@ -1,35 +1,59 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageResizer", "ImageResizer\ImageResizer.csproj", "{41632C92-D683-4360-94B7-9BB2F3D65275}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageResizer", "Source\ImageResizer\ImageResizer.csproj", "{41632C92-D683-4360-94B7-9BB2F3D65275}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ShellExtensions", "ShellExtensions\ShellExtensions.vcxproj", "{A37D7C2E-2C39-4866-816A-6A44805B32B6}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ShellExtensions", "Source\ShellExtensions\ShellExtensions.vcxproj", "{A37D7C2E-2C39-4866-816A-6A44805B32B6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8705D10B-41DD-4A56-AB8E-C84A68C3B213}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installer", "Installer", "{178534C8-34AE-49B0-8F87-8BA7D09DF013}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageResizer.Test", "ImageResizer.Test\ImageResizer.Test.csproj", "{FE6A35FF-E9ED-495F-96BF-148208E74110}"
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Setup", "Installer\Setup\Setup.wixproj", "{A04499B5-3E81-47DD-B699-14DF8FFC166D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A37D7C2E-2C39-4866-816A-6A44805B32B6} = {A37D7C2E-2C39-4866-816A-6A44805B32B6}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{0A56A612-F89A-45B8-B37A-8ED56A601B24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageResizer.Test", "Test\ImageResizer.Test\ImageResizer.Test.csproj", "{FE6A35FF-E9ED-495F-96BF-148208E74110}"
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Bootstrapper", "Installer\Bootstrapper\Bootstrapper.wixproj", "{A1085EA1-F593-476D-9AF4-92CCD6CF186A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A04499B5-3E81-47DD-B699-14DF8FFC166D} = {A04499B5-3E81-47DD-B699-14DF8FFC166D}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
+		SccNumberOfProjects = 5
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs09
-		SccProjectUniqueName0 = ImageResizer\\ImageResizer.csproj
-		SccProjectName0 = ImageResizer
+		SccProjectUniqueName0 = Source\\ShellExtensions\\ShellExtensions.vcxproj
+		SccProjectName0 = Source/ShellExtensions
 		SccAuxPath0 = https://tfs.codeplex.com/tfs/tfs09
-		SccLocalPath0 = ImageResizer
+		SccLocalPath0 = Source\\ShellExtensions
 		SccProvider0 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName1 = ShellExtensions\\ShellExtensions.vcxproj
-		SccProjectName1 = ShellExtensions
+		SccProjectUniqueName1 = Installer\\Setup\\Setup.wixproj
+		SccProjectTopLevelParentUniqueName1 = ImageResizer.sln
+		SccProjectName1 = Installer/Setup
 		SccAuxPath1 = https://tfs.codeplex.com/tfs/tfs09
-		SccLocalPath1 = ShellExtensions
+		SccLocalPath1 = Installer\\Setup
 		SccProvider1 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName2 = ImageResizer.Test\\ImageResizer.Test.csproj
+		SccProjectUniqueName2 = Installer\\Bootstrapper\\Bootstrapper.wixproj
 		SccProjectTopLevelParentUniqueName2 = ImageResizer.sln
-		SccProjectName2 = ImageResizer.Test
+		SccProjectName2 = Installer/Bootstrapper
 		SccAuxPath2 = https://tfs.codeplex.com/tfs/tfs09
-		SccLocalPath2 = ImageResizer.Test
+		SccLocalPath2 = Installer\\Bootstrapper
 		SccProvider2 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName3 = Test\\ImageResizer.Test\\ImageResizer.Test.csproj
+		SccProjectTopLevelParentUniqueName3 = ImageResizer.sln
+		SccProjectName3 = Test/ImageResizer.Test
+		SccAuxPath3 = https://tfs.codeplex.com/tfs/tfs09
+		SccLocalPath3 = Test\\ImageResizer.Test
+		SccProvider3 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName4 = Source\\ImageResizer\\ImageResizer.csproj
+		SccProjectName4 = Source/ImageResizer
+		SccAuxPath4 = https://tfs.codeplex.com/tfs/tfs09
+		SccLocalPath4 = Source\\ImageResizer
+		SccProvider4 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -54,6 +78,14 @@ Global
 		{A37D7C2E-2C39-4866-816A-6A44805B32B6}.Release|x64.Build.0 = Release|x64
 		{A37D7C2E-2C39-4866-816A-6A44805B32B6}.Release|x86.ActiveCfg = Release|Win32
 		{A37D7C2E-2C39-4866-816A-6A44805B32B6}.Release|x86.Build.0 = Release|Win32
+		{A04499B5-3E81-47DD-B699-14DF8FFC166D}.Debug|x64.ActiveCfg = Debug|x64
+		{A04499B5-3E81-47DD-B699-14DF8FFC166D}.Debug|x64.Build.0 = Debug|x64
+		{A04499B5-3E81-47DD-B699-14DF8FFC166D}.Debug|x86.ActiveCfg = Debug|x86
+		{A04499B5-3E81-47DD-B699-14DF8FFC166D}.Debug|x86.Build.0 = Debug|x86
+		{A04499B5-3E81-47DD-B699-14DF8FFC166D}.Release|x64.ActiveCfg = Release|x64
+		{A04499B5-3E81-47DD-B699-14DF8FFC166D}.Release|x64.Build.0 = Release|x64
+		{A04499B5-3E81-47DD-B699-14DF8FFC166D}.Release|x86.ActiveCfg = Release|x86
+		{A04499B5-3E81-47DD-B699-14DF8FFC166D}.Release|x86.Build.0 = Release|x86
 		{FE6A35FF-E9ED-495F-96BF-148208E74110}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{FE6A35FF-E9ED-495F-96BF-148208E74110}.Debug|x64.Build.0 = Debug|Any CPU
 		{FE6A35FF-E9ED-495F-96BF-148208E74110}.Debug|x86.ActiveCfg = Debug|Any CPU
@@ -62,11 +94,19 @@ Global
 		{FE6A35FF-E9ED-495F-96BF-148208E74110}.Release|x64.Build.0 = Release|Any CPU
 		{FE6A35FF-E9ED-495F-96BF-148208E74110}.Release|x86.ActiveCfg = Release|Any CPU
 		{FE6A35FF-E9ED-495F-96BF-148208E74110}.Release|x86.Build.0 = Release|Any CPU
+		{A1085EA1-F593-476D-9AF4-92CCD6CF186A}.Debug|x64.ActiveCfg = Debug|x86
+		{A1085EA1-F593-476D-9AF4-92CCD6CF186A}.Debug|x64.Build.0 = Debug|x86
+		{A1085EA1-F593-476D-9AF4-92CCD6CF186A}.Debug|x86.ActiveCfg = Debug|x86
+		{A1085EA1-F593-476D-9AF4-92CCD6CF186A}.Release|x64.ActiveCfg = Release|x86
+		{A1085EA1-F593-476D-9AF4-92CCD6CF186A}.Release|x64.Build.0 = Release|x86
+		{A1085EA1-F593-476D-9AF4-92CCD6CF186A}.Release|x86.ActiveCfg = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{FE6A35FF-E9ED-495F-96BF-148208E74110} = {8705D10B-41DD-4A56-AB8E-C84A68C3B213}
+		{A04499B5-3E81-47DD-B699-14DF8FFC166D} = {178534C8-34AE-49B0-8F87-8BA7D09DF013}
+		{A1085EA1-F593-476D-9AF4-92CCD6CF186A} = {178534C8-34AE-49B0-8F87-8BA7D09DF013}
+		{FE6A35FF-E9ED-495F-96BF-148208E74110} = {0A56A612-F89A-45B8-B37A-8ED56A601B24}
 	EndGlobalSection
 EndGlobal

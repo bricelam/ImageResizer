@@ -13,9 +13,6 @@ installed.
     WiX Toolset
     http://wix.codeplex.com
     
-    Code Contracts
-    http://research.microsoft.com/projects/contracts
-
 The following components are optional. If installed, they will be used during
 the build process.
 
