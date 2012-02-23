@@ -59,11 +59,11 @@ namespace BriceLambson.ImageResizer.Views
 
             // TODO: Implement this
             var message = "Coming soon...\r\n" +
-                          " * JPEG Quality Level\r\n" +
-                          " * User-defined default sizes\r\n" +
-                          " * User-defined filename format\r\n" +
-                          " * Optionally strip metadata\r\n" +
-                          " * Optionally keep modified date";
+                          " * Editable default sizes\r\n" +
+                          " * Option to keep modified date\r\n" +
+                          " * Custom filenames\r\n" +
+                          " * Select JPEG quality level\r\n" +
+                          " * Option to minimize file size";
 
             MessageBox.Show(message, "Advanced Options", MessageBoxButton.OK, MessageBoxImage.Information);
         }
