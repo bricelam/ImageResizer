@@ -20,7 +20,6 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
     <StartArguments>..\..\..\ImageResizer.Test\Content\WP_000000.jpg /d .</StartArguments>
-    <DotfuscatorPath>$(registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VisualStudio\10.0@InstallDir)..\..\PreEmptive Solutions\Dotfuscator Community Edition\dotfuscatorCLI.exe</DotfuscatorPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
@@ -52,9 +51,6 @@
       <HintPath>..\..\packages\MvvmLightLibsPreview.4.1.0\lib\net40\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="PreEmptive.Attributes">
-      <HintPath>..\..\Lib\PreEmptive.Attributes.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
@@ -186,9 +182,6 @@
     </Page>
   </ItemGroup>
   <Import Project="..\..\ImageResizer.CSharp.targets" />
-  <PropertyGroup>
-    <BuildDependsOn>$(BuildDependsOn);Dotfuscator</BuildDependsOn>
-  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
@@ -196,8 +189,5 @@
   -->
   <Target Name="AfterBuild">
     <Exec Condition="'$(registry:HKEY_CURRENT_USER\Software\BriceLambson\ImageResizer)' != '$(TargetPath)'" Command="REG ADD HKCU\Software\BriceLambson\ImageResizer /ve /d &quot;$(TargetPath)&quot; /f" />
-  </Target>
-  <Target Name="Dotfuscator">
-    <Exec Condition="Exists('$(DotfuscatorPath)')" Command="&quot;$(DotfuscatorPath)&quot; /in:&quot;$(TargetPath)&quot; /out:&quot;$(TargetDir).&quot; /rename:off Dotfuscator.xml" />
   </Target>
 </Project>

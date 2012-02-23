@@ -21,6 +21,3 @@ the build process.
     
     StyleCop
     http://stylecop.codeplex.com
-
-    Dotfuscator Community Edition
-    http://preemptive.com/products/dotfuscator

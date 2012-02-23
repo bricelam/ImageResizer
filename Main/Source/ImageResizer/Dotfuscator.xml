@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE dotfuscator SYSTEM "http://www.preemptive.com/dotfuscator/dtd/dotfuscator_v2.2.dtd">
-<dotfuscator version="2.2">
-  <sos mergeruntime="true">
-    <option>sendanalytics</option>
-    <option>dontsendtamper</option>
-  </sos>
-</dotfuscator>
