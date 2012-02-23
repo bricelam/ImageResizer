@@ -105,11 +105,12 @@ namespace BriceLambson.ImageResizer.Services
                 }
             }
 
-            // Move any existing file to the Recycle Bin
-            if (File.Exists(destinationPath))
+            var fileExists = File.Exists(destinationPath);
+            var finalPath = destinationPath;
+
+            if (fileExists)
             {
-                // TODO: Is there a better way to do this without a reference to Microsoft.VisualBasic?
-                FileSystem.DeleteFile(destinationPath, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
+                destinationPath = Path.GetTempFileName();
             }
 
             using (var destinationStream = File.OpenWrite(destinationPath))
@@ -118,7 +119,15 @@ namespace BriceLambson.ImageResizer.Services
                 encoder.Save(destinationStream);
             }
 
-            return destinationPath;
+            // Move any existing file to the Recycle Bin
+            if (fileExists)
+            {
+                // TODO: Is there a better way to do this without a reference to Microsoft.VisualBasic?
+                FileSystem.DeleteFile(finalPath, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
+                File.Move(destinationPath, finalPath);
+            }
+
+            return finalPath;
         }
 
         private void SetEncoderSettings(BitmapEncoder encoder)
