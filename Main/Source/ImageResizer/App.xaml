@@ -17,5 +17,6 @@
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
         <v:ModeValueLocalizer x:Key="modeValueLocalizer" />
+        <v:DoubleValueConverter x:Key="doubleValueConverter" />
     </Application.Resources>
 </Application>

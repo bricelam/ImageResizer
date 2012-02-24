@@ -108,6 +108,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModels\UpdateAvailableViewModel.cs" />
+    <Compile Include="Views\DoubleValueConverter.cs" />
     <Compile Include="Views\ModeValueLocalizer.cs" />
     <Compile Include="Views\InputPageView.xaml.cs">
       <DependentUpon>InputPageView.xaml</DependentUpon>

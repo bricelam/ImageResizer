@@ -42,6 +42,52 @@ namespace BriceLambson.ImageResizer
         }
 
         [Fact]
+        public void CanScaleWithAutoWidth()
+        {
+            // Arrange
+            var resizer
+                = CreateResizer(
+                    new CustomSize
+                    {
+                        Width = 0,
+                        Height = 72,
+                        Mode = Mode.Scale
+                    });
+
+            // Act
+            var file = resizer.Resize("WP_000000.jpg");
+
+            // Assert
+            var image = LoadBitmap(file);
+
+            Assert.Equal(96, image.PixelWidth);
+            Assert.Equal(72, image.PixelHeight);
+        }
+
+        [Fact]
+        public void CanScaleWithAutoHeight()
+        {
+            // Arrange
+            var resizer
+                = CreateResizer(
+                    new CustomSize
+                    {
+                        Width = 96,
+                        Height = 0,
+                        Mode = Mode.Scale
+                    });
+
+            // Act
+            var file = resizer.Resize("WP_000000.jpg");
+
+            // Assert
+            var image = LoadBitmap(file);
+
+            Assert.Equal(96, image.PixelWidth);
+            Assert.Equal(72, image.PixelHeight);
+        }
+
+        [Fact]
         public void CanStretch()
         {
             // Arrange

@@ -42,9 +42,9 @@
                                     </DataTemplate>
                                 </ComboBox.ItemTemplate>
                             </ComboBox>
-                            <TextBox Margin="7,0,0,0" Width="46" Text="{Binding Width}" />
+                            <TextBox Margin="7,0,0,0" Width="46" Text="{Binding Width,Converter={StaticResource doubleValueConverter}}" />
                             <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">×</TextBlock>
-                            <TextBox Margin="3,0,0,0" Width="46" Text="{Binding Height}" />
+                            <TextBox Margin="3,0,0,0" Width="46" Text="{Binding Height,Converter={StaticResource doubleValueConverter}}" />
                             <ComboBox Margin="7,0,0,0" ItemsSource="{Binding Source={StaticResource unitValues}}" SelectedItem="{Binding Unit}">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
