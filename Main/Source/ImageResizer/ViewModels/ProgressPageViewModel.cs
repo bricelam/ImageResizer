@@ -11,6 +11,7 @@ namespace BriceLambson.ImageResizer.ViewModels
 {
     using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.Diagnostics.Contracts;
     using System.IO;
     using System.Linq;
@@ -27,7 +28,7 @@ namespace BriceLambson.ImageResizer.ViewModels
     {
         private readonly object _detailsSync = new Object();
         private readonly object _progressSync = new Object();
-        private readonly IDictionary<string, Exception> _errors = new Dictionary<string, Exception>();
+        private readonly ICollection<ResizeError> _errors = new Collection<ResizeError>();
         private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
         private readonly Parameters _parameters;
         private readonly ICommand _stopCommand;
@@ -162,7 +163,7 @@ namespace BriceLambson.ImageResizer.ViewModels
 
             lock (_errors)
             {
-                _errors.Add(image, ex);
+                _errors.Add(new ResizeError(image, ex));
             }
         }
     }

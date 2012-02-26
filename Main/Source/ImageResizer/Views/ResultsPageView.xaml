@@ -1,7 +1,7 @@
 ﻿<UserControl x:Class="BriceLambson.ImageResizer.Views.ResultsPageView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             MinWidth="360">
+             Width="360">
     <StackPanel>
 
         <StackPanel Margin="11">
@@ -9,8 +9,20 @@
             <TextBlock FontSize="12pt" Foreground="#003399">Resize completed with problems</TextBlock>
 
             <!-- TODO: Error icon -->
-            <TextBlock Margin="0,11,0,0">Image Resizer was unable to resize one or more pictures.</TextBlock>
-            <!-- TODO: List filenames and problems -->
+            <TextBlock Margin="0,11,0,0">Image Resizer was unable to resize the following pictures.</TextBlock>
+
+            <ScrollViewer Margin="9,0,0,0" MaxHeight="192" VerticalScrollBarVisibility="Auto">
+                <ItemsControl ItemsSource="{Binding Errors}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="0,11,0,0" >
+                                <TextBlock FontWeight="Bold" Text="{Binding Filename}" />
+                                <TextBlock TextWrapping="Wrap" Text="{Binding Message}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
 
         </StackPanel>
 

@@ -15,9 +15,10 @@ namespace BriceLambson.ImageResizer.ViewModels
     using System.Windows.Input;
     using BriceLambson.ImageResizer.Models;
     using BriceLambson.ImageResizer.Properties;
+    using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
 
-    internal class UpdateAvailableViewModel
+    internal class UpdateAvailableViewModel : ViewModelBase
     {
         private readonly Update _update;
         private readonly ICommand _downloadCommand;

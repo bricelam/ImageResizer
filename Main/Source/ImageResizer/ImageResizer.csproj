@@ -76,6 +76,7 @@
     </ApplicationDefinition>
     <Compile Include="Helpers\ParametersHelper.cs" />
     <Compile Include="Helpers\UpdateHelper.cs" />
+    <Compile Include="Models\ResizeError.cs" />
     <Compile Include="Models\Update.cs" />
     <Compile Include="Models\CustomSize.cs" />
     <Compile Include="Models\Mode.cs" />
@@ -154,10 +155,12 @@
     <None Include="Properties\AdvancedSettings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>AdvancedSettings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>

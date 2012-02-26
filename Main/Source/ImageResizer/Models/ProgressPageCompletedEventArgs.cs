@@ -15,16 +15,16 @@ namespace BriceLambson.ImageResizer.Models
 
     internal class ProgressPageCompletedEventArgs : EventArgs
     {
-        private readonly IDictionary<string, Exception> _errors;
+        private readonly ICollection<ResizeError> _errors;
 
-        public ProgressPageCompletedEventArgs(IDictionary<string, Exception> errors)
+        public ProgressPageCompletedEventArgs(ICollection<ResizeError> errors)
         {
             Contract.Requires(errors != null);
 
             _errors = errors;
         }
 
-        public IDictionary<string, Exception> Errors
+        public ICollection<ResizeError> Errors
         {
             get { return _errors; }
         }

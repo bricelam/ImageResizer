@@ -13,14 +13,16 @@ namespace BriceLambson.ImageResizer.ViewModels
     using System.Collections.Generic;
     using System.Diagnostics.Contracts;
     using System.Windows.Input;
+    using BriceLambson.ImageResizer.Models;
+    using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
 
-    internal class ResultsPageViewModel
+    internal class ResultsPageViewModel : ViewModelBase
     {
         private readonly ICommand _closeCommand;
-        private readonly IDictionary<string, Exception> _errors;
+        private readonly ICollection<ResizeError> _errors;
 
-        public ResultsPageViewModel(IDictionary<string, Exception> errors)
+        public ResultsPageViewModel(ICollection<ResizeError> errors)
         {
             Contract.Requires(errors != null);
 
@@ -36,7 +38,7 @@ namespace BriceLambson.ImageResizer.ViewModels
             get { return _closeCommand; }
         }
 
-        public IDictionary<string, Exception> Errors
+        public ICollection<ResizeError> Errors
         {
             get { return _errors; }
         }
