@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // <copyright file="UnitHelper.cs" company="Brice Lambson">
-//     Copyright (c) 2011 Brice Lambson. All rights reserved.
+//     Copyright (c) 2011-2012 Brice Lambson. All rights reserved.
 //
 //     The use of this software is governed by the Microsoft Public License
 //     which is included with this distribution.
@@ -13,7 +13,6 @@ namespace BriceLambson.ImageResizer.Helpers
     using System.Diagnostics.Contracts;
     using System.Globalization;
     using BriceLambson.ImageResizer.Models;
-    using BriceLambson.ImageResizer.Properties;
 
     internal static class UnitHelper
     {
@@ -38,7 +37,7 @@ namespace BriceLambson.ImageResizer.Helpers
                     return ConvertToScale(value * 50 / 127, Unit.Inches, originalPixels, dpi);
             }
 
-            throw new NotSupportedException(String.Format(CultureInfo.InvariantCulture, Resources.UnitNotSupported, unit));
+            throw new NotSupportedException(String.Format(CultureInfo.InvariantCulture, "The unit '{0}' is not yet supported.", unit));
         }
     }
 }

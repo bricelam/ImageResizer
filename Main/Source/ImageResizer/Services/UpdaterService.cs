@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // <copyright file="UpdaterService.cs" company="Brice Lambson">
-//     Copyright (c) 2011 Brice Lambson. All rights reserved.
+//     Copyright (c) 2011-2012 Brice Lambson. All rights reserved.
 //
 //     The use of this software is governed by the Microsoft Public License
 //     which is included with this distribution.
@@ -28,7 +28,7 @@ namespace BriceLambson.ImageResizer.Services
             var reader = XmlReader.Create(updateUrl);
             var formatter = new Atom10FeedFormatter();
 
-            await TaskEx.Run(() => formatter.ReadFrom(reader));
+            await Task.Factory.StartNew(() => formatter.ReadFrom(reader));
 
             return (from i in formatter.Feed.Items
                     let u = UpdateHelper.FromSyndicationItem(i)

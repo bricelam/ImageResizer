@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // <copyright file="ParametersHelper.cs" company="Brice Lambson">
-//     Copyright (c) 2011 Brice Lambson. All rights reserved.
+//     Copyright (c) 2011-2012 Brice Lambson. All rights reserved.
 //
 //     The use of this software is governed by the Microsoft Public License
 //     which is included with this distribution.
@@ -15,6 +15,7 @@ namespace BriceLambson.ImageResizer.Helpers
     using System.IO.Pipes;
     using System.Text;
     using System.Threading.Tasks;
+    using BriceLambson.ImageResizer.Extensions;
     using BriceLambson.ImageResizer.Models;
 
     internal static class ParametersHelper

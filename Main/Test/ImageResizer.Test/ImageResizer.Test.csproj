@@ -19,6 +19,7 @@
     <StartAction>Program</StartAction>
     <StartProgram>$(MSBuildThisFileDirectory)..\..\packages\xunit.runners.1.9.0.1566\tools\xunit.gui.clr4.x86.exe</StartProgram>
     <StartArguments>$(AssemblyName).dll</StartArguments>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

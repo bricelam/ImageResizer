@@ -117,17 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ArgumentNullOrWhiteSpaceException" xml:space="preserve">
-    <value>Value cannot be null or white space.</value>
+  <data name="AdvancedSettings" xml:space="preserve">
+    <value>Advanced settings...</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
   </data>
   <data name="Centimeters" xml:space="preserve">
     <value>Centimeters</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
   <data name="Custom" xml:space="preserve">
     <value>Custom</value>
   </data>
+  <data name="IgnoreRotations" xml:space="preserve">
+    <value>Ignore picture rotations</value>
+  </data>
+  <data name="ImageResizer" xml:space="preserve">
+    <value>Image Resizer for Windows</value>
+  </data>
   <data name="Inches" xml:space="preserve">
     <value>Inches</value>
+  </data>
+  <data name="InputPage_MainInstruction" xml:space="preserve">
+    <value>Resize your pictures</value>
+  </data>
+  <data name="InputPage_SupplementalInstruction" xml:space="preserve">
+    <value>You have selected to resize one or more pictures.</value>
   </data>
   <data name="Percent" xml:space="preserve">
     <value>Percent</value>
@@ -135,19 +153,37 @@
   <data name="Pixels" xml:space="preserve">
     <value>Pixels</value>
   </data>
+  <data name="ProgressPage_MainInstruction" xml:space="preserve">
+    <value>Resizing your pictures...</value>
+  </data>
+  <data name="ReplaceOriginals" xml:space="preserve">
+    <value>Replace the originals</value>
+  </data>
+  <data name="Resize" xml:space="preserve">
+    <value>Resize</value>
+  </data>
+  <data name="ResultsPage_MainInstruction" xml:space="preserve">
+    <value>Resize completed with problems</value>
+  </data>
+  <data name="ResultsPage_SupplementalInstruction" xml:space="preserve">
+    <value>Image Resizer was unable to resize the following pictures.</value>
+  </data>
   <data name="Scale" xml:space="preserve">
     <value>Scale to</value>
   </data>
-  <data name="Scale_ToThirdPersonSingular" xml:space="preserve">
+  <data name="Scale_ThirdPersonSingular" xml:space="preserve">
     <value>scales to</value>
+  </data>
+  <data name="ShrinkOnly" xml:space="preserve">
+    <value>Only shrink pictures</value>
+  </data>
+  <data name="Stop" xml:space="preserve">
+    <value>Stop</value>
   </data>
   <data name="Stretch" xml:space="preserve">
     <value>Stretch to</value>
   </data>
-  <data name="Stretch_ToThirdPersonSingular" xml:space="preserve">
+  <data name="Stretch_ThirdPersonSingular" xml:space="preserve">
     <value>stretches to</value>
-  </data>
-  <data name="UnitNotSupported" xml:space="preserve">
-    <value>The unit '{0}' is not yet supported.</value>
   </data>
 </root>

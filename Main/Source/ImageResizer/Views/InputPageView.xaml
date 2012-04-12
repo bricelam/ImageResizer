@@ -2,15 +2,16 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:m="clr-namespace:BriceLambson.ImageResizer.Models"
+             xmlns:p="clr-namespace:BriceLambson.ImageResizer.Properties"
              MinWidth="360">
     <StackPanel>
 
         <StackPanel Margin="11">
 
             <!-- TODO: Pull colors and sizes from theme -->
-            <TextBlock FontSize="12pt" Foreground="#003399">Resize your pictures</TextBlock>
+            <TextBlock FontSize="12pt" Foreground="#003399" Text="{x:Static p:Resources.InputPage_MainInstruction}" />
 
-            <TextBlock Margin="0,11,0,0">You have selected to resize one or more pictures.</TextBlock>
+            <TextBlock Margin="0,11,0,0" Text="{x:Static p:Resources.InputPage_SupplementalInstruction}" />
 
             <ListBox Margin="9,4,0,0" SelectedIndex="{Binding Settings.SelectedIndex}" ItemsSource="{Binding Sizes}" BorderBrush="{x:Null}" BorderThickness="0">
                 <ListBox.ItemContainerStyle>
@@ -57,13 +58,13 @@
                 </ListBox.Resources>
             </ListBox>
 
-            <CheckBox Margin="0,11,0,0" IsChecked="{Binding Settings.ShrinkOnly}">Only shrink pictures</CheckBox>
+            <CheckBox Margin="0,11,0,0" IsChecked="{Binding Settings.ShrinkOnly}" Content="{x:Static p:Resources.ShrinkOnly}" />
 
             <!-- TODO: Hide this if resizing to a directory -->
-            <CheckBox Margin="0,7,0,0" IsChecked="{Binding Settings.ReplaceOriginals}">Replace the originals</CheckBox>
+            <CheckBox Margin="0,7,0,0" IsChecked="{Binding Settings.ReplaceOriginals}" Content="{x:Static p:Resources.ReplaceOriginals}" />
 
             <!-- TODO: Disable this if stretching -->
-            <CheckBox Margin="0,7,0,0" IsChecked="{Binding Settings.IgnoreRotations}">Ignore picture rotations</CheckBox>
+            <CheckBox Margin="0,7,0,0" IsChecked="{Binding Settings.IgnoreRotations}" Content="{x:Static p:Resources.IgnoreRotations}" />
 
         </StackPanel>
 
@@ -74,11 +75,11 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
-                <TextBlock><Hyperlink Foreground="#0066CC" TextDecorations="" Command="{Binding ShowAdvancedCommand}">Advanced settings...</Hyperlink></TextBlock>
+                <TextBlock><Hyperlink Foreground="#0066CC" TextDecorations="" Command="{Binding ShowAdvancedCommand}"><TextBlock Text="{x:Static p:Resources.AdvancedSettings}" /></Hyperlink></TextBlock>
 
                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button Width="75" Command="{Binding ResizeCommand}">Resize</Button>
-                    <Button Margin="7,0,0,0" Width="75" Command="{Binding CancelCommand}">Cancel</Button>
+                    <Button Width="75" Command="{Binding ResizeCommand}" Content="{x:Static p:Resources.Resize}" />
+                    <Button Margin="7,0,0,0" Width="75" Command="{Binding CancelCommand}" Content="{x:Static p:Resources.Cancel}" />
                 </StackPanel>
 
             </Grid>

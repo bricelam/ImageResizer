@@ -7,9 +7,6 @@
     <DirectoryRef Id="TARGETDIR">
       <Directory Id="ProgramFilesFolder">
         <Directory Id="APPLICATIONFOLDER" Name="Image Resizer for Windows">
-          <Component Id="AsyncCtpLibrary" Win64="no">
-            <File Source="..\..\Lib\AsyncCtpLibrary.dll" />
-          </Component>
           <Component Id="ImageResizer" Win64="no">
             <File Id="ImageResizer" Source="$(var.ImageResizer.TargetPath)" />
             <RegistryKey Root="HKLM" Key="Software">
@@ -78,7 +75,6 @@
       </Directory>
     </DirectoryRef>
     <Feature Id="ImageResizer" Level="1">
-      <ComponentRef Id="AsyncCtpLibrary" />
       <ComponentRef Id="ImageResizer" />
       <ComponentRef Id="Configuration" />
       <ComponentRef Id="License" />

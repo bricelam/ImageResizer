@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // <copyright file="ModeValueLocalizer.cs" company="Brice Lambson">
-//     Copyright (c) 2011 Brice Lambson. All rights reserved.
+//     Copyright (c) 2011-2012 Brice Lambson. All rights reserved.
 //
 //     The use of this software is governed by the Microsoft Public License
 //     which is included with this distribution.
@@ -24,7 +24,7 @@ namespace BriceLambson.ImageResizer.Views
 
             if ((string)parameter == "ToThirdPersonSingular")
             {
-                resourceName += "_ToThirdPersonSingular";
+                resourceName += "_ThirdPersonSingular";
             }
 
             return Resources.ResourceManager.GetString(resourceName);
