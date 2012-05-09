@@ -39,20 +39,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GalaSoft.MvvmLight.Extras.WPF4">
-      <HintPath>..\..\packages\MvvmLightLibsPreview.4.1.0\lib\net40\GalaSoft.MvvmLight.Extras.WPF4.dll</HintPath>
+    <Reference Include="GalaSoft.MvvmLight.Extras.WPF4, Version=4.0.21.25725, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\MvvmLightLibsPreview.4.1.21\lib\net40\GalaSoft.MvvmLight.Extras.WPF4.dll</HintPath>
     </Reference>
-    <Reference Include="GalaSoft.MvvmLight.WPF4">
-      <HintPath>..\..\packages\MvvmLightLibsPreview.4.1.0\lib\net40\GalaSoft.MvvmLight.WPF4.dll</HintPath>
+    <Reference Include="GalaSoft.MvvmLight.WPF4, Version=4.0.21.25725, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\MvvmLightLibsPreview.4.1.21\lib\net40\GalaSoft.MvvmLight.WPF4.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MvvmLightLibsPreview.4.1.0\lib\net40\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\MvvmLightLibsPreview.4.1.21\lib\net40\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MvvmLightLibsPreview.4.1.0\lib\net40\System.Windows.Interactivity.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\MvvmLightLibsPreview.4.1.21\lib\net40\System.Windows.Interactivity.dll</HintPath>
     </Reference>
     <Reference Include="System.Xaml" />
     <Reference Include="WindowsBase" />

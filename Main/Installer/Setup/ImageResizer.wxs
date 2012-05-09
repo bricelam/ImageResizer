@@ -27,7 +27,7 @@
             <File Id="License" Source="..\..\Ms-PL.rtf" />
           </Component>
           <Component Id="MvvmLightLibs" Win64="no">
-            <File Source="..\..\packages\MvvmLightLibsPreview.4.1.0\lib\net40\GalaSoft.MvvmLight.WPF4.dll" />
+            <File Source="..\..\packages\MvvmLightLibsPreview.4.1.21\lib\net40\GalaSoft.MvvmLight.WPF4.dll" />
           </Component>
           <Component Id="ShellExtensions" Win64="no">
             <File Id="ShellExtensions" Source="$(var.SolutionDir)$(var.Configuration)\ShellExtensions.dll" />
