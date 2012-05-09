@@ -7,6 +7,9 @@
     <DirectoryRef Id="TARGETDIR">
       <Directory Id="ProgramFilesFolder">
         <Directory Id="APPLICATIONFOLDER" Name="Image Resizer for Windows">
+          <Component Id="AsyncTargetingPack" Win64="no">
+            <File Source="..\..\packages\Microsoft.CompilerServices.AsyncTargetingPack.1.0.0\lib\net40\Microsoft.CompilerServices.AsyncTargetingPack.Net4.dll" />
+          </Component>
           <Component Id="ImageResizer" Win64="no">
             <File Id="ImageResizer" Source="$(var.ImageResizer.TargetPath)" />
             <RegistryKey Root="HKLM" Key="Software">
@@ -75,6 +78,7 @@
       </Directory>
     </DirectoryRef>
     <Feature Id="ImageResizer" Level="1">
+      <ComponentRef Id="AsyncTargetingPack" />
       <ComponentRef Id="ImageResizer" />
       <ComponentRef Id="Configuration" />
       <ComponentRef Id="License" />
