@@ -8,7 +8,7 @@ STDAPI DllCanUnloadNow()
 	return _AtlModule.DllCanUnloadNow();
 }
 
-STDAPI DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID* ppv)
+STDAPI DllGetClassObject(_In_ REFCLSID rclsid, _In_ REFIID riid, _Outptr_ LPVOID* ppv)
 {
 	return _AtlModule.DllGetClassObject(rclsid, riid, ppv);
 }
@@ -23,7 +23,7 @@ STDAPI DllUnregisterServer()
 	return _AtlModule.DllUnregisterServer();
 }
 
-STDAPI DllInstall(BOOL bInstall, LPCWSTR pszCmdLine)
+STDAPI DllInstall(BOOL bInstall, _In_opt_ LPCWSTR pszCmdLine)
 {
 	HRESULT hr = E_FAIL;
 	static const wchar_t szUserSwitch[] = L"user";

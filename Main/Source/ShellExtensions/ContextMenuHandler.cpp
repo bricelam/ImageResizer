@@ -26,7 +26,7 @@ void CContextMenuHandler::Uninitialize()
 	}
 }
 
-HRESULT CContextMenuHandler::Initialize(PCIDLIST_ABSOLUTE pidlFolder, IDataObject *pdtobj, HKEY hkeyProgID)
+HRESULT CContextMenuHandler::Initialize(_In_opt_ PCIDLIST_ABSOLUTE pidlFolder, _In_opt_ IDataObject *pdtobj, _In_opt_ HKEY hkeyProgID)
 {
 	Uninitialize();
 
@@ -44,7 +44,7 @@ HRESULT CContextMenuHandler::Initialize(PCIDLIST_ABSOLUTE pidlFolder, IDataObjec
 	return S_OK;
 }
 
-HRESULT CContextMenuHandler::QueryContextMenu(HMENU hmenu, UINT indexMenu, UINT idCmdFirst, UINT idCmdLast, UINT uFlags)
+HRESULT CContextMenuHandler::QueryContextMenu(_In_ HMENU hmenu, UINT indexMenu, UINT idCmdFirst, UINT idCmdLast, UINT uFlags)
 {
 	if (uFlags & CMF_DEFAULTONLY)
 	{
@@ -52,7 +52,7 @@ HRESULT CContextMenuHandler::QueryContextMenu(HMENU hmenu, UINT indexMenu, UINT 
 	}
 
 	INT idCmdMax = -1;
-	
+
 	HDropIterator i(m_pdtobj);
 	i.First();
 
@@ -90,13 +90,13 @@ HRESULT CContextMenuHandler::QueryContextMenu(HMENU hmenu, UINT indexMenu, UINT 
 	return MAKE_HRESULT(SEVERITY_SUCCESS, 0, idCmdMax + 1);
 }
 
-HRESULT CContextMenuHandler::GetCommandString(UINT_PTR idCmd, UINT uType, UINT *pReserved, LPSTR pszName, UINT cchMax)
+HRESULT CContextMenuHandler::GetCommandString(UINT_PTR idCmd, UINT uType, _In_ UINT *pReserved, LPSTR pszName, UINT cchMax)
 {
 	if (idCmd == ID_RESIZE_PICTURES)
 	{
 		if (uType == GCS_VERBW)
 		{
-			 wcscpy_s((LPWSTR)pszName, cchMax, RESIZE_PICTURES_VERBW);
+			wcscpy_s((LPWSTR)pszName, cchMax, RESIZE_PICTURES_VERBW);
 		}
 	}
 	else
@@ -107,7 +107,7 @@ HRESULT CContextMenuHandler::GetCommandString(UINT_PTR idCmd, UINT uType, UINT *
 	return S_OK;
 }
 
-HRESULT CContextMenuHandler::InvokeCommand(CMINVOKECOMMANDINFO *pici)
+HRESULT CContextMenuHandler::InvokeCommand(_In_ CMINVOKECOMMANDINFO *pici)
 {
 	if (HIWORD(pici->lpVerb))
 	{
@@ -166,8 +166,9 @@ HRESULT CContextMenuHandler::ResizePictures(CMINVOKECOMMANDINFO *pici)
 		commandLine.AppendFormat(_T(" /d \"%s\""), szFolder);
 	}
 
-	LPTSTR lpszCommandLine = new TCHAR[commandLine.GetLength() + 1];
-	_tcscpy(lpszCommandLine, commandLine);
+	int nSize = commandLine.GetLength() + 1;
+	LPTSTR lpszCommandLine = new TCHAR[nSize];
+	_tcscpy_s(lpszCommandLine, nSize, commandLine);
 
 	STARTUPINFO startupInfo;
 	PROCESS_INFORMATION processInformation;
@@ -201,7 +202,7 @@ HRESULT CContextMenuHandler::ResizePictures(CMINVOKECOMMANDINFO *pici)
 
 		writePipe.Write(fileName, fileName.GetLength() * sizeof(TCHAR));
 	}
-	
+
 	writePipe.Write(_T("\r\n"), 2 * sizeof(TCHAR));
 
 	// Cleanup

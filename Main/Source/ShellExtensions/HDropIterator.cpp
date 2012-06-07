@@ -21,7 +21,7 @@ HDropIterator::HDropIterator(IDataObject *pdtobj)
 
 HDropIterator::~HDropIterator()
 {
-	 ReleaseStgMedium(&m_medium);
+	ReleaseStgMedium(&m_medium);
 }
 
 void HDropIterator::First()

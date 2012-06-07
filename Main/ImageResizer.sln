@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 11
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageResizer", "Source\ImageResizer\ImageResizer.csproj", "{41632C92-D683-4360-94B7-9BB2F3D65275}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ShellExtensions", "Source\ShellExtensions\ShellExtensions.vcxproj", "{A37D7C2E-2C39-4866-816A-6A44805B32B6}"
@@ -23,18 +23,14 @@ Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Bootstrapper", "Installer\B
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccAuxPath0 = https://tfs.codeplex.com/tfs/tfs09
-		SccAuxPath1 = https://tfs.codeplex.com/tfs/tfs09
-		SccAuxPath2 = https://tfs.codeplex.com/tfs/tfs09
-		SccAuxPath3 = https://tfs.codeplex.com/tfs/tfs09
-		SccAuxPath4 = https://tfs.codeplex.com/tfs/tfs09
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccLocalPath0 = Source\\ShellExtensions
 		SccLocalPath1 = Installer\\Setup
 		SccLocalPath2 = Installer\\Bootstrapper
 		SccLocalPath3 = Test\\ImageResizer.Test
 		SccLocalPath4 = Source\\ImageResizer
-		SccNumberOfProjects = 5
+		SccLocalPath5 = .
+		SccNumberOfProjects = 6
 		SccProjectName0 = Source/ShellExtensions
 		SccProjectName1 = Installer/Setup
 		SccProjectName2 = Installer/Bootstrapper
@@ -48,11 +44,6 @@ Global
 		SccProjectUniqueName2 = Installer\\Bootstrapper\\Bootstrapper.wixproj
 		SccProjectUniqueName3 = Test\\ImageResizer.Test\\ImageResizer.Test.csproj
 		SccProjectUniqueName4 = Source\\ImageResizer\\ImageResizer.csproj
-		SccProvider0 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProvider1 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProvider2 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProvider3 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProvider4 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs09
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -37,8 +37,10 @@
       <Name>WixBalExtension</Name>
     </WixExtension>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Theme.xml" />
+  </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
-  <Import Project="..\ImageResizer.Wix.targets" />
   <!--
 	To modify your build process, add your task inside one of the targets below and uncomment it.
 	Other similar extension points exist, see Wix.targets.

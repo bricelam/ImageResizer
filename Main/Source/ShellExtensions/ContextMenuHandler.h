@@ -28,10 +28,10 @@ class ATL_NO_VTABLE CContextMenuHandler :
 public:
 	CContextMenuHandler();
 	~CContextMenuHandler();
-	HRESULT STDMETHODCALLTYPE Initialize(PCIDLIST_ABSOLUTE pidlFolder, IDataObject *pdtobj, HKEY hkeyProgID);
-	HRESULT STDMETHODCALLTYPE QueryContextMenu(HMENU hmenu, UINT indexMenu, UINT idCmdFirst, UINT idCmdLast, UINT uFlags);
-	HRESULT STDMETHODCALLTYPE GetCommandString(UINT_PTR idCmd, UINT uType, UINT *pReserved, LPSTR pszName, UINT cchMax);
-	HRESULT STDMETHODCALLTYPE InvokeCommand(CMINVOKECOMMANDINFO *pici);
+	HRESULT STDMETHODCALLTYPE Initialize(_In_opt_ PCIDLIST_ABSOLUTE pidlFolder, _In_opt_ IDataObject *pdtobj, _In_opt_ HKEY hkeyProgID);
+	HRESULT STDMETHODCALLTYPE QueryContextMenu(_In_ HMENU hmenu, UINT indexMenu, UINT idCmdFirst, UINT idCmdLast, UINT uFlags);
+	HRESULT STDMETHODCALLTYPE GetCommandString(UINT_PTR idCmd, UINT uType, _In_ UINT *pReserved, LPSTR pszName, UINT cchMax);
+	HRESULT STDMETHODCALLTYPE InvokeCommand(_In_ CMINVOKECOMMANDINFO *pici);
 
 private:
 	void Uninitialize();
