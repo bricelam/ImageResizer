@@ -21,8 +21,9 @@ void CContextMenuHandler::Uninitialize()
 	m_pidlFolder = NULL;
 
 	if (m_pdtobj)
-	{ 
-		m_pdtobj->Release(); 
+	{
+		m_pdtobj->Release();
+		m_pdtobj = NULL;
 	}
 }
 
@@ -35,10 +36,10 @@ HRESULT CContextMenuHandler::Initialize(_In_opt_ PCIDLIST_ABSOLUTE pidlFolder, _
 		m_pidlFolder = ILClone(pidlFolder);
 	}
 
-	if (pdtobj) 
-	{ 
-		m_pdtobj = pdtobj; 
-		m_pdtobj->AddRef(); 
+	if (pdtobj)
+	{
+		m_pdtobj = pdtobj;
+		m_pdtobj->AddRef();
 	}
 
 	return S_OK;
@@ -48,10 +49,8 @@ HRESULT CContextMenuHandler::QueryContextMenu(_In_ HMENU hmenu, UINT indexMenu, 
 {
 	if (uFlags & CMF_DEFAULTONLY)
 	{
-		return MAKE_HRESULT(SEVERITY_SUCCESS, 0, 0);
+		return S_OK;
 	}
-
-	INT idCmdMax = -1;
 
 	HDropIterator i(m_pdtobj);
 	i.First();
@@ -67,12 +66,12 @@ HRESULT CContextMenuHandler::QueryContextMenu(_In_ HMENU hmenu, UINT indexMenu, 
 
 	// If selected file is an image...
 	if (type == PERCEIVED_TYPE_IMAGE)
-	{		
+	{
 		CString strResizePictures;
 
 		// If handling drag-and-drop...
 		if (m_pidlFolder)
-		{			
+		{
 			// Load 'Resize pictures here' string
 			strResizePictures.LoadString(IDS_RESIZE_PICTURES_HERE);
 		}
@@ -84,10 +83,11 @@ HRESULT CContextMenuHandler::QueryContextMenu(_In_ HMENU hmenu, UINT indexMenu, 
 
 		// Add menu item
 		InsertMenu(hmenu, indexMenu, MF_BYPOSITION, idCmdFirst + ID_RESIZE_PICTURES, strResizePictures);
-		idCmdMax = ID_RESIZE_PICTURES;
-	}	
 
-	return MAKE_HRESULT(SEVERITY_SUCCESS, 0, idCmdMax + 1);
+		return MAKE_HRESULT(SEVERITY_SUCCESS, 0, ID_RESIZE_PICTURES + 1);
+	}
+
+	return S_OK;
 }
 
 HRESULT CContextMenuHandler::GetCommandString(UINT_PTR idCmd, UINT uType, _In_ UINT *pReserved, LPSTR pszName, UINT cchMax)
@@ -109,13 +109,21 @@ HRESULT CContextMenuHandler::GetCommandString(UINT_PTR idCmd, UINT uType, _In_ U
 
 HRESULT CContextMenuHandler::InvokeCommand(_In_ CMINVOKECOMMANDINFO *pici)
 {
-	if (HIWORD(pici->lpVerb))
+	BOOL fUnicode = FALSE;
+
+	if (pici->cbSize == sizeof(CMINVOKECOMMANDINFOEX)
+		&& pici->fMask & CMIC_MASK_UNICODE)
 	{
-		if (pici->fMask & CMIC_MASK_UNICODE &&
-			pici->cbSize == sizeof(CMINVOKECOMMANDINFOEX) &&
-			wcscmp(((CMINVOKECOMMANDINFOEX *)pici)->lpVerbW, RESIZE_PICTURES_VERBW) == 0)
+		fUnicode = TRUE;
+	}
+
+	if (!fUnicode && HIWORD(pici->lpVerb))
+	{
+	}
+	else if (fUnicode && HIWORD(((CMINVOKECOMMANDINFOEX *)pici)->lpVerbW))
+	{
+		if (wcscmp(((CMINVOKECOMMANDINFOEX *)pici)->lpVerbW, RESIZE_PICTURES_VERBW) == 0)
 		{
-			// TODO: CreateThread?
 			return ResizePictures(pici);
 		}
 	}
@@ -124,7 +132,7 @@ HRESULT CContextMenuHandler::InvokeCommand(_In_ CMINVOKECOMMANDINFO *pici)
 		return ResizePictures(pici);
 	}
 
-	return E_INVALIDARG;
+	return E_FAIL;
 }
 
 // TODO: Error handling and memory management
