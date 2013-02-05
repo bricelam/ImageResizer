@@ -4,9 +4,9 @@ CALL :GetTemplateIncludeDir
 IF "%TemplateInclude%"=="" GOTO Error
 
 IF "%CommonProgramFiles(x86)%"=="" (
-    SET "TextTransform=%CommonProgramFiles%\microsoft shared\TextTemplating\10.0\TextTransform.exe"
+    SET "TextTransform=%CommonProgramFiles%\Microsoft Shared\TextTemplating\11.0\TextTransform.exe"
 ) ELSE (
-    SET "TextTransform=%CommonProgramFiles(x86)%\microsoft shared\TextTemplating\10.0\TextTransform.exe"
+    SET "TextTransform=%CommonProgramFiles(x86)%\Microsoft Shared\TextTemplating\11.0\TextTransform.exe"
 )
 
 "%TextTransform%" -I "%TemplateInclude%" Common\Version.tt
@@ -16,22 +16,12 @@ GOTO :EOF
 
 :GetTemplateIncludeDir
 SET TemplateInclude=
-CALL :GetTemplateIncludeDirHelper32 > nul 2>&1
-IF ERRORLEVEL 1 CALL :GetTemplateIncludeDirHelper64 > nul 2>&1
+CALL :GetTemplateIncludeDirHelper > nul 2>&1
 IF "%TemplateInclude:~-1%"=="\" SET "TemplateInclude=%TemplateInclude:~0,-1%"
 EXIT /B 0
 
-:GetTemplateIncludeDirHelper32
-FOR /F "tokens=1,2*" %%i IN ('REG QUERY "HKLM\SOFTWARE\Microsoft\VisualStudio\10.0\TextTemplating\IncludeFolders\.tt" /v "Include67826F5E-E1F5-4618-B91C-957E4A34F0D9"') DO (
-    IF "%%i"=="Include67826F5E-E1F5-4618-B91C-957E4A34F0D9" (
-        SET "TemplateInclude=%%k"
-    )
-)
-IF "%TemplateInclude%"=="" EXIT /B 1
-EXIT /B 0
-
-:GetTemplateIncludeDirHelper64
-FOR /F "tokens=1,2*" %%i IN ('REG QUERY "HKLM\SOFTWARE\Wow6432Node\Microsoft\VisualStudio\10.0\TextTemplating\IncludeFolders\.tt" /v "Include67826F5E-E1F5-4618-B91C-957E4A34F0D9"') DO (
+:GetTemplateIncludeDirHelper
+FOR /F "tokens=1,2*" %%i IN ('REG QUERY "HKEY_CURRENT_USER\Software\Microsoft\VisualStudio\11.0_Config\TextTemplating\IncludeFolders\.tt" /v "Include67826F5E-E1F5-4618-B91C-957E4A34F0D9"') DO (
     IF "%%i"=="Include67826F5E-E1F5-4618-B91C-957E4A34F0D9" (
         SET "TemplateInclude=%%k"
     )
