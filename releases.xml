@@ -2,14 +2,14 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Image Resizer for Windows</title>
   <id>http://imageresizer.codeplex.com/releases</id>
-  <updated>2012-02-28T00:00:00Z</updated>
+  <updated>2013-23-02T00:00:00Z</updated>
   <author>
     <name>Brice Lambson</name>
   </author>
   <entry>
     <id>http://imageresizer.codeplex.com/releases/82827</id>
-    <title type="text">3.0.4442.6002</title>
-    <updated>2012-02-28T00:00:00Z</updated>
+    <title type="text">3.0.4802.35565</title>
+    <updated>2013-23-02T00:00:00Z</updated>
     <link href="http://imageresizer.codeplex.com/releases/view/82827" />
     <category term="Stable" />
   </entry>
