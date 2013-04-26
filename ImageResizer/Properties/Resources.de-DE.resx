@@ -147,6 +147,15 @@
   <data name="InputPage_SupplementalInstruction" xml:space="preserve">
     <value>Sie haben eine oder mehrere Bilder zur Neuskalierung markiert.</value>
   </data>
+  <data name="Large" xml:space="preserve">
+    <value>Gross</value>
+  </data>
+  <data name="Medium" xml:space="preserve">
+    <value>Mittel</value>
+  </data>
+  <data name="Mobile" xml:space="preserve">
+    <value>Smartphone</value>
+  </data>
   <data name="Percent" xml:space="preserve">
     <value>Prozent</value>
   </data>
@@ -176,6 +185,9 @@
   </data>
   <data name="ShrinkOnly" xml:space="preserve">
     <value>Bilder nur schrumpfen</value>
+  </data>
+  <data name="Small" xml:space="preserve">
+    <value>Klein</value>
   </data>
   <data name="Stop" xml:space="preserve">
     <value>Stop</value>

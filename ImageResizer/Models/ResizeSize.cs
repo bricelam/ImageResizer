@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // <copyright file="ResizeSize.cs" company="Brice Lambson">
-//     Copyright (c) 2011 Brice Lambson. All rights reserved.
+//     Copyright (c) 2011-2013 Brice Lambson. All rights reserved.
 //
 //     The use of this software is governed by the Microsoft Public License
 //     which is included with this distribution.
@@ -9,10 +9,20 @@
 
 namespace BriceLambson.ImageResizer.Models
 {
+    using System.Collections.Generic;
+    using BriceLambson.ImageResizer.Helpers;
+    using BriceLambson.ImageResizer.Properties;
     using GalaSoft.MvvmLight;
 
     public class ResizeSize : ObservableObject
     {
+        private static readonly IDictionary<string, string> _nameTokens = new Dictionary<string, string>
+            {
+                { "Small", Resources.Small },
+                { "Medium", Resources.Medium },
+                { "Large", Resources.Large },
+                { "Mobile", Resources.Mobile }
+            };
         private string _name;
         private Mode _mode;
         private double _width;
@@ -21,7 +31,7 @@ namespace BriceLambson.ImageResizer.Models
 
         public virtual string Name
         {
-            get { return _name; }
+            get { return TemplatingEngine.ReplaceTokens(_name, _nameTokens); }
             set { Set(() => Name, ref _name, value); }
         }
 

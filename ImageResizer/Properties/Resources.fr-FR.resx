@@ -147,6 +147,15 @@
   <data name="InputPage_SupplementalInstruction" xml:space="preserve">
     <value>Vous avez choisis de redimensionner une ou plusieurs images.</value>
   </data>
+  <data name="Large" xml:space="preserve">
+    <value>Grand</value>
+  </data>
+  <data name="Medium" xml:space="preserve">
+    <value>Moyen</value>
+  </data>
+  <data name="Mobile" xml:space="preserve">
+    <value>Smartphone</value>
+  </data>
   <data name="Percent" xml:space="preserve">
     <value>Pourcent</value>
   </data>
@@ -176,6 +185,9 @@
   </data>
   <data name="ShrinkOnly" xml:space="preserve">
     <value>Seulement rétrecir les images</value>
+  </data>
+  <data name="Small" xml:space="preserve">
+    <value>Petit</value>
   </data>
   <data name="Stop" xml:space="preserve">
     <value>Stop</value>

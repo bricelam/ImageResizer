@@ -85,6 +85,7 @@
     </Compile>
     <Compile Include="Extensions\Atom10FeedFormatterExtensions.cs" />
     <Compile Include="Helpers\ParametersHelper.cs" />
+    <Compile Include="Helpers\TemplatingEngine.cs" />
     <Compile Include="Helpers\UpdateHelper.cs" />
     <Compile Include="Models\ProgressPageLoadedMessage.cs" />
     <Compile Include="Models\ResizeError.cs" />

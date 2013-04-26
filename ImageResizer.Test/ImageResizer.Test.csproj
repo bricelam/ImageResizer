@@ -62,6 +62,7 @@
     <Compile Include="..\Common\Common.cs">
       <Link>Properties\Common.cs</Link>
     </Compile>
+    <Compile Include="Helpers\TemplatingEngineTests.cs" />
     <Compile Include="ResizingServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

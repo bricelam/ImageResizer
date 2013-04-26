@@ -57,28 +57,28 @@ namespace BriceLambson.ImageResizer.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute(@"<ArrayOfResizeSize>
   <ResizeSize>
-    <Name>Small</Name>
+    <Name>$Small$</Name>
     <Mode>Scale</Mode>
     <Width>854</Width>
     <Height>480</Height>
     <Unit>Pixels</Unit>
   </ResizeSize>
   <ResizeSize>
-    <Name>Medium</Name>
+    <Name>$Medium$</Name>
     <Mode>Scale</Mode>
     <Width>1366</Width>
     <Height>768</Height>
     <Unit>Pixels</Unit>
   </ResizeSize>
   <ResizeSize>
-    <Name>Large</Name>
+    <Name>$Large$</Name>
     <Mode>Scale</Mode>
     <Width>1920</Width>
     <Height>1080</Height>
     <Unit>Pixels</Unit>
   </ResizeSize>
   <ResizeSize>
-    <Name>Mobile</Name>
+    <Name>$Mobile$</Name>
     <Mode>Scale</Mode>
     <Width>320</Width>
     <Height>480</Height>
