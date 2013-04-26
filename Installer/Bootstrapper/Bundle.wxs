@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?include ..\..\Common\Version.wxi ?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:bal="http://schemas.microsoft.com/wix/BalExtension"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+  <Bundle Manufacturer="Brice Lambson" Name="Image Resizer for Windows" UpgradeCode="{89A1BF6F-DDDB-4ADC-A307-0CC1EF2801BD}" Version="$(var.Version)">
+    <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense">
+      <bal:WixStandardBootstrapperApplication
+        LicenseFile="..\..\Ms-PL.rtf"
+        SuppressOptionsUI="yes"
+        ThemeFile="Theme.xml" />
+    </BootstrapperApplicationRef>
+    <util:RegistrySearch Variable="NETFRAMEWORK40CLIENT" Root="HKLM" Key="SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Client" Value="Install" />
+    <Chain>
+      <ExePackage Compressed="no" DetectCondition="NETFRAMEWORK40CLIENT" DownloadUrl="http://download.microsoft.com/download/7/B/6/7B629E05-399A-4A92-B5BC-484C74B5124B/dotNetFx40_Client_setup.exe" PerMachine="yes" Permanent="yes" SourceFile="dotNetFx40_Client_setup.exe" />
+      <MsiPackage InstallCondition="NOT VersionNT64" SourceFile="..\Setup\bin\$(var.Configuration)\ImageResizer.msi" />
+      <MsiPackage Id="ImageResizer64" InstallCondition="VersionNT64" SourceFile="..\Setup\bin\x64\$(var.Configuration)\ImageResizer.msi" />
+    </Chain>
+  </Bundle>
+</Wix>

@@ -1,0 +1,28 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BriceLambson.ImageResizer.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="CustomSize" Type="BriceLambson.ImageResizer.Models.CustomSize" Scope="User">
+      <Value Profile="(Default)">
+        <![CDATA[<CustomSize>
+  <Mode>Scale</Mode>
+  <Width>1280</Width>
+  <Height>720</Height>
+  <Unit>Pixels</Unit>
+</CustomSize>]]>
+      </Value>
+    </Setting>
+    <Setting Name="IgnoreRotations" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>    
+    <Setting Name="ReplaceOriginals" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SelectedIndex" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="ShrinkOnly" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
