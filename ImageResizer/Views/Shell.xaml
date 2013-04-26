@@ -4,6 +4,7 @@
         xmlns:v="clr-namespace:BriceLambson.ImageResizer.Views"
         xmlns:vm="clr-namespace:BriceLambson.ImageResizer.ViewModels"
         xmlns:p="clr-namespace:BriceLambson.ImageResizer.Properties"
+        Loaded="Window_Loaded"
         Title="{x:Static p:Resources.ImageResizer}" SizeToContent="WidthAndHeight" ResizeMode="NoResize" Content="{Binding CurrentPage}">
     <Window.Resources>
         <DataTemplate DataType="{x:Type vm:InputPageViewModel}">

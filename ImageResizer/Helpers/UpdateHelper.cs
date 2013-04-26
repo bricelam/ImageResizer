@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // <copyright file="UpdateHelper.cs" company="Brice Lambson">
-//     Copyright (c) 2011 Brice Lambson. All rights reserved.
+//     Copyright (c) 2011-2013 Brice Lambson. All rights reserved.
 //
 //     The use of this software is governed by the Microsoft Public License
 //     which is included with this distribution.
@@ -10,6 +10,7 @@
 namespace BriceLambson.ImageResizer.Helpers
 {
     using System;
+    using System.Diagnostics;
     using System.Diagnostics.Contracts;
     using System.Linq;
     using System.ServiceModel.Syndication;
@@ -19,7 +20,7 @@ namespace BriceLambson.ImageResizer.Helpers
     {
         public static Update FromSyndicationItem(SyndicationItem item)
         {
-            Contract.Requires(item != null);
+            Debug.Assert(item != null);
 
             var update = new Update();
             Version version;

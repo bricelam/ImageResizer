@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // <copyright file="ParametersHelper.cs" company="Brice Lambson">
-//     Copyright (c) 2011-2012 Brice Lambson. All rights reserved.
+//     Copyright (c) 2011-2013 Brice Lambson. All rights reserved.
 //
 //     The use of this software is governed by the Microsoft Public License
 //     which is included with this distribution.
@@ -10,19 +10,18 @@
 namespace BriceLambson.ImageResizer.Helpers
 {
     using System;
-    using System.Diagnostics.Contracts;
+    using System.Diagnostics;
     using System.IO;
     using System.IO.Pipes;
     using System.Text;
     using System.Threading.Tasks;
-    using BriceLambson.ImageResizer.Extensions;
     using BriceLambson.ImageResizer.Models;
 
     internal static class ParametersHelper
     {
         public static async Task<Parameters> ParseAsync(string[] args)
         {
-            Contract.Requires(args != null);
+            Debug.Assert(args != null);
 
             var parameters = new Parameters();
 

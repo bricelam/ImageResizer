@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // <copyright file="UpdateAvailableViewModel.cs" company="Brice Lambson">
-//     Copyright (c) 2011 Brice Lambson. All rights reserved.
+//     Copyright (c) 2011-2013 Brice Lambson. All rights reserved.
 //
 //     The use of this software is governed by the Microsoft Public License
 //     which is included with this distribution.
@@ -26,7 +26,7 @@ namespace BriceLambson.ImageResizer.ViewModels
 
         public UpdateAvailableViewModel(Update update)
         {
-            Contract.Requires(update != null);
+            Debug.Assert(update != null);
 
             _downloadCommand = new RelayCommand(Download);
             _closeCommand = new RelayCommand(Close);

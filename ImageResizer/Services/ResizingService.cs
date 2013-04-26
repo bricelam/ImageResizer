@@ -1,6 +1,6 @@
 //------------------------------------------------------------------------------
 // <copyright file="ResizingService.cs" company="Brice Lambson">
-//     Copyright (c) 2011 Brice Lambson. All rights reserved.
+//     Copyright (c) 2011-2013 Brice Lambson. All rights reserved.
 //
 //     The use of this software is governed by the Microsoft Public License
 //     which is included with this distribution.
@@ -10,9 +10,10 @@
 namespace BriceLambson.ImageResizer.Services
 {
     using System;
-    using System.Diagnostics.Contracts;
+    using System.Diagnostics;
     using System.Globalization;
     using System.IO;
+    using System.Threading;
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
     using BriceLambson.ImageResizer.Helpers;
@@ -32,9 +33,9 @@ namespace BriceLambson.ImageResizer.Services
 
         public ResizingService(int qualityLevel, bool shrinkOnly, bool ignoreRotations, ResizeSize size, RenamingService renamer)
         {
-            Contract.Requires(qualityLevel >= 1 && qualityLevel <= 100);
-            Contract.Requires(size != null);
-            Contract.Requires(renamer != null);
+            Debug.Assert(qualityLevel >= 1 && qualityLevel <= 100);
+            Debug.Assert(size != null);
+            Debug.Assert(renamer != null);
 
             _qualityLevel = qualityLevel;
             _shrinkOnly = shrinkOnly;
@@ -45,8 +46,7 @@ namespace BriceLambson.ImageResizer.Services
 
         public string Resize(string sourcePath)
         {
-            Contract.Requires(!String.IsNullOrWhiteSpace(sourcePath));
-            Contract.Ensures(!String.IsNullOrWhiteSpace(Contract.Result<string>()));
+            Debug.Assert(!String.IsNullOrWhiteSpace(sourcePath));
 
             var encoderDefaulted = false;
             BitmapDecoder decoder;
@@ -127,12 +127,14 @@ namespace BriceLambson.ImageResizer.Services
                 File.Move(destinationPath, finalPath);
             }
 
+            Debug.Assert(!String.IsNullOrWhiteSpace(finalPath));
+
             return finalPath;
         }
 
         private void SetEncoderSettings(BitmapEncoder encoder)
         {
-            Contract.Requires(encoder != null);
+            Debug.Assert(encoder != null);
 
             var jpegEncoder = encoder as JpegBitmapEncoder;
 
@@ -146,7 +148,7 @@ namespace BriceLambson.ImageResizer.Services
         //       combination of transforms to be performed on the image
         private Transform GetTransform(BitmapSource source)
         {
-            Contract.Requires(source != null);
+            Debug.Assert(source != null);
 
             var width = _size.Width;
             var height = _size.Height;

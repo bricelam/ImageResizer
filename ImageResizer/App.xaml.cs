@@ -16,18 +16,6 @@ namespace BriceLambson.ImageResizer
 
     public partial class App : Application
     {
-        public App()
-        {
-            if (AdvancedSettings.Default.UpgradeRequired)
-            {
-                Settings.Default.Upgrade();
-                AdvancedSettings.Default.Upgrade();
-
-                AdvancedSettings.Default.UpgradeRequired = false;
-                AdvancedSettings.Default.Save();
-            }
-        }
-
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);

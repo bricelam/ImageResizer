@@ -13,13 +13,13 @@
     
     var version = new Version(3, 0, build, revision);
 
-    // Version.cs
+    // Common.cs
 #>
 using System.Reflection;
 
 [assembly: AssemblyVersion("<#= version #>")]
 <#
-    fileManager.StartNewFile("Version.wxi");
+    fileManager.StartNewFile("Common.wxi");
 #>
 <?xml version="1.0" encoding="utf-8"?>
 

@@ -6,10 +6,7 @@
       <Value Profile="(Default)">Stable</Value>
     </Setting>
     <Setting Name="UpdateUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://imageresizer.svn.codeplex.com/svn/releases.xml</Value>
-    </Setting>
-    <Setting Name="AllowAnalytics" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">http://imageresizer.azurewebsites.net/releases.xml</Value>
     </Setting>
     <Setting Name="CheckForUpdates" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>

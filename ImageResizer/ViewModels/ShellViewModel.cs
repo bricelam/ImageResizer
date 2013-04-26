@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // <copyright file="ShellViewModel.cs" company="Brice Lambson">
-//     Copyright (c) 2011 Brice Lambson. All rights reserved.
+//     Copyright (c) 2011-2013 Brice Lambson. All rights reserved.
 //
 //     The use of this software is governed by the Microsoft Public License
 //     which is included with this distribution.
@@ -10,8 +10,9 @@
 namespace BriceLambson.ImageResizer.ViewModels
 {
     using System;
-    using System.Diagnostics.Contracts;
+    using System.Diagnostics;
     using System.Linq;
+    using System.Threading;
     using System.Threading.Tasks;
     using BriceLambson.ImageResizer.Helpers;
     using BriceLambson.ImageResizer.Models;
@@ -22,24 +23,16 @@ namespace BriceLambson.ImageResizer.ViewModels
 
     internal class ShellViewModel : ViewModelBase
     {
+        private readonly string[] _args;
         private object _currentPage;
-        private Task<Parameters> _parseArgsTask;
 
         public ShellViewModel(string[] args)
         {
-            Contract.Requires(args != null);
+            Debug.Assert(args != null);
 
-            if (AdvancedSettings.Default.CheckForUpdates)
-            {
-                CheckForUpdatesAsync();
-            }
+            _args = args;
 
-            var inputPage = new InputPageViewModel();
-            inputPage.Completed += HandleInputPageCompleted;
-
-            _currentPage = inputPage;
-
-            _parseArgsTask = ParametersHelper.ParseAsync(args);
+            Messenger.Default.Register<ShellLoadedMessage>(this, m => OnLoaded());
         }
 
         public object CurrentPage
@@ -48,14 +41,36 @@ namespace BriceLambson.ImageResizer.ViewModels
             set { Set(() => CurrentPage, ref _currentPage, value); }
         }
 
+        private void OnLoaded()
+        {
+            // Upgrade settings from previous versions
+            if (AdvancedSettings.Default.UpgradeRequired)
+            {
+                Settings.Default.Upgrade();
+                AdvancedSettings.Default.Upgrade();
+
+                AdvancedSettings.Default.UpgradeRequired = false;
+                AdvancedSettings.Default.Save();
+            }
+
+            var inputPage = new InputPageViewModel();
+            inputPage.Completed += HandleInputPageCompleted;
+            _currentPage = inputPage;
+
+            if (AdvancedSettings.Default.CheckForUpdates)
+            {
+                CheckForUpdatesAsync();
+            }
+        }
+
         private static void Close()
         {
             Messenger.Default.Send(new CloseShellMessage());
         }
 
-        private async void HandleInputPageCompleted(object sender, InputPageCompletedEventArgs e)
+        private void HandleInputPageCompleted(object sender, InputPageCompletedEventArgs e)
         {
-            Contract.Requires(e != null);
+            Debug.Assert(e != null);
 
             if (e.Cancelled)
             {
@@ -63,19 +78,15 @@ namespace BriceLambson.ImageResizer.ViewModels
                 return;
             }
 
-            var parameters = await _parseArgsTask;
-            var progressPage = new ProgressPageViewModel(parameters);
+            var progressPage = new ProgressPageViewModel(_args);
             progressPage.Completed += HandleProgressPageCompleted;
 
             CurrentPage = progressPage;
-
-            // Kick-off resizing
-            progressPage.ResizeAsync();
         }
 
         private void HandleProgressPageCompleted(object sender, ProgressPageCompletedEventArgs e)
         {
-            Contract.Requires(e != null);
+            Debug.Assert(e != null);
 
             if (!e.Errors.Any())
             {
@@ -99,10 +110,9 @@ namespace BriceLambson.ImageResizer.ViewModels
 
             try
             {
-                update
-                    = await new UpdaterService().CheckForUpdatesAsync(
-                        AdvancedSettings.Default.UpdateUrl,
-                        AdvancedSettings.Default.UpdateFilter);
+                update = await new UpdaterService().CheckForUpdatesAsync(
+                    AdvancedSettings.Default.UpdateUrl,
+                    AdvancedSettings.Default.UpdateFilter);
             }
             catch
             {

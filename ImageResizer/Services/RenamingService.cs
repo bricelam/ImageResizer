@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // <copyright file="RenamingService.cs" company="Brice Lambson">
-//     Copyright (c) 2011 Brice Lambson. All rights reserved.
+//     Copyright (c) 2011-2013 Brice Lambson. All rights reserved.
 //
 //     The use of this software is governed by the Microsoft Public License
 //     which is included with this distribution.
@@ -10,7 +10,7 @@
 namespace BriceLambson.ImageResizer.Services
 {
     using System;
-    using System.Diagnostics.Contracts;
+    using System.Diagnostics;
     using System.Globalization;
     using System.IO;
     using BriceLambson.ImageResizer.Models;
@@ -26,9 +26,9 @@ namespace BriceLambson.ImageResizer.Services
 
         public RenamingService(string fileNameFormat, string outputDirectory, bool replaceOriginals, ResizeSize size)
         {
-            Contract.Requires(!String.IsNullOrWhiteSpace(fileNameFormat));
-            Contract.Requires(fileNameFormat.Contains("{0}"));
-            Contract.Requires(size != null);
+            Debug.Assert(!String.IsNullOrWhiteSpace(fileNameFormat));
+            Debug.Assert(fileNameFormat.Contains("{0}"));
+            Debug.Assert(size != null);
 
             _fileNameFormat = fileNameFormat;
             _outputDirectory = outputDirectory;
@@ -38,8 +38,7 @@ namespace BriceLambson.ImageResizer.Services
 
         public string Rename(string sourcePath)
         {
-            Contract.Requires(!String.IsNullOrWhiteSpace(sourcePath));
-            Contract.Ensures(!String.IsNullOrWhiteSpace(Contract.Result<string>()));
+            Debug.Assert(!String.IsNullOrWhiteSpace(sourcePath));
 
             if (_outputDirectory == null && _replaceOriginals)
             {
@@ -81,6 +80,8 @@ namespace BriceLambson.ImageResizer.Services
                 var uniqueFileName = String.Format(CultureInfo.CurrentCulture, UniqueFileNameFormat, destinationFileName, ++i);
                 destinationPath = Path.Combine(directoryName, uniqueFileName + extension);
             }
+
+            Debug.Assert(!String.IsNullOrWhiteSpace(destinationPath));
 
             return destinationPath;
         }

@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // <copyright file="ProgressPageViewModel.cs" company="Brice Lambson">
-//     Copyright (c) 2011-2012 Brice Lambson. All rights reserved.
+//     Copyright (c) 2011-2013 Brice Lambson. All rights reserved.
 //
 //     The use of this software is governed by the Microsoft Public License
 //     which is included with this distribution.
@@ -12,17 +12,19 @@ namespace BriceLambson.ImageResizer.ViewModels
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
-    using System.Diagnostics.Contracts;
+    using System.Diagnostics;
     using System.IO;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
     using System.Windows.Input;
+    using BriceLambson.ImageResizer.Helpers;
     using BriceLambson.ImageResizer.Models;
     using BriceLambson.ImageResizer.Properties;
     using BriceLambson.ImageResizer.Services;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
+    using GalaSoft.MvvmLight.Messaging;
 
     internal class ProgressPageViewModel : ViewModelBase, IDisposable
     {
@@ -30,24 +32,20 @@ namespace BriceLambson.ImageResizer.ViewModels
         private readonly object _progressSync = new Object();
         private readonly ICollection<ResizeError> _errors = new Collection<ResizeError>();
         private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
-        private readonly Parameters _parameters;
+        private readonly string[] _args;
         private readonly ICommand _stopCommand;
 
         private double _progress;
         private string _currentImage;
 
-        public ProgressPageViewModel(Parameters parameters)
+        public ProgressPageViewModel(string[] args)
         {
-            Contract.Requires(parameters != null);
+            Debug.Assert(args != null);
+
+            Messenger.Default.Register<ProgressPageLoadedMessage>(this, m => OnLoadedAsync());
 
             _stopCommand = new RelayCommand(Stop);
-
-            _parameters = parameters;
-        }
-
-        ~ProgressPageViewModel()
-        {
-            Dispose(false);
+            _args = args;
         }
 
         public event EventHandler<ProgressPageCompletedEventArgs> Completed;
@@ -68,15 +66,21 @@ namespace BriceLambson.ImageResizer.ViewModels
             get { return _progress; }
             set
             {
-                Contract.Requires(value >= 0 && value <= 100);
+                Debug.Assert(value >= 0 && value <= 100);
 
                 Set(() => Progress, ref _progress, value);
             }
         }
 
-        public async void ResizeAsync()
+        private async void OnLoadedAsync()
         {
-            var imageCount = _parameters.SelectedFiles.Count();
+            var parameters = await ParametersHelper.ParseAsync(_args);
+            ResizeAsync(parameters);
+        }
+
+        private async void ResizeAsync(Parameters parameters)
+        {
+            var imageCount = parameters.SelectedFiles.Count();
             var resizer
                 = new ResizingService(
                     AdvancedSettings.Default.QualityLevel,
@@ -85,42 +89,43 @@ namespace BriceLambson.ImageResizer.ViewModels
                     Settings.Default.SelectedSize,
                     new RenamingService(
                         AdvancedSettings.Default.FileNameFormat,
-                        _parameters.OutputDirectory,
+                        parameters.OutputDirectory,
                         Settings.Default.ReplaceOriginals,
                         Settings.Default.SelectedSize));
 
             try
             {
-                await Task.Factory.StartNew(
-                    () => Parallel.ForEach(
-                        _parameters.SelectedFiles,
-                        new ParallelOptions
-                        {
-                            CancellationToken = _cancellationTokenSource.Token,
-                            MaxDegreeOfParallelism = Environment.ProcessorCount
-                        },
-                        image =>
-                        {
-                            lock (_detailsSync)
+                await TaskEx.Run(
+                    () =>
+                        Parallel.ForEach(
+                            parameters.SelectedFiles,
+                            new ParallelOptions
                             {
-                                // TODO: Show more details
-                                CurrentImage = Path.GetFileName(image);
-                            }
+                                CancellationToken = _cancellationTokenSource.Token,
+                                MaxDegreeOfParallelism = Environment.ProcessorCount
+                            },
+                            image =>
+                            {
+                                lock (_detailsSync)
+                                {
+                                    // TODO: Show more details
+                                    CurrentImage = Path.GetFileName(image);
+                                }
 
-                            try
-                            {
-                                resizer.Resize(image);
-                            }
-                            catch (Exception ex)
-                            {
-                                AddError(image, ex);
-                            }
+                                try
+                                {
+                                    resizer.Resize(image);
+                                }
+                                catch (Exception ex)
+                                {
+                                    AddError(image, ex);
+                                }
 
-                            lock (_progressSync)
-                            {
-                                Progress += 100 / (double)imageCount;
-                            }
-                        }));
+                                lock (_progressSync)
+                                {
+                                    Progress += 100 / (double)imageCount;
+                                }
+                            }));
             }
             catch (OperationCanceledException)
             {
@@ -129,18 +134,9 @@ namespace BriceLambson.ImageResizer.ViewModels
             OnCompleted();
         }
 
-        public void Dispose()
+        public virtual void Dispose()
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposing && _cancellationTokenSource != null)
-            {
-                _cancellationTokenSource.Dispose();
-            }
+            _cancellationTokenSource.Dispose();
         }
 
         protected virtual void OnCompleted()
@@ -158,8 +154,8 @@ namespace BriceLambson.ImageResizer.ViewModels
 
         private void AddError(string image, Exception ex)
         {
-            Contract.Requires(!String.IsNullOrWhiteSpace(image));
-            Contract.Requires(ex != null);
+            Debug.Assert(!String.IsNullOrWhiteSpace(image));
+            Debug.Assert(ex != null);
 
             lock (_errors)
             {

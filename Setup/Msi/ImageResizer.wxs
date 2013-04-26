@@ -7,6 +7,16 @@
     <DirectoryRef Id="TARGETDIR">
       <Directory Id="ProgramFilesFolder">
         <Directory Id="APPLICATIONFOLDER" Name="Image Resizer for Windows">
+          <Directory Id="de_DE" Name="de-DE">
+            <Component Id="ImageResizer.de_DE" Win64="no">
+              <File Id="ImageResizer.de_DE" Source="$(var.ImageResizer.TargetDir)de-De\$(var.ImageResizer.TargetName).resources.dll" />
+            </Component>
+          </Directory>
+          <Directory Id="fr_FR" Name="fr-FR">
+            <Component Id="ImageResizer.fr_FR" Win64="no">
+              <File Id="ImageResizer.fr_FR" Source="$(var.ImageResizer.TargetDir)fr-FR\$(var.ImageResizer.TargetName).resources.dll" />
+            </Component>
+          </Directory>
           <Component Id="AsyncTargetingPack" Win64="no">
             <File Source="..\..\packages\Microsoft.CompilerServices.AsyncTargetingPack.1.0.0\lib\net40\Microsoft.CompilerServices.AsyncTargetingPack.Net4.dll" />
           </Component>
@@ -27,7 +37,7 @@
             <File Id="License" Source="..\..\Ms-PL.rtf" />
           </Component>
           <Component Id="MvvmLightLibs" Win64="no">
-            <File Source="..\..\packages\MvvmLightLibsPreview.4.1.21\lib\net40\GalaSoft.MvvmLight.WPF4.dll" />
+            <File Source="..\..\packages\MvvmLightLibs.4.1.27.0\lib\net40\GalaSoft.MvvmLight.WPF4.dll" />
           </Component>
           <Component Id="ShellExtensions" Win64="no">
             <File Id="ShellExtensions" Source="$(var.SolutionDir)$(var.Configuration)\ShellExtensions.dll" />
@@ -78,6 +88,8 @@
       </Directory>
     </DirectoryRef>
     <Feature Id="ImageResizer" Level="1">
+      <ComponentRef Id="ImageResizer.de_DE" />
+      <ComponentRef Id="ImageResizer.fr_FR" />
       <ComponentRef Id="AsyncTargetingPack" />
       <ComponentRef Id="ImageResizer" />
       <ComponentRef Id="Configuration" />

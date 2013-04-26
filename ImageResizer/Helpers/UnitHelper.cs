@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // <copyright file="UnitHelper.cs" company="Brice Lambson">
-//     Copyright (c) 2011-2012 Brice Lambson. All rights reserved.
+//     Copyright (c) 2011-2013 Brice Lambson. All rights reserved.
 //
 //     The use of this software is governed by the Microsoft Public License
 //     which is included with this distribution.
@@ -10,7 +10,7 @@
 namespace BriceLambson.ImageResizer.Helpers
 {
     using System;
-    using System.Diagnostics.Contracts;
+    using System.Diagnostics;
     using System.Globalization;
     using BriceLambson.ImageResizer.Models;
 
@@ -18,9 +18,8 @@ namespace BriceLambson.ImageResizer.Helpers
     {
         public static double ConvertToScale(double value, Unit unit, int originalPixels, double dpi)
         {
-            Contract.Requires(originalPixels > 0);
-            Contract.Requires(dpi > 0);
-            Contract.Ensures(Contract.Result<double>() > 0);
+            Debug.Assert(originalPixels > 0);
+            Debug.Assert(dpi > 0);
 
             switch (unit)
             {

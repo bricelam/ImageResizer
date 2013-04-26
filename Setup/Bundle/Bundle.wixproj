@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>3.5</ProductVersion>
+    <ProductVersion>3.7</ProductVersion>
     <ProjectGuid>{a1085ea1-f593-476d-9af4-92ccd6cf186a}</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
     <OutputName>ImageResizerSetup</OutputName>

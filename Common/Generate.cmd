@@ -9,7 +9,7 @@ IF "%CommonProgramFiles(x86)%"=="" (
     SET "TextTransform=%CommonProgramFiles(x86)%\Microsoft Shared\TextTemplating\11.0\TextTransform.exe"
 )
 
-"%TextTransform%" -I "%TemplateInclude%" Common\Version.tt
+"%TextTransform%" -I "%TemplateInclude%" Common.tt
 IF ERRORLEVEL 1 GOTO Error
 
 GOTO :EOF

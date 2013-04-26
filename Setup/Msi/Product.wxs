@@ -2,13 +2,13 @@
 <?include Config.wxi ?>
 
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Id="*" Language="1033" Manufacturer="Brice Lambson" Name="$(var.ProductName)" UpgradeCode="{71EAB0D8-4D33-480F-ADA4-3BFBBB23E794}" Version="$(var.Version)">
+  <Product Id="*" Language="1033" Manufacturer="Brice Lambson" Name="$(var.ProductName)" UpgradeCode="71EAB0D8-4D33-480F-ADA4-3BFBBB23E794" Version="$(var.Version)">
     <Package Compressed="yes" InstallerVersion="300" InstallScope="perMachine" />
     <PropertyRef Id="NETFRAMEWORK40CLIENT" />
     <Condition Message="This application requires .NET Framework 4.0. Please install the .NET Framework then run this installer again.">
       <![CDATA[Installed OR NETFRAMEWORK40CLIENT]]>
     </Condition>
-    <MajorUpgrade DowngradeErrorMessage="A later version of [ProductName] is already installed. Setup will now exit." />
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <Directory Id="TARGETDIR" Name="SourceDir" />
     <FeatureRef Id="$(var.Feature)" />
     <Media Id="1" Cabinet="ImageResizer.cab" EmbedCab="yes" />

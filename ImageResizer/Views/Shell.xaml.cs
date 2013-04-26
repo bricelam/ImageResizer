@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // <copyright file="Shell.xaml.cs" company="Brice Lambson">
-//     Copyright (c) 2011 Brice Lambson. All rights reserved.
+//     Copyright (c) 2011-2013 Brice Lambson. All rights reserved.
 //
 //     The use of this software is governed by the Microsoft Public License
 //     which is included with this distribution.
@@ -9,54 +9,30 @@
 
 namespace BriceLambson.ImageResizer.Views
 {
-    using System;
-    using System.Diagnostics.Contracts;
+    using System.Diagnostics;
     using System.Windows;
     using BriceLambson.ImageResizer.Models;
     using BriceLambson.ImageResizer.ViewModels;
     using GalaSoft.MvvmLight.Messaging;
 
-    public partial class Shell : Window, IDisposable
+    public partial class Shell : Window
     {
         public Shell()
         {
+            Messenger.Default.Register<CloseShellMessage>(this, m => Close());
+            Messenger.Default.Register<ShowAdvancedMessage>(this, m => ShowAdvanced());
+            Messenger.Default.Register<UpdateAvailableMessage>(this, m => ShowUpdateAvailable(m.Content));
+
             InitializeComponent();
-
-            Messenger.Default.Register<CloseShellMessage>(this, HandleCloseShell);
-            Messenger.Default.Register<ShowAdvancedMessage>(this, HandleShowAdvanced);
-            Messenger.Default.Register<UpdateAvailableMessage>(this, HandleUpdateAvailable);
         }
 
-        ~Shell()
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Dispose(false);
+            Messenger.Default.Send(new ShellLoadedMessage());
         }
 
-        public void Dispose()
+        private void ShowAdvanced()
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                Messenger.Default.Unregister(this);
-            }
-        }
-
-        private void HandleCloseShell(CloseShellMessage m)
-        {
-            Contract.Requires(m != null);
-
-            Close();
-        }
-
-        private void HandleShowAdvanced(ShowAdvancedMessage m)
-        {
-            Contract.Requires(m != null);
-
             // TODO: Implement this
             var message = "Coming soon...\r\n" +
                           " * Editable default sizes\r\n" +
@@ -68,15 +44,15 @@ namespace BriceLambson.ImageResizer.Views
             MessageBox.Show(message, "Advanced Options", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-        private void HandleUpdateAvailable(UpdateAvailableMessage m)
+        private void ShowUpdateAvailable(Update update)
         {
-            Contract.Requires(m != null);
+            Debug.Assert(update != null);
 
             // TODO: Show a notification once per day for a total of three times that opens
             //       this dialog when clicked
             var updateAvailable = new UpdateAvailableView
             {
-                DataContext = new UpdateAvailableViewModel(m.Content)
+                DataContext = new UpdateAvailableViewModel(update)
             };
 
             updateAvailable.ShowDialog();
