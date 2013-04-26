@@ -17,6 +17,11 @@
               <File Id="ImageResizer.fr_FR" Source="$(var.ImageResizer.TargetDir)fr-FR\$(var.ImageResizer.TargetName).resources.dll" />
             </Component>
           </Directory>
+          <Directory Id="it_IT" Name="it-IT">
+            <Component Id="ImageResizer.it_IT" Win64="no">
+              <File Id="ImageResizer.it_IT" Source="$(var.ImageResizer.TargetDir)it-IT\$(var.ImageResizer.TargetName).resources.dll" />
+            </Component>
+          </Directory>
           <Component Id="AsyncTargetingPack" Win64="no">
             <File Source="..\..\packages\Microsoft.CompilerServices.AsyncTargetingPack.1.0.0\lib\net40\Microsoft.CompilerServices.AsyncTargetingPack.Net4.dll" />
           </Component>
@@ -90,6 +95,7 @@
     <Feature Id="ImageResizer" Level="1">
       <ComponentRef Id="ImageResizer.de_DE" />
       <ComponentRef Id="ImageResizer.fr_FR" />
+      <ComponentRef Id="ImageResizer.it_IT" />
       <ComponentRef Id="AsyncTargetingPack" />
       <ComponentRef Id="ImageResizer" />
       <ComponentRef Id="Configuration" />
