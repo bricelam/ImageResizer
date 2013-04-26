@@ -21,6 +21,8 @@
     <SccProvider>SAK</SccProvider>
     <StartArguments>..\..\..\..\Test\ImageResizer.Test\WP_000000.jpg /d .</StartArguments>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
@@ -215,4 +217,5 @@
   <Target Name="AfterBuild">
     <Exec Condition="'$(registry:HKEY_CURRENT_USER\Software\BriceLambson\ImageResizer)' != '$(TargetPath)'" Command="REG ADD HKCU\Software\BriceLambson\ImageResizer /ve /d &quot;$(TargetPath)&quot; /f" />
   </Target>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
 </Project>
