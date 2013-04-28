@@ -1,7 +1,8 @@
 ﻿<Window x:Class="BriceLambson.ImageResizer.Views.UpdateAvailableView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Image Resizer for Windows" MinWidth="360" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
+        Title="Image Resizer for Windows" MinWidth="360" SizeToContent="WidthAndHeight" ResizeMode="NoResize"
+        Icon="/ImageResizer;component/Resources/ImageResizer.ico">
     <StackPanel>
 
         <StackPanel Margin="11">

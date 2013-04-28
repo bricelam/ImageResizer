@@ -3,7 +3,11 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
      xmlns:bal="http://schemas.microsoft.com/wix/BalExtension"
      xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
-  <Bundle Manufacturer="Brice Lambson" Name="Image Resizer for Windows" UpgradeCode="{89A1BF6F-DDDB-4ADC-A307-0CC1EF2801BD}" Version="$(var.Version)">
+  <Bundle Manufacturer="Brice Lambson"
+          Name="Image Resizer for Windows"
+          UpgradeCode="{89A1BF6F-DDDB-4ADC-A307-0CC1EF2801BD}"
+          Version="$(var.Version)"
+          IconSourceFile="..\..\ImageResizer\Resources\ImageResizer.ico">
     <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense">
       <bal:WixStandardBootstrapperApplication
         LicenseFile="..\..\Ms-PL.rtf"
