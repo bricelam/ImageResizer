@@ -28,10 +28,11 @@ namespace BriceLambson.ImageResizer.Services
         private readonly int _qualityLevel;
         private readonly bool _shrinkOnly;
         private readonly bool _ignoreRotations;
+        private readonly bool _keepMetadata;
         private readonly ResizeSize _size;
         private readonly RenamingService _renamer;
 
-        public ResizingService(int qualityLevel, bool shrinkOnly, bool ignoreRotations, ResizeSize size, RenamingService renamer)
+        public ResizingService(int qualityLevel, bool shrinkOnly, bool ignoreRotations, bool keepMetadata, ResizeSize size, RenamingService renamer)
         {
             Debug.Assert(qualityLevel >= 1 && qualityLevel <= 100);
             Debug.Assert(size != null);
@@ -42,12 +43,13 @@ namespace BriceLambson.ImageResizer.Services
             _ignoreRotations = ignoreRotations;
             _size = size;
             _renamer = renamer;
+            _keepMetadata = keepMetadata;
         }
 
         public string Resize(string sourcePath)
         {
             Debug.Assert(!String.IsNullOrWhiteSpace(sourcePath));
-
+            FileInfo metaInfo = new FileInfo(sourcePath);
             var encoderDefaulted = false;
             BitmapDecoder decoder;
 
@@ -59,7 +61,7 @@ namespace BriceLambson.ImageResizer.Services
             }
 
             var encoder = BitmapEncoder.Create(decoder.CodecInfo.ContainerFormat);
-
+ 
             try
             {
                 // NOTE: This will throw if the codec dose not support encoding
@@ -115,8 +117,22 @@ namespace BriceLambson.ImageResizer.Services
 
             using (var destinationStream = File.OpenWrite(destinationPath))
             {
-                // Save the final image
-                encoder.Save(destinationStream);
+                // Save the final image       
+                encoder.Save(destinationStream);    
+            }
+
+            // Change metadata
+            if (_keepMetadata)
+            { 
+                FileInfo newInfo = new FileInfo(destinationPath);
+                newInfo.Attributes = metaInfo.Attributes;
+                newInfo.CreationTime = metaInfo.CreationTime;
+                newInfo.CreationTimeUtc = metaInfo.CreationTimeUtc;
+                newInfo.IsReadOnly = metaInfo.IsReadOnly;
+                newInfo.LastAccessTime = metaInfo.LastAccessTime;
+                newInfo.LastAccessTimeUtc = metaInfo.LastAccessTimeUtc;
+                newInfo.LastWriteTime = metaInfo.LastWriteTime;
+                newInfo.LastWriteTimeUtc = metaInfo.LastWriteTimeUtc;
             }
 
             // Move any existing file to the Recycle Bin

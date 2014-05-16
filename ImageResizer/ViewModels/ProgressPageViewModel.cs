@@ -86,7 +86,8 @@ namespace BriceLambson.ImageResizer.ViewModels
                     AdvancedSettings.Default.QualityLevel,
                     Settings.Default.ShrinkOnly,
                     Settings.Default.IgnoreRotations,
-                    Settings.Default.SelectedSize,
+                    AdvancedSettings.Default.KeepMetadata,
+                    Settings.Default.SelectedSize,        
                     new RenamingService(
                         AdvancedSettings.Default.FileNameFormat,
                         parameters.OutputDirectory,

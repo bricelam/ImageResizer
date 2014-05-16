@@ -24,6 +24,15 @@ namespace BriceLambson.ImageResizer.Services
         private readonly bool _replaceOriginals;
         private readonly ResizeSize _size;
 
+        public static object[] ReplacementItemsExample = new object[]
+        {
+            //this values must be same as object[] "replacementItems" in method Rename
+            "filename",
+            "Mobile",
+            "400",
+            "300"
+        };
+
         public RenamingService(string fileNameFormat, string outputDirectory, bool replaceOriginals, ResizeSize size)
         {
             Debug.Assert(!String.IsNullOrWhiteSpace(fileNameFormat));
@@ -61,16 +70,20 @@ namespace BriceLambson.ImageResizer.Services
             //        * Actual height
             //        * Actual pixel width
             //        * Actual pixel height
+
             var replacementItems = new object[]
             {
                 // {0} = Original file name
                 fileName,
-
                 // {1} = Selected size name
-                _size.Name
+                _size.Name,
+                // {2} = Selected width
+                _size.Width,
+                // {3} = Selected height
+                _size.Height
             };
 
-            var destinationFileName = String.Format(CultureInfo.CurrentCulture, _fileNameFormat, replacementItems);
+            var destinationFileName = GetNewFilename(_fileNameFormat, replacementItems);
             var destinationPath = Path.Combine(directoryName, destinationFileName + extension);
             var i = 1;
 
@@ -85,5 +98,27 @@ namespace BriceLambson.ImageResizer.Services
 
             return destinationPath;
         }
+
+        public static string GetNewFilename(string fileNameFormat, object[] replacementItems)
+        {
+            return String.Format(CultureInfo.CurrentCulture, fileNameFormat, replacementItems);
+        }
+
+        public static bool IsFileformatCorrect(char[] format)
+        {
+            for (int i = 0; i < format.Length; i++)
+            {
+                if (format[i].Equals('{'))
+                {
+                    if (i + 2 >= format.Length || !char.IsDigit(format[i + 1]) || Convert.ToInt32(format[i + 1].ToString()) >= RenamingService.ReplacementItemsExample.Length || !format[i + 2].Equals('}'))
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
     }
+
+    
 }

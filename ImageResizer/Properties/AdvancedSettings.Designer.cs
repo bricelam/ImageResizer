@@ -52,6 +52,21 @@ namespace BriceLambson.ImageResizer.Properties {
                 this["CheckForUpdates"] = value;
             }
         }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool KeepMetadata
+        {
+            get
+            {
+                return ((bool)(this["KeepMetadata"]));
+            }
+            set
+            {
+                this["KeepMetadata"] = value;
+            }
+        }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

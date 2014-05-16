@@ -17,5 +17,11 @@ namespace BriceLambson.ImageResizer.Views
         {
             InitializeComponent();
         }
+
+        private void Advanced_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var advancedView = new AdvancedPageView();
+            advancedView.Show();
+        }
     }
 }

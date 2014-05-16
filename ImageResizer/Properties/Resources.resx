@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AdvancedSettings" xml:space="preserve">
-    <value>Advanced settings...</value>
+    <value>Advanced settings</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
@@ -131,6 +131,9 @@
   </data>
   <data name="Custom" xml:space="preserve">
     <value>Custom</value>
+  </data>
+  <data name="Filename" xml:space="preserve">
+    <value>Filename</value>
   </data>
   <data name="IgnoreRotations" xml:space="preserve">
     <value>Ignore picture rotations</value>
@@ -153,6 +156,9 @@
   <data name="Medium" xml:space="preserve">
     <value>Medium</value>
   </data>
+  <data name="Metadata" xml:space="preserve">
+    <value>Metadata</value>
+  </data>
   <data name="Mobile" xml:space="preserve">
     <value>Mobile</value>
   </data>
@@ -165,6 +171,9 @@
   <data name="ProgressPage_MainInstruction" xml:space="preserve">
     <value>Resizing your pictures...</value>
   </data>
+  <data name="Quality" xml:space="preserve">
+    <value>Quality</value>
+  </data>
   <data name="ReplaceOriginals" xml:space="preserve">
     <value>Replace the originals</value>
   </data>
@@ -176,6 +185,9 @@
   </data>
   <data name="ResultsPage_SupplementalInstruction" xml:space="preserve">
     <value>Image Resizer was unable to resize the following pictures.</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
   </data>
   <data name="Scale" xml:space="preserve">
     <value>Scale to</value>

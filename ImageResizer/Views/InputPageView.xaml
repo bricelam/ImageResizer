@@ -74,8 +74,8 @@
                     <ColumnDefinition />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-
-                <TextBlock><Hyperlink Foreground="#0066CC" TextDecorations="" Command="{Binding ShowAdvancedCommand}"><TextBlock Text="{x:Static p:Resources.AdvancedSettings}" /></Hyperlink></TextBlock>
+                
+               <Button Command="{Binding ShowAdvancedCommand}" Content="{x:Static p:Resources.AdvancedSettings}" Margin="0,0,66,0" />
 
                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                     <Button Width="75" Command="{Binding ResizeCommand}" Content="{x:Static p:Resources.Resize}" />

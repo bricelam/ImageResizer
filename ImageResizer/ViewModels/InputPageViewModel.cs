@@ -75,8 +75,7 @@ namespace BriceLambson.ImageResizer.ViewModels
 
         private void ShowAdvanced()
         {
-            Messenger.Default
-                .Send(new ShowAdvancedMessage());
+            Messenger.Default.Send(new ShowAdvancedMessage());
         }
 
         private void Resize()

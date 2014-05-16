@@ -229,12 +229,13 @@ namespace BriceLambson.ImageResizer
             Assert.Equal(54, image.PixelHeight);
         }
 
-        private ResizingService CreateResizer(ResizeSize size, int qualityLevel = 75, bool shrinkOnly = false, bool ignoreRotations = true)
+        private ResizingService CreateResizer(ResizeSize size, int qualityLevel = 75, bool shrinkOnly = false, bool ignoreRotations = true, bool keepMetadata = false)
         {
             return new ResizingService(
                 qualityLevel,
                 shrinkOnly,
                 ignoreRotations,
+                keepMetadata,
                 size,
                 new RenamingService(
                     "{0} ({1})",
