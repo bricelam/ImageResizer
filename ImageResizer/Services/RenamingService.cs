@@ -24,15 +24,6 @@ namespace BriceLambson.ImageResizer.Services
         private readonly bool _replaceOriginals;
         private readonly ResizeSize _size;
 
-        public static object[] ReplacementItemsExample = new object[]
-        {
-            //this values must be same as object[] "replacementItems" in method Rename
-            "filename",
-            "Mobile",
-            "400",
-            "300"
-        };
-
         public RenamingService(string fileNameFormat, string outputDirectory, bool replaceOriginals, ResizeSize size)
         {
             Debug.Assert(!String.IsNullOrWhiteSpace(fileNameFormat));
@@ -102,21 +93,6 @@ namespace BriceLambson.ImageResizer.Services
         public static string GetNewFilename(string fileNameFormat, object[] replacementItems)
         {
             return String.Format(CultureInfo.CurrentCulture, fileNameFormat, replacementItems);
-        }
-
-        public static bool IsFileformatCorrect(char[] format)
-        {
-            for (int i = 0; i < format.Length; i++)
-            {
-                if (format[i].Equals('{'))
-                {
-                    if (i + 2 >= format.Length || !char.IsDigit(format[i + 1]) || Convert.ToInt32(format[i + 1].ToString()) >= RenamingService.ReplacementItemsExample.Length || !format[i + 2].Equals('}'))
-                    {
-                        return false;
-                    }
-                }
-            }
-            return true;
         }
     }
 

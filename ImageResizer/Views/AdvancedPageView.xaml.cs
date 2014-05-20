@@ -1,5 +1,6 @@
 ﻿using BriceLambson.ImageResizer.Properties;
 using BriceLambson.ImageResizer.Services;
+using BriceLambson.ImageResizer.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,8 +51,8 @@ namespace BriceLambson.ImageResizer.Views
         {
             char[] NewFilename = FileNameTextbox.Text.ToArray();
 
-            if (RenamingService.IsFileformatCorrect(NewFilename))
-                FileNameExample.Content = RenamingService.GetNewFilename(FileNameTextbox.Text, RenamingService.ReplacementItemsExample) + ".jpg";
+            if (AdvancedPageViewModel.IsFileformatCorrect(NewFilename))
+                FileNameExample.Content = RenamingService.GetNewFilename(FileNameTextbox.Text, AdvancedPageViewModel.ReplacementItemsExample) + ".jpg";
             else
                 FileNameExample.Content = "Unregular format";
         }
@@ -64,7 +65,7 @@ namespace BriceLambson.ImageResizer.Views
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             AdvancedSettings.Default.QualityLevel = Convert.ToInt32(QualitySlider.Value);
-            if (RenamingService.IsFileformatCorrect(FileNameTextbox.Text.ToArray()))
+            if (AdvancedPageViewModel.IsFileformatCorrect(FileNameTextbox.Text.ToArray()))
                 AdvancedSettings.Default.FileNameFormat = FileNameTextbox.Text;
             AdvancedSettings.Default.KeepMetadata = KeepMetadata.IsChecked.Value;
             AdvancedSettings.Default.Save();

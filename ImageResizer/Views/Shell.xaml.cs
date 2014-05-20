@@ -34,16 +34,7 @@ namespace BriceLambson.ImageResizer.Views
         private void ShowAdvanced()
         {
             var view = new AdvancedPageView();
-            view.Show();
-            //TODO: Implement this
-            //var message = "Coming soon...\r\n" +
-            //              " * Editable default sizes\r\n" +
-            //              " * Option to keep modified date\r\n" +
-            //              " * Custom filenames\r\n" +
-            //              " * Select JPEG quality level\r\n" +
-            //              " * Option to minimize file size";
-
-            //MessageBox.Show(message, "Advanced Options", MessageBoxButton.OK, MessageBoxImage.Information);  
+            view.ShowDialog();
         }
 
         private void ShowUpdateAvailable(Update update)

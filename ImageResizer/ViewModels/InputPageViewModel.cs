@@ -18,6 +18,7 @@ namespace BriceLambson.ImageResizer.ViewModels
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
     using GalaSoft.MvvmLight.Messaging;
+    using BriceLambson.ImageResizer.Views;
 
     internal class InputPageViewModel : ViewModelBase
     {

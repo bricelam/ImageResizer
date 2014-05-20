@@ -61,7 +61,7 @@ namespace BriceLambson.ImageResizer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Advanced settings.
+        ///   Looks up a localized string similar to Advanced settings....
         /// </summary>
         public static string AdvancedSettings {
             get {

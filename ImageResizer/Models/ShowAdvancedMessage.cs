@@ -9,9 +9,11 @@
 
 namespace BriceLambson.ImageResizer.Models
 {
+    using BriceLambson.ImageResizer.Views;
     using GalaSoft.MvvmLight.Messaging;
 
     internal class ShowAdvancedMessage : MessageBase
     {   
+        
     }
 }

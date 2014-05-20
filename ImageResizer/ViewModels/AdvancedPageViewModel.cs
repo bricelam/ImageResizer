@@ -42,5 +42,29 @@ namespace BriceLambson.ImageResizer.ViewModels
         {
 
         }
+
+        public static object[] ReplacementItemsExample = new object[]
+        {
+            //this values must be same as object[] "replacementItems" in method Rename
+            "filename",
+            "Mobile",
+            "400",
+            "300"
+        };
+
+        public static bool IsFileformatCorrect(char[] format)
+        {
+            for (int i = 0; i < format.Length; i++)
+            {
+                if (format[i].Equals('{'))
+                {
+                    if (i + 2 >= format.Length || !char.IsDigit(format[i + 1]) || Convert.ToInt32(format[i + 1].ToString()) >= AdvancedPageViewModel.ReplacementItemsExample.Length || !format[i + 2].Equals('}'))
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
     }
 }
