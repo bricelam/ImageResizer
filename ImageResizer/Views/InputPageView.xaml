@@ -73,10 +73,10 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>               
-             
+                </Grid.ColumnDefinitions>
+
                 <TextBlock><Hyperlink Foreground="#0066CC" TextDecorations="" Command="{Binding ShowAdvancedCommand}"><TextBlock Text="{x:Static p:Resources.AdvancedSettings}" /></Hyperlink></TextBlock>
-                
+
                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                     <Button Width="75" Command="{Binding ResizeCommand}" Content="{x:Static p:Resources.Resize}" />
                     <Button Margin="7,0,0,0" Width="75" Command="{Binding CancelCommand}" Content="{x:Static p:Resources.Cancel}" />

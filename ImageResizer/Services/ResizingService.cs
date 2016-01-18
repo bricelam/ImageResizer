@@ -49,6 +49,7 @@ namespace BriceLambson.ImageResizer.Services
         public string Resize(string sourcePath)
         {
             Debug.Assert(!String.IsNullOrWhiteSpace(sourcePath));
+
             FileInfo metaInfo = new FileInfo(sourcePath);
             var encoderDefaulted = false;
             BitmapDecoder decoder;

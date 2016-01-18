@@ -61,11 +61,11 @@ namespace BriceLambson.ImageResizer.Services
             //        * Actual height
             //        * Actual pixel width
             //        * Actual pixel height
-
             var replacementItems = new object[]
             {
                 // {0} = Original file name
                 fileName,
+
                 // {1} = Selected size name
                 _size.Name,
                 // {2} = Selected width
@@ -94,7 +94,5 @@ namespace BriceLambson.ImageResizer.Services
         {
             return String.Format(CultureInfo.CurrentCulture, fileNameFormat, replacementItems);
         }
-    }
-
-    
+    }    
 }
