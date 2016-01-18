@@ -17,9 +17,57 @@
         </ObjectDataProvider>
         <v:EnumValueConverter x:Key="EnumValueConverter"/>
         <v:AutoDoubleConverter x:Key="AutoDoubleConverter"/>
+        <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA" />
+        <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5" />
         <Style x:Key="MainInstructionTextBlockStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="12pt"/>
             <Setter Property="Foreground" Value="#039"/>
+        </Style>
+        <Style TargetType="v:TextBoxEx" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="v:TextBoxEx">
+                        <Border Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                SnapsToDevicePixels="True">
+                            <Grid>
+                                <ScrollViewer Name="PART_ContentHost"
+                                              Focusable="False"
+                                              HorizontalScrollBarVisibility="Hidden"
+                                              VerticalScrollBarVisibility="Hidden"/>
+                                <TextBlock Name="placeholder"
+                                           Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrush}}"
+                                           IsHitTestVisible="False"
+                                           Margin="2,0,0,0"
+                                           Text="{TemplateBinding Placeholder}"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="border" Property="Opacity" Value="0.56"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border"
+                                        Property="BorderBrush"
+                                        Value="{StaticResource TextBox.MouseOver.Border}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter TargetName="border"
+                                        Property="BorderBrush"
+                                        Value="{StaticResource TextBox.Focus.Border}" />
+                            </Trigger>
+                            <Trigger Property="HasText" Value="True">
+                                <Setter TargetName="placeholder" Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter TargetName="placeholder" Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Application.Resources>
 </Application>

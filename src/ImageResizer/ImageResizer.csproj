@@ -102,6 +102,7 @@
       <DependentUpon>AdvancedWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ResourceTemplateConverter.cs" />
+    <Compile Include="Views\TextBoxEx.cs" />
     <Compile Include="Views\TiffCompressOptionConverter.cs" />
     <Compile Include="Views\EnumValueConverter.cs" />
     <Compile Include="Views\ProgressPage.xaml.cs">
