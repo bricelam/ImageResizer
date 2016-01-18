@@ -1,0 +1,126 @@
+﻿<!-- TODO: Review accessors -->
+<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:local="clr-namespace:ImageResizer.Views"
+             xmlns:m="clr-namespace:ImageResizer.Models"
+             xmlns:p="clr-namespace:ImageResizer.Properties"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             MinWidth="350"
+             x:Class="ImageResizer.Views.InputPage">
+    <StackPanel>
+        <TextBlock Style="{StaticResource MainInstructionTextBlockStyle}"
+                   Margin="11,11,11,0"
+                   Text="{x:Static p:Resources.Input_MainInstruction}"/>
+        <TextBlock Margin="11,11,11,0" Text="{x:Static p:Resources.Input_Content}"/>
+        <ListBox BorderThickness="0"
+                 ItemsSource="{Binding Settings.AllSizes}"
+                 Margin="20,0,11,0"
+                 SelectedIndex="{Binding Settings.SelectedSizeIndex}">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <RadioButton Focusable="False"
+                                             IsChecked="{Binding IsSelected,RelativeSource={RelativeSource TemplatedParent}}"
+                                             Margin="0,7,0,0">
+                                    <ContentPresenter />
+                                </RadioButton>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.Resources>
+                <DataTemplate DataType="{x:Type m:ResizeSize}">
+                    <StackPanel Orientation="Horizontal">
+                        <AccessText Text="{Binding LocalizedName}"/>
+                        <TextBlock Text=" ("/>
+                        <TextBlock Text="{Binding Fit,Converter={StaticResource EnumValueConverter},ConverterParameter=ThirdPersonSingular}"/>
+                        <TextBlock Text=" "/>
+                        <TextBlock Text="{Binding Width,Converter={StaticResource AutoDoubleConverter},ConverterParameter=Auto}"/>
+                        <TextBlock Text=" × "/>
+                        <TextBlock Text="{Binding Height,Converter={StaticResource AutoDoubleConverter},ConverterParameter=Auto}"/>
+                        <TextBlock Text=" "/>
+                        <TextBlock Text="{Binding Unit,Converter={StaticResource EnumValueConverter},ConverterParameter=ToLower}"/>
+                        <TextBlock Text=")"/>
+                    </StackPanel>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type m:CustomSize}">
+                    <StackPanel Orientation="Horizontal">
+                        <AccessText VerticalAlignment="Center" Text="{Binding Name}"/>
+                        <ComboBox Height="23"
+                                  ItemsSource="{Binding Source={StaticResource ResizeFitValues}}"
+                                  Margin="5,0,0,0"
+                                  SelectedItem="{Binding Fit}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate DataType="{x:Type m:ResizeFit}">
+                                    <ContentPresenter Content="{Binding Converter={StaticResource EnumValueConverter}}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <TextBox Height="23"
+                                 Margin="7,0,0,0"
+                                 Text="{Binding Width,Converter={StaticResource AutoDoubleConverter},ValidatesOnExceptions=True}"
+                                 Width="43"/>
+                        <TextBlock VerticalAlignment="Center" Margin="5,0,0,0">×</TextBlock>
+                        <TextBox Height="23"
+                                 Margin="5,0,0,0"
+                                 Text="{Binding Height,Converter={StaticResource AutoDoubleConverter},ValidatesOnExceptions=True}"
+                                 Width="43"/>
+                        <ComboBox Height="23"
+                                  ItemsSource="{Binding Source={StaticResource ResizeUnitValues}}"
+                                  Margin="7,0,0,0"
+                                  SelectedItem="{Binding Unit}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate DataType="{x:Type m:ResizeUnit}">
+                                    <ContentPresenter Content="{Binding Converter={StaticResource EnumValueConverter}}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.Resources>
+        </ListBox>
+        <CheckBox Content="{x:Static p:Resources.Input_ShrinkOnly}"
+                  IsChecked="{Binding Settings.ShrinkOnly}"
+                  Margin="11,11,11,0" />
+        <CheckBox Content="{x:Static p:Resources.Input_Replace}"
+                  IsChecked="{Binding Settings.Replace}"
+                  Margin="11,7,11,0" />
+        <CheckBox Content="{x:Static p:Resources.Input_IgnoreOrientation}"
+                  IsChecked="{Binding Settings.IgnoreOrientation}"
+                  Margin="11,7,11,0"/>
+        <Border Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+                BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}"
+                BorderThickness="0,1,0,0"
+                Margin="0,11,0,0"
+                Padding="11,11">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock VerticalAlignment="Center">
+                    <Hyperlink Command="{Binding ShowAdvancedCommand}">
+                        <Run Text="{x:Static p:Resources.Input_ShowAdvanced}"/>
+                    </Hyperlink>
+                </TextBlock>
+                <Button Command="{Binding ResizeCommand}"
+                        Content="{x:Static p:Resources.Input_Resize}"
+                        Height="23"
+                        IsDefault="True"
+                        Width="75"
+                        Grid.Column="1"/>
+                <Button Command="{Binding CancelCommand}"
+                        Content="{x:Static p:Resources.Cancel}"
+                        Height="23"
+                        IsCancel="True"
+                        Margin="7,0,0,0"
+                        Width="75"
+                        Grid.Column="2"/>
+            </Grid>
+        </Border>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:bal="http://schemas.microsoft.com/wix/BalExtension">
+  <Bundle AboutUrl="https://github.com/bricelam/ImageResizer"
+          IconSourceFile="ImageResizer.ico"
+          Manufacturer="Brice Lambson"
+          Name="Image Resizer for Windows"
+          UpgradeCode="89a1bf6f-dddb-4adc-a307-0cc1ef2801bd"
+          Version="3.1.0.0">
+    <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense">
+      <bal:WixStandardBootstrapperApplication LicenseFile="Ms-RL.rtf"
+                                              LogoFile="ImageResizer.png"
+                                              SuppressOptionsUI="yes" />
+    </BootstrapperApplicationRef>
+    <Chain>
+      <PackageGroupRef Id="NetFx40ClientWeb"/>
+      <MsiPackage SourceFile="$(var.Msi.TargetPath)" />
+      <MsiPackage InstallCondition="VersionNT64"
+                  SourceFile="$(var.X64Msi.TargetPath)" />
+    </Chain>
+  </Bundle>
+</Wix>

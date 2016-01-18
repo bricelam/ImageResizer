@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <WindowsSdkDir Condition=" '$(WindowsSdkDir)' == '' ">$(registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\Windows\v10.0@InstallationFolder)</WindowsSdkDir>
+    <SignToolCommand>"$(WindowsSdkDir)bin\x86\signtool.exe" sign /t $(TimestampUrl) /q</SignToolCommand>
+    <BuildDependsOn>$(BuildDependsOn);SignOutput</BuildDependsOn>
+    <AfterBuildLinkTargets>$(AfterBuildLinkTargets);SignOutput</AfterBuildLinkTargets>
+  </PropertyGroup>
+  <Target Name="SignOutput" Condition=" '$(SignOutput)' == 'True' ">
+    <Exec Command='$(SignToolCommand) "$(TargetPath)"' />
+  </Target>
+  <Target Name="SignCabs">
+    <Exec Command='$(SignToolCommand) "%(SignCabs.FullPath)"' />
+  </Target>
+  <Target Name="SignBundleEngine">
+    <Exec Command='$(SignToolCommand) "%(SignBundleEngine.FullPath)"' />
+  </Target>
+</Project>

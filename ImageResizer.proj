@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <MSBuildProperties>Configuration=$(Configuration);SignOutput=$(SignOutput)</MSBuildProperties>
+  </PropertyGroup>
+  <ItemGroup>
+    <Platform Include="x86" />
+    <Platform Include="x64" />
+  </ItemGroup>
+  <Target Name="Build">
+    <MSBuild Projects="ImageResizer.sln"
+             Properties="$(MSBuildProperties);Platform=%(Platform.Identity)" />
+  </Target>
+  <Target Name="Clean">
+    <MSBuild Projects="ImageResizer.sln"
+             Targets="Clean"
+             Properties="$(MSBuildProperties);Platform=%(Platform.Identity)" />
+  </Target>
+  <Target Name="Rebuild">
+    <MSBuild Projects="ImageResizer.sln"
+             Targets="Rebuild"
+             Properties="$(MSBuildProperties);Platform=%(Platform.Identity)" />
+  </Target>
+</Project>
