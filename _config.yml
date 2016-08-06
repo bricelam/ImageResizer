@@ -1,0 +1,18 @@
+# Site settings
+title: Image Resizer for Windows
+description: Lets you resize images by right-clicking.
+baseurl: "/ImageResizer"
+url: "http://www.bricelam.net"
+author:
+  name: Brice Lambson
+  twitter: bricelambs
+
+# Build settings
+markdown: kramdown
+gems:
+  - jekyll-seo-tag
+gist:
+  noscript: false
+kramdown:
+  hard_wrap: false
+  input: GFM

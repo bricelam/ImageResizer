@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  {% include head.html %}
+  <body>
+    <div class="wrapper">
+      {% include header.html %}
+      <section>
+        {{ content }}
+      </section>
+      {% include footer.html %}
+    </div>
+    <script src="{{ "/javascripts/scale.fix.js" | prepend: site.baseurl }}"></script>
+  </body>
+</html>
