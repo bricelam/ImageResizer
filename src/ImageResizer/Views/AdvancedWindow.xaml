@@ -133,6 +133,10 @@
                         <TextBlock Text="{Binding Version}"/>
                         <LineBreak/>
                         <Run Text="{x:Static p:Resources.Copyright}"/>
+                        <LineBreak/>
+                        <Hyperlink NavigateUri="http://www.bricelam.net/ImageResizer/" RequestNavigate="HandleRequestNavigate">
+                            http://bricelam.net/ImageResizer
+                        </Hyperlink>
                     </TextBlock>
                 </Grid>
             </TabItem>

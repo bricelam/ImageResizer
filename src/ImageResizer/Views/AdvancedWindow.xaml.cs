@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
+using System.Windows.Navigation;
 using ImageResizer.ViewModels;
 
 namespace ImageResizer.Views
@@ -13,5 +15,11 @@ namespace ImageResizer.Views
 
         void HandleAcceptClick(object sender, RoutedEventArgs e)
             => DialogResult = true;
+
+        void HandleRequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            Process.Start(e.Uri.ToString());
+            e.Handled = true;
+        }
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
      xmlns:bal="http://schemas.microsoft.com/wix/BalExtension">
-  <Bundle AboutUrl="https://github.com/bricelam/ImageResizer"
+  <Bundle AboutUrl="http://bricelam.net/ImageResizer"
           IconSourceFile="ImageResizer.ico"
           Manufacturer="Brice Lambson"
           Name="Image Resizer for Windows"
