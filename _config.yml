@@ -6,6 +6,7 @@ url: "http://www.bricelam.net"
 author:
   name: Brice Lambson
   twitter: bricelambs
+logo: /images/icon.png
 
 # Build settings
 markdown: kramdown

@@ -1,5 +1,6 @@
 ---
 layout: default
+image: /images/ImageResizer.png
 ---
 
 ### How to use Image Resizer for Windows
