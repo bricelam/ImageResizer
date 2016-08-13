@@ -29,7 +29,8 @@ namespace ImageResizer.Properties
 
         // TODO: Cache, use Regex
         public string FileNameFormat
-            => FileName.Replace("%1", "{0}").Replace("%2", "{1}");
+            => FileName.Replace("{", "{{").Replace("}", "}}").Replace("%1", "{0}").Replace("%2", "{1}")
+                .Replace("%3", "{2}").Replace("%4", "{3}");
 
         public ResizeSize SelectedSize
         {
@@ -39,10 +40,7 @@ namespace ImageResizer.Properties
                     ? Sizes[SelectedSizeIndex]
                     : CustomSize;
             }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            set { throw new NotImplementedException(); }
         }
 
         protected override void OnPropertyChanged(object sender, PropertyChangedEventArgs e)

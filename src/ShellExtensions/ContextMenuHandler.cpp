@@ -87,7 +87,6 @@ HRESULT CContextMenuHandler::QueryContextMenu(_In_ HMENU hmenu, UINT indexMenu, 
 		return MAKE_HRESULT(SEVERITY_SUCCESS, 0, ID_RESIZE_PICTURES + 1);
 	}
 
-	// TODO: Look for a WIC codec
 	return S_OK;
 }
 

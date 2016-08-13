@@ -120,14 +120,59 @@
   <data name="Advanced_About" xml:space="preserve">
     <value>About</value>
   </data>
+  <data name="Advanced_CreateSize" xml:space="preserve">
+    <value>Create a new size</value>
+  </data>
+  <data name="Advanced_DeleteSize" xml:space="preserve">
+    <value>Delete</value>
+  </data>
   <data name="Advanced_Encoding" xml:space="preserve">
     <value>Encoding</value>
+  </data>
+  <data name="Advanced_FallbackEncoder" xml:space="preserve">
+    <value>Fallback encoder:</value>
   </data>
   <data name="Advanced_File" xml:space="preserve">
     <value>File</value>
   </data>
+  <data name="Advanced_FileName" xml:space="preserve">
+    <value>Filename:</value>
+  </data>
+  <data name="Advanced_FileNameToken1" xml:space="preserve">
+    <value>Original filename</value>
+  </data>
+  <data name="Advanced_FileNameToken2" xml:space="preserve">
+    <value>Size name</value>
+  </data>
+  <data name="Advanced_FileNameToken3" xml:space="preserve">
+    <value>Width</value>
+  </data>
+  <data name="Advanced_FileNameToken4" xml:space="preserve">
+    <value>Height</value>
+  </data>
+  <data name="Advanced_FileNameTokens" xml:space="preserve">
+    <value>The following parameters can be used.</value>
+  </data>
+  <data name="Advanced_JpegQualityLevel" xml:space="preserve">
+    <value>JPEG quality level:</value>
+  </data>
+  <data name="Advanced_KeepDateModified" xml:space="preserve">
+    <value>Use original date modified</value>
+  </data>
+  <data name="Advanced_PngInterlaceOption" xml:space="preserve">
+    <value>PNG interlacing:</value>
+  </data>
+  <data name="Advanced_Sizes" xml:space="preserve">
+    <value>Sizes</value>
+  </data>
+  <data name="Advanced_TiffCompressOption" xml:space="preserve">
+    <value>TIFF compression:</value>
+  </data>
   <data name="Advanced_Title" xml:space="preserve">
     <value>Advanced Options</value>
+  </data>
+  <data name="AllFilesFilter" xml:space="preserve">
+    <value>All Files</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
@@ -166,16 +211,16 @@
     <value>Ma_ke pictures smaller but not larger</value>
   </data>
   <data name="Large" xml:space="preserve">
-    <value>_Large</value>
+    <value>Large</value>
   </data>
   <data name="Medium" xml:space="preserve">
-    <value>_Medium</value>
+    <value>Medium</value>
   </data>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
   <data name="Phone" xml:space="preserve">
-    <value>_Phone</value>
+    <value>Phone</value>
   </data>
   <data name="PictureFilter" xml:space="preserve">
     <value>All Picture Files</value>
@@ -262,7 +307,7 @@
     <value>Can't resize the following pictures</value>
   </data>
   <data name="Small" xml:space="preserve">
-    <value>_Small</value>
+    <value>Small</value>
   </data>
   <data name="TiffCompressOption_Ccitt3" xml:space="preserve">
     <value>CCITT3</value>

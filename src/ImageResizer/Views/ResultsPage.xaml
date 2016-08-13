@@ -8,17 +8,18 @@
         <TextBlock Margin="11,11,11,0"
                    Style="{StaticResource MainInstructionTextBlockStyle}"
                    Text="{x:Static p:Resources.Results_MainInstruction}"/>
-        <!-- TODO: Scroll -->
-        <ItemsControl ItemsSource="{Binding Errors}" Margin="11,4,11,0">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate DataType="ResizeError">
-                    <StackPanel>
-                        <TextBlock FontWeight="Bold" Margin="0,7,0,0" Text="{Binding File}"/>
-                        <TextBlock Text="{Binding Error}" TextWrapping="Wrap"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+        <ScrollViewer HorizontalAlignment="Stretch" MaxHeight="350" MaxWidth="363" VerticalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{Binding Errors}" Margin="11,4,11,0">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="ResizeError">
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold" Margin="0,7,0,0" Text="{Binding File}"/>
+                            <TextBlock Text="{Binding Error}" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
         <Border Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
                 BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}"
                 BorderThickness="0,1,0,0"

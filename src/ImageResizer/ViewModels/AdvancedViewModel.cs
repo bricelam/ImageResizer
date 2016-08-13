@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using ImageResizer.Models;
 using ImageResizer.Properties;
 
 namespace ImageResizer.ViewModels
@@ -10,11 +13,6 @@ namespace ImageResizer.ViewModels
     public class AdvancedViewModel : ViewModelBase
     {
         static readonly IDictionary<Guid, string> _encoderMap;
-        static readonly object[] _args = new[]
-        {
-            "1607281400a",
-            Resources.Large
-        };
 
         static AdvancedViewModel()
         {
@@ -25,7 +23,6 @@ namespace ImageResizer.ViewModels
             var tiffCodec = new TiffBitmapEncoder().CodecInfo;
             var wmpCodec = new WmpBitmapEncoder().CodecInfo;
 
-            // TODO: Add WIC codecs
             _encoderMap = new Dictionary<Guid, string>
             {
                 [bmpCodec.ContainerFormat] = bmpCodec.FriendlyName,
@@ -39,6 +36,8 @@ namespace ImageResizer.ViewModels
 
         public AdvancedViewModel(Settings settings)
         {
+            RemoveSizeCommand = new RelayCommand<ResizeSize>(RemoveSize);
+            AddSizeCommand = new RelayCommand(AddSize);
             Settings = settings;
         }
 
@@ -53,6 +52,15 @@ namespace ImageResizer.ViewModels
 
         public IEnumerable<Guid> Encoders
             => _encoderMap.Keys;
+
+        public ICommand RemoveSizeCommand { get; }
+        public ICommand AddSizeCommand { get; }
+
+        public void RemoveSize(ResizeSize size)
+            => Settings.Sizes.Remove(size);
+
+        public void AddSize()
+            => Settings.Sizes.Add(new ResizeSize());
 
         public void Close(bool accepted)
         {

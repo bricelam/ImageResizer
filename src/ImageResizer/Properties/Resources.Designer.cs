@@ -70,11 +70,38 @@ namespace ImageResizer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create a new size.
+        /// </summary>
+        public static string Advanced_CreateSize {
+            get {
+                return ResourceManager.GetString("Advanced_CreateSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string Advanced_DeleteSize {
+            get {
+                return ResourceManager.GetString("Advanced_DeleteSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Encoding.
         /// </summary>
         public static string Advanced_Encoding {
             get {
                 return ResourceManager.GetString("Advanced_Encoding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fallback encoder:.
+        /// </summary>
+        public static string Advanced_FallbackEncoder {
+            get {
+                return ResourceManager.GetString("Advanced_FallbackEncoder", resourceCulture);
             }
         }
         
@@ -88,11 +115,119 @@ namespace ImageResizer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Filename:.
+        /// </summary>
+        public static string Advanced_FileName {
+            get {
+                return ResourceManager.GetString("Advanced_FileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Original filename.
+        /// </summary>
+        public static string Advanced_FileNameToken1 {
+            get {
+                return ResourceManager.GetString("Advanced_FileNameToken1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Size name.
+        /// </summary>
+        public static string Advanced_FileNameToken2 {
+            get {
+                return ResourceManager.GetString("Advanced_FileNameToken2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Width.
+        /// </summary>
+        public static string Advanced_FileNameToken3 {
+            get {
+                return ResourceManager.GetString("Advanced_FileNameToken3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Height.
+        /// </summary>
+        public static string Advanced_FileNameToken4 {
+            get {
+                return ResourceManager.GetString("Advanced_FileNameToken4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The following parameters can be used..
+        /// </summary>
+        public static string Advanced_FileNameTokens {
+            get {
+                return ResourceManager.GetString("Advanced_FileNameTokens", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to JPEG quality level:.
+        /// </summary>
+        public static string Advanced_JpegQualityLevel {
+            get {
+                return ResourceManager.GetString("Advanced_JpegQualityLevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use original date modified.
+        /// </summary>
+        public static string Advanced_KeepDateModified {
+            get {
+                return ResourceManager.GetString("Advanced_KeepDateModified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PNG interlacing:.
+        /// </summary>
+        public static string Advanced_PngInterlaceOption {
+            get {
+                return ResourceManager.GetString("Advanced_PngInterlaceOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sizes.
+        /// </summary>
+        public static string Advanced_Sizes {
+            get {
+                return ResourceManager.GetString("Advanced_Sizes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TIFF compression:.
+        /// </summary>
+        public static string Advanced_TiffCompressOption {
+            get {
+                return ResourceManager.GetString("Advanced_TiffCompressOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Advanced Options.
         /// </summary>
         public static string Advanced_Title {
             get {
                 return ResourceManager.GetString("Advanced_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All Files.
+        /// </summary>
+        public static string AllFilesFilter {
+            get {
+                return ResourceManager.GetString("AllFilesFilter", resourceCulture);
             }
         }
         
@@ -205,7 +340,7 @@ namespace ImageResizer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _Large.
+        ///   Looks up a localized string similar to Large.
         /// </summary>
         public static string Large {
             get {
@@ -214,7 +349,7 @@ namespace ImageResizer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _Medium.
+        ///   Looks up a localized string similar to Medium.
         /// </summary>
         public static string Medium {
             get {
@@ -232,7 +367,7 @@ namespace ImageResizer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _Phone.
+        ///   Looks up a localized string similar to Phone.
         /// </summary>
         public static string Phone {
             get {
@@ -493,7 +628,7 @@ namespace ImageResizer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _Small.
+        ///   Looks up a localized string similar to Small.
         /// </summary>
         public static string Small {
             get {

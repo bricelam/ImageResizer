@@ -1,29 +1,36 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 using GalaSoft.MvvmLight;
+using ImageResizer.Properties;
 
 namespace ImageResizer.Models
 {
     public class ResizeSize : ObservableObject
     {
+        static readonly IDictionary<string, string> _tokens;
+
         string _name;
         ResizeFit _fit = ResizeFit.Fit;
         double _width;
         double _height;
         ResizeUnit _unit = ResizeUnit.Pixel;
 
+        static ResizeSize()
+        {
+            _tokens = new Dictionary<string, string>
+            {
+                ["$small$"] = Resources.Small,
+                ["$medium$"] = Resources.Medium,
+                ["$large$"] = Resources.Large,
+                ["$phone$"] = Resources.Phone
+            };
+        }
+
         public virtual string Name
         {
             get { return _name; }
-            set { Set(nameof(Name), ref _name, value); }
+            set { Set(nameof(Name), ref _name, ReplaceTokens(value)); }
         }
-
-        public string LocalizedName
-            // TODO: Cache, inline ResourceTemplateConverter
-            => (string)new Views.ResourceTemplateConverter().Convert(Name, null, null, null);
-
-        public string CleanName
-            // TODO: Cache, honor escapes
-            => LocalizedName.Replace("_", "");
 
         public ResizeFit Fit
         {
@@ -54,6 +61,15 @@ namespace ImageResizer.Models
 
         public double GetPixelHeight(int originalHeight, double dpi)
             => ConvertToPixels(Height, Unit, originalHeight, dpi);
+
+        string ReplaceTokens(string text)
+        {
+            string result;
+
+            return (text != null && _tokens.TryGetValue(text, out result))
+                ? result
+                : text;
+        }
 
         double ConvertToPixels(double value, ResizeUnit unit, int originalValue, double dpi)
         {

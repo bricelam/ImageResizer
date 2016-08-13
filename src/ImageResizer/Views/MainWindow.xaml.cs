@@ -20,9 +20,9 @@ namespace ImageResizer.Views
         {
             var openFileDialog = new OpenFileDialog
             {
-                // TODO: All files
                 Filter = AppResources.PictureFilter +
-                    "|*.bmp;*.dib;*.exif;*.gif;*.jfif;*.jpe;*.jpeg;*.jpg;*.jxr;*.png;*.rle;*.tif;*.tiff;*.wdp|All Files|*.*",
+                    "|*.bmp;*.dib;*.exif;*.gif;*.jfif;*.jpe;*.jpeg;*.jpg;*.jxr;*.png;*.rle;*.tif;*.tiff;*.wdp|" +
+                    AppResources.AllFilesFilter + "|*.*",
                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
                 Multiselect = true
             };

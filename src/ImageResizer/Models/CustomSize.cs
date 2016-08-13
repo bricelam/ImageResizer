@@ -6,13 +6,8 @@ namespace ImageResizer.Models
     {
         public override string Name
         {
-            get
-            {
-                return Resources.Input_Custom;
-            }
-            set
-            {
-            }
+            get { return Resources.Input_Custom; }
+            set { /* no-op */ }
         }
     }
 }

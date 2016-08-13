@@ -172,11 +172,12 @@ namespace ImageResizer.Models
                 extension = supportedExtensions.FirstOrDefault();
             }
 
-            // TODO: More parameters
             var fileName = string.Format(
                 _settings.FileNameFormat,
                 originalFileName,
-                _settings.SelectedSize.CleanName);
+                _settings.SelectedSize.Name,
+                _settings.SelectedSize.Width,
+                _settings.SelectedSize.Height);
             var path = Path.Combine(directory, fileName + extension);
             var uniquifier = 1;
             while (File.Exists(path))

@@ -34,7 +34,7 @@
             <ListBox.Resources>
                 <DataTemplate DataType="{x:Type m:ResizeSize}">
                     <StackPanel Orientation="Horizontal">
-                        <AccessText Text="{Binding LocalizedName}"/>
+                        <TextBlock Text="{Binding Name}"/>
                         <TextBlock Text=" ("/>
                         <TextBlock Text="{Binding Fit,Converter={StaticResource EnumValueConverter},ConverterParameter=ThirdPersonSingular}"/>
                         <TextBlock Text=" "/>

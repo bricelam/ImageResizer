@@ -21,7 +21,7 @@ namespace ImageResizer.Models
             while ((file = standardInput.ReadLine()) != null)
                 batch.Files.Add(file);
 
-            for (int i = 0; i < args.Length; i++)
+            for (var i = 0; i < args.Length; i++)
             {
                 if (args[i] == "/d")
                 {
