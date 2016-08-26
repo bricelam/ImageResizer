@@ -189,32 +189,41 @@
   <data name="PngInterlaceOption_On" xml:space="preserve">
     <value>On</value>
   </data>
-  <data name="Progress_Hour" xml:space="preserve">
-    <value>hour</value>
-  </data>
-  <data name="Progress_Hours" xml:space="preserve">
-    <value>hours</value>
-  </data>
   <data name="Progress_MainInstruction" xml:space="preserve">
     <value>Resizing your pictures...</value>
-  </data>
-  <data name="Progress_Minute" xml:space="preserve">
-    <value>minute</value>
-  </data>
-  <data name="Progress_Minutes" xml:space="preserve">
-    <value>minutes</value>
-  </data>
-  <data name="Progress_Second" xml:space="preserve">
-    <value>second</value>
-  </data>
-  <data name="Progress_Seconds" xml:space="preserve">
-    <value>seconds</value>
   </data>
   <data name="Progress_Stop" xml:space="preserve">
     <value>Stop</value>
   </data>
-  <data name="Progress_TimeRemaining" xml:space="preserve">
-    <value>About {0} remaining.</value>
+  <data name="Progress_TimeRemaining_HourMinute" xml:space="preserve">
+    <value>About {0} hour, {1} minute remaining.</value>
+  </data>
+  <data name="Progress_TimeRemaining_HourMinutes" xml:space="preserve">
+    <value>About {0} hour, {1} minutes remaining.</value>
+  </data>
+  <data name="Progress_TimeRemaining_HoursMinute" xml:space="preserve">
+    <value>About {0} hours, {1} minute remaining.</value>
+  </data>
+  <data name="Progress_TimeRemaining_HoursMinutes" xml:space="preserve">
+    <value>About {0} hours, {1} minutes remaining.</value>
+  </data>
+  <data name="Progress_TimeRemaining_MinuteSecond" xml:space="preserve">
+    <value>About {1} minute, {2} second remaining.</value>
+  </data>
+  <data name="Progress_TimeRemaining_MinuteSeconds" xml:space="preserve">
+    <value>About {1} minute, {2} seconds remaining.</value>
+  </data>
+  <data name="Progress_TimeRemaining_MinutesSecond" xml:space="preserve">
+    <value>About {1} minutes, {2} second remaining.</value>
+  </data>
+  <data name="Progress_TimeRemaining_MinutesSeconds" xml:space="preserve">
+    <value>About {1} minutes, {2} seconds remaining.</value>
+  </data>
+  <data name="Progress_TimeRemaining_Second" xml:space="preserve">
+    <value>About {2} second remaining.</value>
+  </data>
+  <data name="Progress_TimeRemaining_Seconds" xml:space="preserve">
+    <value>About {2} seconds remaining.</value>
   </data>
   <data name="ResizeFit_Fill" xml:space="preserve">
     <value>Fill</value>

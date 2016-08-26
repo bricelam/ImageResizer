@@ -277,65 +277,11 @@ namespace ImageResizer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to hour.
-        /// </summary>
-        public static string Progress_Hour {
-            get {
-                return ResourceManager.GetString("Progress_Hour", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to hours.
-        /// </summary>
-        public static string Progress_Hours {
-            get {
-                return ResourceManager.GetString("Progress_Hours", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Resizing your pictures....
         /// </summary>
         public static string Progress_MainInstruction {
             get {
                 return ResourceManager.GetString("Progress_MainInstruction", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to minute.
-        /// </summary>
-        public static string Progress_Minute {
-            get {
-                return ResourceManager.GetString("Progress_Minute", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to minutes.
-        /// </summary>
-        public static string Progress_Minutes {
-            get {
-                return ResourceManager.GetString("Progress_Minutes", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to second.
-        /// </summary>
-        public static string Progress_Second {
-            get {
-                return ResourceManager.GetString("Progress_Second", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to seconds.
-        /// </summary>
-        public static string Progress_Seconds {
-            get {
-                return ResourceManager.GetString("Progress_Seconds", resourceCulture);
             }
         }
         
@@ -349,11 +295,92 @@ namespace ImageResizer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About {0} remaining..
+        ///   Looks up a localized string similar to About {0} hour, {1} minute remaining..
         /// </summary>
-        public static string Progress_TimeRemaining {
+        public static string Progress_TimeRemaining_HourMinute {
             get {
-                return ResourceManager.GetString("Progress_TimeRemaining", resourceCulture);
+                return ResourceManager.GetString("Progress_TimeRemaining_HourMinute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About {0} hour, {1} minutes remaining..
+        /// </summary>
+        public static string Progress_TimeRemaining_HourMinutes {
+            get {
+                return ResourceManager.GetString("Progress_TimeRemaining_HourMinutes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About {0} hours, {1} minute remaining..
+        /// </summary>
+        public static string Progress_TimeRemaining_HoursMinute {
+            get {
+                return ResourceManager.GetString("Progress_TimeRemaining_HoursMinute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About {0} hours, {1} minutes remaining..
+        /// </summary>
+        public static string Progress_TimeRemaining_HoursMinutes {
+            get {
+                return ResourceManager.GetString("Progress_TimeRemaining_HoursMinutes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About {1} minute, {2} second remaining..
+        /// </summary>
+        public static string Progress_TimeRemaining_MinuteSecond {
+            get {
+                return ResourceManager.GetString("Progress_TimeRemaining_MinuteSecond", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About {1} minute, {2} seconds remaining..
+        /// </summary>
+        public static string Progress_TimeRemaining_MinuteSeconds {
+            get {
+                return ResourceManager.GetString("Progress_TimeRemaining_MinuteSeconds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About {1} minutes, {2} second remaining..
+        /// </summary>
+        public static string Progress_TimeRemaining_MinutesSecond {
+            get {
+                return ResourceManager.GetString("Progress_TimeRemaining_MinutesSecond", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About {1} minutes, {2} seconds remaining..
+        /// </summary>
+        public static string Progress_TimeRemaining_MinutesSeconds {
+            get {
+                return ResourceManager.GetString("Progress_TimeRemaining_MinutesSeconds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About {2} second remaining..
+        /// </summary>
+        public static string Progress_TimeRemaining_Second {
+            get {
+                return ResourceManager.GetString("Progress_TimeRemaining_Second", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About {2} seconds remaining..
+        /// </summary>
+        public static string Progress_TimeRemaining_Seconds {
+            get {
+                return ResourceManager.GetString("Progress_TimeRemaining_Seconds", resourceCulture);
             }
         }
         
