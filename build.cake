@@ -59,7 +59,7 @@ Task("Test")
     .Does(
         () =>
             XUnit2(
-                "./test/ImageResizer.Tests/bin/" + configuration + "/ImageResizer.Tests.dll",
+                "./test/ImageResizer.Test/bin/" + configuration + "/ImageResizer.Test.dll",
                 new XUnit2Settings
                 {
                     NoAppDomain = true,

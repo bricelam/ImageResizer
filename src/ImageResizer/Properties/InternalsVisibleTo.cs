@@ -1,3 +1,3 @@
 ﻿using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("ImageResizer.Tests")]
+[assembly: InternalsVisibleTo("ImageResizer.Test")]

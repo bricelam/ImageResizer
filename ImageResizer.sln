@@ -11,7 +11,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ShellExtensions", "src\Shel
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{03474E84-5425-4E89-9056-AFF15EA7DE57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageResizer.Tests", "test\ImageResizer.Tests\ImageResizer.Tests.csproj", "{E0CC7526-D85E-43AC-844F-D5DF0D2F5AB8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageResizer.Test", "test\ImageResizer.Test\ImageResizer.Test.csproj", "{E0CC7526-D85E-43AC-844F-D5DF0D2F5AB8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "setup", "setup", "{8E477B70-095E-4C84-BE9B-B347C11688F7}"
 EndProject
