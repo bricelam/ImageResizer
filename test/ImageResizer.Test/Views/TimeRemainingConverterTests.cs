@@ -2,6 +2,7 @@
 using System.Globalization;
 using ImageResizer.Properties;
 using Xunit;
+using Xunit.Extensions;
 
 namespace ImageResizer.Views
 {
