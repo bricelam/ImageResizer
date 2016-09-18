@@ -64,11 +64,23 @@ namespace ImageResizer.ViewModels
 
         public void Close(bool accepted)
         {
-            // TODO: Sort out interaction with input page
             if (accepted)
+            {
                 Settings.Save();
-            else
-                Settings.Reload();
+
+                return;
+            }
+
+            var selectedSizeIndex = Settings.SelectedSizeIndex;
+            var shrinkOnly = Settings.ShrinkOnly;
+            var replace = Settings.Replace;
+            var ignoreOrientation = Settings.IgnoreOrientation;
+
+            Settings.Reload();
+            Settings.SelectedSizeIndex = selectedSizeIndex;
+            Settings.ShrinkOnly = shrinkOnly;
+            Settings.Replace = replace;
+            Settings.IgnoreOrientation = ignoreOrientation;
         }
     }
 }
