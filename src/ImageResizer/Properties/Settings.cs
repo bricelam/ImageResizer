@@ -10,10 +10,12 @@ namespace ImageResizer.Properties
 {
     partial class Settings : IDataErrorInfo
     {
-        AllSizesCollection _allSizes;
+        public Settings()
+        {
+            AllSizes = new AllSizesCollection(this);
+        }
 
-        public IEnumerable<ResizeSize> AllSizes
-            => _allSizes ?? (_allSizes = new AllSizesCollection(Sizes, CustomSize));
+        public IEnumerable<ResizeSize> AllSizes { get; }
 
         public string Error
             => string.Empty;
@@ -48,18 +50,48 @@ namespace ImageResizer.Properties
             }
         }
 
-        class AllSizesCollection : IEnumerable<ResizeSize>, INotifyCollectionChanged, INotifyPropertyChanged, IDisposable
+        class AllSizesCollection : IEnumerable<ResizeSize>, INotifyCollectionChanged, INotifyPropertyChanged
         {
-            readonly ObservableCollection<ResizeSize> _sizes;
-            readonly CustomSize _customSize;
+            ObservableCollection<ResizeSize> _sizes;
+            CustomSize _customSize;
 
-            public AllSizesCollection(ObservableCollection<ResizeSize> sizes, CustomSize customSize)
+            public AllSizesCollection(Settings settings)
             {
-                _sizes = sizes;
-                _customSize = customSize;
+                _sizes = settings.Sizes;
+                _customSize = settings.CustomSize;
 
                 _sizes.CollectionChanged += HandleCollectionChanged;
                 ((INotifyPropertyChanged)_sizes).PropertyChanged += HandlePropertyChanged;
+
+                settings.PropertyChanged += (sender, e) =>
+                {
+                    if (e.PropertyName == nameof(CustomSize))
+                    {
+                        var oldCustomSize = _customSize;
+                        _customSize = settings.CustomSize;
+
+                        OnCollectionChanged(
+                            new NotifyCollectionChangedEventArgs(
+                                NotifyCollectionChangedAction.Replace,
+                                _customSize,
+                                oldCustomSize,
+                                _sizes.Count));
+                    }
+                    else if (e.PropertyName == nameof(Sizes))
+                    {
+                        var oldSizes = _sizes;
+
+                        oldSizes.CollectionChanged -= HandleCollectionChanged;
+                        ((INotifyPropertyChanged)oldSizes).PropertyChanged -= HandlePropertyChanged;
+
+                        _sizes = settings.Sizes;
+
+                        OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+
+                        _sizes.CollectionChanged += HandleCollectionChanged;
+                        ((INotifyPropertyChanged)_sizes).PropertyChanged += HandlePropertyChanged;
+                    }
+                };
             }
 
             public event NotifyCollectionChangedEventHandler CollectionChanged;
@@ -76,17 +108,14 @@ namespace ImageResizer.Properties
             public IEnumerator<ResizeSize> GetEnumerator()
                 => new AllSizesEnumerator(this);
 
-            public void Dispose()
-            {
-                _sizes.CollectionChanged -= HandleCollectionChanged;
-                ((INotifyPropertyChanged)_sizes).PropertyChanged -= HandlePropertyChanged;
-            }
-
             void HandleCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-                => CollectionChanged?.Invoke(this, e);
+                => OnCollectionChanged(e);
 
             void HandlePropertyChanged(object sender, PropertyChangedEventArgs e)
                 => PropertyChanged?.Invoke(this, e);
+
+            void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
+                => CollectionChanged?.Invoke(this, e);
 
             IEnumerator IEnumerable.GetEnumerator()
                 => GetEnumerator();

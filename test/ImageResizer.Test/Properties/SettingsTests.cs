@@ -68,5 +68,30 @@ namespace ImageResizer.Properties
 
             Assert.Contains(settings.CustomSize, settings.AllSizes);
         }
+
+        [Fact]
+        public void AllSizes_handles_property_events_for_CustomSize()
+        {
+            var originalCustomSize = new CustomSize();
+            var settings = new Settings
+            {
+                Sizes = new ObservableCollection<ResizeSize>(),
+                CustomSize = originalCustomSize
+            };
+            var ncc = (INotifyCollectionChanged)settings.AllSizes;
+
+            var result = AssertEx.Raises<NotifyCollectionChangedEventArgs>(
+                h => ncc.CollectionChanged += h,
+                h => ncc.CollectionChanged -= h,
+                () => settings.CustomSize = new CustomSize());
+
+            Assert.Equal(NotifyCollectionChangedAction.Replace, result.Arguments.Action);
+            Assert.Equal(1, result.Arguments.NewItems.Count);
+            Assert.Equal(settings.CustomSize, result.Arguments.NewItems[0]);
+            Assert.Equal(0, result.Arguments.NewStartingIndex);
+            Assert.Equal(1, result.Arguments.OldItems.Count);
+            Assert.Equal(originalCustomSize, result.Arguments.OldItems[0]);
+            Assert.Equal(0, result.Arguments.OldStartingIndex);
+        }
     }
 }
