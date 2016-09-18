@@ -10,6 +10,8 @@ namespace ImageResizer.Properties
 {
     partial class Settings : IDataErrorInfo
     {
+        string _fileNameFormat;
+
         public Settings()
         {
             AllSizes = new AllSizesCollection(this);
@@ -20,10 +22,15 @@ namespace ImageResizer.Properties
         public string Error
             => string.Empty;
 
-        // TODO: Cache, use Regex
         public string FileNameFormat
-            => FileName.Replace("{", "{{").Replace("}", "}}").Replace("%1", "{0}").Replace("%2", "{1}")
-                .Replace("%3", "{2}").Replace("%4", "{3}");
+            => _fileNameFormat
+                ?? (_fileNameFormat = FileName
+                    .Replace("{", "{{")
+                    .Replace("}", "}}")
+                    .Replace("%1", "{0}")
+                    .Replace("%2", "{1}")
+                    .Replace("%3", "{2}")
+                    .Replace("%4", "{3}"));
 
         public ResizeSize SelectedSize
         {
@@ -34,6 +41,18 @@ namespace ImageResizer.Properties
                     : CustomSize;
             }
             set { throw new NotImplementedException(); }
+        }
+
+        public override object this[string propertyName]
+        {
+            get { return base[propertyName]; }
+            set
+            {
+                base[propertyName] = value;
+
+                if (propertyName == nameof(FileName))
+                    _fileNameFormat = null;
+            }
         }
 
         string IDataErrorInfo.this[string columnName]
