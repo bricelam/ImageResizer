@@ -26,11 +26,11 @@
                 Margin="0,11,0,0"
                 Padding="11,11">
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                <!-- TODO: Review accessor -->
                 <Button Command="{Binding CloseCommand}"
                         Content="{x:Static p:Resources.Results_Close}"
                         Height="23"
                         IsDefault="True"
+                        IsCancel="True"
                         Width="75"/>
             </StackPanel>
         </Border>

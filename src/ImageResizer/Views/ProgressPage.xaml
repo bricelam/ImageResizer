@@ -26,7 +26,6 @@
                 Margin="0,11,0,0"
                 Padding="11,11">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <!-- TODO: Review accessor -->
                 <Button Command="{Binding StopCommand}"
                         Content="{x:Static p:Resources.Progress_Stop}"
                         Height="23"

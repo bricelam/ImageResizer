@@ -97,7 +97,7 @@ namespace ImageResizer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fallback encoder:.
+        ///   Looks up a localized string similar to _Fallback encoder:.
         /// </summary>
         public static string Advanced_FallbackEncoder {
             get {
@@ -115,7 +115,7 @@ namespace ImageResizer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Filename:.
+        ///   Looks up a localized string similar to _Filename:.
         /// </summary>
         public static string Advanced_FileName {
             get {
@@ -169,7 +169,7 @@ namespace ImageResizer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to JPEG quality level:.
+        ///   Looks up a localized string similar to _JPEG quality level:.
         /// </summary>
         public static string Advanced_JpegQualityLevel {
             get {
@@ -178,7 +178,7 @@ namespace ImageResizer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use original date modified.
+        ///   Looks up a localized string similar to _Use original date modified.
         /// </summary>
         public static string Advanced_KeepDateModified {
             get {
@@ -187,7 +187,7 @@ namespace ImageResizer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PNG interlacing:.
+        ///   Looks up a localized string similar to _PNG interlacing:.
         /// </summary>
         public static string Advanced_PngInterlaceOption {
             get {
@@ -205,7 +205,7 @@ namespace ImageResizer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TIFF compression:.
+        ///   Looks up a localized string similar to _TIFF compression:.
         /// </summary>
         public static string Advanced_TiffCompressOption {
             get {
@@ -268,7 +268,7 @@ namespace ImageResizer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select a size..
+        ///   Looks up a localized string similar to _Select a size..
         /// </summary>
         public static string Input_Content {
             get {
@@ -277,7 +277,7 @@ namespace ImageResizer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _Custom.
+        ///   Looks up a localized string similar to Custom.
         /// </summary>
         public static string Input_Custom {
             get {
@@ -286,7 +286,7 @@ namespace ImageResizer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ignore the _orientation of pictures.
+        ///   Looks up a localized string similar to Ign_ore the orientation of pictures.
         /// </summary>
         public static string Input_IgnoreOrientation {
             get {
@@ -304,7 +304,7 @@ namespace ImageResizer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _Resize the original pictures (don&apos;t create copies).
+        ///   Looks up a localized string similar to R_esize the original pictures (don&apos;t create copies).
         /// </summary>
         public static string Input_Replace {
             get {
@@ -331,7 +331,7 @@ namespace ImageResizer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ma_ke pictures smaller but not larger.
+        ///   Looks up a localized string similar to _Make pictures smaller but not larger.
         /// </summary>
         public static string Input_ShrinkOnly {
             get {
@@ -421,7 +421,7 @@ namespace ImageResizer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stop.
+        ///   Looks up a localized string similar to _Stop.
         /// </summary>
         public static string Progress_Stop {
             get {
@@ -610,7 +610,7 @@ namespace ImageResizer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _Close.
+        ///   Looks up a localized string similar to Close.
         /// </summary>
         public static string Results_Close {
             get {

@@ -130,13 +130,13 @@
     <value>Encoding</value>
   </data>
   <data name="Advanced_FallbackEncoder" xml:space="preserve">
-    <value>Fallback encoder:</value>
+    <value>_Fallback encoder:</value>
   </data>
   <data name="Advanced_File" xml:space="preserve">
     <value>File</value>
   </data>
   <data name="Advanced_FileName" xml:space="preserve">
-    <value>Filename:</value>
+    <value>_Filename:</value>
   </data>
   <data name="Advanced_FileNameToken1" xml:space="preserve">
     <value>Original filename</value>
@@ -154,19 +154,19 @@
     <value>The following parameters can be used.</value>
   </data>
   <data name="Advanced_JpegQualityLevel" xml:space="preserve">
-    <value>JPEG quality level:</value>
+    <value>_JPEG quality level:</value>
   </data>
   <data name="Advanced_KeepDateModified" xml:space="preserve">
-    <value>Use original date modified</value>
+    <value>_Use original date modified</value>
   </data>
   <data name="Advanced_PngInterlaceOption" xml:space="preserve">
-    <value>PNG interlacing:</value>
+    <value>_PNG interlacing:</value>
   </data>
   <data name="Advanced_Sizes" xml:space="preserve">
     <value>Sizes</value>
   </data>
   <data name="Advanced_TiffCompressOption" xml:space="preserve">
-    <value>TIFF compression:</value>
+    <value>_TIFF compression:</value>
   </data>
   <data name="Advanced_Title" xml:space="preserve">
     <value>Advanced Options</value>
@@ -187,19 +187,19 @@
     <value>(auto)</value>
   </data>
   <data name="Input_Content" xml:space="preserve">
-    <value>Select a size.</value>
+    <value>_Select a size.</value>
   </data>
   <data name="Input_Custom" xml:space="preserve">
-    <value>_Custom</value>
+    <value>Custom</value>
   </data>
   <data name="Input_IgnoreOrientation" xml:space="preserve">
-    <value>Ignore the _orientation of pictures</value>
+    <value>Ign_ore the orientation of pictures</value>
   </data>
   <data name="Input_MainInstruction" xml:space="preserve">
     <value>Resize your pictures</value>
   </data>
   <data name="Input_Replace" xml:space="preserve">
-    <value>_Resize the original pictures (don't create copies)</value>
+    <value>R_esize the original pictures (don't create copies)</value>
   </data>
   <data name="Input_Resize" xml:space="preserve">
     <value>_Resize</value>
@@ -208,7 +208,7 @@
     <value>Advanced options...</value>
   </data>
   <data name="Input_ShrinkOnly" xml:space="preserve">
-    <value>Ma_ke pictures smaller but not larger</value>
+    <value>_Make pictures smaller but not larger</value>
   </data>
   <data name="Large" xml:space="preserve">
     <value>Large</value>
@@ -238,7 +238,7 @@
     <value>Resizing your pictures...</value>
   </data>
   <data name="Progress_Stop" xml:space="preserve">
-    <value>Stop</value>
+    <value>_Stop</value>
   </data>
   <data name="Progress_TimeRemaining_HourMinute" xml:space="preserve">
     <value>About {0} hour, {1} minute remaining.</value>
@@ -301,7 +301,7 @@
     <value>Pixels</value>
   </data>
   <data name="Results_Close" xml:space="preserve">
-    <value>_Close</value>
+    <value>Close</value>
   </data>
   <data name="Results_MainInstruction" xml:space="preserve">
     <value>Can't resize the following pictures</value>
