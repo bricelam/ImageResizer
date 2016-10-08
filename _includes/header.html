@@ -4,6 +4,7 @@
   <p style="clear:left">{{ site.description }}</p>
   <p class="view"><a href="{{ site.github.repository_url }}">View the Project on GitHub <small>{{ site.github.repository_nwo }}</small></a></p>
   <ul>
-    <li><a href="{{ site.github.releases[0].assets[0].browser_download_url }}">{{ site.github.releases[0].name }} <strong>Download</strong></a></li>
+    {% assign release = site.github.releases | where:"draft",false | where:"prerelease":false | first %}
+    <li><a href="{{ release.assets[0].browser_download_url }}">{{ release.name }} <strong>Download</strong></a></li>
   </ul>
 </header>
