@@ -63,7 +63,7 @@
     <Setting Name="CustomSize" Type="ImageResizer.Models.CustomSize" Scope="User">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;CustomSize xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;Name&gt;_Custom&lt;/Name&gt;
+  &lt;Name&gt;Custom&lt;/Name&gt;
   &lt;Fit&gt;Fit&lt;/Fit&gt;
   &lt;Width&gt;1024&lt;/Width&gt;
   &lt;Height&gt;640&lt;/Height&gt;

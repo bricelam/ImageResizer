@@ -19,9 +19,6 @@ namespace ImageResizer.Properties
 
         public IEnumerable<ResizeSize> AllSizes { get; }
 
-        public string Error
-            => string.Empty;
-
         public string FileNameFormat
             => _fileNameFormat
                 ?? (_fileNameFormat = FileName
@@ -42,6 +39,9 @@ namespace ImageResizer.Properties
             }
             set { throw new NotImplementedException(); }
         }
+
+        string IDataErrorInfo.Error
+            => string.Empty;
 
         public override object this[string propertyName]
         {

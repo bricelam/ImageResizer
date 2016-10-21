@@ -166,7 +166,7 @@ namespace ImageResizer.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
 <CustomSize xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
-  <Name>_Custom</Name>
+  <Name>Custom</Name>
   <Fit>Fit</Fit>
   <Width>1024</Width>
   <Height>640</Height>

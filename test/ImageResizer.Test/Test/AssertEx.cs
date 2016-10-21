@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Specialized;
-using System.ComponentModel;
 using Xunit;
 
 namespace ImageResizer.Test
@@ -16,24 +15,6 @@ namespace ImageResizer.Test
             RaisedEvent<NotifyCollectionChangedEventArgs> raisedEvent = null;
             NotifyCollectionChangedEventHandler handler = (sender, e)
                 => raisedEvent = new RaisedEvent<NotifyCollectionChangedEventArgs>(sender, e);
-            attach(handler);
-            testCode();
-            detach(handler);
-
-            Assert.NotNull(raisedEvent);
-
-            return raisedEvent;
-        }
-
-        public static RaisedEvent<PropertyChangedEventArgs> Raises<T>(
-            Action<PropertyChangedEventHandler> attach,
-            Action<PropertyChangedEventHandler> detach,
-            Action testCode)
-            where T : PropertyChangedEventArgs
-        {
-            RaisedEvent<PropertyChangedEventArgs> raisedEvent = null;
-            PropertyChangedEventHandler handler = (sender, e)
-                => raisedEvent = new RaisedEvent<PropertyChangedEventArgs>(sender, e);
             attach(handler);
             testCode();
             detach(handler);

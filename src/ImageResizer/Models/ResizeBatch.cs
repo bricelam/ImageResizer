@@ -52,11 +52,9 @@ namespace ImageResizer.Models
                 },
                 (file, state, i) =>
                 {
-                    var operation = new ResizeOperation(file, DestinationDirectory, Settings.Default);
-
                     try
                     {
-                        operation.Execute();
+                        Execute(file);
                     }
                     catch (Exception ex)
                     {
@@ -70,5 +68,8 @@ namespace ImageResizer.Models
 
             return errors;
         }
+
+        protected virtual void Execute(string file)
+            => new ResizeOperation(file, DestinationDirectory, Settings.Default).Execute();
     }
 }
