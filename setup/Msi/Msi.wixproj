@@ -23,6 +23,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Product.wxs" />
+    <Compile Include="Resources.wxs" />
   </ItemGroup>
   <ItemGroup>
     <WixExtension Include="WixNetFxExtension">

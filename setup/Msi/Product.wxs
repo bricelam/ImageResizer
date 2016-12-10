@@ -26,7 +26,6 @@
     </Directory>
   </Fragment>
   <Fragment>
-    <!-- TODO: Localization components -->
     <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
       <Component Id="ImageResizerComponent">
         <File Id="ImageResizer" Source="$(var.ImageResizer.TargetPath)" />
