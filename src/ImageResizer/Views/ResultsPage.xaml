@@ -31,7 +31,7 @@
                         Height="23"
                         IsDefault="True"
                         IsCancel="True"
-                        Width="75"/>
+                        MinWidth="75"/>
             </StackPanel>
         </Border>
     </StackPanel>

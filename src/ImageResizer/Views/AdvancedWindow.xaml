@@ -243,8 +243,8 @@
                     Content="{x:Static p:Resources.OK}"
                     Height="23"
                     IsDefault="True"
-                    Width="75"/>
-            <Button Content="{x:Static p:Resources.Cancel}" Height="23" IsCancel="True" Margin="7,0,0,0" Width="75"/>
+                    MinWidth="75"/>
+            <Button Content="{x:Static p:Resources.Cancel}" Height="23" IsCancel="True" Margin="7,0,0,0" MinWidth="75"/>
         </StackPanel>
     </Grid>
 </Window>

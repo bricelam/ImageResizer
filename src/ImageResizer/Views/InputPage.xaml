@@ -113,14 +113,14 @@
                         Content="{x:Static p:Resources.Input_Resize}"
                         Height="23"
                         IsDefault="True"
-                        Width="75"
+                        MinWidth="75"
                         Grid.Column="1"/>
                 <Button Command="{Binding CancelCommand}"
                         Content="{x:Static p:Resources.Cancel}"
                         Height="23"
                         IsCancel="True"
                         Margin="7,0,0,0"
-                        Width="75"
+                        MinWidth="75"
                         Grid.Column="2"/>
             </Grid>
         </Border>

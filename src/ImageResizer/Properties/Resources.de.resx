@@ -190,7 +190,7 @@
     <value>Wähle eine Größe</value>
   </data>
   <data name="Input_Custom" xml:space="preserve">
-    <value>_Custom</value>
+    <value>Custom</value>
   </data>
   <data name="Input_IgnoreOrientation" xml:space="preserve">
     <value>Ignoriere die _Ausrichtung von Bildern</value>
