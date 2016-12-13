@@ -16,6 +16,7 @@
     </Condition>
     <Feature Id="ProductFeature">
       <ComponentGroupRef Id="ProductComponents" />
+      <ComponentGroupRef Id="ResourcesComponents"/>
     </Feature>
   </Product>
   <Fragment>
