@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,200 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Advanced_Title" xml:space="preserve">
-    <value>Opciones avanzadas</value>
-  </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>Cancelar</value>
-  </data>
-  <data name="ResizeUnit_Centimeter" xml:space="preserve">
-    <value>Centímetros</value>
-  </data>
-  <data name="ResizeFit_Fill" xml:space="preserve">
-    <value>Llenar</value>
-  </data>
-  <data name="ResizeFit_Fill_ThirdPersonSingular" xml:space="preserve">
-    <value>llena</value>
-  </data>
-  <data name="ResizeFit_Fit" xml:space="preserve">
-    <value>Ajustar</value>
-  </data>
-  <data name="ResizeFit_Fit_ThirdPersonSingular" xml:space="preserve">
-    <value>se ajusta</value>
-  </data>
-  <data name="ResizeUnit_Inch" xml:space="preserve">
-    <value>Pulgadas</value>
-  </data>
-  <data name="Input_Content" xml:space="preserve">
-    <value>_Escoge un tamaño.</value>
-  </data>
-  <data name="Input_Custom" xml:space="preserve">
-    <value>Personalizado</value>
-  </data>
-  <data name="Input_IgnoreOrientation" xml:space="preserve">
-    <value>Ign_orar la orientación</value>
-  </data>
-  <data name="Input_MainInstruction" xml:space="preserve">
-    <value>Redimensionar las imagenes</value>
-  </data>
-  <data name="Input_Replace" xml:space="preserve">
-    <value>R_edimensionar las imágenes originales (sin copia)</value>
-  </data>
-  <data name="Input_Resize" xml:space="preserve">
-    <value>_Redimensionar</value>
-  </data>
-  <data name="Input_ShowAdvanced" xml:space="preserve">
-    <value>Opciones avanzadas...</value>
-  </data>
-  <data name="Input_ShrinkOnly" xml:space="preserve">
-    <value>Solo _encoger, no agrandar</value>
-  </data>
-  <data name="ImageResizer" xml:space="preserve">
-    <value>Image Resizer para Windows</value>
-  </data>
-  <data name="OK" xml:space="preserve">
-    <value>Aceptar</value>
-  </data>
-  <data name="PictureFilter" xml:space="preserve">
-    <value>Todas las imágenes</value>
-  </data>
-  <data name="ResizeUnit_Pixel" xml:space="preserve">
-    <value>Píxeles</value>
-  </data>
-  <data name="PngInterlaceOption_Default" xml:space="preserve">
-    <value>(Por defecto)</value>
-  </data>
-  <data name="PngInterlaceOption_Off" xml:space="preserve">
-    <value>Desactivado</value>
-  </data>
-  <data name="PngInterlaceOption_On" xml:space="preserve">
-    <value>Activado</value>
-  </data>
-  <data name="Progress_Hour" xml:space="preserve">
-    <value>hora</value>
-  </data>
-  <data name="Progress_Hours" xml:space="preserve">
-    <value>horas</value>
-  </data>
-  <data name="Progress_MainInstruction" xml:space="preserve">
-    <value>Redimensionando imágenes...</value>
-  </data>
-  <data name="Progress_Minute" xml:space="preserve">
-    <value>minuto</value>
-  </data>
-  <data name="Progress_Minutes" xml:space="preserve">
-    <value>minutos</value>
-  </data>
-  <data name="Progress_Second" xml:space="preserve">
-    <value>segundo</value>
-  </data>
-  <data name="Progress_Seconds" xml:space="preserve">
-    <value>segundos</value>
-  </data>
-  <data name="Progress_Stop" xml:space="preserve">
-    <value>_Parar</value>
-  </data>
-  <data name="Progress_TimeRemaining" xml:space="preserve">
-    <value>Faltan {0}</value>
-  </data>
-  <data name="Results_Close" xml:space="preserve">
-    <value>Cerrar</value>
-  </data>
-  <data name="Results_MainInstruction" xml:space="preserve">
-    <value>No se pueden redimensionar las imágenes</value>
-  </data>
-  <data name="ResizeFit_Stretch" xml:space="preserve">
-    <value>Estirar</value>
-  </data>
-  <data name="ResizeFit_Stretch_ThirdPersonSingular" xml:space="preserve">
-    <value>Estira a</value>
-  </data>
-  <data name="TiffCompressOption_Ccitt3" xml:space="preserve">
-    <value>CCITT3</value>
-  </data>
-  <data name="TiffCompressOption_Ccitt4" xml:space="preserve">
-    <value>CCITT4</value>
-  </data>
-  <data name="TiffCompressOption_Default" xml:space="preserve">
-    <value>(Por defecto)</value>
-  </data>
-  <data name="TiffCompressOption_Lzw" xml:space="preserve">
-    <value>LZW</value>
-  </data>
-  <data name="TiffCompressOption_None" xml:space="preserve">
-    <value>Ninguno</value>
-  </data>
-  <data name="TiffCompressOption_Rle" xml:space="preserve">
-    <value>RLE</value>
-  </data>
-  <data name="TiffCompressOption_Zip" xml:space="preserve">
-    <value>Zip</value>
-  </data>
   <data name="Advanced_About" xml:space="preserve">
     <value>Acerca de...</value>
-  </data>
-  <data name="Advanced_Encoding" xml:space="preserve">
-    <value>Codificación</value>
-  </data>
-  <data name="Advanced_File" xml:space="preserve">
-    <value>Fichero</value>
-  </data>
-  <data name="Copyright" xml:space="preserve">
-    <value>@ 2016 Brice Lambson. Todos los derechos reservados.</value>
-  </data>
-  <data name="Input_Auto" xml:space="preserve">
-    <value>(auto)</value>
-  </data>
-  <data name="Large" xml:space="preserve">
-    <value>Grande</value>
-  </data>
-  <data name="Medium" xml:space="preserve">
-    <value>Mediano</value>
-  </data>
-  <data name="Phone" xml:space="preserve">
-    <value>Teléfono</value>
-  </data>
-  <data name="ResizeUnit_Percent" xml:space="preserve">
-    <value>Porcentaje</value>
-  </data>
-  <data name="Small" xml:space="preserve">
-    <value>Pequeño</value>
-  </data>
-  <data name="ValueMustBeBetween" xml:space="preserve">
-    <value>El valor debe estar entre '{0}' y '{1}'.</value>
-  </data>
-  <data name="Version" xml:space="preserve">
-    <value>Versión</value>
-  </data>
-  <data name="Progress_TimeRemaining_HourMinute" xml:space="preserve">
-    <value>Falta {0} hora, {1} minuto</value>
-  </data>
-  <data name="Progress_TimeRemaining_HourMinutes" xml:space="preserve">
-    <value>Falta {0} hora, {1} minutos</value>
-  </data>
-  <data name="Progress_TimeRemaining_HoursMinute" xml:space="preserve">
-    <value>Faltan {0} horas, {1} minuto</value>
-  </data>
-  <data name="Progress_TimeRemaining_HoursMinutes" xml:space="preserve">
-    <value>Faltan {0} horas, {1} minutos</value>
-  </data>
-  <data name="Progress_TimeRemaining_MinuteSecond" xml:space="preserve">
-    <value>Falta {1} minuto, {2} segundo</value>
-  </data>
-  <data name="Progress_TimeRemaining_MinuteSeconds" xml:space="preserve">
-    <value>Falta {1} minuto, {2} segundos</value>
-  </data>
-  <data name="Progress_TimeRemaining_MinutesSecond" xml:space="preserve">
-    <value>Faltan {1} minutos, {2} segundo</value>
-  </data>
-  <data name="Progress_TimeRemaining_MinutesSeconds" xml:space="preserve">
-    <value>Faltan {1} minutos, {2} segundos</value>
-  </data>
-  <data name="Progress_TimeRemaining_Second" xml:space="preserve">
-    <value>Falta {2} segundo</value>
-  </data>
-  <data name="Progress_TimeRemaining_Seconds" xml:space="preserve">
-    <value>Faltan {2} segundos</value>
   </data>
   <data name="Advanced_CreateSize" xml:space="preserve">
     <value>Crear nuevo tamaño</value>
@@ -318,8 +126,14 @@
   <data name="Advanced_DeleteSize" xml:space="preserve">
     <value>Eliminar</value>
   </data>
+  <data name="Advanced_Encoding" xml:space="preserve">
+    <value>Codificación</value>
+  </data>
   <data name="Advanced_FallbackEncoder" xml:space="preserve">
     <value>Codificador de _respaldo</value>
+  </data>
+  <data name="Advanced_File" xml:space="preserve">
+    <value>Fichero</value>
   </data>
   <data name="Advanced_FileName" xml:space="preserve">
     <value>_Nombre de fichero</value>
@@ -354,7 +168,172 @@
   <data name="Advanced_TiffCompressOption" xml:space="preserve">
     <value>Compresión _TIFF:</value>
   </data>
+  <data name="Advanced_Title" xml:space="preserve">
+    <value>Opciones avanzadas</value>
+  </data>
   <data name="AllFilesFilter" xml:space="preserve">
     <value>Todos los ficheros</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>@ 2016 Brice Lambson. Todos los derechos reservados.</value>
+  </data>
+  <data name="ImageResizer" xml:space="preserve">
+    <value>Image Resizer para Windows</value>
+  </data>
+  <data name="Input_Auto" xml:space="preserve">
+    <value>(auto)</value>
+  </data>
+  <data name="Input_Content" xml:space="preserve">
+    <value>_Escoge un tamaño.</value>
+  </data>
+  <data name="Input_Custom" xml:space="preserve">
+    <value>Personalizado</value>
+  </data>
+  <data name="Input_IgnoreOrientation" xml:space="preserve">
+    <value>Ign_orar la orientación</value>
+  </data>
+  <data name="Input_MainInstruction" xml:space="preserve">
+    <value>Redimensionar las imagenes</value>
+  </data>
+  <data name="Input_Replace" xml:space="preserve">
+    <value>R_edimensionar las imágenes originales (sin copia)</value>
+  </data>
+  <data name="Input_Resize" xml:space="preserve">
+    <value>_Redimensionar</value>
+  </data>
+  <data name="Input_ShowAdvanced" xml:space="preserve">
+    <value>Opciones avanzadas...</value>
+  </data>
+  <data name="Input_ShrinkOnly" xml:space="preserve">
+    <value>Solo _encoger, no agrandar</value>
+  </data>
+  <data name="Large" xml:space="preserve">
+    <value>Grande</value>
+  </data>
+  <data name="Medium" xml:space="preserve">
+    <value>Mediano</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>Aceptar</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Teléfono</value>
+  </data>
+  <data name="PictureFilter" xml:space="preserve">
+    <value>Todas las imágenes</value>
+  </data>
+  <data name="PngInterlaceOption_Default" xml:space="preserve">
+    <value>(Por defecto)</value>
+  </data>
+  <data name="PngInterlaceOption_Off" xml:space="preserve">
+    <value>Desactivado</value>
+  </data>
+  <data name="PngInterlaceOption_On" xml:space="preserve">
+    <value>Activado</value>
+  </data>
+  <data name="Progress_MainInstruction" xml:space="preserve">
+    <value>Redimensionando imágenes...</value>
+  </data>
+  <data name="Progress_Stop" xml:space="preserve">
+    <value>_Parar</value>
+  </data>
+  <data name="Progress_TimeRemaining_HourMinute" xml:space="preserve">
+    <value>Falta {0} hora, {1} minuto</value>
+  </data>
+  <data name="Progress_TimeRemaining_HourMinutes" xml:space="preserve">
+    <value>Falta {0} hora, {1} minutos</value>
+  </data>
+  <data name="Progress_TimeRemaining_HoursMinute" xml:space="preserve">
+    <value>Faltan {0} horas, {1} minuto</value>
+  </data>
+  <data name="Progress_TimeRemaining_HoursMinutes" xml:space="preserve">
+    <value>Faltan {0} horas, {1} minutos</value>
+  </data>
+  <data name="Progress_TimeRemaining_MinuteSecond" xml:space="preserve">
+    <value>Falta {1} minuto, {2} segundo</value>
+  </data>
+  <data name="Progress_TimeRemaining_MinuteSeconds" xml:space="preserve">
+    <value>Falta {1} minuto, {2} segundos</value>
+  </data>
+  <data name="Progress_TimeRemaining_MinutesSecond" xml:space="preserve">
+    <value>Faltan {1} minutos, {2} segundo</value>
+  </data>
+  <data name="Progress_TimeRemaining_MinutesSeconds" xml:space="preserve">
+    <value>Faltan {1} minutos, {2} segundos</value>
+  </data>
+  <data name="Progress_TimeRemaining_Second" xml:space="preserve">
+    <value>Falta {2} segundo</value>
+  </data>
+  <data name="Progress_TimeRemaining_Seconds" xml:space="preserve">
+    <value>Faltan {2} segundos</value>
+  </data>
+  <data name="ResizeFit_Fill" xml:space="preserve">
+    <value>Llenar</value>
+  </data>
+  <data name="ResizeFit_Fill_ThirdPersonSingular" xml:space="preserve">
+    <value>llena</value>
+  </data>
+  <data name="ResizeFit_Fit" xml:space="preserve">
+    <value>Ajustar</value>
+  </data>
+  <data name="ResizeFit_Fit_ThirdPersonSingular" xml:space="preserve">
+    <value>se ajusta</value>
+  </data>
+  <data name="ResizeFit_Stretch" xml:space="preserve">
+    <value>Estirar</value>
+  </data>
+  <data name="ResizeFit_Stretch_ThirdPersonSingular" xml:space="preserve">
+    <value>Estira a</value>
+  </data>
+  <data name="ResizeUnit_Centimeter" xml:space="preserve">
+    <value>Centímetros</value>
+  </data>
+  <data name="ResizeUnit_Inch" xml:space="preserve">
+    <value>Pulgadas</value>
+  </data>
+  <data name="ResizeUnit_Percent" xml:space="preserve">
+    <value>Porcentaje</value>
+  </data>
+  <data name="ResizeUnit_Pixel" xml:space="preserve">
+    <value>Píxeles</value>
+  </data>
+  <data name="Results_Close" xml:space="preserve">
+    <value>Cerrar</value>
+  </data>
+  <data name="Results_MainInstruction" xml:space="preserve">
+    <value>No se pueden redimensionar las imágenes</value>
+  </data>
+  <data name="Small" xml:space="preserve">
+    <value>Pequeño</value>
+  </data>
+  <data name="TiffCompressOption_Ccitt3" xml:space="preserve">
+    <value>CCITT3</value>
+  </data>
+  <data name="TiffCompressOption_Ccitt4" xml:space="preserve">
+    <value>CCITT4</value>
+  </data>
+  <data name="TiffCompressOption_Default" xml:space="preserve">
+    <value>(Por defecto)</value>
+  </data>
+  <data name="TiffCompressOption_Lzw" xml:space="preserve">
+    <value>LZW</value>
+  </data>
+  <data name="TiffCompressOption_None" xml:space="preserve">
+    <value>Ninguno</value>
+  </data>
+  <data name="TiffCompressOption_Rle" xml:space="preserve">
+    <value>RLE</value>
+  </data>
+  <data name="TiffCompressOption_Zip" xml:space="preserve">
+    <value>Zip</value>
+  </data>
+  <data name="ValueMustBeBetween" xml:space="preserve">
+    <value>El valor debe estar entre '{0}' y '{1}'.</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Versión</value>
   </data>
 </root>

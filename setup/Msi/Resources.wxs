@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-<?foreach Language in cs;de;es;eu-ES;fr;pl?>
+<?foreach Language in cs;de;es;eu-ES;fr;it;pl?>
   <!-- Ids can't contain hyphens -->
   <?if $(var.Language) = eu-ES?>
     <?define IdSafeLanguage = eu_ES?>

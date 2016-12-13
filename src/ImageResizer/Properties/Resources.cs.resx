@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,200 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Advanced_Title" xml:space="preserve">
-    <value>Rozšířená nastavení</value>
-  </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>Zrušit</value>
-  </data>
-  <data name="ResizeUnit_Centimeter" xml:space="preserve">
-    <value>centimetrů</value>
-  </data>
-  <data name="ResizeFit_Fill" xml:space="preserve">
-    <value>Vyplnit</value>
-  </data>
-  <data name="ResizeFit_Fill_ThirdPersonSingular" xml:space="preserve">
-    <value>vyplňuje</value>
-  </data>
-  <data name="ResizeFit_Fit" xml:space="preserve">
-    <value>Napasovat</value>
-  </data>
-  <data name="ResizeFit_Fit_ThirdPersonSingular" xml:space="preserve">
-    <value>pasuje do</value>
-  </data>
-  <data name="ResizeUnit_Inch" xml:space="preserve">
-    <value>palců</value>
-  </data>
-  <data name="Input_Content" xml:space="preserve">
-    <value>Vyberte soubor</value>
-  </data>
-  <data name="Input_Custom" xml:space="preserve">
-    <value>Vlastní</value>
-  </data>
-  <data name="Input_IgnoreOrientation" xml:space="preserve">
-    <value>Ignorovat _orientaci obrázků</value>
-  </data>
-  <data name="Input_MainInstruction" xml:space="preserve">
-    <value>Změnit velikost obrázků</value>
-  </data>
-  <data name="Input_Replace" xml:space="preserve">
-    <value>Změnit velikost původních obrázků (nevytvářet kopie)</value>
-  </data>
-  <data name="Input_Resize" xml:space="preserve">
-    <value>Změnit velikost</value>
-  </data>
-  <data name="Input_ShowAdvanced" xml:space="preserve">
-    <value>Rozšířená nastavení...</value>
-  </data>
-  <data name="Input_ShrinkOnly" xml:space="preserve">
-    <value>Obráz_ky pouze zmenšovat</value>
-  </data>
-  <data name="ImageResizer" xml:space="preserve">
-    <value>Image Resizer pro Windows </value>
-  </data>
-  <data name="OK" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="PictureFilter" xml:space="preserve">
-    <value>Všechny soubory obrázků</value>
-  </data>
-  <data name="ResizeUnit_Pixel" xml:space="preserve">
-    <value>pixelů</value>
-  </data>
-  <data name="PngInterlaceOption_Default" xml:space="preserve">
-    <value>(Výchozí)</value>
-  </data>
-  <data name="PngInterlaceOption_Off" xml:space="preserve">
-    <value>Vyp.</value>
-  </data>
-  <data name="PngInterlaceOption_On" xml:space="preserve">
-    <value>Zap.</value>
-  </data>
-  <data name="Progress_Hour" xml:space="preserve">
-    <value>h</value>
-  </data>
-  <data name="Progress_Hours" xml:space="preserve">
-    <value>h</value>
-  </data>
-  <data name="Progress_MainInstruction" xml:space="preserve">
-    <value>Probíhá změna velikosti obrázků...</value>
-  </data>
-  <data name="Progress_Minute" xml:space="preserve">
-    <value>m</value>
-  </data>
-  <data name="Progress_Minutes" xml:space="preserve">
-    <value>m</value>
-  </data>
-  <data name="Progress_Second" xml:space="preserve">
-    <value>s</value>
-  </data>
-  <data name="Progress_Seconds" xml:space="preserve">
-    <value>s</value>
-  </data>
-  <data name="Progress_Stop" xml:space="preserve">
-    <value>Zastavit</value>
-  </data>
-  <data name="Progress_TimeRemaining" xml:space="preserve">
-    <value>Přibližně zbývá {0}</value>
-  </data>
-  <data name="Results_Close" xml:space="preserve">
-    <value>Zavřít</value>
-  </data>
-  <data name="Results_MainInstruction" xml:space="preserve">
-    <value>Velikost následujících obrázků nelze změnit</value>
-  </data>
-  <data name="ResizeFit_Stretch" xml:space="preserve">
-    <value>Roztažení</value>
-  </data>
-  <data name="ResizeFit_Stretch_ThirdPersonSingular" xml:space="preserve">
-    <value>roztáhnout na</value>
-  </data>
-  <data name="TiffCompressOption_Ccitt3" xml:space="preserve">
-    <value>CCITT3</value>
-  </data>
-  <data name="TiffCompressOption_Ccitt4" xml:space="preserve">
-    <value>CCITT4</value>
-  </data>
-  <data name="TiffCompressOption_Default" xml:space="preserve">
-    <value>(Výchozí)</value>
-  </data>
-  <data name="TiffCompressOption_Lzw" xml:space="preserve">
-    <value>LZW</value>
-  </data>
-  <data name="TiffCompressOption_None" xml:space="preserve">
-    <value>Nic</value>
-  </data>
-  <data name="TiffCompressOption_Rle" xml:space="preserve">
-    <value>RLE</value>
-  </data>
-  <data name="TiffCompressOption_Zip" xml:space="preserve">
-    <value>Zip</value>
-  </data>
   <data name="Advanced_About" xml:space="preserve">
     <value>O programu</value>
-  </data>
-  <data name="Advanced_Encoding" xml:space="preserve">
-    <value>Kódování</value>
-  </data>
-  <data name="Advanced_File" xml:space="preserve">
-    <value>Soubor</value>
-  </data>
-  <data name="Copyright" xml:space="preserve">
-    <value>© 2016 Brice Lambson. Všechna práva vyhrazena</value>
-  </data>
-  <data name="Input_Auto" xml:space="preserve">
-    <value>(automaticky)</value>
-  </data>
-  <data name="Large" xml:space="preserve">
-    <value>Velké</value>
-  </data>
-  <data name="Medium" xml:space="preserve">
-    <value>Střední</value>
-  </data>
-  <data name="Phone" xml:space="preserve">
-    <value>Mobilní</value>
-  </data>
-  <data name="ResizeUnit_Percent" xml:space="preserve">
-    <value>procent</value>
-  </data>
-  <data name="Small" xml:space="preserve">
-    <value>Malé</value>
-  </data>
-  <data name="ValueMustBeBetween" xml:space="preserve">
-    <value>Hodnota musí být mezi {0} a {1}.</value>
-  </data>
-  <data name="Version" xml:space="preserve">
-    <value>Verze</value>
-  </data>
-  <data name="Progress_TimeRemaining_HourMinute" xml:space="preserve">
-    <value>Zbývá přibližně {0} hodin, {1} minut.</value>
-  </data>
-  <data name="Progress_TimeRemaining_HourMinutes" xml:space="preserve">
-    <value>Zbývá přibližně {0} hodin, {1} minut.</value>
-  </data>
-  <data name="Progress_TimeRemaining_HoursMinute" xml:space="preserve">
-    <value>Zbývá přibližně {0} hodin, {1} minut.</value>
-  </data>
-  <data name="Progress_TimeRemaining_HoursMinutes" xml:space="preserve">
-    <value>Zbývá přibližně {0} hodin, {1} minut.</value>
-  </data>
-  <data name="Progress_TimeRemaining_MinuteSecond" xml:space="preserve">
-    <value>Zbývá přibližně {1} minut, {2} vteřin.</value>
-  </data>
-  <data name="Progress_TimeRemaining_MinuteSeconds" xml:space="preserve">
-    <value>Zbývá přibližně {1} minut, {2} vteřin.</value>
-  </data>
-  <data name="Progress_TimeRemaining_MinutesSecond" xml:space="preserve">
-    <value>Zbývá přibližně {1} minut, {2} vteřin.</value>
-  </data>
-  <data name="Progress_TimeRemaining_MinutesSeconds" xml:space="preserve">
-    <value>Zbývá přibližně {1} minut, {2} vteřin.</value>
-  </data>
-  <data name="Progress_TimeRemaining_Second" xml:space="preserve">
-    <value>Zbývá přibližně {2} vteřin.</value>
-  </data>
-  <data name="Progress_TimeRemaining_Seconds" xml:space="preserve">
-    <value>Zbývá přibližně {2} vteřin.</value>
   </data>
   <data name="Advanced_CreateSize" xml:space="preserve">
     <value>Vytvořit novou velikost</value>
@@ -318,8 +126,14 @@
   <data name="Advanced_DeleteSize" xml:space="preserve">
     <value>Smazat</value>
   </data>
+  <data name="Advanced_Encoding" xml:space="preserve">
+    <value>Kódování</value>
+  </data>
   <data name="Advanced_FallbackEncoder" xml:space="preserve">
     <value>Záložní encoder:</value>
+  </data>
+  <data name="Advanced_File" xml:space="preserve">
+    <value>Soubor</value>
   </data>
   <data name="Advanced_FileName" xml:space="preserve">
     <value>Název souboru:</value>
@@ -354,7 +168,172 @@
   <data name="Advanced_TiffCompressOption" xml:space="preserve">
     <value>TIFF komprese:</value>
   </data>
+  <data name="Advanced_Title" xml:space="preserve">
+    <value>Rozšířená nastavení</value>
+  </data>
   <data name="AllFilesFilter" xml:space="preserve">
     <value>Všechny soubory</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Zrušit</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>© 2016 Brice Lambson. Všechna práva vyhrazena</value>
+  </data>
+  <data name="ImageResizer" xml:space="preserve">
+    <value>Image Resizer pro Windows </value>
+  </data>
+  <data name="Input_Auto" xml:space="preserve">
+    <value>(automaticky)</value>
+  </data>
+  <data name="Input_Content" xml:space="preserve">
+    <value>Vyberte soubor</value>
+  </data>
+  <data name="Input_Custom" xml:space="preserve">
+    <value>Vlastní</value>
+  </data>
+  <data name="Input_IgnoreOrientation" xml:space="preserve">
+    <value>Ignorovat _orientaci obrázků</value>
+  </data>
+  <data name="Input_MainInstruction" xml:space="preserve">
+    <value>Změnit velikost obrázků</value>
+  </data>
+  <data name="Input_Replace" xml:space="preserve">
+    <value>Změnit velikost původních obrázků (nevytvářet kopie)</value>
+  </data>
+  <data name="Input_Resize" xml:space="preserve">
+    <value>Změnit velikost</value>
+  </data>
+  <data name="Input_ShowAdvanced" xml:space="preserve">
+    <value>Rozšířená nastavení...</value>
+  </data>
+  <data name="Input_ShrinkOnly" xml:space="preserve">
+    <value>Obráz_ky pouze zmenšovat</value>
+  </data>
+  <data name="Large" xml:space="preserve">
+    <value>Velké</value>
+  </data>
+  <data name="Medium" xml:space="preserve">
+    <value>Střední</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Mobilní</value>
+  </data>
+  <data name="PictureFilter" xml:space="preserve">
+    <value>Všechny soubory obrázků</value>
+  </data>
+  <data name="PngInterlaceOption_Default" xml:space="preserve">
+    <value>(Výchozí)</value>
+  </data>
+  <data name="PngInterlaceOption_Off" xml:space="preserve">
+    <value>Vyp.</value>
+  </data>
+  <data name="PngInterlaceOption_On" xml:space="preserve">
+    <value>Zap.</value>
+  </data>
+  <data name="Progress_MainInstruction" xml:space="preserve">
+    <value>Probíhá změna velikosti obrázků...</value>
+  </data>
+  <data name="Progress_Stop" xml:space="preserve">
+    <value>Zastavit</value>
+  </data>
+  <data name="Progress_TimeRemaining_HourMinute" xml:space="preserve">
+    <value>Zbývá přibližně {0} hodin, {1} minut.</value>
+  </data>
+  <data name="Progress_TimeRemaining_HourMinutes" xml:space="preserve">
+    <value>Zbývá přibližně {0} hodin, {1} minut.</value>
+  </data>
+  <data name="Progress_TimeRemaining_HoursMinute" xml:space="preserve">
+    <value>Zbývá přibližně {0} hodin, {1} minut.</value>
+  </data>
+  <data name="Progress_TimeRemaining_HoursMinutes" xml:space="preserve">
+    <value>Zbývá přibližně {0} hodin, {1} minut.</value>
+  </data>
+  <data name="Progress_TimeRemaining_MinuteSecond" xml:space="preserve">
+    <value>Zbývá přibližně {1} minut, {2} vteřin.</value>
+  </data>
+  <data name="Progress_TimeRemaining_MinuteSeconds" xml:space="preserve">
+    <value>Zbývá přibližně {1} minut, {2} vteřin.</value>
+  </data>
+  <data name="Progress_TimeRemaining_MinutesSecond" xml:space="preserve">
+    <value>Zbývá přibližně {1} minut, {2} vteřin.</value>
+  </data>
+  <data name="Progress_TimeRemaining_MinutesSeconds" xml:space="preserve">
+    <value>Zbývá přibližně {1} minut, {2} vteřin.</value>
+  </data>
+  <data name="Progress_TimeRemaining_Second" xml:space="preserve">
+    <value>Zbývá přibližně {2} vteřin.</value>
+  </data>
+  <data name="Progress_TimeRemaining_Seconds" xml:space="preserve">
+    <value>Zbývá přibližně {2} vteřin.</value>
+  </data>
+  <data name="ResizeFit_Fill" xml:space="preserve">
+    <value>Vyplnit</value>
+  </data>
+  <data name="ResizeFit_Fill_ThirdPersonSingular" xml:space="preserve">
+    <value>vyplňuje</value>
+  </data>
+  <data name="ResizeFit_Fit" xml:space="preserve">
+    <value>Napasovat</value>
+  </data>
+  <data name="ResizeFit_Fit_ThirdPersonSingular" xml:space="preserve">
+    <value>pasuje do</value>
+  </data>
+  <data name="ResizeFit_Stretch" xml:space="preserve">
+    <value>Roztažení</value>
+  </data>
+  <data name="ResizeFit_Stretch_ThirdPersonSingular" xml:space="preserve">
+    <value>roztáhnout na</value>
+  </data>
+  <data name="ResizeUnit_Centimeter" xml:space="preserve">
+    <value>centimetrů</value>
+  </data>
+  <data name="ResizeUnit_Inch" xml:space="preserve">
+    <value>palců</value>
+  </data>
+  <data name="ResizeUnit_Percent" xml:space="preserve">
+    <value>procent</value>
+  </data>
+  <data name="ResizeUnit_Pixel" xml:space="preserve">
+    <value>pixelů</value>
+  </data>
+  <data name="Results_Close" xml:space="preserve">
+    <value>Zavřít</value>
+  </data>
+  <data name="Results_MainInstruction" xml:space="preserve">
+    <value>Velikost následujících obrázků nelze změnit</value>
+  </data>
+  <data name="Small" xml:space="preserve">
+    <value>Malé</value>
+  </data>
+  <data name="TiffCompressOption_Ccitt3" xml:space="preserve">
+    <value>CCITT3</value>
+  </data>
+  <data name="TiffCompressOption_Ccitt4" xml:space="preserve">
+    <value>CCITT4</value>
+  </data>
+  <data name="TiffCompressOption_Default" xml:space="preserve">
+    <value>(Výchozí)</value>
+  </data>
+  <data name="TiffCompressOption_Lzw" xml:space="preserve">
+    <value>LZW</value>
+  </data>
+  <data name="TiffCompressOption_None" xml:space="preserve">
+    <value>Nic</value>
+  </data>
+  <data name="TiffCompressOption_Rle" xml:space="preserve">
+    <value>RLE</value>
+  </data>
+  <data name="TiffCompressOption_Zip" xml:space="preserve">
+    <value>Zip</value>
+  </data>
+  <data name="ValueMustBeBetween" xml:space="preserve">
+    <value>Hodnota musí být mezi {0} a {1}.</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Verze</value>
   </data>
 </root>
