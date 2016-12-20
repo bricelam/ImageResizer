@@ -177,7 +177,9 @@ namespace ImageResizer.Models
                 originalFileName,
                 _settings.SelectedSize.Name,
                 _settings.SelectedSize.Width,
-                _settings.SelectedSize.Height);
+                _settings.SelectedSize.Height,
+                encoder.Frames[0].PixelWidth,
+                encoder.Frames[0].PixelHeight);
             var path = Path.Combine(directory, fileName + extension);
             var uniquifier = 1;
             while (File.Exists(path))

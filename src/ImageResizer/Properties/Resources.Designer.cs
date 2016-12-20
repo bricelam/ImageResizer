@@ -142,7 +142,7 @@ namespace ImageResizer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Width.
+        ///   Looks up a localized string similar to Selected width.
         /// </summary>
         public static string Advanced_FileNameToken3 {
             get {
@@ -151,11 +151,29 @@ namespace ImageResizer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Height.
+        ///   Looks up a localized string similar to Selected height.
         /// </summary>
         public static string Advanced_FileNameToken4 {
             get {
                 return ResourceManager.GetString("Advanced_FileNameToken4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Actual width (pixels).
+        /// </summary>
+        public static string Advanced_FileNameToken5 {
+            get {
+                return ResourceManager.GetString("Advanced_FileNameToken5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Actual height (pixels).
+        /// </summary>
+        public static string Advanced_FileNameToken6 {
+            get {
+                return ResourceManager.GetString("Advanced_FileNameToken6", resourceCulture);
             }
         }
         

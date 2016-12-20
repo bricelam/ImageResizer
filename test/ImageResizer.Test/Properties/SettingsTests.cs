@@ -95,11 +95,11 @@ namespace ImageResizer.Properties
         [Fact]
         public void FileNameFormat_works()
         {
-            var settings = new Settings { FileName = "{T}%1e%2s%3t%4%5" };
+            var settings = new Settings { FileName = "{T}%1e%2s%3t%4%5%6%7" };
 
             var result = settings.FileNameFormat;
 
-            Assert.Equal("{{T}}{0}e{1}s{2}t{3}%5", result);
+            Assert.Equal("{{T}}{0}e{1}s{2}t{3}{4}{5}%7", result);
         }
 
         [Theory]

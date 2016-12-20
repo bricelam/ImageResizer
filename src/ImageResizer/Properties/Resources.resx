@@ -145,10 +145,16 @@
     <value>Size name</value>
   </data>
   <data name="Advanced_FileNameToken3" xml:space="preserve">
-    <value>Width</value>
+    <value>Selected width</value>
   </data>
   <data name="Advanced_FileNameToken4" xml:space="preserve">
-    <value>Height</value>
+    <value>Selected height</value>
+  </data>
+  <data name="Advanced_FileNameToken5" xml:space="preserve">
+    <value>Actual width (pixels)</value>
+  </data>
+  <data name="Advanced_FileNameToken6" xml:space="preserve">
+    <value>Actual height (pixels)</value>
   </data>
   <data name="Advanced_FileNameTokens" xml:space="preserve">
     <value>The following parameters can be used.</value>

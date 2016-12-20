@@ -27,7 +27,9 @@ namespace ImageResizer.Properties
                     .Replace("%1", "{0}")
                     .Replace("%2", "{1}")
                     .Replace("%3", "{2}")
-                    .Replace("%4", "{3}"));
+                    .Replace("%4", "{3}")
+                    .Replace("%5", "{4}")
+                    .Replace("%6", "{5}"));
 
         public ResizeSize SelectedSize
         {

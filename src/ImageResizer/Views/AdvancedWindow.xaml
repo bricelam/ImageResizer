@@ -194,6 +194,12 @@
                         <LineBreak />
                         <Run>%4 -</Run>
                         <Run Text="{x:Static p:Resources.Advanced_FileNameToken4}"/>
+                        <LineBreak />
+                        <Run>%5 -</Run>
+                        <Run Text="{x:Static p:Resources.Advanced_FileNameToken5}"/>
+                        <LineBreak />
+                        <Run>%6 -</Run>
+                        <Run Text="{x:Static p:Resources.Advanced_FileNameToken6}"/>
                     </TextBlock>
                     <Grid Margin="0,7,0,0">
                         <Grid.ColumnDefinitions>
