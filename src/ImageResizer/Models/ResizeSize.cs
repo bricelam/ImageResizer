@@ -16,44 +16,42 @@ namespace ImageResizer.Models
         ResizeUnit _unit = ResizeUnit.Pixel;
 
         static ResizeSize()
-        {
-            _tokens = new Dictionary<string, string>
+            => _tokens = new Dictionary<string, string>
             {
                 ["$small$"] = Resources.Small,
                 ["$medium$"] = Resources.Medium,
                 ["$large$"] = Resources.Large,
                 ["$phone$"] = Resources.Phone
             };
-        }
 
         public virtual string Name
         {
-            get { return _name; }
-            set { Set(nameof(Name), ref _name, ReplaceTokens(value)); }
+            get => _name;
+            set => Set(nameof(Name), ref _name, ReplaceTokens(value));
         }
 
         public ResizeFit Fit
         {
-            get { return _fit; }
-            set { Set(nameof(Fit), ref _fit, value); }
+            get => _fit;
+            set => Set(nameof(Fit), ref _fit, value);
         }
 
         public double Width
         {
-            get { return _width; }
-            set { Set(nameof(Width), ref _width, value); }
+            get => _width;
+            set => Set(nameof(Width), ref _width, value);
         }
 
         public double Height
         {
-            get { return _height; }
-            set { Set(nameof(Height), ref _height, value); }
+            get => _height;
+            set => Set(nameof(Height), ref _height, value);
         }
 
         public ResizeUnit Unit
         {
-            get { return _unit; }
-            set { Set(nameof(Unit), ref _unit, value); }
+            get => _unit;
+            set => Set(nameof(Unit), ref _unit, value);
         }
 
         public double GetPixelWidth(int originalWidth, double dpi)
@@ -63,13 +61,9 @@ namespace ImageResizer.Models
             => ConvertToPixels(Height, Unit, originalHeight, dpi);
 
         string ReplaceTokens(string text)
-        {
-            string result;
-
-            return (text != null && _tokens.TryGetValue(text, out result))
+            => (text != null && _tokens.TryGetValue(text, out var result))
                 ? result
                 : text;
-        }
 
         double ConvertToPixels(double value, ResizeUnit unit, int originalValue, double dpi)
         {

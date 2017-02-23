@@ -1,16 +1,21 @@
-﻿<Application xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<Application x:Class="ImageResizer.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:m="clr-namespace:ImageResizer.Models"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             xmlns:v="clr-namespace:ImageResizer.Views"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="ImageResizer.App">
+             xmlns:v="clr-namespace:ImageResizer.Views">
+
     <Application.Resources>
-        <ObjectDataProvider x:Key="ResizeFitValues" ObjectType="sys:Enum" MethodName="GetValues">
+        <ObjectDataProvider x:Key="ResizeFitValues"
+                            MethodName="GetValues"
+                            ObjectType="sys:Enum">
             <ObjectDataProvider.MethodParameters>
                 <x:Type Type="{x:Type m:ResizeFit}"/>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
-        <ObjectDataProvider x:Key="ResizeUnitValues" ObjectType="sys:Enum" MethodName="GetValues">
+        <ObjectDataProvider x:Key="ResizeUnitValues"
+                            MethodName="GetValues"
+                            ObjectType="sys:Enum">
             <ObjectDataProvider.MethodParameters>
                 <x:Type Type="{x:Type m:ResizeUnit}"/>
             </ObjectDataProvider.MethodParameters>
@@ -22,4 +27,5 @@
             <Setter Property="Foreground" Value="#039"/>
         </Style>
     </Application.Resources>
+
 </Application>

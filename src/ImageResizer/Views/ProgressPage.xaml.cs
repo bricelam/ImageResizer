@@ -5,8 +5,6 @@ namespace ImageResizer.Views
     public partial class ProgressPage : UserControl
     {
         public ProgressPage()
-        {
-            InitializeComponent();
-        }
+            => InitializeComponent();
     }
 }

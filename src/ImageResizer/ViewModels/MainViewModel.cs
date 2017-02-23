@@ -27,14 +27,14 @@ namespace ImageResizer.ViewModels
 
         public object CurrentPage
         {
-            get { return _currentPage; }
-            set { Set(nameof(CurrentPage), ref _currentPage, value); }
+            get => _currentPage;
+            set => Set(nameof(CurrentPage), ref _currentPage, value);
         }
 
         public double Progress
         {
-            get { return _progress; }
-            set { Set(nameof(Progress), ref _progress, value); }
+            get => _progress;
+            set => Set(nameof(Progress), ref _progress, value);
         }
 
         public void Load(IMainView view)

@@ -13,9 +13,7 @@ namespace ImageResizer.Properties
         string _fileNameFormat;
 
         public Settings()
-        {
-            AllSizes = new AllSizesCollection(this);
-        }
+            => AllSizes = new AllSizesCollection(this);
 
         public IEnumerable<ResizeSize> AllSizes { get; }
 
@@ -33,13 +31,10 @@ namespace ImageResizer.Properties
 
         public ResizeSize SelectedSize
         {
-            get
-            {
-                return SelectedSizeIndex >= 0 && SelectedSizeIndex < Sizes.Count
+            get => SelectedSizeIndex >= 0 && SelectedSizeIndex < Sizes.Count
                     ? Sizes[SelectedSizeIndex]
                     : CustomSize;
-            }
-            set { throw new NotImplementedException(); }
+            set => throw new NotImplementedException();
         }
 
         string IDataErrorInfo.Error
@@ -148,9 +143,7 @@ namespace ImageResizer.Properties
                 int _index = -1;
 
                 public AllSizesEnumerator(AllSizesCollection list)
-                {
-                    _list = list;
-                }
+                    => _list = list;
 
                 public ResizeSize Current
                     => _list[_index];

@@ -37,14 +37,14 @@ namespace ImageResizer.ViewModels
 
         public double Progress
         {
-            get { return _progress; }
-            set { Set(nameof(Progress), ref _progress, value); }
+            get => _progress;
+            set => Set(nameof(Progress), ref _progress, value);
         }
 
         public TimeSpan TimeRemaining
         {
-            get { return _timeRemaining; }
-            set { Set(nameof(TimeRemaining), ref _timeRemaining, value); }
+            get => _timeRemaining;
+            set => Set(nameof(TimeRemaining), ref _timeRemaining, value);
         }
 
         public ICommand StartCommand { get; }

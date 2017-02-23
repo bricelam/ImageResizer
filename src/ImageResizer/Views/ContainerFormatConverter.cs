@@ -9,17 +9,11 @@ namespace ImageResizer.Views
     public class ContainerFormatConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            string result;
-
-            return AdvancedViewModel.EncoderMap.TryGetValue((Guid)value, out result)
+            => AdvancedViewModel.EncoderMap.TryGetValue((Guid)value, out var result)
                 ? result
                 : value.ToString();
-        }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
+            => throw new NotImplementedException();
     }
 }

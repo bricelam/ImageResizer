@@ -91,27 +91,19 @@ namespace ImageResizer.Models
 
         void ConfigureEncoder(BitmapEncoder encoder)
         {
-            var jpegEncoder = encoder as JpegBitmapEncoder;
-            if (jpegEncoder != null)
+            switch (encoder)
             {
+                case JpegBitmapEncoder jpegEncoder:
+                    jpegEncoder.QualityLevel = MathHelpers.Clamp(_settings.JpegQualityLevel, 1, 100);
+                    break;
 
-                jpegEncoder.QualityLevel = MathHelpers.Clamp(_settings.JpegQualityLevel, 1, 100);
+                case PngBitmapEncoder pngBitmapEncoder:
+                    pngBitmapEncoder.Interlace = _settings.PngInterlaceOption;
+                    break;
 
-                return;
-            }
-
-            var pngBitmapEncoder = encoder as PngBitmapEncoder;
-            if (pngBitmapEncoder != null)
-            {
-                pngBitmapEncoder.Interlace = _settings.PngInterlaceOption;
-
-                return;
-            }
-
-            var tiffEncoder = encoder as TiffBitmapEncoder;
-            if (tiffEncoder != null)
-            {
-                tiffEncoder.Compression = _settings.TiffCompressOption;
+                case TiffBitmapEncoder tiffEncoder:
+                    tiffEncoder.Compression = _settings.TiffCompressOption;
+                    break;
             }
         }
 

@@ -39,7 +39,7 @@ namespace ImageResizer.Models
         [Fact]
         public void Process_executes_in_parallel()
         {
-            var batch = CreateBatch(_ => Thread.Sleep(16));
+            var batch = CreateBatch(_ => Thread.Sleep(50));
             batch.Files.AddRange(
                 Enumerable.Range(0, Environment.ProcessorCount)
                     .Select(i => "Image" + i + ".jpg"));
@@ -48,13 +48,13 @@ namespace ImageResizer.Models
             batch.Process(CancellationToken.None, (_, __) => { });
             stopwatch.Stop();
 
-            Assert.InRange(stopwatch.ElapsedMilliseconds, 16, 31);
+            Assert.InRange(stopwatch.ElapsedMilliseconds, 50, 99);
         }
 
         [Fact]
         public void Process_aggregates_errors()
         {
-            var batch = CreateBatch(file => { throw new Exception("Error: " + file); });
+            var batch = CreateBatch(file => throw new Exception("Error: " + file));
             batch.Files.Add("Image1.jpg");
             batch.Files.Add("Image2.jpg");
 
@@ -82,15 +82,15 @@ namespace ImageResizer.Models
             var batch = CreateBatch(_ => { });
             batch.Files.Add("Image1.jpg");
             batch.Files.Add("Image2.jpg");
-            var calls = new ConcurrentBag<Tuple<int, double>>();
+            var calls = new ConcurrentBag<(int i, double count)>();
 
             batch.Process(
                 CancellationToken.None,
-                (i, count) => calls.Add(Tuple.Create(i, count)));
+                (i, count) => calls.Add((i, count)));
 
             Assert.Equal(2, calls.Count);
-            Assert.True(calls.Any(c => c.Item1 == 1 && c.Item2 == 2));
-            Assert.True(calls.Any(c => c.Item1 == 2 && c.Item2 == 2));
+            Assert.True(calls.Any(c => c.i == 1 && c.count == 2));
+            Assert.True(calls.Any(c => c.i == 2 && c.count == 2));
         }
 
         static ResizeBatch CreateBatch(Action<string> executeAction)

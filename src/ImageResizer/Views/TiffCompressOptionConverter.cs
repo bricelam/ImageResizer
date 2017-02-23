@@ -14,8 +14,6 @@ namespace ImageResizer.Views
                 "TiffCompressOption_" + Enum.GetName(typeof(TiffCompressOption), value));
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
+            => throw new NotImplementedException();
     }
 }
