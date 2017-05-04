@@ -118,7 +118,7 @@ namespace ImageResizer.Models
             {
                 var temp = width;
                 width = height;
-                height = width;
+                height = temp;
             }
 
             if (_settings.ShrinkOnly && (width > originalWidth || height > originalHeight))
