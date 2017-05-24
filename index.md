@@ -13,5 +13,5 @@ Specify a size and any additonal options, then click Resize.
 ![Image Resizer for Windows][2]
 
 
-  [1]: {{ "/images/ContextMenu.png" | prepend: site.baseurl }}
-  [2]: {{ "/images/ImageResizer.png" | prepend: site.baseurl }}
+  [1]: {{ "/images/ContextMenu.png" | relative_url }}
+  [2]: {{ "/images/ImageResizer.png" | relative_url }}
