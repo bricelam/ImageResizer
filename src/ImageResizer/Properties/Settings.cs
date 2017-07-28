@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -34,7 +33,14 @@ namespace ImageResizer.Properties
             get => SelectedSizeIndex >= 0 && SelectedSizeIndex < Sizes.Count
                     ? Sizes[SelectedSizeIndex]
                     : CustomSize;
-            set => throw new NotImplementedException();
+            set
+            {
+                var index = Sizes.IndexOf(value);
+                if (index == -1)
+                    index = Sizes.Count;
+
+                SelectedSizeIndex = index;
+            }
         }
 
         string IDataErrorInfo.Error

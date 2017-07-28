@@ -65,12 +65,12 @@
                         <TextBox Height="23"
                                  Margin="7,0,0,0"
                                  Width="43"
-                                 Text="{Binding Width,Converter={StaticResource AutoDoubleConverter},ValidatesOnExceptions=True}"/>
+                                 Text="{Binding Width,Converter={StaticResource AutoDoubleConverter},ValidatesOnExceptions=True,UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBlock Margin="5,0,0,0" VerticalAlignment="Center">×</TextBlock>
                         <TextBox Height="23"
                                  Margin="5,0,0,0"
                                  Width="43"
-                                 Text="{Binding Height,Converter={StaticResource AutoDoubleConverter},ValidatesOnExceptions=True}"/>
+                                 Text="{Binding Height,Converter={StaticResource AutoDoubleConverter},ValidatesOnExceptions=True,UpdateSourceTrigger=PropertyChanged}"/>
                         <ComboBox Height="23"
                                   Margin="7,0,0,0"
                                   ItemsSource="{Binding Source={StaticResource ResizeUnitValues}}"

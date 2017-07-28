@@ -24,6 +24,7 @@ namespace ImageResizer.ViewModels
             _mainView = mainView;
 
             Settings = settings;
+            settings.CustomSize.PropertyChanged += (sender, e) => settings.SelectedSize = (CustomSize)sender;
 
             ResizeCommand = new RelayCommand(Resize);
             CancelCommand = new RelayCommand(Cancel);
