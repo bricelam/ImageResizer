@@ -145,10 +145,16 @@
     <value>Größen-Name</value>
   </data>
   <data name="Advanced_FileNameToken3" xml:space="preserve">
-    <value>Breite</value>
+    <value>Ausgewählte Breite</value>
   </data>
   <data name="Advanced_FileNameToken4" xml:space="preserve">
-    <value>Höhe</value>
+    <value>Ausgewählte Höhe</value>
+  </data>
+  <data name="Advanced_FileNameToken5" xml:space="preserve">
+    <value>Ursprüngliche Breite (Pixel)</value>
+  </data>
+  <data name="Advanced_FileNameToken6" xml:space="preserve">
+    <value>Ursprüngliche Höhe (Pixel)</value>
   </data>
   <data name="Advanced_FileNameTokens" xml:space="preserve">
     <value>Die folgenden Parameter können verwendet werden.</value>
@@ -301,7 +307,7 @@
     <value>Pixel</value>
   </data>
   <data name="Results_Close" xml:space="preserve">
-    <value>_Schließen</value>
+    <value>Schließen</value>
   </data>
   <data name="Results_MainInstruction" xml:space="preserve">
     <value>Kann die Größe des folgenden Bilds nicht ändern</value>

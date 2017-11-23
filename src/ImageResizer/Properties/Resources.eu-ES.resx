@@ -145,10 +145,16 @@
     <value>Tamaina izena</value>
   </data>
   <data name="Advanced_FileNameToken3" xml:space="preserve">
-    <value>Zabalera</value>
+    <value>Aukeratutako zabalera</value>
   </data>
   <data name="Advanced_FileNameToken4" xml:space="preserve">
-    <value>Altuera</value>
+    <value>Hautatutako altuera</value>
+  </data>
+  <data name="Advanced_FileNameToken5" xml:space="preserve">
+    <value>Benetako zabalera (pixelak)</value>
+  </data>
+  <data name="Advanced_FileNameToken6" xml:space="preserve">
+    <value>Benetako altuera (pixelak)</value>
   </data>
   <data name="Advanced_FileNameTokens" xml:space="preserve">
     <value>Parametro hauek erabilgarri.</value>

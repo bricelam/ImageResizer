@@ -118,109 +118,109 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Advanced_About" xml:space="preserve">
-    <value>O programie</value>
+    <value>Om</value>
   </data>
   <data name="Advanced_CreateSize" xml:space="preserve">
-    <value>Utwórz nowy rozmiar</value>
+    <value>Lag ny størrelse</value>
   </data>
   <data name="Advanced_DeleteSize" xml:space="preserve">
-    <value>Skasuj</value>
+    <value>Slett</value>
   </data>
   <data name="Advanced_Encoding" xml:space="preserve">
-    <value>Kodowanie</value>
+    <value>Koding</value>
   </data>
   <data name="Advanced_FallbackEncoder" xml:space="preserve">
-    <value>Usterka kodera:</value>
+    <value>_Fallback encoder:</value>
   </data>
   <data name="Advanced_File" xml:space="preserve">
-    <value>Plik</value>
+    <value>Fil</value>
   </data>
   <data name="Advanced_FileName" xml:space="preserve">
-    <value>Nazwa pliku:</value>
+    <value>_Filnavn:</value>
   </data>
   <data name="Advanced_FileNameToken1" xml:space="preserve">
-    <value>Oryginalna nazwa pliku</value>
+    <value>Originalt filnavn</value>
   </data>
   <data name="Advanced_FileNameToken2" xml:space="preserve">
-    <value>Nazwa rozmiaru</value>
+    <value>Navn på størrelse</value>
   </data>
   <data name="Advanced_FileNameToken3" xml:space="preserve">
-    <value>Wybierz szerokość</value>
+    <value>Valgte bredde</value>
   </data>
   <data name="Advanced_FileNameToken4" xml:space="preserve">
-    <value>Wybierz wysokość</value>
+    <value>Valgte høyde</value>
   </data>
   <data name="Advanced_FileNameToken5" xml:space="preserve">
-    <value>Obecna szerokość (w pikslach)</value>
+    <value>Faktisk bredde (piksler)</value>
   </data>
   <data name="Advanced_FileNameToken6" xml:space="preserve">
-    <value>Obecna wysokość (w pikslach)</value>
+    <value>Faktisk høyde (piksler)</value>
   </data>
   <data name="Advanced_FileNameTokens" xml:space="preserve">
-    <value>Następujące parametry mogą zostać użyte.</value>
+    <value>Følgende parametre kan brukes.</value>
   </data>
   <data name="Advanced_JpegQualityLevel" xml:space="preserve">
-    <value>Stopień jakości JPG</value>
+    <value>_JPEG kvalitetsnivå</value>
   </data>
   <data name="Advanced_KeepDateModified" xml:space="preserve">
-    <value>Użyj oryginalnej daty modyfikacji</value>
+    <value>_Bruk original endringsdato</value>
   </data>
   <data name="Advanced_PngInterlaceOption" xml:space="preserve">
-    <value>Przeplot PNG:</value>
+    <value>_PNG interlasering:</value>
   </data>
   <data name="Advanced_Sizes" xml:space="preserve">
-    <value>Rozmiary</value>
+    <value>Størrelser</value>
   </data>
   <data name="Advanced_TiffCompressOption" xml:space="preserve">
-    <value>Kompresja TIFF:</value>
+    <value>_TIFF komprimering</value>
   </data>
   <data name="Advanced_Title" xml:space="preserve">
-    <value>Ustawienia zaawansowane</value>
+    <value>Avanserte alternativer</value>
   </data>
   <data name="AllFilesFilter" xml:space="preserve">
-    <value>Wszystkie pliki</value>
+    <value>Alle filer</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Anuluj</value>
+    <value>Avbryt</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>© 2017 Brice Lambson. Wszystkie prawa zastrzeżone.</value>
+    <value>© 2017 Brice Lambson. Alle rettigheter er reservert</value>
   </data>
   <data name="ImageResizer" xml:space="preserve">
-    <value>Image Resizer dla Windows</value>
+    <value>Image Resizer for Windows</value>
   </data>
   <data name="Input_Auto" xml:space="preserve">
     <value>(auto)</value>
   </data>
   <data name="Input_Content" xml:space="preserve">
-    <value>Wybierz rozmiar</value>
+    <value>_Velg en størrelse.</value>
   </data>
   <data name="Input_Custom" xml:space="preserve">
-    <value>Niestandardowy</value>
+    <value>Tilpasset</value>
   </data>
   <data name="Input_IgnoreOrientation" xml:space="preserve">
-    <value>Ignoruj orientację</value>
+    <value>Ign_orer bildes retning</value>
   </data>
   <data name="Input_MainInstruction" xml:space="preserve">
-    <value>Zmień rozmiar obrazów</value>
+    <value>Endre bildestørrelse</value>
   </data>
   <data name="Input_Replace" xml:space="preserve">
-    <value>Zmień rozmiar obrazów (nie twórz kopii)</value>
+    <value>Endr_e originalbildet (ikke lag kopi)</value>
   </data>
   <data name="Input_Resize" xml:space="preserve">
-    <value>Zmień rozmiar</value>
+    <value>_Endre størrelse</value>
   </data>
   <data name="Input_ShowAdvanced" xml:space="preserve">
-    <value>Ustawienia zaawansowane...</value>
+    <value>Avanserte alternativer...</value>
   </data>
   <data name="Input_ShrinkOnly" xml:space="preserve">
-    <value>Tylko zmniejsz rozmiar</value>
+    <value>_Lag bildene mindre, men ikke større</value>
   </data>
   <data name="Large" xml:space="preserve">
-    <value>Duży</value>
+    <value>Stor</value>
   </data>
   <data name="Medium" xml:space="preserve">
-    <value>Średni</value>
+    <value>Medium</value>
   </data>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
@@ -229,106 +229,106 @@
     <value>Telefon</value>
   </data>
   <data name="PictureFilter" xml:space="preserve">
-    <value>Wszystkie obrazy</value>
+    <value>Alle bildefiler</value>
   </data>
   <data name="PngInterlaceOption_Default" xml:space="preserve">
-    <value>(Domyślne)</value>
+    <value>(Standard)</value>
   </data>
   <data name="PngInterlaceOption_Off" xml:space="preserve">
-    <value>Wyłączone</value>
+    <value>Av</value>
   </data>
   <data name="PngInterlaceOption_On" xml:space="preserve">
-    <value>Włączone</value>
+    <value>På</value>
   </data>
   <data name="Progress_MainInstruction" xml:space="preserve">
-    <value>Zmieniam rozmiar zdjęć...</value>
+    <value>Endrer størrelse på bildene...</value>
   </data>
   <data name="Progress_Stop" xml:space="preserve">
-    <value>Zatrzymaj</value>
+    <value>_Stopp</value>
   </data>
   <data name="Progress_TimeRemaining_HourMinute" xml:space="preserve">
-    <value>Pozostała {0} godzina, {1} minuta</value>
+    <value>Omtrent {0} time, {1} minutt gjenstår.</value>
   </data>
   <data name="Progress_TimeRemaining_HourMinutes" xml:space="preserve">
-    <value>Pozostała {0} godzina, {1} minut</value>
+    <value>Omtrent {0} time, {1} minutter gjenstår.</value>
   </data>
   <data name="Progress_TimeRemaining_HoursMinute" xml:space="preserve">
-    <value>Pozostały {0} godziny, {1} minuta</value>
+    <value>Omtrent {0} timer, {1} minutt gjenstår.</value>
   </data>
   <data name="Progress_TimeRemaining_HoursMinutes" xml:space="preserve">
-    <value>Pozostały {0} godziny, {1} minuty</value>
+    <value>Omtrent {0} timer, {1} minutter gjenstår.</value>
   </data>
   <data name="Progress_TimeRemaining_MinuteSecond" xml:space="preserve">
-    <value>Pozostała {0} minuta, {2} sekunda</value>
+    <value>Omtrent {0} minutt, {1} sekund gjenstår.</value>
   </data>
   <data name="Progress_TimeRemaining_MinuteSeconds" xml:space="preserve">
-    <value>Pozostała {0} minuta, {2} sekundy</value>
+    <value>Omtrent {0} minutt, {1} sekunder gjenstår.</value>
   </data>
   <data name="Progress_TimeRemaining_MinutesSecond" xml:space="preserve">
-    <value>Pozostały {0} minuty, {2} sekunda</value>
+    <value>Omtrent {0} minutter, {1} sekund gjenstår.</value>
   </data>
   <data name="Progress_TimeRemaining_MinutesSeconds" xml:space="preserve">
-    <value>Pozostały {0} minuty, {2} sekundy</value>
+    <value>Omtrent {0} minutter, {1} sekunder gjenstår.</value>
   </data>
   <data name="Progress_TimeRemaining_Second" xml:space="preserve">
-    <value>Pozostała {2} sekunda</value>
+    <value>Omtrent {2} sekund gjenstår.</value>
   </data>
   <data name="Progress_TimeRemaining_Seconds" xml:space="preserve">
-    <value>Pozostały {2} sekundy</value>
+    <value>Omtrent {2} sekunder gjenstår.</value>
   </data>
   <data name="ResizeFit_Fill" xml:space="preserve">
-    <value>Wypełnienie</value>
+    <value>Fyll</value>
   </data>
   <data name="ResizeFit_Fill_ThirdPersonSingular" xml:space="preserve">
-    <value>wypełnia</value>
+    <value>fyller</value>
   </data>
   <data name="ResizeFit_Fit" xml:space="preserve">
-    <value>Dopasowanie</value>
+    <value>Passer</value>
   </data>
   <data name="ResizeFit_Fit_ThirdPersonSingular" xml:space="preserve">
-    <value>Dopasuj do</value>
+    <value>passer innenfor</value>
   </data>
   <data name="ResizeFit_Stretch" xml:space="preserve">
-    <value>Rozciągnij</value>
+    <value>Stekk</value>
   </data>
   <data name="ResizeFit_Stretch_ThirdPersonSingular" xml:space="preserve">
-    <value>Rozciągnij do</value>
+    <value>strekkes til</value>
   </data>
   <data name="ResizeUnit_Centimeter" xml:space="preserve">
-    <value>Centymetry</value>
+    <value>Centimeter</value>
   </data>
   <data name="ResizeUnit_Inch" xml:space="preserve">
-    <value>Cale</value>
+    <value>Tommer</value>
   </data>
   <data name="ResizeUnit_Percent" xml:space="preserve">
-    <value>Procent</value>
+    <value>Prosent</value>
   </data>
   <data name="ResizeUnit_Pixel" xml:space="preserve">
-    <value>Piksele</value>
+    <value>Piksler</value>
   </data>
   <data name="Results_Close" xml:space="preserve">
-    <value>Zamknij</value>
+    <value>Lukk</value>
   </data>
   <data name="Results_MainInstruction" xml:space="preserve">
-    <value>Nie można zmienić rozmiaru zdjęć</value>
+    <value>Kan ikke endre størrelse på følgende bilder</value>
   </data>
   <data name="Small" xml:space="preserve">
-    <value>Mały</value>
+    <value>Liten</value>
   </data>
   <data name="TiffCompressOption_Ccitt3" xml:space="preserve">
-    <value>CCITT3</value>
+    <value>CCIT3</value>
   </data>
   <data name="TiffCompressOption_Ccitt4" xml:space="preserve">
-    <value>CCITT4</value>
+    <value>CCIT4</value>
   </data>
   <data name="TiffCompressOption_Default" xml:space="preserve">
-    <value>(Domyślna)</value>
+    <value>(Standard)</value>
   </data>
   <data name="TiffCompressOption_Lzw" xml:space="preserve">
     <value>LZW</value>
   </data>
   <data name="TiffCompressOption_None" xml:space="preserve">
-    <value>Brak</value>
+    <value>Ingen</value>
   </data>
   <data name="TiffCompressOption_Rle" xml:space="preserve">
     <value>RLE</value>
@@ -337,9 +337,9 @@
     <value>Zip</value>
   </data>
   <data name="ValueMustBeBetween" xml:space="preserve">
-    <value>Wartość musi być pomiędzy '{0}' i '{1}'.</value>
+    <value>Verdi må være mellom '{0}' og '{1}'.</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Wersja</value>
+    <value>Versjon</value>
   </data>
 </root>

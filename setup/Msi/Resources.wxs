@@ -2,10 +2,12 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Fragment>
     <DirectoryRef Id="INSTALLFOLDER">
-<?foreach Language in cs;de;es;eu-ES;fr;it;pl?>
+<?foreach Language in cs;de;es;eu-ES;fr;hu;it;nb-NO;nl;pl;tr?>
+  <!-- Ids can't contain hyphens -->
   <?if $(var.Language) = eu-ES?>
-    <!-- Ids can't contain hyphens -->
     <?define IdSafeLanguage = eu_ES?>
+  <?elseif $(var.Language) = nb-NO?>
+    <?define IdSafeLanguage = nb_NO?>
   <?else?>
     <?define IdSafeLanguage = $(var.Language)?>
   <?endif?>
@@ -16,9 +18,11 @@
   </Fragment>
   <Fragment>
     <ComponentGroup Id="ResourcesComponents">
-<?foreach Language in cs;de;es;eu-ES;fr;it;pl?>
+<?foreach Language in cs;de;es;eu-ES;fr;hu;it;nb-NO;nl;pl;tr?>
   <?if $(var.Language) = eu-ES?>
     <?define IdSafeLanguage = eu_ES?>
+  <?elseif $(var.Language) = nb-NO?>
+    <?define IdSafeLanguage = nb_NO?>
   <?else?>
     <?define IdSafeLanguage = $(var.Language)?>
   <?endif?>

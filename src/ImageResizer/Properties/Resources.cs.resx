@@ -145,10 +145,16 @@
     <value>Název velikosti</value>
   </data>
   <data name="Advanced_FileNameToken3" xml:space="preserve">
-    <value>Šířka</value>
+    <value>Vyberte šířku</value>
   </data>
   <data name="Advanced_FileNameToken4" xml:space="preserve">
-    <value>Výška</value>
+    <value>Vyberte výšku</value>
+  </data>
+  <data name="Advanced_FileNameToken5" xml:space="preserve">
+    <value>Aktuální šířka (v pixelech)</value>
+  </data>
+  <data name="Advanced_FileNameToken6" xml:space="preserve">
+    <value>Aktuální výška (v pixelech)</value>
   </data>
   <data name="Advanced_FileNameTokens" xml:space="preserve">
     <value>Použity mohou být následující parametry.</value>

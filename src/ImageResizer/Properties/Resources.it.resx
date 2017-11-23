@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Advanced_About" xml:space="preserve">
-    <value>Circa</value>
+    <value>Informazioni su...</value>
   </data>
   <data name="Advanced_CreateSize" xml:space="preserve">
-    <value>Crea una nuova misura</value>
+    <value>Crea una nuova dimensione</value>
   </data>
   <data name="Advanced_DeleteSize" xml:space="preserve">
-    <value>Cancella</value>
+    <value>Elimina</value>
   </data>
   <data name="Advanced_Encoding" xml:space="preserve">
     <value>Codifica</value>
@@ -142,13 +142,19 @@
     <value>Nome file originale</value>
   </data>
   <data name="Advanced_FileNameToken2" xml:space="preserve">
-    <value>Nome misura</value>
+    <value>Nome dimensione</value>
   </data>
   <data name="Advanced_FileNameToken3" xml:space="preserve">
-    <value>Larghezza</value>
+    <value>Larghezza selezionata</value>
   </data>
   <data name="Advanced_FileNameToken4" xml:space="preserve">
-    <value>Altezza</value>
+    <value>Altezza selezionata</value>
+  </data>
+  <data name="Advanced_FileNameToken5" xml:space="preserve">
+    <value>Larghezza attuale (pixel)</value>
+  </data>
+  <data name="Advanced_FileNameToken6" xml:space="preserve">
+    <value>Altezza attuale (pixel)</value>
   </data>
   <data name="Advanced_FileNameTokens" xml:space="preserve">
     <value>Possono essere usati i seguenti parametri.</value>
@@ -163,7 +169,7 @@
     <value>_Interlacciamento PNG:</value>
   </data>
   <data name="Advanced_Sizes" xml:space="preserve">
-    <value>Misure</value>
+    <value>Dimensioni</value>
   </data>
   <data name="Advanced_TiffCompressOption" xml:space="preserve">
     <value>_Compressione TIFF:</value>
@@ -187,19 +193,19 @@
     <value>(auto)</value>
   </data>
   <data name="Input_Content" xml:space="preserve">
-    <value>_Scegli una misura.</value>
+    <value>_Scegli una dimensione.</value>
   </data>
   <data name="Input_Custom" xml:space="preserve">
     <value>A scelta</value>
   </data>
   <data name="Input_IgnoreOrientation" xml:space="preserve">
-    <value>Ignora l'orientamento delle foto</value>
+    <value>Ignora l'orientamento delle immagini</value>
   </data>
   <data name="Input_MainInstruction" xml:space="preserve">
     <value>Ridimensiona le tue immagini</value>
   </data>
   <data name="Input_Replace" xml:space="preserve">
-    <value>Cambia la grandezza delle foto originali (non creare copie)</value>
+    <value>Ridimensiona le foto originali (non creare copie)</value>
   </data>
   <data name="Input_Resize" xml:space="preserve">
     <value>Ridimensiona</value>
@@ -241,34 +247,34 @@
     <value>Stop</value>
   </data>
   <data name="Progress_TimeRemaining_HourMinute" xml:space="preserve">
-    <value>Circa {0} ora, {1} minuto rimasti.</value>
+    <value>Circa {0} ora, {1} minuto rimanenti.</value>
   </data>
   <data name="Progress_TimeRemaining_HourMinutes" xml:space="preserve">
-    <value>Circa {0} ora, {1} minuti rimasti.</value>
+    <value>Circa {0} ora, {1} minuti rimanenti.</value>
   </data>
   <data name="Progress_TimeRemaining_HoursMinute" xml:space="preserve">
-    <value>Circa {0} ore, {1} minuto rimasti.</value>
+    <value>Circa {0} ore, {1} minuto rimanenti.</value>
   </data>
   <data name="Progress_TimeRemaining_HoursMinutes" xml:space="preserve">
-    <value>Circa {0} ore, {1} minuti rimasti.</value>
+    <value>Circa {0} ore, {1} minuti rimanenti.</value>
   </data>
   <data name="Progress_TimeRemaining_MinuteSecond" xml:space="preserve">
-    <value>Circa {1} minuto, {2} secondo rimasti.</value>
+    <value>Circa {1} minuto, {2} secondo rimanenti.</value>
   </data>
   <data name="Progress_TimeRemaining_MinuteSeconds" xml:space="preserve">
-    <value>Circa {1} minuto, {2} secondi rimasti.</value>
+    <value>Circa {1} minuto, {2} secondi rimanenti.</value>
   </data>
   <data name="Progress_TimeRemaining_MinutesSecond" xml:space="preserve">
-    <value>Circa {1} minuti, {2} secondo rimasti.</value>
+    <value>Circa {1} minuti, {2} secondo rimanenti.</value>
   </data>
   <data name="Progress_TimeRemaining_MinutesSeconds" xml:space="preserve">
-    <value>Circa {1} minuti, {2} secondi rimasti.</value>
+    <value>Circa {1} minuti, {2} secondi rimanenti.</value>
   </data>
   <data name="Progress_TimeRemaining_Second" xml:space="preserve">
-    <value>Circa {2} secondo rimasto.</value>
+    <value>Circa {2} secondo rimanente.</value>
   </data>
   <data name="Progress_TimeRemaining_Seconds" xml:space="preserve">
-    <value>Circa {2} secondi rimasti.</value>
+    <value>Circa {2} secondi rimanenti.</value>
   </data>
   <data name="ResizeFit_Fill" xml:space="preserve">
     <value>Riempi</value>
@@ -304,7 +310,7 @@
     <value>Chiudi</value>
   </data>
   <data name="Results_MainInstruction" xml:space="preserve">
-    <value>Non si può cambiare la misura delle seguenti foto</value>
+    <value>Impossibile ridimensionare le seguenti immagini</value>
   </data>
   <data name="Small" xml:space="preserve">
     <value>Piccola</value>
@@ -331,7 +337,7 @@
     <value>Zip</value>
   </data>
   <data name="ValueMustBeBetween" xml:space="preserve">
-    <value>Il valore deve essere tra '{0}' e '{1}'.</value>
+    <value>Il valore deve essere compreso tra '{0}' e '{1}'.</value>
   </data>
   <data name="Version" xml:space="preserve">
     <value>Versione</value>
