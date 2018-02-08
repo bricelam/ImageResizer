@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Advanced_About" xml:space="preserve">
+    <value>Despre</value>
+  </data>
+  <data name="Advanced_CreateSize" xml:space="preserve">
+    <value>Creare dimensiune nouă</value>
+  </data>
+  <data name="Advanced_DeleteSize" xml:space="preserve">
+    <value>Ștergere</value>
+  </data>
+  <data name="Advanced_Encoding" xml:space="preserve">
+    <value>Codificare</value>
+  </data>
+  <data name="Advanced_FallbackEncoder" xml:space="preserve">
+    <value>Codificator de _rezervă:</value>
+  </data>
+  <data name="Advanced_File" xml:space="preserve">
+    <value>Fișier</value>
+  </data>
+  <data name="Advanced_FileName" xml:space="preserve">
+    <value>_Nume fișier:</value>
+  </data>
+  <data name="Advanced_FileNameToken1" xml:space="preserve">
+    <value>Nume fișier original</value>
+  </data>
+  <data name="Advanced_FileNameToken2" xml:space="preserve">
+    <value>Nume dimensiune</value>
+  </data>
+  <data name="Advanced_FileNameToken3" xml:space="preserve">
+    <value>Lățime selectată</value>
+  </data>
+  <data name="Advanced_FileNameToken4" xml:space="preserve">
+    <value>Înălțime selectată</value>
+  </data>
+  <data name="Advanced_FileNameToken5" xml:space="preserve">
+    <value>Lățime actuală (pixeli)</value>
+  </data>
+  <data name="Advanced_FileNameToken6" xml:space="preserve">
+    <value>Înălțime actuală (pixeli)</value>
+  </data>
+  <data name="Advanced_FileNameTokens" xml:space="preserve">
+    <value>Pot fi utilizați următorii parametri.</value>
+  </data>
+  <data name="Advanced_JpegQualityLevel" xml:space="preserve">
+    <value>Nivel calitate _JPEG:</value>
+  </data>
+  <data name="Advanced_KeepDateModified" xml:space="preserve">
+    <value>_Utilizare dată modificare originală</value>
+  </data>
+  <data name="Advanced_PngInterlaceOption" xml:space="preserve">
+    <value>Întrețesere _PNG:</value>
+  </data>
+  <data name="Advanced_Sizes" xml:space="preserve">
+    <value>Mărimi</value>
+  </data>
+  <data name="Advanced_TiffCompressOption" xml:space="preserve">
+    <value>Compresie _TIFF:</value>
+  </data>
+  <data name="Advanced_Title" xml:space="preserve">
+    <value>Opțiuni avansate</value>
+  </data>
+  <data name="AllFilesFilter" xml:space="preserve">
+    <value>Toate fișierele</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Anulare</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>© 2017 Brice Lambson. Toate drepturile rezervate.</value>
+  </data>
+  <data name="ImageResizer" xml:space="preserve">
+    <value>Image Resizer pentru Windows</value>
+  </data>
+  <data name="Input_Auto" xml:space="preserve">
+    <value>(auto)</value>
+  </data>
+  <data name="Input_Content" xml:space="preserve">
+    <value>_Selectați mărimea.</value>
+  </data>
+  <data name="Input_Custom" xml:space="preserve">
+    <value>Personală</value>
+  </data>
+  <data name="Input_IgnoreOrientation" xml:space="preserve">
+    <value>Ign_orare orientare imagine</value>
+  </data>
+  <data name="Input_MainInstruction" xml:space="preserve">
+    <value>Redimensionare imagini</value>
+  </data>
+  <data name="Input_Replace" xml:space="preserve">
+    <value>Modificar_e imagini originale (fără creare dubluri)</value>
+  </data>
+  <data name="Input_Resize" xml:space="preserve">
+    <value>_Redimensionare</value>
+  </data>
+  <data name="Input_ShowAdvanced" xml:space="preserve">
+    <value>Opțiuni avansate...</value>
+  </data>
+  <data name="Input_ShrinkOnly" xml:space="preserve">
+    <value>Doar _micșorare imagini (fără mărire)</value>
+  </data>
+  <data name="Large" xml:space="preserve">
+    <value>Mare</value>
+  </data>
+  <data name="Medium" xml:space="preserve">
+    <value>Medie</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Telefon</value>
+  </data>
+  <data name="PictureFilter" xml:space="preserve">
+    <value>Toate imaginile</value>
+  </data>
+  <data name="PngInterlaceOption_Default" xml:space="preserve">
+    <value>(Implicit)</value>
+  </data>
+  <data name="PngInterlaceOption_Off" xml:space="preserve">
+    <value>Oprit</value>
+  </data>
+  <data name="PngInterlaceOption_On" xml:space="preserve">
+    <value>Pornit</value>
+  </data>
+  <data name="Progress_MainInstruction" xml:space="preserve">
+    <value>Redimensionare imagini...</value>
+  </data>
+  <data name="Progress_Stop" xml:space="preserve">
+    <value>_Stop</value>
+  </data>
+  <data name="Progress_TimeRemaining_HourMinute" xml:space="preserve">
+    <value>Timp rămas aproximativ {0} oră, {1} minut.</value>
+  </data>
+  <data name="Progress_TimeRemaining_HourMinutes" xml:space="preserve">
+    <value>Timp rămas aproximativ {0} oră, {1} minute.</value>
+  </data>
+  <data name="Progress_TimeRemaining_HoursMinute" xml:space="preserve">
+    <value>Timp rămas aproximativ {0} ore, {1} minut.</value>
+  </data>
+  <data name="Progress_TimeRemaining_HoursMinutes" xml:space="preserve">
+    <value>Timp rămas aproximativ {0} ore, {1} minute.</value>
+  </data>
+  <data name="Progress_TimeRemaining_MinuteSecond" xml:space="preserve">
+    <value>Timp rămas aproximativ {1} minut, {2} secundă.</value>
+  </data>
+  <data name="Progress_TimeRemaining_MinuteSeconds" xml:space="preserve">
+    <value>Timp rămas aproximativ {1} minut, {2} secunde.</value>
+  </data>
+  <data name="Progress_TimeRemaining_MinutesSecond" xml:space="preserve">
+    <value>Timp rămas aproximativ {1} minute, {2} secundă.</value>
+  </data>
+  <data name="Progress_TimeRemaining_MinutesSeconds" xml:space="preserve">
+    <value>Timp rămas aproximativ {1} minute, {2} secunde.</value>
+  </data>
+  <data name="Progress_TimeRemaining_Second" xml:space="preserve">
+    <value>Timp rămas aproximativ {2} secundă.</value>
+  </data>
+  <data name="Progress_TimeRemaining_Seconds" xml:space="preserve">
+    <value>Timp rămas aproximativ {2} secunde.</value>
+  </data>
+  <data name="ResizeFit_Fill" xml:space="preserve">
+    <value>Potrivire</value>
+  </data>
+  <data name="ResizeFit_Fill_ThirdPersonSingular" xml:space="preserve">
+    <value>potrivire la</value>
+  </data>
+  <data name="ResizeFit_Fit" xml:space="preserve">
+    <value>Ajustare</value>
+  </data>
+  <data name="ResizeFit_Fit_ThirdPersonSingular" xml:space="preserve">
+    <value>ajustare la</value>
+  </data>
+  <data name="ResizeFit_Stretch" xml:space="preserve">
+    <value>Extindere</value>
+  </data>
+  <data name="ResizeFit_Stretch_ThirdPersonSingular" xml:space="preserve">
+    <value>extindere la</value>
+  </data>
+  <data name="ResizeUnit_Centimeter" xml:space="preserve">
+    <value>Centimetri</value>
+  </data>
+  <data name="ResizeUnit_Inch" xml:space="preserve">
+    <value>Inci</value>
+  </data>
+  <data name="ResizeUnit_Percent" xml:space="preserve">
+    <value>Procent</value>
+  </data>
+  <data name="ResizeUnit_Pixel" xml:space="preserve">
+    <value>Pixeli</value>
+  </data>
+  <data name="Results_Close" xml:space="preserve">
+    <value>Închidere</value>
+  </data>
+  <data name="Results_MainInstruction" xml:space="preserve">
+    <value>Nu se pot redimensiona următoarele imagini</value>
+  </data>
+  <data name="Small" xml:space="preserve">
+    <value>Mică</value>
+  </data>
+  <data name="TiffCompressOption_Ccitt3" xml:space="preserve">
+    <value>CCITT3</value>
+  </data>
+  <data name="TiffCompressOption_Ccitt4" xml:space="preserve">
+    <value>CCITT4</value>
+  </data>
+  <data name="TiffCompressOption_Default" xml:space="preserve">
+    <value>(Implicit)</value>
+  </data>
+  <data name="TiffCompressOption_Lzw" xml:space="preserve">
+    <value>LZW</value>
+  </data>
+  <data name="TiffCompressOption_None" xml:space="preserve">
+    <value>Fără</value>
+  </data>
+  <data name="TiffCompressOption_Rle" xml:space="preserve">
+    <value>RLE</value>
+  </data>
+  <data name="TiffCompressOption_Zip" xml:space="preserve">
+    <value>Zip</value>
+  </data>
+  <data name="ValueMustBeBetween" xml:space="preserve">
+    <value>Valoarea trebuie să fie între '{0}' și '{1}'.</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Versiunea</value>
+  </data>
+</root>
