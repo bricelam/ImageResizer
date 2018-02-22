@@ -109,14 +109,19 @@ namespace ImageResizer.Models
             var width = _settings.SelectedSize.GetPixelWidth(originalWidth, source.DpiX);
             var height = _settings.SelectedSize.GetPixelHeight(originalHeight, source.DpiY);
 
-            if (_settings.IgnoreOrientation && originalWidth < originalHeight != (width < height))
+            if (_settings.IgnoreOrientation
+                && !_settings.SelectedSize.HasAuto
+                && _settings.SelectedSize.Unit != ResizeUnit.Percent
+                && originalWidth < originalHeight != (width < height))
             {
                 var temp = width;
                 width = height;
                 height = temp;
             }
 
-            if (_settings.ShrinkOnly && (width > originalWidth || height > originalHeight))
+            if (_settings.ShrinkOnly
+                && _settings.SelectedSize.Unit != ResizeUnit.Percent
+                && (width > originalWidth || height > originalHeight))
                 return source;
 
             var scaleX = width / originalWidth;

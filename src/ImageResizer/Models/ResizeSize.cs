@@ -48,6 +48,9 @@ namespace ImageResizer.Models
             set => Set(nameof(Height), ref _height, value);
         }
 
+        public bool HasAuto
+            => Width == 0 || Height == 0;
+
         public ResizeUnit Unit
         {
             get => _unit;
@@ -58,9 +61,15 @@ namespace ImageResizer.Models
             => ConvertToPixels(Width, Unit, originalWidth, dpi);
 
         public double GetPixelHeight(int originalHeight, double dpi)
-            => ConvertToPixels(Height, Unit, originalHeight, dpi);
+            => ConvertToPixels(
+                Fit != ResizeFit.Stretch && Unit == ResizeUnit.Percent
+                    ? Width
+                    : Height,
+                Unit,
+                originalHeight,
+                dpi);
 
-        string ReplaceTokens(string text)
+        static string ReplaceTokens(string text)
             => (text != null && _tokens.TryGetValue(text, out var result))
                 ? result
                 : text;
@@ -83,7 +92,7 @@ namespace ImageResizer.Models
                     return value * dpi;
 
                 case ResizeUnit.Centimeter:
-                    return value * dpi * 2.54;
+                    return value * dpi / 2.54;
 
                 case ResizeUnit.Percent:
                     return value / 100 * originalValue;

@@ -31,7 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\ImageResizer\ImageResizer.csproj">
@@ -46,10 +48,31 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\CustomSizeTests.cs" />
+    <Compile Include="Models\ResizeSizeTests.cs" />
     <Compile Include="Models\ResizeBatchTests.cs" />
+    <Compile Include="Models\ResizeOperationTests.cs" />
     <Compile Include="Properties\SettingsTests.cs" />
     <Compile Include="Test\AssertEx.cs" />
+    <Compile Include="Test\BitmapSourceExtensions.cs" />
+    <Compile Include="Test\TestDirectory.cs" />
     <Compile Include="Views\TimeRemainingConverterTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Test.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Test.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Test.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Test.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestPortrait.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Moq">

@@ -105,7 +105,6 @@
       <TypeLibraryName>$(IntDir)ShellExtensions.tlb</TypeLibraryName>
       <DllDataFileName />
       <ValidateAllParameters>true</ValidateAllParameters>
-      <AdditionalOptions>/target NT60 %(AdditionalOptions)</AdditionalOptions>
     </Midl>
     <ResourceCompile>
       <Culture>0x0409</Culture>
@@ -139,7 +138,6 @@
       <TypeLibraryName>$(IntDir)ShellExtensions.tlb</TypeLibraryName>
       <DllDataFileName />
       <ValidateAllParameters>true</ValidateAllParameters>
-      <AdditionalOptions>/target NT60 %(AdditionalOptions)</AdditionalOptions>
     </Midl>
     <ResourceCompile>
       <Culture>0x0409</Culture>
@@ -174,7 +172,6 @@
       <TypeLibraryName>$(IntDir)ShellExtensions.tlb</TypeLibraryName>
       <DllDataFileName />
       <ValidateAllParameters>true</ValidateAllParameters>
-      <AdditionalOptions>/target NT60 %(AdditionalOptions)</AdditionalOptions>
     </Midl>
     <ResourceCompile>
       <Culture>0x0409</Culture>
@@ -210,7 +207,6 @@
       <TypeLibraryName>$(IntDir)ShellExtensions.tlb</TypeLibraryName>
       <DllDataFileName />
       <ValidateAllParameters>true</ValidateAllParameters>
-      <AdditionalOptions>/target NT60 %(AdditionalOptions)</AdditionalOptions>
     </Midl>
     <ResourceCompile>
       <Culture>0x0409</Culture>
@@ -289,12 +285,8 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
-  <Target Name="SignOutput"
-          Condition=" '$(SignOutput)' == 'True' "
-          AfterTargets="_Link"
-          Inputs="$(TargetPath)"
-          Outputs="$(IntermediateOutputPath)$(MSBuildProjectFile).Signed">          
-    <Exec Command='$(SignToolCommand) "$(TargetPath)"' />
+  <Target Name="SignOutput" Condition=" '$(SignOutput)' == 'True' " AfterTargets="_Link" Inputs="$(TargetPath)" Outputs="$(IntermediateOutputPath)$(MSBuildProjectFile).Signed">
+    <Exec Command="$(SignToolCommand) &quot;$(TargetPath)&quot;" />
     <Touch Files="$(IntermediateOutputPath)$(MSBuildProjectFile).Signed" AlwaysCreate="true" />
   </Target>
 </Project>
