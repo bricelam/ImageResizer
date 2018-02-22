@@ -10,6 +10,7 @@
     <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense">
       <bal:WixStandardBootstrapperApplication LicenseFile="Ms-RL.rtf"
                                               LogoFile="ImageResizer.png"
+                                              ShowFilesInUse="yes"
                                               SuppressOptionsUI="yes" />
     </BootstrapperApplicationRef>
     <Chain>

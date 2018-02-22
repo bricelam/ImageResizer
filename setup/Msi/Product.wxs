@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
   <Product Id="*"
            Language="1033"
            Manufacturer="Brice Lambson"
@@ -7,7 +8,8 @@
            UpgradeCode="71eab0d8-4d33-480f-ada4-3bfbbb23e794"
            Version="3.1.0.0">
     <Package Compressed="yes"
-             InstallScope="perMachine" />
+             InstallScope="perMachine"
+             InstallerVersion="150" />
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <MediaTemplate />
     <PropertyRef Id="NETFRAMEWORK40CLIENT" />
@@ -29,7 +31,9 @@
   <Fragment>
     <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
       <Component Id="ImageResizerComponent">
-        <File Id="ImageResizer" Source="$(var.ImageResizer.TargetPath)" />
+        <File Id="ImageResizer" Source="$(var.ImageResizer.TargetPath)">
+          <netfx:NativeImage Id="ImageResizer" Platform="all" Priority="0" />
+        </File>
         <RegistryValue Root="HKLM" Key="Software\BriceLambson\ImageResizer" Value="[#ImageResizer]" Type="string" />
       </Component>
       <Component Id="ShellExtensionsComponent">
@@ -51,7 +55,10 @@
         <File Source="$(var.ImageResizer.TargetDir)GalaSoft.MvvmLight.dll" />
       </Component>
       <Component Id="InteractivityComponent">
-        <File Source="$(var.ImageResizer.TargetDir)System.Windows.Interactivity.dll" />
+        <File Source="$(var.ImageResizer.TargetDir)System.Windows.Interactivity.dll">
+          <!-- NB: Needed since it's only referenced in XAML. -->
+          <netfx:NativeImage Id="Interactivity" Platform="all" Priority="0"/>
+        </File>
       </Component>
     </ComponentGroup>
   </Fragment>
