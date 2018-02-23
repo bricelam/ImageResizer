@@ -6,7 +6,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using ImageResizer.Properties;
 using ImageResizer.Utilities;
-using Microsoft.VisualBasic.FileIO;
+using Shell32;
 
 namespace ImageResizer.Models
 {
@@ -73,8 +73,14 @@ namespace ImageResizer.Models
 
             if (_settings.Replace)
             {
-                FileSystem.DeleteFile(_file, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
-                File.Move(path, _file);
+                var backup = GetBackupPath();
+
+                File.Replace(path, _file, backup, ignoreMetadataErrors: true);
+
+                var shell = (IShellDispatch)Activator.CreateInstance(
+                    Type.GetTypeFromCLSID(new Guid("13709620-C279-11CE-A49E-444553540000"), throwOnError: true));
+                var recycleBin = shell.NameSpace(ShellSpecialFolderConstants.ssfBITBUCKET);
+                recycleBin.MoveHere(backup);
             }
         }
 
@@ -165,6 +171,20 @@ namespace ImageResizer.Models
             var uniquifier = 1;
             while (File.Exists(path))
                 path = Path.Combine(directory, fileName + " (" + uniquifier++ + ")" + extension);
+
+            return path;
+        }
+
+        string GetBackupPath()
+        {
+            var directory = Path.GetDirectoryName(_file);
+            var fileName = Path.GetFileNameWithoutExtension(_file);
+            var extension = Path.GetExtension(_file);
+
+            var path = Path.Combine(directory, fileName + ".bak" + extension);
+            var uniquifier = 1;
+            while (File.Exists(path))
+                path = Path.Combine(directory, fileName + " (" + uniquifier++ + ")" + ".bak" + extension);
 
             return path;
         }
