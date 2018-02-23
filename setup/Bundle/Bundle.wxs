@@ -17,7 +17,7 @@
       <PackageGroupRef Id="NetFx40ClientWeb"/>
       <MsiPackage SourceFile="$(var.Msi.TargetPath)" />
       <MsiPackage InstallCondition="VersionNT64"
-                  SourceFile="$(var.X64Msi.TargetPath)" />
+                  SourceFile="$(var.SolutionDir)setup\X64Msi\bin\x64\$(var.Configuration)\ImageResizer-x64.msi" />
     </Chain>
   </Bundle>
 </Wix>

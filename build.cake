@@ -4,6 +4,8 @@ var target = Argument<string>("target");
 var configuration = Argument<string>("configuration");
 var signOutput = HasArgument("signOutput");
 
+var platforms = new[] { "x64", "x86" };
+
 Task("Restore")
     .Does(
         () =>
@@ -14,44 +16,35 @@ Task("Build")
     .Does(
         () =>
         {
-            MSBuild(
-                "ImageResizer.sln",
-                new MSBuildSettings
-                {
-                    ArgumentCustomization = args => args.Append("/nologo")
-                }
-                    .SetConfiguration(configuration)
-                    .SetMaxCpuCount(0)
-                    .SetVerbosity(Verbosity.Minimal)
-                    .WithProperty("SignOutput", signOutput.ToString()));
-            MSBuild(
-                "ImageResizer.sln",
-                new MSBuildSettings
-                {
-                    ArgumentCustomization = args => args.Append("/nologo")
-                }
-                    .SetConfiguration(configuration)
-                    .SetMaxCpuCount(0)
-                    .SetVerbosity(Verbosity.Minimal)
-                    .WithProperty("Platform", "x64")
-                    .WithProperty("SignOutput", signOutput.ToString()));
+            foreach (var platform in platforms)
+            {
+                MSBuild(
+                    "ImageResizer.sln",
+                    new MSBuildSettings
+                    {
+                        ArgumentCustomization = args => args.Append("/nologo")
+                    }
+                        .SetConfiguration(configuration)
+                        .SetMaxCpuCount(0)
+                        .SetVerbosity(Verbosity.Minimal)
+                        .WithProperty("Platform", platform)
+                        .WithProperty("SignOutput", signOutput.ToString()));
+            }
         });
 
 Task("Clean")
     .Does(
         () =>
         {
-            MSBuild(
-                "ImageResizer.sln",
-                new MSBuildSettings()
-                    .SetConfiguration(configuration)
-                    .WithTarget("Clean"));
-            MSBuild(
-                "ImageResizer.sln",
-                new MSBuildSettings()
-                    .SetConfiguration(configuration)
-                    .WithProperty("Platform", "x64")
-                    .WithTarget("Clean"));
+            foreach (var platform in platforms)
+            {
+                MSBuild(
+                    "ImageResizer.sln",
+                    new MSBuildSettings()
+                        .SetConfiguration(configuration)
+                        .WithProperty("Platform", platform)
+                        .WithTarget("Clean"));
+            }
         });
 
 Task("Test")

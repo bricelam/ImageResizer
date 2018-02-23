@@ -172,4 +172,13 @@
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="SignOutput"
+          Condition=" '$(SignOutput)' == 'True' "
+          AfterTargets="Build"
+          Inputs="$(TargetPath);@(IntermediateSatelliteAssembliesWithTargetPath)"
+          Outputs="$(IntermediateOutputPath)$(MSBuildProjectFile).Signed">          
+    <Exec Command='$(SignToolCommand) "$(TargetPath)"' />
+    <Exec Command='$(SignToolCommand) "$(TargetDir)%(IntermediateSatelliteAssembliesWithTargetPath.Culture)\$(TargetName).resources.dll"' />
+    <Touch Files="$(IntermediateOutputPath)$(MSBuildProjectFile).Signed" AlwaysCreate="true" />
+  </Target>
 </Project>

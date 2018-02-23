@@ -289,4 +289,12 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <Target Name="SignOutput"
+          Condition=" '$(SignOutput)' == 'True' "
+          AfterTargets="_Link"
+          Inputs="$(TargetPath)"
+          Outputs="$(IntermediateOutputPath)$(MSBuildProjectFile).Signed">          
+    <Exec Command='$(SignToolCommand) "$(TargetPath)"' />
+    <Touch Files="$(IntermediateOutputPath)$(MSBuildProjectFile).Signed" AlwaysCreate="true" />
+  </Target>
 </Project>
