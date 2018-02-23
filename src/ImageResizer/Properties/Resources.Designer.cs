@@ -259,7 +259,7 @@ namespace ImageResizer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to © 2017 Brice Lambson. All rights reserved..
+        ///   Looks up a localized string similar to © 2018 Brice Lambson. All rights reserved..
         /// </summary>
         public static string Copyright {
             get {

@@ -11,7 +11,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Brice Lambson")]
 [assembly: AssemblyProduct("Image Resizer for Windows")]
-[assembly: AssemblyCopyright("© 2017 Brice Lambson. All rights reserved.")]
+[assembly: AssemblyCopyright("© 2018 Brice Lambson. All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -51,6 +51,6 @@ using System.Windows;
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("3.1.0.0")]
-[assembly: AssemblyFileVersion("3.1.0.1")]
+[assembly: AssemblyFileVersion("3.1.0.2")]
 [assembly: AssemblyInformationalVersion("3.1.0")]
 
