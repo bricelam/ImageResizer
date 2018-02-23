@@ -50,17 +50,6 @@ namespace ImageResizer.Models
                     }
                 }
 
-                if (decoder.ColorContexts != null)
-                {
-                    try
-                    {
-                        encoder.ColorContexts = decoder.ColorContexts;
-                    }
-                    catch (InvalidOperationException)
-                    {
-                    }
-                }
-
                 if (decoder.Palette != null)
                     encoder.Palette = decoder.Palette;
 
@@ -71,7 +60,7 @@ namespace ImageResizer.Models
                             Transform(originalFrame),
                             /*thumbnail:*/ null,
                             (BitmapMetadata)originalFrame.Metadata,
-                            originalFrame.ColorContexts));
+                            colorContexts: null));
                 }
 
                 path = GetDestinationPath(encoder);
