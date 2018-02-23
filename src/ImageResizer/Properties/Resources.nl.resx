@@ -121,28 +121,28 @@
     <value>Over</value>
   </data>
   <data name="Advanced_CreateSize" xml:space="preserve">
-    <value>Maak een nieuwe formaat</value>
+    <value>Nieuw afbeeldingsformaat invoeren</value>
   </data>
   <data name="Advanced_DeleteSize" xml:space="preserve">
-    <value>Verwijderen</value>
+    <value>Wissen</value>
   </data>
   <data name="Advanced_Encoding" xml:space="preserve">
     <value>Compressie</value>
   </data>
   <data name="Advanced_FallbackEncoder" xml:space="preserve">
-    <value>Dodge compressie:</value>
+    <value>_Dodge compressie:</value>
   </data>
   <data name="Advanced_File" xml:space="preserve">
     <value>Bestand</value>
   </data>
   <data name="Advanced_FileName" xml:space="preserve">
-    <value>Bestandsnaam:</value>
+    <value>_Bestandsnaam:</value>
   </data>
   <data name="Advanced_FileNameToken1" xml:space="preserve">
-    <value>Origineel bestand</value>
+    <value>Originele bestandsnaam</value>
   </data>
   <data name="Advanced_FileNameToken2" xml:space="preserve">
-    <value>Grootte naam</value>
+    <value>Naam van het formaat</value>
   </data>
   <data name="Advanced_FileNameToken3" xml:space="preserve">
     <value>Geselecteerde breedte</value>
@@ -157,22 +157,22 @@
     <value>Oorspronkelijke hoogte (pixels)</value>
   </data>
   <data name="Advanced_FileNameTokens" xml:space="preserve">
-    <value>De volgende parameters kunnen gebruikt worden.</value>
+    <value>De volgende parameters kunnen worden gebruikt:</value>
   </data>
   <data name="Advanced_JpegQualityLevel" xml:space="preserve">
-    <value>JPEG kwaliteitsniveau:</value>
+    <value>_JPEG kwaliteitsniveau:</value>
   </data>
   <data name="Advanced_KeepDateModified" xml:space="preserve">
-    <value>Gebruik van originele wijzigingsdatum</value>
+    <value>_Gebruik de originele wijzigingsdatum</value>
   </data>
   <data name="Advanced_PngInterlaceOption" xml:space="preserve">
-    <value>PNG interliniëring</value>
+    <value>_PNG interliniëring:</value>
   </data>
   <data name="Advanced_Sizes" xml:space="preserve">
-    <value>Maten</value>
+    <value>Formaten</value>
   </data>
   <data name="Advanced_TiffCompressOption" xml:space="preserve">
-    <value>TIFF compressie:</value>
+    <value>_TIFF compressie:</value>
   </data>
   <data name="Advanced_Title" xml:space="preserve">
     <value>Geavanceerde instellingen</value>
@@ -193,7 +193,7 @@
     <value>(auto)</value>
   </data>
   <data name="Input_Content" xml:space="preserve">
-    <value>Selecteer een afmeting.</value>
+    <value>_Selecteer een formaat.</value>
   </data>
   <data name="Input_Custom" xml:space="preserve">
     <value>Aangepast</value>
@@ -202,19 +202,19 @@
     <value>Negeer de _oriëntering van de afbeelding</value>
   </data>
   <data name="Input_MainInstruction" xml:space="preserve">
-    <value>De grootte van uw afbeeldingen wijzigen</value>
+    <value>Afbeeldingsformaat wijzigen</value>
   </data>
   <data name="Input_Replace" xml:space="preserve">
-    <value>Ände_re de oorspronkelijke afbeeldingen (geen kopieën gemaakt)</value>
+    <value>Wijzig de originele _afbeeldingen (maak geen kopieën)</value>
   </data>
   <data name="Input_Resize" xml:space="preserve">
-    <value>Grootte ände_rn</value>
+    <value>_Wijzigen</value>
   </data>
   <data name="Input_ShowAdvanced" xml:space="preserve">
     <value>Geavanceerde instellingen</value>
   </data>
   <data name="Input_ShrinkOnly" xml:space="preserve">
-    <value>Afbeeldingen kleiner, maar niet groter maken</value>
+    <value>Maak afbeeldingen kleiner, niet groter</value>
   </data>
   <data name="Large" xml:space="preserve">
     <value>Groot</value>
@@ -223,28 +223,28 @@
     <value>Middel</value>
   </data>
   <data name="OK" xml:space="preserve">
-    <value>Oké</value>
+    <value>OK</value>
   </data>
   <data name="Phone" xml:space="preserve">
-    <value>Telefoon</value>
+    <value>Miniatuur</value>
   </data>
   <data name="PictureFilter" xml:space="preserve">
-    <value>Alle foto bestanden</value>
+    <value>Alle afbeeldingsbestanden</value>
   </data>
   <data name="PngInterlaceOption_Default" xml:space="preserve">
     <value>(Standaard)</value>
   </data>
   <data name="PngInterlaceOption_Off" xml:space="preserve">
-    <value>Gedeactiveerd</value>
+    <value>Uit</value>
   </data>
   <data name="PngInterlaceOption_On" xml:space="preserve">
-    <value>Geactiveerd</value>
+    <value>Aan</value>
   </data>
   <data name="Progress_MainInstruction" xml:space="preserve">
-    <value>Formaat van de afbeeldingen wijzigen...</value>
+    <value>Wijzig het formaat van de afbeeldingen...</value>
   </data>
   <data name="Progress_Stop" xml:space="preserve">
-    <value>Stop</value>
+    <value>_Stop</value>
   </data>
   <data name="Progress_TimeRemaining_HourMinute" xml:space="preserve">
     <value>Ongeveer {0} uur en {1} minuut resterend.</value>
@@ -280,19 +280,19 @@
     <value>Uitvullen</value>
   </data>
   <data name="ResizeFit_Fill_ThirdPersonSingular" xml:space="preserve">
-    <value>Uitvullend</value>
+    <value>vult uit</value>
   </data>
   <data name="ResizeFit_Fit" xml:space="preserve">
     <value>Passend</value>
   </data>
   <data name="ResizeFit_Fit_ThirdPersonSingular" xml:space="preserve">
-    <value>Passend binnen</value>
+    <value>past binnen</value>
   </data>
   <data name="ResizeFit_Stretch" xml:space="preserve">
     <value>Uitrekken</value>
   </data>
   <data name="ResizeFit_Stretch_ThirdPersonSingular" xml:space="preserve">
-    <value>Uitrekken naar</value>
+    <value>rekt uit naar</value>
   </data>
   <data name="ResizeUnit_Centimeter" xml:space="preserve">
     <value>Centimeters</value>
@@ -301,7 +301,7 @@
     <value>Inches</value>
   </data>
   <data name="ResizeUnit_Percent" xml:space="preserve">
-    <value>percent</value>
+    <value>Procent</value>
   </data>
   <data name="ResizeUnit_Pixel" xml:space="preserve">
     <value>Pixels</value>
@@ -310,7 +310,7 @@
     <value>Sluiten</value>
   </data>
   <data name="Results_MainInstruction" xml:space="preserve">
-    <value>De afmeting van de volgende afbeeldingen kan niet bewerkt worden.</value>
+    <value>De volgende afbeeldingen kunnen niet worden gewijzigd</value>
   </data>
   <data name="Small" xml:space="preserve">
     <value>Klein</value>
