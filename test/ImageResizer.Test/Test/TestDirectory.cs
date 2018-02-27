@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using Xunit;
 using IOPath = System.IO.Path;
 
@@ -29,7 +31,21 @@ namespace ImageResizer
             => Assert.Single(Files);
 
         public void Dispose()
-            => Directory.Delete(_path, recursive: true);
+        {
+            var stopwatch = Stopwatch.StartNew();
+            while (stopwatch.ElapsedMilliseconds < 30000)
+            {
+                try
+                {
+                    Directory.Delete(_path, recursive: true);
+                    break;
+                }
+                catch
+                {
+                    Thread.Sleep(150);
+                }
+            }
+        }
 
         public static implicit operator string(TestDirectory directory)
             => directory._path;
