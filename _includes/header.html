@@ -7,4 +7,10 @@
     {% assign release = site.github.releases | where:"draft",false | where:"prerelease":false | first %}
     <li><a href="{{ release.assets[0].browser_download_url }}">{{ release.name }} <strong>Download</strong></a></li>
   </ul>
+  {% if (site.github.releases | where:"draft",false | first).prerelease == true %}
+  <ul>
+    {% assign prerelease = site.github.releases | where:"draft",false | first %}
+    <li><a href="{{ prerelease.assets[0].browser_download_url }}">{{ prerelease.name }} <strong>Try Pre-release</strong></a></li>
+  </ul>
+  {% endif %}
 </header>
