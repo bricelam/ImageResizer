@@ -1,4 +1,4 @@
-﻿<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='utf-8'?>
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ImageResizer.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
@@ -60,21 +60,22 @@
           &lt;/ArrayOfResizeSize&gt;
         </Value>
     </Setting>
-    <Setting Name="CustomSize" Type="ImageResizer.Models.CustomSize" Scope="User">
-      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;CustomSize xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;Name&gt;Custom&lt;/Name&gt;
-  &lt;Fit&gt;Fit&lt;/Fit&gt;
-  &lt;Width&gt;1024&lt;/Width&gt;
-  &lt;Height&gt;640&lt;/Height&gt;
-  &lt;Unit&gt;Pixel&lt;/Unit&gt;
-&lt;/CustomSize&gt;</Value>
-    </Setting>
     <Setting Name="KeepDateModified" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="FallbackEncoder" Type="System.Guid" Scope="User">
       <Value Profile="(Default)">19e4a5aa-5662-4fc5-a0c0-1758028e1057</Value>
+    </Setting>
+    <Setting Name="CustomSize" Type="ImageResizer.Models.CustomSize" Scope="User">
+      <Value Profile="(Default)">
+          &lt;CustomSize xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+            &lt;Name&gt;Custom&lt;/Name&gt;
+            &lt;Fit&gt;Fit&lt;/Fit&gt;
+            &lt;Width&gt;1024&lt;/Width&gt;
+            &lt;Height&gt;640&lt;/Height&gt;
+            &lt;Unit&gt;Pixel&lt;/Unit&gt;
+          &lt;/CustomSize&gt;
+        </Value>
     </Setting>
   </Settings>
 </SettingsFile>
