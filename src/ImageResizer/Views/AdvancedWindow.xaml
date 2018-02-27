@@ -68,8 +68,17 @@
                                     <TextBox Grid.Column="2"
                                              Width="43"
                                              Height="23"
-                                             Margin="7,0,0,0"
-                                             Text="{Binding Width,Converter={StaticResource AutoDoubleConverter},ValidatesOnExceptions=True}"/>
+                                             Margin="7,0,0,0">
+                                        <TextBox.Text>
+                                            <Binding Converter="{StaticResource AutoDoubleConverter}"
+                                                     Path="Width"
+                                                     UpdateSourceTrigger="PropertyChanged">
+                                                <Binding.ValidationRules>
+                                                    <local:AutoDoubleValidationRule/>
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </TextBox.Text>
+                                    </TextBox>
                                     <TextBlock Grid.Column="3"
                                                Margin="5,0,0,0"
                                                VerticalAlignment="Center"
@@ -80,8 +89,17 @@
                                              Width="43"
                                              Height="23"
                                              Margin="5,0,0,0"
-                                             Text="{Binding Height,Converter={StaticResource AutoDoubleConverter},ValidatesOnExceptions=True}"
-                                             Visibility="{Binding ShowHeight,Converter={StaticResource BoolValueConverter}}"/>
+                                             Visibility="{Binding ShowHeight,Converter={StaticResource BoolValueConverter}}">
+                                        <TextBox.Text>
+                                            <Binding Converter="{StaticResource AutoDoubleConverter}"
+                                                     Path="Height"
+                                                     UpdateSourceTrigger="PropertyChanged">
+                                                <Binding.ValidationRules>
+                                                    <local:AutoDoubleValidationRule/>
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </TextBox.Text>
+                                    </TextBox>
                                     <ComboBox Grid.Column="5"
                                               Height="23"
                                               Margin="7,0,0,0"

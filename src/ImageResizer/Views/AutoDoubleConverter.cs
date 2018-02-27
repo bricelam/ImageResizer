@@ -23,9 +23,9 @@ namespace ImageResizer.Views
         {
             var text = (string)value;
 
-            return string.IsNullOrEmpty(text)
-                ? 0
-                : double.Parse(text, culture);
+            return !string.IsNullOrEmpty(text)
+                ? double.Parse(text, culture)
+                : 0;
         }
     }
 }
