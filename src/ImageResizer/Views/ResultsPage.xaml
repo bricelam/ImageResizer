@@ -1,7 +1,6 @@
 ﻿<UserControl x:Class="ImageResizer.Views.ResultsPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:ImageResizer.Views"
              xmlns:p="clr-namespace:ImageResizer.Properties"
              MinWidth="350">
 
@@ -9,8 +8,8 @@
         <TextBlock Margin="11,11,11,0"
                    Style="{StaticResource MainInstructionTextBlockStyle}"
                    Text="{x:Static p:Resources.Results_MainInstruction}"/>
-        <ScrollViewer MaxHeight="350"
-                      MaxWidth="363"
+        <ScrollViewer MaxWidth="363"
+                      MaxHeight="350"
                       HorizontalAlignment="Stretch"
                       VerticalScrollBarVisibility="Auto">
             <ItemsControl Margin="11,4,11,0" ItemsSource="{Binding Errors}">

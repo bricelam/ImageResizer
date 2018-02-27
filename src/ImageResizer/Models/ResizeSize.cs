@@ -13,6 +13,7 @@ namespace ImageResizer.Models
         ResizeFit _fit = ResizeFit.Fit;
         double _width;
         double _height;
+        bool _showHeight = true;
         ResizeUnit _unit = ResizeUnit.Pixel;
 
         static ResizeSize()
@@ -33,7 +34,11 @@ namespace ImageResizer.Models
         public ResizeFit Fit
         {
             get => _fit;
-            set => Set(nameof(Fit), ref _fit, value);
+            set
+            {
+                if (Set(nameof(Fit), ref _fit, value))
+                    UpdateShowHeight();
+            }
         }
 
         public double Width
@@ -48,13 +53,20 @@ namespace ImageResizer.Models
             set => Set(nameof(Height), ref _height, value);
         }
 
+        public bool ShowHeight
+            => _showHeight;
+
         public bool HasAuto
             => Width == 0 || Height == 0;
 
         public ResizeUnit Unit
         {
             get => _unit;
-            set => Set(nameof(Unit), ref _unit, value);
+            set
+            {
+                if (Set(nameof(Unit), ref _unit, value))
+                    UpdateShowHeight();
+            }
         }
 
         public double GetPixelWidth(int originalWidth, double dpi)
@@ -73,6 +85,12 @@ namespace ImageResizer.Models
             => (text != null && _tokens.TryGetValue(text, out var result))
                 ? result
                 : text;
+
+        void UpdateShowHeight()
+            => Set(
+                nameof(ShowHeight),
+                ref _showHeight,
+                Fit == ResizeFit.Stretch || Unit != ResizeUnit.Percent);
 
         double ConvertToPixels(double value, ResizeUnit unit, int originalValue, double dpi)
         {

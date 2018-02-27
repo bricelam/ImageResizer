@@ -73,6 +73,7 @@
     <Compile Include="ViewModels\AdvancedViewModel.cs" />
     <Compile Include="ViewModels\InputViewModel.cs" />
     <Compile Include="ViewModels\ITabViewModel.cs" />
+    <Compile Include="Views\BoolValueConverter.cs" />
     <Compile Include="Views\ContainerFormatConverter.cs" />
     <Compile Include="Views\AutoDoubleConverter.cs" />
     <Compile Include="Views\IMainView.cs" />

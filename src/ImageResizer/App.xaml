@@ -22,6 +22,7 @@
         </ObjectDataProvider>
         <v:EnumValueConverter x:Key="EnumValueConverter"/>
         <v:AutoDoubleConverter x:Key="AutoDoubleConverter"/>
+        <v:BoolValueConverter x:Key="BoolValueConverter"/>
         <Style x:Key="MainInstructionTextBlockStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="12pt"/>
             <Setter Property="Foreground" Value="#039"/>

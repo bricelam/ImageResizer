@@ -1,8 +1,6 @@
 ﻿<UserControl x:Class="ImageResizer.Views.InputPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-             xmlns:local="clr-namespace:ImageResizer.Views"
              xmlns:m="clr-namespace:ImageResizer.Models"
              xmlns:p="clr-namespace:ImageResizer.Properties"
              MinWidth="350">
@@ -42,8 +40,8 @@
                         <TextBlock Text="{Binding Fit,Converter={StaticResource EnumValueConverter},ConverterParameter=ThirdPersonSingular}"/>
                         <TextBlock Text=" "/>
                         <TextBlock Text="{Binding Width,Converter={StaticResource AutoDoubleConverter},ConverterParameter=Auto}"/>
-                        <TextBlock Text=" × "/>
-                        <TextBlock Text="{Binding Height,Converter={StaticResource AutoDoubleConverter},ConverterParameter=Auto}"/>
+                        <TextBlock Text=" × " Visibility="{Binding ShowHeight,Converter={StaticResource BoolValueConverter}}"/>
+                        <TextBlock Text="{Binding Height,Converter={StaticResource AutoDoubleConverter},ConverterParameter=Auto}" Visibility="{Binding ShowHeight,Converter={StaticResource BoolValueConverter}}"/>
                         <TextBlock Text=" "/>
                         <TextBlock Text="{Binding Unit,Converter={StaticResource EnumValueConverter},ConverterParameter=ToLower}"/>
                         <TextBlock Text=")"/>
@@ -62,15 +60,20 @@
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
-                        <TextBox Height="23"
+                        <TextBox Width="43"
+                                 Height="23"
                                  Margin="7,0,0,0"
-                                 Width="43"
                                  Text="{Binding Width,Converter={StaticResource AutoDoubleConverter},ValidatesOnExceptions=True,UpdateSourceTrigger=PropertyChanged}"/>
-                        <TextBlock Margin="5,0,0,0" VerticalAlignment="Center">×</TextBlock>
-                        <TextBox Height="23"
+                        <TextBlock Margin="5,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Visibility="{Binding ShowHeight,Converter={StaticResource BoolValueConverter}}">
+                            ×
+                        </TextBlock>
+                        <TextBox Width="43"
+                                 Height="23"
                                  Margin="5,0,0,0"
-                                 Width="43"
-                                 Text="{Binding Height,Converter={StaticResource AutoDoubleConverter},ValidatesOnExceptions=True,UpdateSourceTrigger=PropertyChanged}"/>
+                                 Text="{Binding Height,Converter={StaticResource AutoDoubleConverter},ValidatesOnExceptions=True,UpdateSourceTrigger=PropertyChanged}"
+                                 Visibility="{Binding ShowHeight,Converter={StaticResource BoolValueConverter}}"/>
                         <ComboBox Height="23"
                                   Margin="7,0,0,0"
                                   ItemsSource="{Binding Source={StaticResource ResizeUnitValues}}"
@@ -118,8 +121,8 @@
                         IsDefault="True"/>
                 <Button Grid.Column="2"
                         Height="23"
-                        Margin="7,0,0,0"
                         MinWidth="75"
+                        Margin="7,0,0,0"
                         Command="{Binding CancelCommand}"
                         Content="{x:Static p:Resources.Cancel}"
                         IsCancel="True"/>

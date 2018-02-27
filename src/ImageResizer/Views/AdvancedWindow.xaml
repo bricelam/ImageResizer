@@ -5,9 +5,8 @@
         xmlns:m="clr-namespace:ImageResizer.Models"
         xmlns:p="clr-namespace:ImageResizer.Properties"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
-        xmlns:vm="clr-namespace:ImageResizer.ViewModels"
-        MinHeight="340"
         MinWidth="390"
+        MinHeight="340"
         Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
         Name="_this"
         ResizeMode="NoResize"
@@ -67,20 +66,22 @@
                                         </ComboBox.ItemTemplate>
                                     </ComboBox>
                                     <TextBox Grid.Column="2"
+                                             Width="43"
                                              Height="23"
                                              Margin="7,0,0,0"
-                                             Width="43"
                                              Text="{Binding Width,Converter={StaticResource AutoDoubleConverter},ValidatesOnExceptions=True}"/>
                                     <TextBlock Grid.Column="3"
                                                Margin="5,0,0,0"
-                                               VerticalAlignment="Center">
+                                               VerticalAlignment="Center"
+                                               Visibility="{Binding ShowHeight,Converter={StaticResource BoolValueConverter}}">
                                         ×
                                     </TextBlock>
                                     <TextBox Grid.Column="4"
+                                             Width="43"
                                              Height="23"
                                              Margin="5,0,0,0"
-                                             Width="43"
-                                             Text="{Binding Height,Converter={StaticResource AutoDoubleConverter},ValidatesOnExceptions=True}"/>
+                                             Text="{Binding Height,Converter={StaticResource AutoDoubleConverter},ValidatesOnExceptions=True}"
+                                             Visibility="{Binding ShowHeight,Converter={StaticResource BoolValueConverter}}"/>
                                     <ComboBox Grid.Column="5"
                                               Height="23"
                                               Margin="7,0,0,0"
@@ -140,11 +141,11 @@
                            Content="{x:Static p:Resources.Advanced_JpegQualityLevel}"
                            Padding="0,5,5,0"
                            Target="{Binding ElementName=_jpegQualityLevelTextBox}"/>
-                    <TextBox Grid.Column="1"
-                             Grid.Row="1"
+                    <TextBox Grid.Row="1"
+                             Grid.Column="1"
+                             Width="34"
                              Height="23"
                              Margin="0,7,0,0"
-                             Width="34"
                              HorizontalAlignment="Left"
                              Name="_jpegQualityLevelTextBox"
                              Text="{Binding Settings.JpegQualityLevel,ValidatesOnExceptions=True,ValidatesOnDataErrors=True}"/>
@@ -153,8 +154,8 @@
                            Content="{x:Static p:Resources.Advanced_PngInterlaceOption}"
                            Padding="0,5,5,0"
                            Target="{Binding ElementName=_pngInterlaceComboBox}"/>
-                    <ComboBox Grid.Column="1"
-                              Grid.Row="2"
+                    <ComboBox Grid.Row="2"
+                              Grid.Column="1"
                               Height="23"
                               Margin="0,7,0,0"
                               HorizontalAlignment="Left"
@@ -172,8 +173,8 @@
                            Content="{x:Static p:Resources.Advanced_TiffCompressOption}"
                            Padding="0,5,5,0"
                            Target="{Binding ElementName=_tiffCompressComboBox}"/>
-                    <ComboBox Grid.Column="1"
-                              Grid.Row="3"
+                    <ComboBox Grid.Row="3"
+                              Grid.Column="1"
                               Height="23"
                               Margin="0,7,0,0"
                               HorizontalAlignment="Left"
@@ -265,8 +266,8 @@
                     Content="{x:Static p:Resources.OK}"
                     IsDefault="True"/>
             <Button Height="23"
-                    Margin="7,0,0,0"
                     MinWidth="75"
+                    Margin="7,0,0,0"
                     Content="{x:Static p:Resources.Cancel}"
                     IsCancel="True"/>
         </StackPanel>
