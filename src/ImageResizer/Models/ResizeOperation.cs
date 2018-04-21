@@ -80,7 +80,9 @@ namespace ImageResizer.Models
                 var shell = (IShellDispatch)Activator.CreateInstance(
                     Type.GetTypeFromCLSID(new Guid("13709620-C279-11CE-A49E-444553540000"), throwOnError: true));
                 var recycleBin = shell.NameSpace(ShellSpecialFolderConstants.ssfBITBUCKET);
-                recycleBin.MoveHere(backup);
+                const ushort FOF_SILENT = 0x0004;
+                const ushort FOF_NOCONFIRMATION = 0x0010;
+                recycleBin.MoveHere(backup, FOF_SILENT | FOF_NOCONFIRMATION);
             }
         }
 
