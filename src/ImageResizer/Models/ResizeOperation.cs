@@ -154,7 +154,7 @@ namespace ImageResizer.Models
 
             var supportedExtensions = encoder.CodecInfo.FileExtensions.Split(',');
             var extension = Path.GetExtension(_file);
-            if (!supportedExtensions.Contains(extension))
+            if (!supportedExtensions.Contains(extension, StringComparer.OrdinalIgnoreCase))
             {
                 extension = supportedExtensions.FirstOrDefault();
             }
