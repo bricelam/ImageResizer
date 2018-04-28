@@ -6,7 +6,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using ImageResizer.Properties;
 using ImageResizer.Utilities;
-using Shell32;
+using Microsoft.VisualBasic.FileIO;
 
 namespace ImageResizer.Models
 {
@@ -74,15 +74,8 @@ namespace ImageResizer.Models
             if (_settings.Replace)
             {
                 var backup = GetBackupPath();
-
                 File.Replace(path, _file, backup, ignoreMetadataErrors: true);
-
-                var shell = (IShellDispatch)Activator.CreateInstance(
-                    Type.GetTypeFromCLSID(new Guid("13709620-C279-11CE-A49E-444553540000"), throwOnError: true));
-                var recycleBin = shell.NameSpace(ShellSpecialFolderConstants.ssfBITBUCKET);
-                const ushort FOF_SILENT = 0x0004;
-                const ushort FOF_NOCONFIRMATION = 0x0010;
-                recycleBin.MoveHere(backup, FOF_SILENT | FOF_NOCONFIRMATION);
+                FileSystem.DeleteFile(backup, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
             }
         }
 
