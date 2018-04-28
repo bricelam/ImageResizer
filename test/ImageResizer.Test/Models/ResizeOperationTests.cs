@@ -230,6 +230,48 @@ namespace ImageResizer.Models
         }
 
         [Fact]
+        public void Transform_honors_shrink_only_when_auto_height()
+        {
+            var operation = new ResizeOperation(
+                "Test.png",
+                _directory,
+                Settings(
+                    x =>
+                    {
+                        x.ShrinkOnly = true;
+                        x.SelectedSize.Width = 288;
+                        x.SelectedSize.Height = 0;
+                    }));
+
+            operation.Execute();
+
+            AssertEx.Image(
+                _directory.File(),
+                image => Assert.Equal(192, image.Frames[0].PixelWidth));
+        }
+
+        [Fact]
+        public void Transform_honors_shrink_only_when_auto_width()
+        {
+            var operation = new ResizeOperation(
+                "Test.png",
+                _directory,
+                Settings(
+                    x =>
+                    {
+                        x.ShrinkOnly = true;
+                        x.SelectedSize.Width = 0;
+                        x.SelectedSize.Height = 288;
+                    }));
+
+            operation.Execute();
+
+            AssertEx.Image(
+                _directory.File(),
+                image => Assert.Equal(96, image.Frames[0].PixelHeight));
+        }
+
+        [Fact]
         public void Transform_honors_unit()
         {
             var operation = new ResizeOperation(

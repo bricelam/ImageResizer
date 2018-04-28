@@ -114,11 +114,6 @@ namespace ImageResizer.Models
                 height = temp;
             }
 
-            if (_settings.ShrinkOnly
-                && _settings.SelectedSize.Unit != ResizeUnit.Percent
-                && (width > originalWidth || height > originalHeight))
-                return source;
-
             var scaleX = width / originalWidth;
             var scaleY = height / originalHeight;
 
@@ -132,6 +127,11 @@ namespace ImageResizer.Models
                 scaleX = Math.Max(scaleX, scaleY);
                 scaleY = scaleX;
             }
+
+            if (_settings.ShrinkOnly
+                && _settings.SelectedSize.Unit != ResizeUnit.Percent
+                && (scaleX >= 1 || scaleY >= 1))
+                return source;
 
             var scaledBitmap = new TransformedBitmap(source, new ScaleTransform(scaleX, scaleY));
             if (_settings.SelectedSize.Fit == ResizeFit.Fill
