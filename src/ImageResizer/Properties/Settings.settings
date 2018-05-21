@@ -15,7 +15,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="JpegQualityLevel" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">75</Value>
+      <Value Profile="(Default)">90</Value>
     </Setting>
     <Setting Name="PngInterlaceOption" Type="System.Windows.Media.Imaging.PngInterlaceOption" Scope="User">
       <Value Profile="(Default)">Default</Value>
