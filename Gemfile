@@ -1,4 +1,3 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-gem 'github-pages'
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'github-pages', group: :jekyll_plugins
