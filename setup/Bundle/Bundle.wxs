@@ -6,7 +6,7 @@
           Manufacturer="Brice Lambson"
           Name="Image Resizer for Windows"
           UpgradeCode="89a1bf6f-dddb-4adc-a307-0cc1ef2801bd"
-          Version="3.1.1.0">
+          Version="3.1.2.0">
     <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense">
       <bal:WixStandardBootstrapperApplication LicenseFile="Ms-RL.rtf"
                                               LogoFile="ImageResizer.png"

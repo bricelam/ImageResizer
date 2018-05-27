@@ -6,7 +6,7 @@
            Manufacturer="Brice Lambson"
            Name="Image Resizer for Windows"
            UpgradeCode="71eab0d8-4d33-480f-ada4-3bfbbb23e794"
-           Version="3.1.1.0">
+           Version="3.1.2.0">
     <Package Compressed="yes"
              InstallScope="perMachine"
              InstallerVersion="150" />

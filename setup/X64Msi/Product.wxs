@@ -3,7 +3,7 @@
   <Product Id="*"
            Name="Image Resizer for Windows (64 bit)"
            Language="1033"
-           Version="3.1.1.0"
+           Version="3.1.2.0"
            Manufacturer="Brice Lambson"
            UpgradeCode="c87ed79f-9907-452d-83ab-8bcb932e5415">
     <Package Compressed="yes" InstallScope="perMachine" />
