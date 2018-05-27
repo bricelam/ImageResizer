@@ -121,7 +121,7 @@
     <value>О программе</value>
   </data>
   <data name="Advanced_CreateSize" xml:space="preserve">
-    <value>Новый размер</value>
+    <value>Создать новый размер</value>
   </data>
   <data name="Advanced_DeleteSize" xml:space="preserve">
     <value>Удалить</value>
@@ -151,10 +151,10 @@
     <value>Выбранная высота</value>
   </data>
   <data name="Advanced_FileNameToken5" xml:space="preserve">
-    <value>Текущая ширина (пиксели)</value>
+    <value>Текущая ширина (пикселей)</value>
   </data>
   <data name="Advanced_FileNameToken6" xml:space="preserve">
-    <value>Текущая высота (пиксели)</value>
+    <value>Текущая высота (пикселей)</value>
   </data>
   <data name="Advanced_FileNameTokens" xml:space="preserve">
     <value>Могут использоваться следующие параметры.</value>
@@ -175,7 +175,7 @@
     <value>Сжатие TIFF:</value>
   </data>
   <data name="Advanced_Title" xml:space="preserve">
-    <value>Дополнительно</value>
+    <value>Дополнительные настройки</value>
   </data>
   <data name="AllFilesFilter" xml:space="preserve">
     <value>Все файлы</value>
@@ -199,22 +199,22 @@
     <value>Другой</value>
   </data>
   <data name="Input_IgnoreOrientation" xml:space="preserve">
-    <value>Игнорировать ориентацию</value>
+    <value>Игнорировать ориентацию изображений</value>
   </data>
   <data name="Input_MainInstruction" xml:space="preserve">
-    <value>Изменить размеры</value>
+    <value>Изменить размеры изображений</value>
   </data>
   <data name="Input_Replace" xml:space="preserve">
-    <value>Изменять исходные (не создавать копии)</value>
+    <value>Изменять исходные изображения (не создавать копии)</value>
   </data>
   <data name="Input_Resize" xml:space="preserve">
     <value>Изменить</value>
   </data>
   <data name="Input_ShowAdvanced" xml:space="preserve">
-    <value>Дополнительно...</value>
+    <value>Дополнительные настройки...</value>
   </data>
   <data name="Input_ShrinkOnly" xml:space="preserve">
-    <value>Делать меньше без увеличения размера</value>
+    <value>Делать изображения меньше без увеличения размера</value>
   </data>
   <data name="Large" xml:space="preserve">
     <value>Большой</value>
@@ -235,16 +235,16 @@
     <value>По умолчанию</value>
   </data>
   <data name="PngInterlaceOption_Off" xml:space="preserve">
-    <value>Откл</value>
+    <value>Отключено</value>
   </data>
   <data name="PngInterlaceOption_On" xml:space="preserve">
-    <value>Вкл</value>
+    <value>Включено</value>
   </data>
   <data name="Progress_MainInstruction" xml:space="preserve">
-    <value>Изменение размеров...</value>
+    <value>Изменение размеров изображений...</value>
   </data>
   <data name="Progress_Stop" xml:space="preserve">
-    <value>Стоп</value>
+    <value>Остановить</value>
   </data>
   <data name="Progress_TimeRemaining_HourMinute" xml:space="preserve">
     <value>Осталось около {0} часов, {1} минут.</value>
@@ -295,7 +295,7 @@
     <value>растянуто до</value>
   </data>
   <data name="ResizeUnit_Centimeter" xml:space="preserve">
-    <value>Сантиметры</value>
+    <value>Сантиметров</value>
   </data>
   <data name="ResizeUnit_Inch" xml:space="preserve">
     <value>Дюймов</value>
@@ -304,7 +304,7 @@
     <value>Процентов</value>
   </data>
   <data name="ResizeUnit_Pixel" xml:space="preserve">
-    <value>Пиксели</value>
+    <value>Пикселей</value>
   </data>
   <data name="Results_Close" xml:space="preserve">
     <value>Закрыть</value>

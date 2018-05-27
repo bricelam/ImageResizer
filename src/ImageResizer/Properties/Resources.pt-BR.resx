@@ -118,202 +118,202 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Advanced_About" xml:space="preserve">
-    <value>Über</value>
+    <value>Sobre</value>
   </data>
   <data name="Advanced_CreateSize" xml:space="preserve">
-    <value>Neue Größe erstellen</value>
+    <value>Criar novo tamanho</value>
   </data>
   <data name="Advanced_DeleteSize" xml:space="preserve">
-    <value>Entfernen</value>
+    <value>Apagar</value>
   </data>
   <data name="Advanced_Encoding" xml:space="preserve">
-    <value>Komprimierung</value>
+    <value>Codificação</value>
   </data>
   <data name="Advanced_FallbackEncoder" xml:space="preserve">
-    <value>Ausweich-Kompromierung:</value>
+    <value>_Fallback encoder:</value>
   </data>
   <data name="Advanced_File" xml:space="preserve">
-    <value>Datei</value>
+    <value>Arquivo</value>
   </data>
   <data name="Advanced_FileName" xml:space="preserve">
-    <value>Dateiname:</value>
+    <value>Nome do arquivo:</value>
   </data>
   <data name="Advanced_FileNameToken1" xml:space="preserve">
-    <value>Ursprungsdateiname</value>
+    <value>Nome origianl</value>
   </data>
   <data name="Advanced_FileNameToken2" xml:space="preserve">
-    <value>Größen-Name</value>
+    <value>Nome do tamanho</value>
   </data>
   <data name="Advanced_FileNameToken3" xml:space="preserve">
-    <value>Ausgewählte Breite</value>
+    <value>Largura selecionada</value>
   </data>
   <data name="Advanced_FileNameToken4" xml:space="preserve">
-    <value>Ausgewählte Höhe</value>
+    <value>Altura selecionada</value>
   </data>
   <data name="Advanced_FileNameToken5" xml:space="preserve">
-    <value>Ursprüngliche Breite (Pixel)</value>
+    <value>Largura atual (pixels)</value>
   </data>
   <data name="Advanced_FileNameToken6" xml:space="preserve">
-    <value>Ursprüngliche Höhe (Pixel)</value>
+    <value>Altura atual (pixels)</value>
   </data>
   <data name="Advanced_FileNameTokens" xml:space="preserve">
-    <value>Die folgenden Parameter können verwendet werden.</value>
+    <value>O seguintes parametros podem ser utilizados.</value>
   </data>
   <data name="Advanced_JpegQualityLevel" xml:space="preserve">
-    <value>JPEG Qualitätsstufe:</value>
+    <value>_JPEG nível de qualidade:</value>
   </data>
   <data name="Advanced_KeepDateModified" xml:space="preserve">
-    <value>Ursprüngliches Änderungsdatum verwenden</value>
+    <value>_Utilizar data de modificação original</value>
   </data>
   <data name="Advanced_PngInterlaceOption" xml:space="preserve">
-    <value>PNG Interlacing</value>
+    <value>Entrelaçamento _PNG:</value>
   </data>
   <data name="Advanced_Sizes" xml:space="preserve">
-    <value>Größen</value>
+    <value>Tamanhos</value>
   </data>
   <data name="Advanced_TiffCompressOption" xml:space="preserve">
-    <value>TIFF Komprimierung:</value>
+    <value>Compressão _TIFF:</value>
   </data>
   <data name="Advanced_Title" xml:space="preserve">
-    <value>Erweiterte Optionen</value>
+    <value>Opções Avançadas</value>
   </data>
   <data name="AllFilesFilter" xml:space="preserve">
-    <value>Alle Dateien</value>
+    <value>Todos os arquivos</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Abbrechen</value>
+    <value>Cancelar</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>© 2018 Brice Lambson. Alle Rechte vorbehalten.</value>
+    <value>© 2018 Brice Lambson. Todos os direitos reservados.</value>
   </data>
   <data name="ImageResizer" xml:space="preserve">
-    <value>Image Resizer für Windows</value>
+    <value>Redimensionar Imagens para Windows</value>
   </data>
   <data name="Input_Auto" xml:space="preserve">
     <value>(auto)</value>
   </data>
   <data name="Input_Content" xml:space="preserve">
-    <value>Wähle eine Größe</value>
+    <value>_Selecione um tamanho.</value>
   </data>
   <data name="Input_Custom" xml:space="preserve">
-    <value>Custom</value>
+    <value>Personalizado</value>
   </data>
   <data name="Input_IgnoreOrientation" xml:space="preserve">
-    <value>Ignoriere die _Ausrichtung von Bildern</value>
+    <value>Ign_orar a orientação das imagens</value>
   </data>
   <data name="Input_MainInstruction" xml:space="preserve">
-    <value>Ändere die Größe deiner Bilder</value>
+    <value>Redimensione suas imagens</value>
   </data>
   <data name="Input_Replace" xml:space="preserve">
-    <value>Ände_re die Originalbilder (erstellt keine Kopien)</value>
+    <value>R_edimensionar imagens originais (não criar cópias)</value>
   </data>
   <data name="Input_Resize" xml:space="preserve">
-    <value>Größe ände_rn</value>
+    <value>_Redimensionar</value>
   </data>
   <data name="Input_ShowAdvanced" xml:space="preserve">
-    <value>Erweiterte Optionen...</value>
+    <value>Opções Avançadas...</value>
   </data>
   <data name="Input_ShrinkOnly" xml:space="preserve">
-    <value>Mache Bilder kleiner aber nicht größer</value>
+    <value>Reduzir i_magens mas não aumentar</value>
   </data>
   <data name="Large" xml:space="preserve">
-    <value>Groß</value>
+    <value>Largo</value>
   </data>
   <data name="Medium" xml:space="preserve">
-    <value>Mittel</value>
+    <value>Médio</value>
   </data>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
   <data name="Phone" xml:space="preserve">
-    <value>Handy</value>
+    <value>Telefone</value>
   </data>
   <data name="PictureFilter" xml:space="preserve">
-    <value>Alle Bilddateien</value>
+    <value>Todos os arquivos de Imagens</value>
   </data>
   <data name="PngInterlaceOption_Default" xml:space="preserve">
-    <value>(Standard)</value>
+    <value>(Padrão)</value>
   </data>
   <data name="PngInterlaceOption_Off" xml:space="preserve">
-    <value>Aus</value>
+    <value>Desligado</value>
   </data>
   <data name="PngInterlaceOption_On" xml:space="preserve">
-    <value>An</value>
+    <value>Ligado</value>
   </data>
   <data name="Progress_MainInstruction" xml:space="preserve">
-    <value>Größe Ihrer Bilder wird geändert...</value>
+    <value>Redimensionar suas imagens...</value>
   </data>
   <data name="Progress_Stop" xml:space="preserve">
-    <value>Stop</value>
+    <value>Parar</value>
   </data>
   <data name="Progress_TimeRemaining_HourMinute" xml:space="preserve">
-    <value>Etwa {0} Stunde, {1} Minute verbleibend.</value>
+    <value>Aproximadamente {0} hora, {1} minuto restante.</value>
   </data>
   <data name="Progress_TimeRemaining_HourMinutes" xml:space="preserve">
-    <value>Etwa {0} Stunde, {1} Minuten verbleibend.</value>
+    <value>Aproximadamente {0} hora, {1} minutos restantes.</value>
   </data>
   <data name="Progress_TimeRemaining_HoursMinute" xml:space="preserve">
-    <value>Etwa {0} Stunden, {1} Minute verbleibend.</value>
+    <value>Aproximadamente {0} horas, {1} minuto restante.</value>
   </data>
   <data name="Progress_TimeRemaining_HoursMinutes" xml:space="preserve">
-    <value>Etwa {0} Stunden, {1} Minuten verbleibend.</value>
+    <value>Aproximadamente {0} horas, {1} minutos restantes.</value>
   </data>
   <data name="Progress_TimeRemaining_MinuteSecond" xml:space="preserve">
-    <value>Etwa {1} Minute, {2} Sekunde verbleibend.</value>
+    <value>Aproximadamente {1} minuto, {2} segundo restante.</value>
   </data>
   <data name="Progress_TimeRemaining_MinuteSeconds" xml:space="preserve">
-    <value>Etwa {1} Minute, {2} Sekunden verbleibend.</value>
+    <value>Aproximadamente {1} minuto, {2} segundos restantes.</value>
   </data>
   <data name="Progress_TimeRemaining_MinutesSecond" xml:space="preserve">
-    <value>Etwa {1} Minuten, {2} Sekunde verbleibend.</value>
+    <value>Aproximadamente {1} minutos, {2} segundo restante.</value>
   </data>
   <data name="Progress_TimeRemaining_MinutesSeconds" xml:space="preserve">
-    <value>Etwa {1} Minuten, {2} Sekunden verbleibend.</value>
+    <value>Aproximadamente {1} minutos, {2} segundos restantes.</value>
   </data>
   <data name="Progress_TimeRemaining_Second" xml:space="preserve">
-    <value>Etwa {2} Sekunde verbleibend.</value>
+    <value>Aproximadamente {2} segundo restante.</value>
   </data>
   <data name="Progress_TimeRemaining_Seconds" xml:space="preserve">
-    <value>Etwa {2} Sekunden verbleibend.</value>
+    <value>Aproximadamente {2} segundos restantes.</value>
   </data>
   <data name="ResizeFit_Fill" xml:space="preserve">
-    <value>Füllen</value>
+    <value>Preencher</value>
   </data>
   <data name="ResizeFit_Fill_ThirdPersonSingular" xml:space="preserve">
-    <value>füllt</value>
+    <value>preenche</value>
   </data>
   <data name="ResizeFit_Fit" xml:space="preserve">
-    <value>passend</value>
+    <value>Encaixar</value>
   </data>
   <data name="ResizeFit_Fit_ThirdPersonSingular" xml:space="preserve">
-    <value>passt in</value>
+    <value>encaixar dentro</value>
   </data>
   <data name="ResizeFit_Stretch" xml:space="preserve">
-    <value>strecken</value>
+    <value>Esticar</value>
   </data>
   <data name="ResizeFit_Stretch_ThirdPersonSingular" xml:space="preserve">
-    <value>strecken bis</value>
+    <value>esticar para</value>
   </data>
   <data name="ResizeUnit_Centimeter" xml:space="preserve">
-    <value>Zentimeter</value>
+    <value>Centímetros</value>
   </data>
   <data name="ResizeUnit_Inch" xml:space="preserve">
-    <value>Inch</value>
+    <value>Polegadas</value>
   </data>
   <data name="ResizeUnit_Percent" xml:space="preserve">
-    <value>Prozent</value>
+    <value>Percentual</value>
   </data>
   <data name="ResizeUnit_Pixel" xml:space="preserve">
-    <value>Pixel</value>
+    <value>Pixels</value>
   </data>
   <data name="Results_Close" xml:space="preserve">
-    <value>Schließen</value>
+    <value>Fechar</value>
   </data>
   <data name="Results_MainInstruction" xml:space="preserve">
-    <value>Kann die Größe des folgenden Bildes nicht ändern</value>
+    <value>Não posso redimensionar as seguintes imagens</value>
   </data>
   <data name="Small" xml:space="preserve">
-    <value>Klein</value>
+    <value>Pequeno</value>
   </data>
   <data name="TiffCompressOption_Ccitt3" xml:space="preserve">
     <value>CCITT3</value>
@@ -322,13 +322,13 @@
     <value>CCITT4</value>
   </data>
   <data name="TiffCompressOption_Default" xml:space="preserve">
-    <value>(Standard)</value>
+    <value>(Padrão)</value>
   </data>
   <data name="TiffCompressOption_Lzw" xml:space="preserve">
     <value>LZW</value>
   </data>
   <data name="TiffCompressOption_None" xml:space="preserve">
-    <value>Keiner</value>
+    <value>Nenhum</value>
   </data>
   <data name="TiffCompressOption_Rle" xml:space="preserve">
     <value>RLE</value>
@@ -337,10 +337,9 @@
     <value>Zip</value>
   </data>
   <data name="ValueMustBeBetween" xml:space="preserve">
-    <value>Wert muss zwischen '{0}' und '{1}' liegen.
-</value>
+    <value>Valor deve ser entre '{0}' e '{1}'.</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version</value>
+    <value>Versão</value>
   </data>
 </root>

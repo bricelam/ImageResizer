@@ -160,7 +160,7 @@
     <value>Possono essere usati i seguenti parametri.</value>
   </data>
   <data name="Advanced_JpegQualityLevel" xml:space="preserve">
-    <value>_livello di qualità PEG:</value>
+    <value>_Qualità JPEG:</value>
   </data>
   <data name="Advanced_KeepDateModified" xml:space="preserve">
     <value>_Usa la data originale modificata</value>
@@ -178,7 +178,7 @@
     <value>Opzioni avanzate</value>
   </data>
   <data name="AllFilesFilter" xml:space="preserve">
-    <value>Tutti i File</value>
+    <value>Tutti i file</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Annulla</value>
@@ -205,7 +205,7 @@
     <value>Ridimensiona le tue immagini</value>
   </data>
   <data name="Input_Replace" xml:space="preserve">
-    <value>Ridimensiona le foto originali (non creare copie)</value>
+    <value>Ridimensiona le immagini originali (non creare copie)</value>
   </data>
   <data name="Input_Resize" xml:space="preserve">
     <value>Ridimensiona</value>
@@ -214,7 +214,7 @@
     <value>Opzioni avanzate...</value>
   </data>
   <data name="Input_ShrinkOnly" xml:space="preserve">
-    <value>_Rendi le foto più piccole ma non più grandi</value>
+    <value>_Crea immagini più piccole ma non più grandi</value>
   </data>
   <data name="Large" xml:space="preserve">
     <value>Grande</value>
@@ -229,7 +229,7 @@
     <value>Telefono</value>
   </data>
   <data name="PictureFilter" xml:space="preserve">
-    <value>Tutti i File Immagine</value>
+    <value>Tutti i file immagine</value>
   </data>
   <data name="PngInterlaceOption_Default" xml:space="preserve">
     <value>(Predefinito)</value>
@@ -286,7 +286,7 @@
     <value>Adatta</value>
   </data>
   <data name="ResizeFit_Fit_ThirdPersonSingular" xml:space="preserve">
-    <value>rientra</value>
+    <value>entro</value>
   </data>
   <data name="ResizeFit_Stretch" xml:space="preserve">
     <value>Deforma</value>
@@ -301,7 +301,7 @@
     <value>Pollici</value>
   </data>
   <data name="ResizeUnit_Percent" xml:space="preserve">
-    <value>Per cento</value>
+    <value>Percento</value>
   </data>
   <data name="ResizeUnit_Pixel" xml:space="preserve">
     <value>Pixel</value>

@@ -118,202 +118,202 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Advanced_About" xml:space="preserve">
-    <value>Über</value>
+    <value>حول</value>
   </data>
   <data name="Advanced_CreateSize" xml:space="preserve">
-    <value>Neue Größe erstellen</value>
+    <value>إنشاء حجم جديد</value>
   </data>
   <data name="Advanced_DeleteSize" xml:space="preserve">
-    <value>Entfernen</value>
+    <value>حذف</value>
   </data>
   <data name="Advanced_Encoding" xml:space="preserve">
-    <value>Komprimierung</value>
+    <value>الترميز</value>
   </data>
   <data name="Advanced_FallbackEncoder" xml:space="preserve">
-    <value>Ausweich-Kompromierung:</value>
+    <value>_Fallback encoder:</value>
   </data>
   <data name="Advanced_File" xml:space="preserve">
-    <value>Datei</value>
+    <value>ملف</value>
   </data>
   <data name="Advanced_FileName" xml:space="preserve">
-    <value>Dateiname:</value>
+    <value>الإسم</value>
   </data>
   <data name="Advanced_FileNameToken1" xml:space="preserve">
-    <value>Ursprungsdateiname</value>
+    <value>اسم الملف الأصلي</value>
   </data>
   <data name="Advanced_FileNameToken2" xml:space="preserve">
-    <value>Größen-Name</value>
+    <value>اسم هذا الحجم</value>
   </data>
   <data name="Advanced_FileNameToken3" xml:space="preserve">
-    <value>Ausgewählte Breite</value>
+    <value>العرض المحدد</value>
   </data>
   <data name="Advanced_FileNameToken4" xml:space="preserve">
-    <value>Ausgewählte Höhe</value>
+    <value>الارتفاع المحدد</value>
   </data>
   <data name="Advanced_FileNameToken5" xml:space="preserve">
-    <value>Ursprüngliche Breite (Pixel)</value>
+    <value>العرض الأصلي (بكسل)</value>
   </data>
   <data name="Advanced_FileNameToken6" xml:space="preserve">
-    <value>Ursprüngliche Höhe (Pixel)</value>
+    <value>الارتفاع الأصلي (بكسل)</value>
   </data>
   <data name="Advanced_FileNameTokens" xml:space="preserve">
-    <value>Die folgenden Parameter können verwendet werden.</value>
+    <value>البارمترات التالية يمكن استخدامها.</value>
   </data>
   <data name="Advanced_JpegQualityLevel" xml:space="preserve">
-    <value>JPEG Qualitätsstufe:</value>
+    <value>مدى جودة صورة JPEG:</value>
   </data>
   <data name="Advanced_KeepDateModified" xml:space="preserve">
-    <value>Ursprüngliches Änderungsdatum verwenden</value>
+    <value>استخدام تاريخ التعديل الأصلي</value>
   </data>
   <data name="Advanced_PngInterlaceOption" xml:space="preserve">
-    <value>PNG Interlacing</value>
+    <value>تداخل PNG:</value>
   </data>
   <data name="Advanced_Sizes" xml:space="preserve">
-    <value>Größen</value>
+    <value>الأحجام</value>
   </data>
   <data name="Advanced_TiffCompressOption" xml:space="preserve">
-    <value>TIFF Komprimierung:</value>
+    <value>مستوى ضغط TIFF</value>
   </data>
   <data name="Advanced_Title" xml:space="preserve">
-    <value>Erweiterte Optionen</value>
+    <value>إعدادات متقدمة</value>
   </data>
   <data name="AllFilesFilter" xml:space="preserve">
-    <value>Alle Dateien</value>
+    <value>كل الملفات</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Abbrechen</value>
+    <value>إلغاء</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>© 2018 Brice Lambson. Alle Rechte vorbehalten.</value>
+    <value>© كل الحقوق محفوظة ل Brice Lambson 20018</value>
   </data>
   <data name="ImageResizer" xml:space="preserve">
-    <value>Image Resizer für Windows</value>
+    <value>المقياس - ويندوز</value>
   </data>
   <data name="Input_Auto" xml:space="preserve">
-    <value>(auto)</value>
+    <value>(تلقائي)</value>
   </data>
   <data name="Input_Content" xml:space="preserve">
-    <value>Wähle eine Größe</value>
+    <value>حدد المقاس</value>
   </data>
   <data name="Input_Custom" xml:space="preserve">
-    <value>Custom</value>
+    <value>تخصيص</value>
   </data>
   <data name="Input_IgnoreOrientation" xml:space="preserve">
-    <value>Ignoriere die _Ausrichtung von Bildern</value>
+    <value>تجاهل اتجاه الصور</value>
   </data>
   <data name="Input_MainInstruction" xml:space="preserve">
-    <value>Ändere die Größe deiner Bilder</value>
+    <value>تغيير مقاس صورك</value>
   </data>
   <data name="Input_Replace" xml:space="preserve">
-    <value>Ände_re die Originalbilder (erstellt keine Kopien)</value>
+    <value>تغيير الصورة الأصلية (لا تنشئ نسخاً)</value>
   </data>
   <data name="Input_Resize" xml:space="preserve">
-    <value>Größe ände_rn</value>
+    <value>إعادة تحجيم</value>
   </data>
   <data name="Input_ShowAdvanced" xml:space="preserve">
-    <value>Erweiterte Optionen...</value>
+    <value>خيارات متقدمة</value>
   </data>
   <data name="Input_ShrinkOnly" xml:space="preserve">
-    <value>Mache Bilder kleiner aber nicht größer</value>
+    <value>غير مقاس الصورة بحيث يتم تصغيرها لا تكبيرها</value>
   </data>
   <data name="Large" xml:space="preserve">
-    <value>Groß</value>
+    <value>كبير</value>
   </data>
   <data name="Medium" xml:space="preserve">
-    <value>Mittel</value>
+    <value>متوسط</value>
   </data>
   <data name="OK" xml:space="preserve">
-    <value>OK</value>
+    <value>موافق</value>
   </data>
   <data name="Phone" xml:space="preserve">
-    <value>Handy</value>
+    <value>الجوال</value>
   </data>
   <data name="PictureFilter" xml:space="preserve">
-    <value>Alle Bilddateien</value>
+    <value>كل ملفات الصور</value>
   </data>
   <data name="PngInterlaceOption_Default" xml:space="preserve">
-    <value>(Standard)</value>
+    <value>(افتراضي)</value>
   </data>
   <data name="PngInterlaceOption_Off" xml:space="preserve">
-    <value>Aus</value>
+    <value>Off</value>
   </data>
   <data name="PngInterlaceOption_On" xml:space="preserve">
-    <value>An</value>
+    <value>On</value>
   </data>
   <data name="Progress_MainInstruction" xml:space="preserve">
-    <value>Größe Ihrer Bilder wird geändert...</value>
+    <value>جاري إعادة تحجيم صورك</value>
   </data>
   <data name="Progress_Stop" xml:space="preserve">
-    <value>Stop</value>
+    <value>أيقاف</value>
   </data>
   <data name="Progress_TimeRemaining_HourMinute" xml:space="preserve">
-    <value>Etwa {0} Stunde, {1} Minute verbleibend.</value>
+    <value>باقي حوالي {0} ساعة و {1} دقيقة.</value>
   </data>
   <data name="Progress_TimeRemaining_HourMinutes" xml:space="preserve">
-    <value>Etwa {0} Stunde, {1} Minuten verbleibend.</value>
+    <value>باقي حوالي {0} ساعة و {1} دقائق.</value>
   </data>
   <data name="Progress_TimeRemaining_HoursMinute" xml:space="preserve">
-    <value>Etwa {0} Stunden, {1} Minute verbleibend.</value>
+    <value>باقي حوالي {0} ساعات و {1} دقيقة.</value>
   </data>
   <data name="Progress_TimeRemaining_HoursMinutes" xml:space="preserve">
-    <value>Etwa {0} Stunden, {1} Minuten verbleibend.</value>
+    <value>باقي حوالي {0} ساعات و {1} دقائق.</value>
   </data>
   <data name="Progress_TimeRemaining_MinuteSecond" xml:space="preserve">
-    <value>Etwa {1} Minute, {2} Sekunde verbleibend.</value>
+    <value>باقي حوالي {1} دقيقة و {2} ثانية.</value>
   </data>
   <data name="Progress_TimeRemaining_MinuteSeconds" xml:space="preserve">
-    <value>Etwa {1} Minute, {2} Sekunden verbleibend.</value>
+    <value>باقي حوالي {1} دقيقة و {2} ثواني.</value>
   </data>
   <data name="Progress_TimeRemaining_MinutesSecond" xml:space="preserve">
-    <value>Etwa {1} Minuten, {2} Sekunde verbleibend.</value>
+    <value>باقي حوالي {1} دقائق و {2} ثواني.</value>
   </data>
   <data name="Progress_TimeRemaining_MinutesSeconds" xml:space="preserve">
-    <value>Etwa {1} Minuten, {2} Sekunden verbleibend.</value>
+    <value>باقي حوالي {1} دقائق و {2} ثواني.</value>
   </data>
   <data name="Progress_TimeRemaining_Second" xml:space="preserve">
-    <value>Etwa {2} Sekunde verbleibend.</value>
+    <value>باقي حوالي {2} ثانية.</value>
   </data>
   <data name="Progress_TimeRemaining_Seconds" xml:space="preserve">
-    <value>Etwa {2} Sekunden verbleibend.</value>
+    <value>باقي حوالي {2} ثواني.</value>
   </data>
   <data name="ResizeFit_Fill" xml:space="preserve">
-    <value>Füllen</value>
+    <value>تعبئة</value>
   </data>
   <data name="ResizeFit_Fill_ThirdPersonSingular" xml:space="preserve">
-    <value>füllt</value>
+    <value>تعبئة</value>
   </data>
   <data name="ResizeFit_Fit" xml:space="preserve">
-    <value>passend</value>
+    <value>ملائمة</value>
   </data>
   <data name="ResizeFit_Fit_ThirdPersonSingular" xml:space="preserve">
-    <value>passt in</value>
+    <value>ملائمة داخل</value>
   </data>
   <data name="ResizeFit_Stretch" xml:space="preserve">
-    <value>strecken</value>
+    <value>تمديد</value>
   </data>
   <data name="ResizeFit_Stretch_ThirdPersonSingular" xml:space="preserve">
-    <value>strecken bis</value>
+    <value>تمديد إلى</value>
   </data>
   <data name="ResizeUnit_Centimeter" xml:space="preserve">
-    <value>Zentimeter</value>
+    <value>سم</value>
   </data>
   <data name="ResizeUnit_Inch" xml:space="preserve">
-    <value>Inch</value>
+    <value>إنش</value>
   </data>
   <data name="ResizeUnit_Percent" xml:space="preserve">
-    <value>Prozent</value>
+    <value>بالمئة</value>
   </data>
   <data name="ResizeUnit_Pixel" xml:space="preserve">
-    <value>Pixel</value>
+    <value>بكسل</value>
   </data>
   <data name="Results_Close" xml:space="preserve">
-    <value>Schließen</value>
+    <value>إغلاق</value>
   </data>
   <data name="Results_MainInstruction" xml:space="preserve">
-    <value>Kann die Größe des folgenden Bildes nicht ändern</value>
+    <value>لا يمكن إعادة تحجيم كل من الصور التالية</value>
   </data>
   <data name="Small" xml:space="preserve">
-    <value>Klein</value>
+    <value>صغير</value>
   </data>
   <data name="TiffCompressOption_Ccitt3" xml:space="preserve">
     <value>CCITT3</value>
@@ -322,25 +322,24 @@
     <value>CCITT4</value>
   </data>
   <data name="TiffCompressOption_Default" xml:space="preserve">
-    <value>(Standard)</value>
+    <value>(إفتراضي)</value>
   </data>
   <data name="TiffCompressOption_Lzw" xml:space="preserve">
     <value>LZW</value>
   </data>
   <data name="TiffCompressOption_None" xml:space="preserve">
-    <value>Keiner</value>
+    <value>لا شيئ</value>
   </data>
   <data name="TiffCompressOption_Rle" xml:space="preserve">
     <value>RLE</value>
   </data>
   <data name="TiffCompressOption_Zip" xml:space="preserve">
-    <value>Zip</value>
+    <value>ZIP</value>
   </data>
   <data name="ValueMustBeBetween" xml:space="preserve">
-    <value>Wert muss zwischen '{0}' und '{1}' liegen.
-</value>
+    <value>يجب أن تكون القيمة بين "{0}" و "{1}".</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version</value>
+    <value>الإصدار</value>
   </data>
 </root>

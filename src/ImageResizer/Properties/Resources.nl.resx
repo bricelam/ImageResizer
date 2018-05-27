@@ -151,10 +151,10 @@
     <value>Geselecteerde hoogte</value>
   </data>
   <data name="Advanced_FileNameToken5" xml:space="preserve">
-    <value>Oorspronkelijke breedte (pixels)</value>
+    <value>Werkelijke breedte (pixels)</value>
   </data>
   <data name="Advanced_FileNameToken6" xml:space="preserve">
-    <value>Oorspronkelijke hoogte (pixels)</value>
+    <value>Werkelijke hoogte (pixels)</value>
   </data>
   <data name="Advanced_FileNameTokens" xml:space="preserve">
     <value>De volgende parameters kunnen worden gebruikt:</value>
@@ -193,7 +193,7 @@
     <value>(auto)</value>
   </data>
   <data name="Input_Content" xml:space="preserve">
-    <value>_Selecteer een formaat.</value>
+    <value>_Selecteer een afmeting.</value>
   </data>
   <data name="Input_Custom" xml:space="preserve">
     <value>Aangepast</value>
@@ -259,22 +259,22 @@
     <value>Ongeveer {0} uren en {1} minuten resterend.</value>
   </data>
   <data name="Progress_TimeRemaining_MinuteSecond" xml:space="preserve">
-    <value>Ongeveer {0} minuut en {1} seconde resterend.</value>
+    <value>Ongeveer {1} minuut en {2} seconde resterend.</value>
   </data>
   <data name="Progress_TimeRemaining_MinuteSeconds" xml:space="preserve">
-    <value>Ongeveer {0} minuut en {1} seconden resterend.</value>
+    <value>Ongeveer {1} minuut en {2} seconden resterend.</value>
   </data>
   <data name="Progress_TimeRemaining_MinutesSecond" xml:space="preserve">
-    <value>Ongeveer {0} minuten en {1} seconde resterend.</value>
+    <value>Ongeveer {1} minuten en {2} seconde resterend.</value>
   </data>
   <data name="Progress_TimeRemaining_MinutesSeconds" xml:space="preserve">
-    <value>Ongeveer {0} minuten en {1} seconden resterend.</value>
+    <value>Ongeveer {1} minuten en {2} seconden resterend.</value>
   </data>
   <data name="Progress_TimeRemaining_Second" xml:space="preserve">
-    <value>Ongeveer {0} seconde resterend.</value>
+    <value>Ongeveer {2} seconde resterend.</value>
   </data>
   <data name="Progress_TimeRemaining_Seconds" xml:space="preserve">
-    <value>Ongeveer {0} seconden resterend.</value>
+    <value>Ongeveer {2} seconden resterend.</value>
   </data>
   <data name="ResizeFit_Fill" xml:space="preserve">
     <value>Uitvullen</value>
@@ -298,7 +298,7 @@
     <value>Centimeters</value>
   </data>
   <data name="ResizeUnit_Inch" xml:space="preserve">
-    <value>Inches</value>
+    <value>Duimen</value>
   </data>
   <data name="ResizeUnit_Percent" xml:space="preserve">
     <value>Procent</value>
@@ -337,7 +337,7 @@
     <value>Zip</value>
   </data>
   <data name="ValueMustBeBetween" xml:space="preserve">
-    <value>Waarde moet tussen '{0}' en '{1}' zijn.</value>
+    <value>Waarde moet liggen tussen '{0}' en '{1}'.</value>
   </data>
   <data name="Version" xml:space="preserve">
     <value>Versie</value>
