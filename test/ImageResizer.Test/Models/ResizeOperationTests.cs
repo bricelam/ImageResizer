@@ -36,6 +36,29 @@ namespace ImageResizer.Models
         }
 
         [Fact]
+        public void Execute_keeps_date_modified_when_replacing_originals()
+        {
+            var path = Path.Combine(_directory, "Test.png");
+            File.Copy("Test.png", path);
+
+            var originalDateModified = File.GetLastWriteTimeUtc(path);
+
+            var operation = new ResizeOperation(
+                path,
+                null,
+                Settings(
+                    s =>
+                    {
+                        s.KeepDateModified = true;
+                        s.Replace = true;
+                    }));
+
+            operation.Execute();
+
+            Assert.Equal(originalDateModified, File.GetLastWriteTimeUtc(_directory.File()));
+        }
+
+        [Fact]
         public void Execute_replaces_originals()
         {
             var path = Path.Combine(_directory, "Test.png");
