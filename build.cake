@@ -1,4 +1,4 @@
-#tool nuget:?package=xunit.runner.console
+#tool nuget:?package=xunit.runner.console&version=2.4.1
 
 var target = Argument<string>("target");
 var configuration = Argument<string>("configuration");
