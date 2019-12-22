@@ -387,6 +387,19 @@ namespace ImageResizer.Models
             Assert.Contains("Test_Test_96_96_96_48.png", _directory.FileNames);
         }
 
+        [Fact]
+        public void Execute_handles_directories_in_fileName_format()
+        {
+            var operation = new ResizeOperation(
+                "Test.png",
+                _directory,
+                Settings(s => s.FileName = @"Directory\%1 (%2)"));
+
+            operation.Execute();
+
+            Assert.True(File.Exists(_directory + @"\Directory\Test (Test).png"));
+        }
+
         public void Dispose()
             => _directory.Dispose();
 

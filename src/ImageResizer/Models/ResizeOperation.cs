@@ -64,6 +64,7 @@ namespace ImageResizer.Models
                 }
 
                 path = GetDestinationPath(encoder);
+                Directory.CreateDirectory(Path.GetDirectoryName(path));
                 using (var outputStream = File.Open(path, FileMode.CreateNew, FileAccess.Write))
                     encoder.Save(outputStream);
             }
