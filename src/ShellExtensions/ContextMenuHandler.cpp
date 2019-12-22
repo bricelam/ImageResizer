@@ -60,6 +60,7 @@ HRESULT CContextMenuHandler::QueryContextMenu(_In_ HMENU hmenu, UINT indexMenu, 
 	LPTSTR pszPath = i.CurrentItem();
 	LPTSTR pszExt = PathFindExtension(pszPath);
 
+	// TODO: Instead, detech whether there's a WIC codec installd that can handle this file (issue #7)
 	AssocGetPerceivedType(pszExt, &type, &flag, NULL);
 
 	free(pszPath);
@@ -143,7 +144,7 @@ HRESULT CContextMenuHandler::ResizePictures(CMINVOKECOMMANDINFO *pici)
 	ULONG nChars = MAX_PATH;
 	CRegKey regKey;
 
-	// NOTE: The location is always read from a 32-bit key
+	// NB: The location is always read from a 32-bit key
 	if (regKey.Open(HKEY_CURRENT_USER, _T("Software\\BriceLambson\\ImageResizer"), KEY_READ | KEY_WOW64_32KEY))
 	{
 		regKey.Open(HKEY_LOCAL_MACHINE, _T("Software\\BriceLambson\\ImageResizer"), KEY_READ | KEY_WOW64_32KEY);

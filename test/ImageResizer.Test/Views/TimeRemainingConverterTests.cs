@@ -26,8 +26,8 @@ namespace ImageResizer.Views
 
             var result = converter.Convert(
                 timeRemaining,
-                /*targetType:*/ null,
-                /*parameter:*/ null,
+                targetType: null,
+                parameter: null,
                 CultureInfo.InvariantCulture);
 
             Assert.Equal(

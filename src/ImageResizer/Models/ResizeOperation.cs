@@ -58,7 +58,8 @@ namespace ImageResizer.Models
                     encoder.Frames.Add(
                         BitmapFrame.Create(
                             Transform(originalFrame),
-                            /*thumbnail:*/ null,
+                            thumbnail: null,
+                            // TODO: Add an option to strip any metadata that doesn't affect rendering (issue #3)
                             (BitmapMetadata)originalFrame.Metadata,
                             colorContexts: null));
                 }

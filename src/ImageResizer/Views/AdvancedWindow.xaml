@@ -40,6 +40,7 @@
         <TabControl>
             <TabItem Header="{x:Static p:Resources.Advanced_Sizes}">
                 <StackPanel Margin="11">
+                    <!-- TODO: Allow these to be drag-and-drop reordered (issue #15) -->
                     <ItemsControl Grid.IsSharedSizeScope="True" ItemsSource="{Binding Settings.Sizes}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate DataType="m:ResizeSize">

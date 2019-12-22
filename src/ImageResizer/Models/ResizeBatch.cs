@@ -43,6 +43,8 @@ namespace ImageResizer.Models
             var completed = 0;
             var errors = new ConcurrentBag<ResizeError>();
 
+            // TODO: If we ever switch to Windows.Graphics.Imaging, we can get a lot more throughput by using the async
+            //       APIs and a custom SynchronizationContext
             Parallel.ForEach(
                 Files,
                 new ParallelOptions
