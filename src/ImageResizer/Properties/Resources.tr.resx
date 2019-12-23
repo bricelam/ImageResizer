@@ -184,7 +184,7 @@
     <value>İptal</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>© 2018 Brice Lambson. Tüm hakları saklıdır.</value>
+    <value>© 2019 Brice Lambson. Tüm hakları saklıdır.</value>
   </data>
   <data name="ImageResizer" xml:space="preserve">
     <value>Windows için Image Resizer</value>
@@ -199,7 +199,7 @@
     <value>Özel</value>
   </data>
   <data name="Input_IgnoreOrientation" xml:space="preserve">
-    <value>Resimlerin yönünü yoksay</value>
+    <value>Resimlerin yönünü dikkate alma</value>
   </data>
   <data name="Input_MainInstruction" xml:space="preserve">
     <value>Resimlerinizi yeniden boyutlandırın</value>
@@ -214,7 +214,7 @@
     <value>Gelişmiş seçenekler...</value>
   </data>
   <data name="Input_ShrinkOnly" xml:space="preserve">
-    <value>Resimleri küçültün fakat büyütmeyin</value>
+    <value>Resimleri sadece küçültün, büyütmeyin</value>
   </data>
   <data name="Large" xml:space="preserve">
     <value>Büyük</value>

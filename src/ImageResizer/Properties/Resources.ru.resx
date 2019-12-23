@@ -175,16 +175,16 @@
     <value>Сжатие TIFF:</value>
   </data>
   <data name="Advanced_Title" xml:space="preserve">
-    <value>Дополнительные настройки</value>
+    <value>Расширенные настройки</value>
   </data>
   <data name="AllFilesFilter" xml:space="preserve">
     <value>Все файлы</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Отмена</value>
+    <value>отменить</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>© 2018 Brice Lambson. Все права защищены.</value>
+    <value>© 2019 Brice Lambson. Все права защищены.</value>
   </data>
   <data name="ImageResizer" xml:space="preserve">
     <value>Image Resizer для Windows</value>
@@ -193,37 +193,37 @@
     <value>(авто)</value>
   </data>
   <data name="Input_Content" xml:space="preserve">
-    <value>Выберите размер.</value>
+    <value>_Выберите размер.</value>
   </data>
   <data name="Input_Custom" xml:space="preserve">
-    <value>Другой</value>
+    <value>изготовленный на заказ</value>
   </data>
   <data name="Input_IgnoreOrientation" xml:space="preserve">
-    <value>Игнорировать ориентацию изображений</value>
+    <value>игнорировать ориентацию фото</value>
   </data>
   <data name="Input_MainInstruction" xml:space="preserve">
-    <value>Изменить размеры изображений</value>
+    <value>Изменить размер ваших фотографий</value>
   </data>
   <data name="Input_Replace" xml:space="preserve">
-    <value>Изменять исходные изображения (не создавать копии)</value>
+    <value>Изменять оригинальные фотографии (не создавать копии)</value>
   </data>
   <data name="Input_Resize" xml:space="preserve">
     <value>Изменить</value>
   </data>
   <data name="Input_ShowAdvanced" xml:space="preserve">
-    <value>Дополнительные настройки...</value>
+    <value>Расширенные настройки...</value>
   </data>
   <data name="Input_ShrinkOnly" xml:space="preserve">
-    <value>Делать изображения меньше без увеличения размера</value>
+    <value>Делайте картинки меньше, но не больше</value>
   </data>
   <data name="Large" xml:space="preserve">
-    <value>Большой</value>
+    <value>большой</value>
   </data>
   <data name="Medium" xml:space="preserve">
-    <value>Средний</value>
+    <value>Средняя</value>
   </data>
   <data name="OK" xml:space="preserve">
-    <value>ОК</value>
+    <value>Хорошо</value>
   </data>
   <data name="Phone" xml:space="preserve">
     <value>Телефон</value>
@@ -277,16 +277,16 @@
     <value>Осталось около {2} секунд.</value>
   </data>
   <data name="ResizeFit_Fill" xml:space="preserve">
-    <value>Заполнить</value>
+    <value>заполнить</value>
   </data>
   <data name="ResizeFit_Fill_ThirdPersonSingular" xml:space="preserve">
-    <value>подходит</value>
+    <value>заливка</value>
   </data>
   <data name="ResizeFit_Fit" xml:space="preserve">
-    <value>Вписать</value>
+    <value>Поместиться</value>
   </data>
   <data name="ResizeFit_Fit_ThirdPersonSingular" xml:space="preserve">
-    <value>подходит для</value>
+    <value>вписывается в</value>
   </data>
   <data name="ResizeFit_Stretch" xml:space="preserve">
     <value>Растянуть</value>
@@ -295,16 +295,16 @@
     <value>растянуто до</value>
   </data>
   <data name="ResizeUnit_Centimeter" xml:space="preserve">
-    <value>Сантиметров</value>
+    <value>сантиметров</value>
   </data>
   <data name="ResizeUnit_Inch" xml:space="preserve">
-    <value>Дюймов</value>
+    <value>дюймов</value>
   </data>
   <data name="ResizeUnit_Percent" xml:space="preserve">
     <value>Процентов</value>
   </data>
   <data name="ResizeUnit_Pixel" xml:space="preserve">
-    <value>Пикселей</value>
+    <value>Пиксели</value>
   </data>
   <data name="Results_Close" xml:space="preserve">
     <value>Закрыть</value>
@@ -313,7 +313,7 @@
     <value>Не удается изменить размер следующих изображений</value>
   </data>
   <data name="Small" xml:space="preserve">
-    <value>Мелкий</value>
+    <value>Маленький</value>
   </data>
   <data name="TiffCompressOption_Ccitt3" xml:space="preserve">
     <value>CCITT3</value>

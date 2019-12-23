@@ -11,7 +11,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Brice Lambson")]
 [assembly: AssemblyProduct("Image Resizer for Windows")]
-[assembly: AssemblyCopyright("© 2018 Brice Lambson. All rights reserved.")]
+[assembly: AssemblyCopyright("© 2019 Brice Lambson. All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

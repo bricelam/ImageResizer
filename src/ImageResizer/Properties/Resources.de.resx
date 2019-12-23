@@ -130,7 +130,7 @@
     <value>Komprimierung</value>
   </data>
   <data name="Advanced_FallbackEncoder" xml:space="preserve">
-    <value>Ausweich-Kompromierung:</value>
+    <value>Ausweich-Komprimierung:</value>
   </data>
   <data name="Advanced_File" xml:space="preserve">
     <value>Datei</value>
@@ -160,7 +160,7 @@
     <value>Die folgenden Parameter können verwendet werden.</value>
   </data>
   <data name="Advanced_JpegQualityLevel" xml:space="preserve">
-    <value>JPEG Qualitätsstufe:</value>
+    <value>JPEG-Qualitätsstufe:</value>
   </data>
   <data name="Advanced_KeepDateModified" xml:space="preserve">
     <value>Ursprüngliches Änderungsdatum verwenden</value>
@@ -184,7 +184,7 @@
     <value>Abbrechen</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>© 2018 Brice Lambson. Alle Rechte vorbehalten.</value>
+    <value>© 2019 Brice Lambson. Alle Rechte vorbehalten.</value>
   </data>
   <data name="ImageResizer" xml:space="preserve">
     <value>Image Resizer für Windows</value>
@@ -196,16 +196,16 @@
     <value>Wähle eine Größe</value>
   </data>
   <data name="Input_Custom" xml:space="preserve">
-    <value>Custom</value>
+    <value>Benutzerdefiniert</value>
   </data>
   <data name="Input_IgnoreOrientation" xml:space="preserve">
     <value>Ignoriere die _Ausrichtung von Bildern</value>
   </data>
   <data name="Input_MainInstruction" xml:space="preserve">
-    <value>Ändere die Größe deiner Bilder</value>
+    <value>Skaliere deine Bilder</value>
   </data>
   <data name="Input_Replace" xml:space="preserve">
-    <value>Ände_re die Originalbilder (erstellt keine Kopien)</value>
+    <value>Skaliere die Originalbilder (erstellt keine Kopien)</value>
   </data>
   <data name="Input_Resize" xml:space="preserve">
     <value>Größe ände_rn</value>
@@ -241,7 +241,7 @@
     <value>An</value>
   </data>
   <data name="Progress_MainInstruction" xml:space="preserve">
-    <value>Größe Ihrer Bilder wird geändert...</value>
+    <value>Bilder werden skaliert...</value>
   </data>
   <data name="Progress_Stop" xml:space="preserve">
     <value>Stop</value>

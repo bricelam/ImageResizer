@@ -184,10 +184,10 @@
     <value>Annuleren</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>© 2018 Brice Lambson. Alle rechten voorbehouden.</value>
+    <value>© 2019 Brice Lambson. Alle rechten voorbehouden.</value>
   </data>
   <data name="ImageResizer" xml:space="preserve">
-    <value>Image Resizer voor Windows</value>
+    <value>Fotovergroter/verkleiner voor Windows</value>
   </data>
   <data name="Input_Auto" xml:space="preserve">
     <value>(auto)</value>
@@ -208,13 +208,13 @@
     <value>Wijzig de originele _afbeeldingen (maak geen kopieën)</value>
   </data>
   <data name="Input_Resize" xml:space="preserve">
-    <value>_Wijzigen</value>
+    <value>_Verkleinen/vergroten</value>
   </data>
   <data name="Input_ShowAdvanced" xml:space="preserve">
     <value>Geavanceerde instellingen</value>
   </data>
   <data name="Input_ShrinkOnly" xml:space="preserve">
-    <value>Maak afbeeldingen kleiner, niet groter</value>
+    <value>Verklein afbeeldingen, vergroot niet</value>
   </data>
   <data name="Large" xml:space="preserve">
     <value>Groot</value>
@@ -241,7 +241,7 @@
     <value>Aan</value>
   </data>
   <data name="Progress_MainInstruction" xml:space="preserve">
-    <value>Wijzig het formaat van de afbeeldingen...</value>
+    <value>Verklein/vergroot foto's...</value>
   </data>
   <data name="Progress_Stop" xml:space="preserve">
     <value>_Stop</value>

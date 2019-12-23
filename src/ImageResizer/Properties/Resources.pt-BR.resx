@@ -139,7 +139,7 @@
     <value>Nome do arquivo:</value>
   </data>
   <data name="Advanced_FileNameToken1" xml:space="preserve">
-    <value>Nome origianl</value>
+    <value>Nome original</value>
   </data>
   <data name="Advanced_FileNameToken2" xml:space="preserve">
     <value>Nome do tamanho</value>
@@ -157,7 +157,7 @@
     <value>Altura atual (pixels)</value>
   </data>
   <data name="Advanced_FileNameTokens" xml:space="preserve">
-    <value>O seguintes parametros podem ser utilizados.</value>
+    <value>O seguintes parâmetros podem ser utilizados.</value>
   </data>
   <data name="Advanced_JpegQualityLevel" xml:space="preserve">
     <value>_JPEG nível de qualidade:</value>
@@ -184,7 +184,7 @@
     <value>Cancelar</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>© 2018 Brice Lambson. Todos os direitos reservados.</value>
+    <value>© 2019 Brice Lambson. Todos os direitos reservados.</value>
   </data>
   <data name="ImageResizer" xml:space="preserve">
     <value>Redimensionar Imagens para Windows</value>
@@ -217,7 +217,7 @@
     <value>Reduzir i_magens mas não aumentar</value>
   </data>
   <data name="Large" xml:space="preserve">
-    <value>Largo</value>
+    <value>Grande</value>
   </data>
   <data name="Medium" xml:space="preserve">
     <value>Médio</value>
