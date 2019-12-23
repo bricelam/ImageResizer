@@ -25,7 +25,7 @@ Task("Build")
                         ArgumentCustomization = args => args.Append("/nologo")
                     }
                         .SetConfiguration(configuration)
-                        .SetMaxCpuCount(signOutput ? null : 0)
+                        .SetMaxCpuCount(signOutput ? null : (int?)0)
                         .SetVerbosity(Verbosity.Minimal)
                         .WithProperty("Platform", platform)
                         .WithProperty("SignOutput", signOutput.ToString()));
