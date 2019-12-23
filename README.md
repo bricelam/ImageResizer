@@ -15,5 +15,5 @@ This program is made available under the terms of the [Microsoft Reciprocal Lice
   [3]: http://superuser.com/questions/ask?tags=image-resizer
   [4]: CONTRIBUTING.md
   [5]: LICENSE.md
-  [6]: https://ci.appveyor.com/api/projects/status/ca2b0ngw3n3stcfy/branch/develop?svg=true
+  [6]: https://ci.appveyor.com/api/projects/status/ca2b0ngw3n3stcfy/branch/master?svg=true
   [7]: https://ci.appveyor.com/project/bricelam/imageresizer/branch/master
