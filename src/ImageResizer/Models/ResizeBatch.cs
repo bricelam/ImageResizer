@@ -17,6 +17,7 @@ namespace ImageResizer.Models
         {
             var batch = new ResizeBatch();
 
+            // NB: We read these from stdin since there are limits on the number of args you can have
             string file;
             while ((file = standardInput.ReadLine()) != null)
                 batch.Files.Add(file);

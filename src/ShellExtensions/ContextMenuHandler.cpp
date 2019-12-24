@@ -52,6 +52,7 @@ HRESULT CContextMenuHandler::QueryContextMenu(_In_ HMENU hmenu, UINT indexMenu, 
 		return S_OK;
 	}
 
+	// NB: We just check the first item. We could iterate through more if the first one doesn't meet the criteria
 	HDropIterator i(m_pdtobj);
 	i.First();
 
