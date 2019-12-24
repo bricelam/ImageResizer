@@ -9,7 +9,7 @@ using ImageResizer.Views;
 
 namespace ImageResizer
 {
-    public partial class App : Application
+    public partial class App
     {
         static App()
         {
